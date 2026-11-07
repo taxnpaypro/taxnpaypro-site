@@ -1,0 +1,13 @@
+﻿블로그 SEO 정보 - QuickBooks Desktop에서 Online으로: 한인 사장님을 위한 단계별 전환 가이드
+폴더: Blogs\2026-11-02_QuickBooks_Desktop_to_Online
+
+SEO 제목: QuickBooks Desktop → Online 전환 가이드 (한국어)
+메타 설명: Desktop 지원 종료 일정, 요금제 비교, 넘어가는 것과 안 넘어가는 것, 전환 전 준비와 전환 후 확인까지. 한인 사장님을 위한 단계별 안내.
+URL 슬러그: quickbooks-desktop-to-online-korean
+핵심 키워드: QuickBooks Online 전환
+태그: QuickBooks Desktop, QuickBooks Online, 전환, 마이그레이션, 지원 종료, 한인 자영업, 장부 정리
+대표 이미지: Fig01_Migration_Steps_KR.png
+이미지 대체 텍스트:
+- Fig01_Migration_Steps_KR.png: 전환 5단계: 판단, 준비, 전환, 확인, 운영과 단계별 예상 시간
+- Fig02_Should_I_Move_KR.png: 판단표: 2022 이하는 이미 지원 종료, 2023은 2026년 5월 31일 종료, 2024와 Enterprise는 지원 중
+- Fig03_What_Moves_KR.png: 세 칸 표: 넘어가는 것, 일부만 넘어가는 것, 안 넘어가는 것

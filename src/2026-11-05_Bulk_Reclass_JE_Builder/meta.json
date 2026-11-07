@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-06",
+  "category": "quickbooks",
+  "slug": {
+    "ko": "bulk-reclass-journal-entry-korean",
+    "en": "bulk-reclassify-transactions-journal-entry"
+  },
+  "title": {
+    "ko": "잘못 분류된 거래 수십 건, 재분류 분개로 한 번에 정리하기",
+    "en": "Dozens of Transactions in the Wrong Account? How to Reclassify Them in Bulk with One Checked Journal Entry"
+  },
+  "excerpt": {
+    "ko": "Uncategorized Expense·잘못된 계정의 거래를 엑셀 목록 하나로 점검하고, CSV(Online)·IIF(Desktop) 분개로 한 번에 옮기는 방법.",
+    "en": "Move dozens of miscoded transactions with one checked reclass journal entry: debit/credit rule, Excel formulas, CSV for Online and IIF for Desktop."
+  }
+}

@@ -1,0 +1,160 @@
+#!/usr/bin/env python3
+"""Rebuild blog.taxnpaypro.com from src/<folder>/.
+
+Each post lives in src/<YYYY-MM-DD>_<Slug>/ with:
+  Blog_<Slug>_KR.html, Blog_<Slug>_EN.html   post bodies (inline styles, images by file name)
+  Fig*.png                                  figures
+  meta.json  {"date","category" (accounting|tax|payroll|quickbooks),
+              "slug":{"ko","en"}, "title":{"ko","en"}, "excerpt":{"ko","en"}}
+Run:  python3 tools/build.py      (writes <slug>.html, img/, index.html, site.json)
+"""
+import os, re, json, glob, html, shutil, sys
+R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(R, 'tools'))
+import clean_blog
+DOMAIN = 'blog.taxnpaypro.com'
+
+PAGE = '''<!doctype html>
+<html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{title} · BIZLEX</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;800&family=Noto+Sans+KR:wght@400;700&display=swap">
+<style>
+:root{{color-scheme:light;--navy:#14202E;--gold:#D4A845;--bg:#FFFFFF;--ink:#222;--muted:#5A6573}}
+*{{box-sizing:border-box}}
+html,body{{margin:0;background:var(--bg);color:var(--ink)}}
+body{{font-family:"Noto Sans KR","Manrope","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;word-break:keep-all;overflow-wrap:anywhere}}
+.top{{background:var(--navy);padding-block:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+.top .in{{max-width:820px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}}
+.logo{{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:Manrope,sans-serif}}
+.logo b{{font-weight:800;font-size:22px;letter-spacing:3px}} .logo i{{width:4px;height:26px;background:var(--gold)}} .logo span{{font-weight:400;font-size:22px;letter-spacing:3px}}
+.nav{{display:flex;gap:16px;align-items:center}}
+.nav a{{color:#C9D3DE;text-decoration:none;font-size:14px;min-height:36px;display:inline-flex;align-items:center}}
+.nav a:hover{{color:#fff}}
+.nav a.lang{{border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:4px 14px;color:#fff}}
+main{{max-width:820px;margin:0 auto;padding-block:36px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+.meta{{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px}}
+h1.t{{font-family:Manrope,"Noto Sans KR",sans-serif;font-weight:800;font-size:clamp(28px,4.4vw,40px);line-height:1.25;color:#1F3A5F;margin:0 0 18px;text-wrap:balance}}
+main img{{max-width:100%;height:auto}}
+main table{{display:block;max-width:100%;overflow-x:auto}} main pre,main p{{max-width:100%}}
+.back{{margin-top:40px;padding-top:20px;border-top:1px solid #dde3ea}}
+.back a{{color:#1F3A5F;font-weight:700;text-decoration:none}}
+a:focus-visible{{outline:2px solid var(--gold);outline-offset:3px}}
+</style></head><body>
+<header class="top"><div class="in">
+<a class="logo" href="https://taxnpaypro.com/" aria-label="BIZLEX, INC."><b>BIZ</b><i aria-hidden="true"></i><span>LEX</span></a>
+<nav class="nav"><a href="index.html">{blog}</a><a class="lang" href="{other}" lang="{olang}">{oname}</a></nav>
+</div></header>
+<main>
+<p class="meta">{date} · {cat}</p>
+<h1 class="t">{title}</h1>
+{body}
+<p class="back"><a href="index.html">{backtxt}</a></p>
+</main>
+</body></html>
+'''
+
+CAT = {'accounting': ('회계', 'Accounting'), 'tax': ('세무', 'Tax'), 'payroll': ('급여', 'Payroll'), 'quickbooks': ('QuickBooks Desktop', 'QuickBooks Desktop')}
+
+def main():
+    base = json.load(open(os.path.join(R, 'data', 'site_base.json'), encoding='utf-8'))
+    posts, errors = [], []
+    for d in sorted(glob.glob(os.path.join(R, 'src', '*'))):
+        folder = os.path.basename(d)
+        mp = os.path.join(d, 'meta.json')
+        if not os.path.exists(mp):
+            errors.append(folder + ': meta.json missing'); continue
+        m = json.load(open(mp, encoding='utf-8'))
+        for k in ('date', 'category', 'slug', 'title', 'excerpt'):
+            if k not in m: errors.append('%s: meta.json has no %s' % (folder, k))
+        if m.get('category') not in CAT: errors.append('%s: bad category %r' % (folder, m.get('category')))
+        for lang, L in (('ko', 'KR'), ('en', 'EN')):
+            fs = glob.glob(os.path.join(d, 'Blog_*_%s.html' % L))
+            if len(fs) != 1:
+                errors.append('%s: need exactly one Blog_*_%s.html' % (folder, L)); continue
+            if not re.fullmatch(r'[a-z0-9-]+', m['slug'][lang]): errors.append('%s: bad slug %r' % (folder, m['slug'][lang]))
+            frag = clean_blog.clean(open(fs[0], encoding='utf-8').read())
+            mt = re.match(r'<!-- Title: (.*?) -->\n?', frag)
+            title = mt.group(1) if mt else m['title'][lang]
+            body = frag[mt.end():] if mt else frag
+            for src in re.findall(r'src="([^"]+)"', body):
+                if '/' in src or not os.path.exists(os.path.join(d, src)): errors.append('%s: missing image %s' % (folder, src))
+            body = re.sub(r'src="([^"/]+\.png)"', lambda x: 'src="img/%s/%s"' % (folder, x.group(1)), body)
+            o = 'en' if lang == 'ko' else 'ko'
+            page = PAGE.format(lang=lang, title=title, body=body, date=m['date'], cat=CAT[m['category']][0 if lang == 'ko' else 1],
+                               blog='블로그' if lang == 'ko' else 'Blog', other='%s.html' % m['slug'][o], olang=o,
+                               oname='English' if lang == 'ko' else '한국어', backtxt='← 블로그 글 목록' if lang == 'ko' else '← All articles')
+            open(os.path.join(R, m['slug'][lang] + '.html'), 'w', encoding='utf-8').write(page)
+        imgdir = os.path.join(R, 'img', folder); os.makedirs(imgdir, exist_ok=True)
+        for f in os.listdir(d):
+            if f.endswith('.png'): shutil.copy(os.path.join(d, f), os.path.join(imgdir, f))
+        posts.append({'date': m['date'], 'category': m['category'], 'title': m['title'], 'excerpt': m['excerpt'],
+                      'url': {k: 'https://%s/%s.html' % (DOMAIN, v) for k, v in m['slug'].items()},
+                      'previewUrl': {k: 'blog/%s.html' % v for k, v in m['slug'].items()}})
+    if errors:
+        print('ERRORS:'); [print(' -', e) for e in errors]; sys.exit(1)
+    posts.sort(key=lambda p: p['date'], reverse=True)
+    site = dict(base); site['posts'] = posts; site['blogUrl'] = 'https://%s/' % DOMAIN
+    site['updated'] = max([p['date'] for p in posts] + [base.get('updated', '')])
+    json.dump(site, open(os.path.join(R, 'site.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
+    CATN = {c['id']: c['name'] for c in site['categories']}
+    rows = {'ko': [], 'en': []}
+    for p in posts:
+        for lang in ('ko', 'en'):
+            rows[lang].append('<a class="post" data-cat="%s" href="%s"><span class="d">%s</span><span class="b"><b>%s</b><em>%s</em></span><span class="c">%s</span></a>' % (
+                p['category'], p['previewUrl'][lang].split('/')[-1], p['date'], html.escape(p['title'][lang]), html.escape(p['excerpt'][lang]), html.escape(CATN[p['category']][lang])))
+    tabs = lambda lang: ''.join('<button type="button" data-cat="%s">%s</button>' % (k, v) for k, v in [('all', '전체' if lang == 'ko' else 'All')] + [(c['id'], c['name'][lang]) for c in site['categories']])
+    INDEX = '''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>BIZLEX Blog · Accounting, Tax, Payroll, QuickBooks Desktop</title>
+    <meta name="description" content="회계·세무·급여·QuickBooks Desktop을 한국어와 영어로 쉽게 설명하는 BIZLEX 블로그. Accounting, tax, payroll and QuickBooks Desktop articles in Korean and English.">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;800&family=Noto+Sans+KR:wght@400;700&display=swap">
+    <style>
+    :root{color-scheme:light}*{box-sizing:border-box}html,body{margin:0;background:#F5F6F4;color:#14202E}
+    body{font-family:"Noto Sans KR",Manrope,system-ui,sans-serif;word-break:keep-all;overflow-wrap:anywhere}
+    .top{background:#14202E;padding:12px max(16px,env(safe-area-inset-left,0px))}
+    .top .in,.wrap{max-width:980px;margin:0 auto}
+    .top .in{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:Manrope,sans-serif}
+    .logo b{font-weight:800;font-size:22px;letter-spacing:3px}.logo i{width:4px;height:26px;background:#D4A845}.logo span{font-size:22px;letter-spacing:3px}
+    .lang{display:inline-flex;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:3px}
+    .lang button{font:inherit;font-size:13px;border:0;background:none;color:#C9D3DE;padding:5px 13px;border-radius:999px;cursor:pointer;min-height:32px}
+    .lang button[aria-pressed=true]{background:#D4A845;color:#14202E;font-weight:700}
+    .wrap{padding:40px max(16px,env(safe-area-inset-left,0px)) 64px}
+    h1{font-family:Manrope,"Noto Sans KR",sans-serif;font-weight:800;font-size:clamp(30px,4.6vw,44px);margin:0 0 8px}
+    .sub{color:#556170;margin:0 0 28px}
+    .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+    .tabs button{font:inherit;font-size:14px;border:1px solid #D9DDDF;background:#fff;border-radius:999px;padding:7px 14px;cursor:pointer;min-height:40px}
+    .tabs button[aria-pressed=true]{background:#14202E;color:#fff;border-color:#14202E}
+    .post{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:4px 24px;padding:20px 0;border-bottom:1px solid #D9DDDF;color:inherit;text-decoration:none;align-items:baseline}
+    @media(max-width:680px){.post{grid-template-columns:minmax(0,1fr)}}
+    .post .d{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:#556170}
+    .post b{display:block;font-size:19px;line-height:1.4}.post em{display:block;font-style:normal;color:#556170;font-size:14.5px;margin-top:4px}
+    .post .c{font-size:12.5px;background:#EEF0EE;border-radius:999px;padding:3px 10px;white-space:nowrap;justify-self:start}
+    .post:hover b{text-decoration:underline}
+    footer{color:#556170;font-size:13px;margin-top:40px}footer p{margin:4px 0}
+    [hidden]{display:none!important}
+    :focus-visible{outline:2px solid #D4A845;outline-offset:3px}
+    </style></head><body>
+    <header class="top"><div class="in"><a class="logo" href="https://taxnpaypro.com/" aria-label="BIZLEX, INC."><b>BIZ</b><i aria-hidden="true"></i><span>LEX</span></a>
+    <div class="lang" role="group" aria-label="Language"><button type="button" id="lk" aria-pressed="true">한국어</button><button type="button" id="le" aria-pressed="false">English</button></div></div></header>
+    <main class="wrap">
+    <section id="ko"><h1>BIZLEX 블로그</h1><p class="sub">회계·세무·급여·QuickBooks Desktop을 쉬운 한국어로.</p><div class="tabs">%s</div><div class="list">%s</div></section>
+    <section id="en" hidden><h1>BIZLEX Blog</h1><p class="sub">Accounting, tax, payroll and QuickBooks Desktop in plain English.</p><div class="tabs">%s</div><div class="list">%s</div></section>
+    <footer><p>© 2026 BIZLEX, INC. · taxnpaypro.com</p><p>QuickBooks is a registered trademark of Intuit Inc.; not affiliated with or endorsed by Intuit. Articles are general information, not tax, legal or accounting advice.</p></footer>
+    </main>
+    <script>
+    (function(){
+    function lang(l){document.getElementById('ko').hidden=l!=='ko';document.getElementById('en').hidden=l!=='en';document.documentElement.lang=l;
+    document.getElementById('lk').setAttribute('aria-pressed',l==='ko');document.getElementById('le').setAttribute('aria-pressed',l==='en');try{localStorage.setItem('bizlex-lang',l)}catch(e){}}
+    document.getElementById('lk').onclick=function(){lang('ko')};document.getElementById('le').onclick=function(){lang('en')};
+    var s=null;try{s=localStorage.getItem('bizlex-lang')}catch(e){};lang(s==='en'?'en':'ko');
+    document.querySelectorAll('section').forEach(function(sec){var bs=sec.querySelectorAll('.tabs button');
+    function pick(c){bs.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.cat===c)});sec.querySelectorAll('.post').forEach(function(p){p.hidden=!(c==='all'||p.dataset.cat===c)})}
+    bs.forEach(function(b){b.onclick=function(){pick(b.dataset.cat)}});pick('all')});
+    })();
+    </script></body></html>
+    ''' % (tabs('ko'), ''.join(rows['ko']), tabs('en'), ''.join(rows['en']))
+    open(os.path.join(R, 'index.html'), 'w', encoding='utf-8').write(INDEX)
+    print('built %d posts' % len(posts))
+
+if __name__ == '__main__':
+    main()

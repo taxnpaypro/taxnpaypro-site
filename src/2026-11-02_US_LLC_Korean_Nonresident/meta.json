@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-02",
+  "category": "tax",
+  "slug": {
+    "ko": "us-llc-korean-nonresident-korean",
+    "en": "us-llc-for-korean-nonresidents"
+  },
+  "title": {
+    "ko": "한국인 비거주자를 위한 미국 LLC 설립 가이드: 설립보다 중요한 두 가지 신고",
+    "en": "Forming a US LLC as a Korean Nonresident: The Two Filings That Matter More Than Setup"
+  },
+  "excerpt": {
+    "ko": "설립 주 고르기, SSN 없이 EIN 받기, 매년 내야 하는 Form 5472, 송금 전 해외직접투자 신고까지 단계별로 정리했습니다.",
+    "en": "Choosing a state, getting an EIN without an SSN, the yearly Form 5472, and the Korean overseas investment report to file before you send money."
+  }
+}

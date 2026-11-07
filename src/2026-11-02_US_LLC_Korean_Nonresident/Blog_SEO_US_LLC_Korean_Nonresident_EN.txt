@@ -1,0 +1,13 @@
+﻿블로그 SEO 정보 - Forming a US LLC as a Korean Nonresident: The Two Filings That Matter More Than Setup
+폴더: Blogs\2026-11-02_US_LLC_Korean_Nonresident
+
+SEO 제목: Forming a US LLC as a Korean Nonresident (2026)
+메타 설명: Pick a state, get an EIN without an SSN, file Form 5472 every year, and report the investment in Korea before you send money.
+URL 슬러그: us-llc-for-korean-nonresidents
+핵심 키워드: US LLC for nonresidents
+태그: US LLC, nonresident, Wyoming LLC, EIN without SSN, Form 5472, foreign-owned LLC, Korea
+대표 이미지: Fig01_Setup_Order_EN.png
+이미지 대체 텍스트:
+- Fig01_Setup_Order_EN.png: Setup order: type and state, Korean investment report, formation documents, EIN, bank and books
+- Fig02_Form5472_Transactions_EN.png: Reportable transactions: money you put in, money the LLC paid you, and non-cash uses
+- Fig03_Yearly_Calendar_EN.png: Yearly deadlines: April 15 Form 5472, May 31 Korean return, June overseas accounts, Wyoming annual report in anniversary month

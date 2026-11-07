@@ -1,0 +1,54 @@
+{
+  "updated": "2026-11-06",
+  "notice": {
+    "ko": "",
+    "en": ""
+  },
+  "blogUrl": "https://blog.taxnpaypro.com/",
+  "categories": [
+    {
+      "id": "accounting",
+      "name": {
+        "ko": "회계",
+        "en": "Accounting"
+      },
+      "desc": {
+        "ko": "장부 정리, 은행 대조, 재무제표를 읽는 법",
+        "en": "Keeping the books, reconciling accounts, reading your statements"
+      }
+    },
+    {
+      "id": "tax",
+      "name": {
+        "ko": "세무",
+        "en": "Tax"
+      },
+      "desc": {
+        "ko": "미국 사업자 세금 신고와 마감일, 서류 준비",
+        "en": "US business tax filings, deadlines and paperwork"
+      }
+    },
+    {
+      "id": "payroll",
+      "name": {
+        "ko": "급여",
+        "en": "Payroll"
+      },
+      "desc": {
+        "ko": "직원 급여, 원천징수, W-2·941 같은 급여 신고",
+        "en": "Paying employees, withholding, and payroll filings like W-2 and 941"
+      }
+    },
+    {
+      "id": "quickbooks",
+      "name": {
+        "ko": "QuickBooks Desktop",
+        "en": "QuickBooks Desktop"
+      },
+      "desc": {
+        "ko": "설정, 은행 가져오기, 자주 막히는 오류 해결",
+        "en": "Setup, bank imports, and fixes for common errors"
+      }
+    }
+  ]
+}

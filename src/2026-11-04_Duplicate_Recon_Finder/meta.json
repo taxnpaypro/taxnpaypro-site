@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-06",
+  "category": "accounting",
+  "slug": {
+    "ko": "duplicate-transactions-reconciliation-difference-korean",
+    "en": "find-duplicate-transactions-reconciliation-difference"
+  },
+  "title": {
+    "ko": "은행 거래 중복·대사 차이, 엑셀로 끝까지 찾는 법",
+    "en": "Duplicate Bank Transactions and a Reconciliation That Won't Balance: How to Find Every Difference"
+  },
+  "excerpt": {
+    "ko": "은행 재연결 후 생긴 중복 거래와 맞지 않는 대사 차이를 내보내기 파일 두 개와 엑셀 수식으로 찾는 6단계. QuickBooks Online·Desktop 메뉴 포함.",
+    "en": "Find duplicate bank transactions and explain every reconciliation difference with two exports and Excel formulas. QuickBooks Online and Desktop steps."
+  }
+}

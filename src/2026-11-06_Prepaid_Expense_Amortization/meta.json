@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-06",
+  "category": "accounting",
+  "slug": {
+    "ko": "quickbooks-prepaid-sanggak",
+    "en": "prepaid-expense-amortization-quickbooks"
+  },
+  "title": {
+    "ko": "QuickBooks 선급비용 상각, 엑셀 수식으로 매달 깔끔하게 정리하는 법",
+    "en": "Prepaid Expenses in QuickBooks: A Simple Monthly Amortization Method (With Formulas)"
+  },
+  "excerpt": {
+    "ko": "연간 보험료·소프트웨어 같은 선급비용을 매달 상각하는 법. 엑셀 수식 4개, 월별 분개 1건, 잔액 대조까지 예시로 설명합니다.",
+    "en": "A simple way to amortize prepaid insurance and software each month: four spreadsheet formulas, one journal entry, and a balance tie-out."
+  }
+}

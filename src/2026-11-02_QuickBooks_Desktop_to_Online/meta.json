@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-02",
+  "category": "quickbooks",
+  "slug": {
+    "ko": "quickbooks-desktop-to-online-korean",
+    "en": "quickbooks-desktop-to-online-migration"
+  },
+  "title": {
+    "ko": "QuickBooks Desktop에서 Online으로: 한인 사장님을 위한 단계별 전환 가이드",
+    "en": "Moving from QuickBooks Desktop to Online: A Step-by-Step Guide"
+  },
+  "excerpt": {
+    "ko": "Desktop 지원 종료 일정, 비용 비교, 넘어가는 것과 안 넘어가는 것, 전환 전 준비와 전환 후 확인까지 한 번에 정리했습니다.",
+    "en": "Desktop end-of-support dates, cost comparison, what carries over and what doesn't, and what to check before and after the move."
+  }
+}

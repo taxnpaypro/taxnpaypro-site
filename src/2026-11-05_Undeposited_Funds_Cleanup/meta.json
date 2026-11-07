@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-06",
+  "category": "quickbooks",
+  "slug": {
+    "ko": "undeposited-funds-cleanup-korean",
+    "en": "clean-up-undeposited-funds"
+  },
+  "title": {
+    "ko": "Undeposited Funds 정리법: 오래된 입금, 매출 중복 없이 정리하기",
+    "en": "Old Payments Stuck in Undeposited Funds? A Step-by-Step Cleanup That Doesn't Double Your Income"
+  },
+  "excerpt": {
+    "ko": "Undeposited Funds에 남은 오래된 결제를 경과일로 나누고, 은행 입금과 맞추고, 두 번 잡힌 매출을 찾아 정리하는 7단계.",
+    "en": "Age old payments, match them to bank deposits, catch double-counted income and clear the rest. Excel formulas included."
+  }
+}

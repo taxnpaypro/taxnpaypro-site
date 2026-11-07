@@ -1,0 +1,13 @@
+﻿블로그 SEO 정보 - Moving from QuickBooks Desktop to Online: A Step-by-Step Guide
+폴더: Blogs\2026-11-02_QuickBooks_Desktop_to_Online
+
+SEO 제목: QuickBooks Desktop to Online: A Step-by-Step Move
+메타 설명: Desktop end-of-support dates, plan costs, what moves and what does not, and what to check before and after you switch to QuickBooks Online.
+URL 슬러그: quickbooks-desktop-to-online-migration
+핵심 키워드: QuickBooks Desktop to Online
+태그: QuickBooks Desktop, QuickBooks Online, migration, end of support, bookkeeping, small business
+대표 이미지: Fig01_Migration_Steps_EN.png
+이미지 대체 텍스트:
+- Fig01_Migration_Steps_EN.png: Five steps: decide, prepare, move, verify, run, with time estimates
+- Fig02_Should_I_Move_EN.png: Decision chart: 2022 and older unsupported, 2023 ended May 31 2026, 2024 and Enterprise supported
+- Fig03_What_Moves_EN.png: Three columns: what moves, what moves partly, what does not move

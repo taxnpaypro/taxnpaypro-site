@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-06",
+  "category": "tax",
+  "slug": {
+    "ko": "2026-mileage-rate-log-korean",
+    "en": "2026-mileage-log-two-irs-rates"
+  },
+  "title": {
+    "ko": "2026년 마일리지 요율 7월 변경: 운행 기록·공제액 계산법",
+    "en": "Two IRS Mileage Rates in One Year: How to Log and Calculate Your 2026 Business Mileage"
+  },
+  "excerpt": {
+    "ko": "2026년 IRS 업무용 마일리지 요율은 6월 30일까지 72.5센트, 7월 1일부터 76센트. 날짜별 요율 적용 수식과 표준 vs 실제 경비 비교.",
+    "en": "The 2026 IRS business rate is 72.5 cents through June 30 and 76 cents from July 1. Log trips, apply the right rate by date, compare actual costs."
+  }
+}

@@ -1,0 +1,13 @@
+﻿블로그 SEO 정보 - 한국인 비거주자를 위한 미국 LLC 설립 가이드: 설립보다 중요한 두 가지 신고
+폴더: Blogs\2026-11-02_US_LLC_Korean_Nonresident
+
+SEO 제목: 한국인 비거주자 미국 LLC 설립 가이드 (2026)
+메타 설명: 설립 주 선택, SSN 없이 EIN 받기, 매년 내는 Form 5472와 $25,000 벌금, 송금 전 해외직접투자 신고까지 단계별로 정리했습니다.
+URL 슬러그: us-llc-korean-nonresident-korean
+핵심 키워드: 미국 LLC 설립
+태그: 미국 LLC, 비거주자, 와이오밍 LLC, EIN, Form 5472, 해외직접투자 신고, 한인 사업자
+대표 이미지: Fig01_Setup_Order_KR.png
+이미지 대체 텍스트:
+- Fig01_Setup_Order_KR.png: 설립 순서: 형태와 주 선택, 한국 해외직접투자 신고, 설립 서류, EIN, 계좌와 장부
+- Fig02_Form5472_Transactions_KR.png: Form 5472 신고 대상 거래: 내가 넣은 돈, LLC에서 받은 돈, 돈이 안 움직인 거래
+- Fig03_Yearly_Calendar_KR.png: 연간 마감: 4월 15일 Form 5472, 5월 31일 종합소득세, 6월 해외금융계좌, 설립 기념월 와이오밍 연례 보고

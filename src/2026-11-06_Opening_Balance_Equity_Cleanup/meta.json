@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-06",
+  "category": "accounting",
+  "slug": {
+    "ko": "quickbooks-obe-jeongri",
+    "en": "clean-up-opening-balance-equity-quickbooks"
+  },
+  "title": {
+    "ko": "QuickBooks OBE(Opening Balance Equity) 잔액 정리법: 찾고, 고치고, 0으로 만들기",
+    "en": "How to Clean Up Opening Balance Equity in QuickBooks: Find It, Fix It, Close It"
+  },
+  "excerpt": {
+    "ko": "대차대조표에 남은 OBE 잔액의 원인을 찾고, 잘못된 줄을 고치고, 정리 분개로 0으로 만드는 방법. Desktop·Online 단계별 안내.",
+    "en": "Why Opening Balance Equity still has a balance, how to fix wrong lines, and the journal entry to close it to equity. Desktop and Online steps."
+  }
+}
