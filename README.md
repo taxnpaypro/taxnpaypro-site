@@ -22,4 +22,4 @@
  "title": {"ko": "한국어 제목", "en": "English title"},
  "excerpt": {"ko": "한 줄 요약", "en": "One-line summary"}}
 ```
-category는 accounting(회계) · tax(세무) · payroll(급여) · quickbooks(QuickBooks Desktop) 중 하나입니다.
+category는 accounting(회계) · tax(세무) · payroll(급여) · quickbooks(QuickBooks Desktop) · qbo(QuickBooks Online) 중 하나입니다.

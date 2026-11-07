@@ -49,6 +49,17 @@
         "ko": "설정, 은행 가져오기, 자주 막히는 오류 해결",
         "en": "Setup, bank imports, and fixes for common errors"
       }
+    },
+    {
+      "id": "qbo",
+      "name": {
+        "ko": "QuickBooks Online",
+        "en": "QuickBooks Online"
+      },
+      "desc": {
+        "ko": "QBO 기초부터 은행 연결, 판매세, 월말 마감까지 단계별 안내",
+        "en": "Step-by-step QBO guides, from setup and bank feeds to sales tax and month-end close"
+      }
     }
   ],
   "cfAnalyticsToken": "711a0a4eb51c474fb4648cdc53ddda69",
@@ -75,7 +86,7 @@
     },
     {
       "date": "2026-11-07",
-      "category": "quickbooks",
+      "category": "qbo",
       "title": {
         "ko": "QuickBooks Online 기초 가이드: 처음 시작할 때 꼭 알아야 할 10가지",
         "en": "QuickBooks Online Basics for Beginners: 10 Things to Know Before You Start"
