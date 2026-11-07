@@ -143,6 +143,11 @@ tr.out td{opacity:.45}
 .tag{font-size:11px;border-radius:4px;padding:2px 7px;background:var(--zebra);color:var(--muted)}
 .tag.dup{background:var(--warn-bg);color:var(--warn)}
 details summary{cursor:pointer;color:var(--muted);font-size:13.5px}
+.mapbox>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14.5px;color:var(--ink);background:var(--accent-soft);border:1px solid var(--rule);border-radius:10px;padding:12px 14px;min-height:44px}
+.mapbox>summary::-webkit-details-marker{display:none}
+.mapbox>summary::after{content:attr(data-more);color:var(--accent);font-weight:600;white-space:nowrap}
+.mapbox[open]>summary::after{content:attr(data-less)}
+.mapbox.need>summary{background:transparent;border-color:var(--accent)}
 textarea{width:100%;min-height:220px;font-family:var(--mono);font-size:12px;background:var(--code-bg);color:var(--code-ink);border:0;border-radius:8px;padding:12px;margin-top:8px}
 .toast{font-size:13px;color:var(--ok);min-height:20px}
 .note{font-size:12.5px;color:var(--muted);margin:10px 0 0}
@@ -244,7 +249,8 @@ footer p{margin:4px 0;max-width:90ch}
 
         <section class="step" aria-labelledby="s2">
           <h3 id="s2"><span class="n">2</span><span data-i18n="s2"></span></h3>
-          <div class="row" style="margin-bottom:14px">
+          <details class="mapbox" id="mapBox"><summary id="mapSum"></summary>
+          <div class="row" style="margin:14px 0">
             <div class="seg" role="radiogroup" data-i18n-aria="modeAria">
               <label><input type="radio" name="mode" id="modeSplit" value="split" checked><span data-i18n="modeSplit"></span></label>
               <label><input type="radio" name="mode" id="modeSingle" value="single"><span data-i18n="modeSingle"></span></label>
@@ -267,6 +273,7 @@ footer p{margin:4px 0;max-width:90ch}
           </div>
           <label class="check"><input type="checkbox" id="flip"><span data-i18n="flip"></span></label>
           <p class="hint" data-i18n="s2hint"></p>
+          </details>
         </section>
 
         <section class="step" aria-labelledby="s3">
@@ -442,7 +449,7 @@ ko: {
   s1:"파일 불러오기", dropAria:"파일 선택", dropTitle:"CSV·Excel·QFX 파일을 끌어다 놓거나 클릭",
   dropSub:".csv · .xlsx · .xls · .qfx · .ofx · .qbo", sampleBtn:"예시 다시 불러오기",
   sampleLabel:"예시: sample_bank_oct2026.csv (가짜 데이터)",
-  s2:"열 연결", modeAria:"금액 형식", modeSplit:"입금·출금 열이 따로", modeSingle:"금액 열 하나 (+/−)",
+  s2:"열 확인 (보통 자동)", mapOk:"✓ 열을 자동으로 맞췄습니다{b}. 5단계 미리보기가 이상할 때만 고치세요.", mapNeed:"날짜·내용·금액 열을 골라 주세요.", mapMore:"직접 고치기 ▾", mapLess:"접기 ▴", modeAria:"금액 형식", modeSplit:"입금·출금 열이 따로", modeSingle:"금액 열 하나 (+/−)",
   fDate:"날짜 *", fName:"거래 내용 *", fAmount:"금액 *", fDebit:"출금 (Debit) *", fCredit:"입금 (Credit) *",
   fCheck:"수표 번호", fMemo:"메모", fBal:"잔액 (Balance)", fFmt:"날짜 형식", fmtMDY:"MM/DD/YYYY (미국)", fmtDMY:"DD/MM/YYYY",
   none:"(없음)", choose:"(선택)",
@@ -560,7 +567,7 @@ en: {
   s1:"Load your file", dropAria:"Choose a file", dropTitle:"Drop a CSV, Excel or QFX file here, or click",
   dropSub:".csv · .xlsx · .xls · .qfx · .ofx · .qbo", sampleBtn:"Reload sample",
   sampleLabel:"Sample: sample_bank_oct2026.csv (fake data)",
-  s2:"Match columns", modeAria:"Amount format", modeSplit:"Separate debit & credit columns", modeSingle:"One amount column (+/−)",
+  s2:"Check columns (usually automatic)", mapOk:"✓ Columns were set automatically{b}. Change them only if the preview in step 5 looks wrong.", mapNeed:"Pick the date, description and amount columns.", mapMore:"Change columns ▾", mapLess:"Hide ▴", modeAria:"Amount format", modeSplit:"Separate debit & credit columns", modeSingle:"One amount column (+/−)",
   fDate:"Date *", fName:"Description *", fAmount:"Amount *", fDebit:"Debit (withdrawals) *", fCredit:"Credit (deposits) *",
   fCheck:"Check number", fMemo:"Memo", fBal:"Balance", fFmt:"Date format", fmtMDY:"MM/DD/YYYY (US)", fmtDMY:"DD/MM/YYYY",
   none:"(none)", choose:"(choose)",
@@ -916,6 +923,7 @@ function loadRows(rows, label, ofx){
   FIELDS.forEach(function(f){ fillSelect("m_" + f, m[f]); });
   $(m.debit >= 0 && m.credit >= 0 ? "modeSplit" : "modeSingle").checked = true;
   $("flip").checked = !!(preset && preset.flip);
+  $("mapBox").open = !mapReady();
   if (ofx){
     $("datefmt").value = "YMD"; $("accttype").value = ofx.acctType;
     if (ofx.acctid) $("acctid").value = ofx.acctid;
@@ -929,6 +937,10 @@ function loadRows(rows, label, ofx){
   }
   ["pstart","pend","begin","stmtEnd","fname"].forEach(function(id){ $(id).value = ""; });
   update();
+}
+function mapReady(){
+  var v = function(f){ return +$("m_" + f).value >= 0; };
+  return v("date") && v("name") && ($("modeSplit").checked ? v("debit") && v("credit") : v("amount"));
 }
 function loadText(text, label){ loadRows(parseCSV(text), label); }
 function getMap(){ var m = { mode: $("modeSingle").checked ? "single" : "split" }; FIELDS.forEach(function(f){ m[f] = +$("m_" + f).value; }); return m; }
@@ -1110,6 +1122,11 @@ function update(){
   else if (S.preset) det = t("detected", { b: S.preset.name + " · " + t(S.preset.kind) });
   else if (S.label.text && $("bank").value === "auto" && S.raw.length) det = t("notDetected");
   $("detected").textContent = det;
+  var ready = mapReady(), ms = $("mapSum"), who = S.ofx ? t("kOfx") : (S.preset && S.preset.name ? S.preset.name + " · " + t(S.preset.kind) : "");
+  ms.textContent = ready ? t("mapOk", { b: who ? " (" + who + ")" : "" }) : t("mapNeed");
+  ms.setAttribute("data-more", t("mapMore")); ms.setAttribute("data-less", t("mapLess"));
+  $("mapBox").classList.toggle("need", !ready);
+  if (!ready && S.raw.length) $("mapBox").open = true;
   $("beginLabel").textContent = t(isCC ? "beginCC" : "beginBank");
   $("endLabel").textContent = t(isCC ? "endCC" : "endBank");
   $("r_beginL").textContent = t(isCC ? "rBeginCC" : "rBeginBank");
