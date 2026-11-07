@@ -55,6 +55,26 @@
   "posts": [
     {
       "date": "2026-11-07",
+      "category": "tax",
+      "title": {
+        "ko": "2026년 기부금 공제, 새 규칙으로 직접 계산하는 법: 표준공제 받아도 기부가 세금을 줄일까?",
+        "en": "2026 Charitable Deduction Rules: Will Your Donations Lower Your Taxes? (Standard vs. Itemized, Step by Step)"
+      },
+      "excerpt": {
+        "ko": "2026년부터 표준공제에 현금 기부 최대 $1,000(부부 $2,000) 추가, 항목별은 AGI 0.5% 초과분만. 두 합계 비교로 직접 계산합니다.",
+        "en": "New for 2026: up to $1,000 ($2,000 joint) for non-itemizers and a 0.5% AGI floor for itemizers. Compare two totals."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/charitable-deduction-2026-korean-guide.html",
+        "en": "https://taxnpaypro.com/blog/charitable-deduction-2026-standard-vs-itemized.html"
+      },
+      "previewUrl": {
+        "ko": "blog/charitable-deduction-2026-korean-guide.html",
+        "en": "blog/charitable-deduction-2026-standard-vs-itemized.html"
+      }
+    },
+    {
+      "date": "2026-11-07",
       "category": "quickbooks",
       "title": {
         "ko": "외부 급여 서비스를 쓰는데 QuickBooks에 급여가 두 번 잡힐 때: Payroll Clearing 계정으로 정리하는 법",
