@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
-"""Rebuild blog.taxnpaypro.com from src/<folder>/.
+"""Rebuild taxnpaypro.com (homepage + /blog/) from src/<folder>/ and data/.
 
 Each post lives in src/<YYYY-MM-DD>_<Slug>/ with:
   Blog_<Slug>_KR.html, Blog_<Slug>_EN.html   post bodies (inline styles, images by file name)
   Fig*.png                                  figures
   meta.json  {"date","category" (accounting|tax|payroll|quickbooks),
               "slug":{"ko","en"}, "title":{"ko","en"}, "excerpt":{"ko","en"}}
-Run:  python3 tools/build.py      (writes <slug>.html, img/, index.html, site.json)
+Run:  python3 tools/build.py
+      writes blog/<slug>.html, blog/img/, blog/index.html (blog list),
+      index.html (homepage, from data/home_template.html) and site.json
 """
 import os, re, json, glob, html, shutil, sys
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(R, 'tools'))
 import clean_blog
-DOMAIN = 'blog.taxnpaypro.com'
+DOMAIN = 'taxnpaypro.com'
+B = os.path.join(R, 'blog')
 
 PAGE = '''<!doctype html>
 <html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -41,7 +44,7 @@ main table{{display:block;max-width:100%;overflow-x:auto}} main pre,main p{{max-
 a:focus-visible{{outline:2px solid var(--gold);outline-offset:3px}}
 </style></head><body>
 <header class="top"><div class="in">
-<a class="logo" href="https://taxnpaypro.com/" aria-label="BIZLEX, INC."><b>BIZ</b><i aria-hidden="true"></i><span>LEX</span></a>
+<a class="logo" href="/" aria-label="BIZLEX, INC."><b>BIZ</b><i aria-hidden="true"></i><span>LEX</span></a>
 <nav class="nav"><a href="index.html">{blog}</a><a class="lang" href="{other}" lang="{olang}">{oname}</a></nav>
 </div></header>
 <main>
@@ -58,6 +61,7 @@ CAT = {'accounting': ('회계', 'Accounting'), 'tax': ('세무', 'Tax'), 'payrol
 def main():
     base = json.load(open(os.path.join(R, 'data', 'site_base.json'), encoding='utf-8'))
     posts, errors = [], []
+    shutil.rmtree(B, ignore_errors=True); os.makedirs(B)
     for d in sorted(glob.glob(os.path.join(R, 'src', '*'))):
         folder = os.path.basename(d)
         mp = os.path.join(d, 'meta.json')
@@ -83,17 +87,17 @@ def main():
             page = PAGE.format(lang=lang, title=title, body=body, date=m['date'], cat=CAT[m['category']][0 if lang == 'ko' else 1],
                                blog='블로그' if lang == 'ko' else 'Blog', other='%s.html' % m['slug'][o], olang=o,
                                oname='English' if lang == 'ko' else '한국어', backtxt='← 블로그 글 목록' if lang == 'ko' else '← All articles')
-            open(os.path.join(R, m['slug'][lang] + '.html'), 'w', encoding='utf-8').write(page)
-        imgdir = os.path.join(R, 'img', folder); os.makedirs(imgdir, exist_ok=True)
+            open(os.path.join(B, m['slug'][lang] + '.html'), 'w', encoding='utf-8').write(page)
+        imgdir = os.path.join(B, 'img', folder); os.makedirs(imgdir, exist_ok=True)
         for f in os.listdir(d):
             if f.endswith('.png'): shutil.copy(os.path.join(d, f), os.path.join(imgdir, f))
         posts.append({'date': m['date'], 'category': m['category'], 'title': m['title'], 'excerpt': m['excerpt'],
-                      'url': {k: 'https://%s/%s.html' % (DOMAIN, v) for k, v in m['slug'].items()},
+                      'url': {k: 'https://%s/blog/%s.html' % (DOMAIN, v) for k, v in m['slug'].items()},
                       'previewUrl': {k: 'blog/%s.html' % v for k, v in m['slug'].items()}})
     if errors:
         print('ERRORS:'); [print(' -', e) for e in errors]; sys.exit(1)
     posts.sort(key=lambda p: p['date'], reverse=True)
-    site = dict(base); site['posts'] = posts; site['blogUrl'] = 'https://%s/' % DOMAIN
+    site = dict(base); site['posts'] = posts; site['blogUrl'] = 'https://%s/blog/' % DOMAIN
     site['updated'] = max([p['date'] for p in posts] + [base.get('updated', '')])
     json.dump(site, open(os.path.join(R, 'site.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
     CATN = {c['id']: c['name'] for c in site['categories']}
@@ -134,7 +138,7 @@ def main():
     [hidden]{display:none!important}
     :focus-visible{outline:2px solid #D4A845;outline-offset:3px}
     </style></head><body>
-    <header class="top"><div class="in"><a class="logo" href="https://taxnpaypro.com/" aria-label="BIZLEX, INC."><b>BIZ</b><i aria-hidden="true"></i><span>LEX</span></a>
+    <header class="top"><div class="in"><a class="logo" href="/" aria-label="BIZLEX, INC."><b>BIZ</b><i aria-hidden="true"></i><span>LEX</span></a>
     <div class="lang" role="group" aria-label="Language"><button type="button" id="lk" aria-pressed="true">한국어</button><button type="button" id="le" aria-pressed="false">English</button></div></div></header>
     <main class="wrap">
     <section id="ko"><h1>BIZLEX 블로그</h1><p class="sub">회계·세무·급여·QuickBooks Desktop을 쉬운 한국어로.</p><div class="tabs">%s</div><div class="list">%s</div></section>
@@ -153,7 +157,11 @@ def main():
     })();
     </script></body></html>
     ''' % (tabs('ko'), ''.join(rows['ko']), tabs('en'), ''.join(rows['en']))
-    open(os.path.join(R, 'index.html'), 'w', encoding='utf-8').write(INDEX)
+    open(os.path.join(B, 'index.html'), 'w', encoding='utf-8').write(INDEX)
+    home = open(os.path.join(R, 'data', 'home_template.html'), encoding='utf-8').read()
+    assert home.count('__FALLBACK__') == 1
+    fb = json.dumps(site, ensure_ascii=False).replace('</', '<\\/')
+    open(os.path.join(R, 'index.html'), 'w', encoding='utf-8').write(home.replace('__FALLBACK__', fb))
     print('built %d posts' % len(posts))
 
 if __name__ == '__main__':

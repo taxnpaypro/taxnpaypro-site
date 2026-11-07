@@ -4,7 +4,7 @@
     "ko": "",
     "en": ""
   },
-  "blogUrl": "https://blog.taxnpaypro.com/",
+  "blogUrl": "https://taxnpaypro.com/blog/",
   "categories": [
     {
       "id": "accounting",
@@ -64,8 +64,8 @@
         "en": "The 2026 IRS business rate is 72.5 cents through June 30 and 76 cents from July 1. Log trips, apply the right rate by date, compare actual costs."
       },
       "url": {
-        "ko": "https://blog.taxnpaypro.com/2026-mileage-rate-log-korean.html",
-        "en": "https://blog.taxnpaypro.com/2026-mileage-log-two-irs-rates.html"
+        "ko": "https://taxnpaypro.com/blog/2026-mileage-rate-log-korean.html",
+        "en": "https://taxnpaypro.com/blog/2026-mileage-log-two-irs-rates.html"
       },
       "previewUrl": {
         "ko": "blog/2026-mileage-rate-log-korean.html",
@@ -84,8 +84,8 @@
         "en": "Find duplicate bank transactions and explain every reconciliation difference with two exports and Excel formulas. QuickBooks Online and Desktop steps."
       },
       "url": {
-        "ko": "https://blog.taxnpaypro.com/duplicate-transactions-reconciliation-difference-korean.html",
-        "en": "https://blog.taxnpaypro.com/find-duplicate-transactions-reconciliation-difference.html"
+        "ko": "https://taxnpaypro.com/blog/duplicate-transactions-reconciliation-difference-korean.html",
+        "en": "https://taxnpaypro.com/blog/find-duplicate-transactions-reconciliation-difference.html"
       },
       "previewUrl": {
         "ko": "blog/duplicate-transactions-reconciliation-difference-korean.html",
@@ -104,8 +104,8 @@
         "en": "Move dozens of miscoded transactions with one checked reclass journal entry: debit/credit rule, Excel formulas, CSV for Online and IIF for Desktop."
       },
       "url": {
-        "ko": "https://blog.taxnpaypro.com/bulk-reclass-journal-entry-korean.html",
-        "en": "https://blog.taxnpaypro.com/bulk-reclassify-transactions-journal-entry.html"
+        "ko": "https://taxnpaypro.com/blog/bulk-reclass-journal-entry-korean.html",
+        "en": "https://taxnpaypro.com/blog/bulk-reclassify-transactions-journal-entry.html"
       },
       "previewUrl": {
         "ko": "blog/bulk-reclass-journal-entry-korean.html",
@@ -124,8 +124,8 @@
         "en": "Age old payments, match them to bank deposits, catch double-counted income and clear the rest. Excel formulas included."
       },
       "url": {
-        "ko": "https://blog.taxnpaypro.com/undeposited-funds-cleanup-korean.html",
-        "en": "https://blog.taxnpaypro.com/clean-up-undeposited-funds.html"
+        "ko": "https://taxnpaypro.com/blog/undeposited-funds-cleanup-korean.html",
+        "en": "https://taxnpaypro.com/blog/clean-up-undeposited-funds.html"
       },
       "previewUrl": {
         "ko": "blog/undeposited-funds-cleanup-korean.html",
@@ -144,8 +144,8 @@
         "en": "Why Opening Balance Equity still has a balance, how to fix wrong lines, and the journal entry to close it to equity. Desktop and Online steps."
       },
       "url": {
-        "ko": "https://blog.taxnpaypro.com/quickbooks-obe-jeongri.html",
-        "en": "https://blog.taxnpaypro.com/clean-up-opening-balance-equity-quickbooks.html"
+        "ko": "https://taxnpaypro.com/blog/quickbooks-obe-jeongri.html",
+        "en": "https://taxnpaypro.com/blog/clean-up-opening-balance-equity-quickbooks.html"
       },
       "previewUrl": {
         "ko": "blog/quickbooks-obe-jeongri.html",
@@ -164,8 +164,8 @@
         "en": "A simple way to amortize prepaid insurance and software each month: four spreadsheet formulas, one journal entry, and a balance tie-out."
       },
       "url": {
-        "ko": "https://blog.taxnpaypro.com/quickbooks-prepaid-sanggak.html",
-        "en": "https://blog.taxnpaypro.com/prepaid-expense-amortization-quickbooks.html"
+        "ko": "https://taxnpaypro.com/blog/quickbooks-prepaid-sanggak.html",
+        "en": "https://taxnpaypro.com/blog/prepaid-expense-amortization-quickbooks.html"
       },
       "previewUrl": {
         "ko": "blog/quickbooks-prepaid-sanggak.html",
@@ -184,8 +184,8 @@
         "en": "Desktop end-of-support dates, cost comparison, what carries over and what doesn't, and what to check before and after the move."
       },
       "url": {
-        "ko": "https://blog.taxnpaypro.com/quickbooks-desktop-to-online-korean.html",
-        "en": "https://blog.taxnpaypro.com/quickbooks-desktop-to-online-migration.html"
+        "ko": "https://taxnpaypro.com/blog/quickbooks-desktop-to-online-korean.html",
+        "en": "https://taxnpaypro.com/blog/quickbooks-desktop-to-online-migration.html"
       },
       "previewUrl": {
         "ko": "blog/quickbooks-desktop-to-online-korean.html",
@@ -204,8 +204,8 @@
         "en": "Choosing a state, getting an EIN without an SSN, the yearly Form 5472, and the Korean overseas investment report to file before you send money."
       },
       "url": {
-        "ko": "https://blog.taxnpaypro.com/us-llc-korean-nonresident-korean.html",
-        "en": "https://blog.taxnpaypro.com/us-llc-for-korean-nonresidents.html"
+        "ko": "https://taxnpaypro.com/blog/us-llc-korean-nonresident-korean.html",
+        "en": "https://taxnpaypro.com/blog/us-llc-for-korean-nonresidents.html"
       },
       "previewUrl": {
         "ko": "blog/us-llc-korean-nonresident-korean.html",

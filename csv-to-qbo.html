@@ -1,0 +1,1251 @@
+<!doctype html><html lang="ko"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body><div style="background:#14202E;padding:10px max(16px,env(safe-area-inset-left,0px))"><a href="/" aria-label="BIZLEX, INC. home" style="display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font:800 20px/1 Manrope,system-ui,sans-serif;letter-spacing:3px;min-height:36px">BIZ<i style="width:4px;height:24px;background:#D4A845;display:inline-block"></i><span style="font-weight:400">LEX</span></a><a href="/" style="float:right;color:#C9D3DE;font:14px/36px system-ui,sans-serif;text-decoration:none">← taxnpaypro.com</a></div>
+<title>무료 은행 CSV → QBO·IIF 변환기 · Bank CSV to QBO Converter · BIZLEX</title>
+
+<meta name="description" content="Convert bank CSV, Excel or QFX downloads into QuickBooks Desktop QBO (Web Connect) or IIF files in your browser. 은행 CSV·QFX를 QuickBooks Desktop QBO·IIF 파일로 변환.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+/* layout: statement-paper hero (copy left, CSV→QBO specimen right) · converter as one worksheet (steps + sticky reconciliation slip) · how-to + FAQ · footer notice */
+:root{
+  --paper:#F4F6F5; --sheet:#FFFFFF; --ink:#13213B; --muted:#596473; --rule:#D6DCE0; --zebra:#F6F8F9;
+  --accent:#0B7A66; --accent-ink:#FFFFFF; --accent-soft:#E2F2EE; --pattern:rgba(19,33,59,.045);
+  --code-bg:#13213B; --code-ink:#DCE6F2; --code-dim:#8A9BB5; --code-key:#7FD8C4;
+  --ok:#17703F; --ok-bg:#E1F2E7; --warn:#8C5A00; --warn-bg:#FBEED3; --bad:#B0261B; --bad-bg:#FBE5E2;
+  --display:"Bricolage Grotesque","IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0F1520; --sheet:#161E2B; --ink:#E5EBF3; --muted:#9AA6B6; --rule:#2A3445; --zebra:#1A2331;
+  --accent:#5CCFB6; --accent-ink:#06231D; --accent-soft:#143128; --pattern:rgba(229,235,243,.035);
+  --code-bg:#0A101A; --code-ink:#DCE6F2; --code-dim:#7385A0; --code-key:#7FD8C4;
+  --ok:#7ED6A0; --ok-bg:#132D1E; --warn:#F1C46E; --warn-bg:#302610; --bad:#F3A096; --bad-bg:#371917; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0F1520; --sheet:#161E2B; --ink:#E5EBF3; --muted:#9AA6B6; --rule:#2A3445; --zebra:#1A2331;
+  --accent:#5CCFB6; --accent-ink:#06231D; --accent-soft:#143128; --pattern:rgba(229,235,243,.035);
+  --code-bg:#0A101A; --code-ink:#DCE6F2; --code-dim:#7385A0; --code-key:#7FD8C4;
+  --ok:#7ED6A0; --ok-bg:#132D1E; --warn:#F1C46E; --warn-bg:#302610; --bad:#F3A096; --bad-bg:#371917; color-scheme:dark}
+[hidden]{display:none!important}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;margin:0}
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.inner{max-width:1160px;margin:0 auto}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* top bar */
+.bar{padding-block:14px;border-bottom:1px solid var(--rule);background:var(--sheet)}
+.bar .inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.mark{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em}
+.mark svg{flex:none}
+.lang{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px;background:var(--paper)}
+.lang button{font:inherit;font-size:13px;border:0;background:transparent;color:var(--muted);padding:5px 14px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper);font-weight:600}
+
+/* hero */
+.hero{padding-block:56px 40px;background:
+  repeating-linear-gradient(115deg,transparent 0 9px,var(--pattern) 9px 10px),
+  repeating-linear-gradient(65deg,transparent 0 13px,var(--pattern) 13px 14px),var(--paper);border-bottom:1px solid var(--rule)}
+.hero .inner{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center}
+@media (max-width:900px){.hero .inner{grid-template-columns:minmax(0,1fr);gap:28px}.hero{padding-block:36px 28px}}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.4vw,48px);line-height:1.12;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.lead{font-size:17px;color:var(--muted);max-width:56ch;margin:18px 0 0}
+.chips{list-style:none;padding:0;margin:24px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 18px;max-width:560px}
+@media (max-width:520px){.chips{grid-template-columns:minmax(0,1fr)}}
+.chips li{display:flex;gap:9px;align-items:flex-start;font-size:14px}
+.chips svg{flex:none;margin-top:3px;color:var(--accent)}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{font:inherit;font-size:15px;border-radius:8px;padding:11px 20px;cursor:pointer;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn:not(:disabled):hover{transform:translateY(-1px)}
+@media (prefers-reduced-motion:no-preference){.btn{transition:transform .15s ease}}
+
+/* specimen */
+.specimen{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.pane{background:var(--code-bg);color:var(--code-ink);border-radius:10px;padding:14px 16px;font-family:var(--mono);font-size:12.5px;line-height:1.7;overflow-x:auto}
+.pane .lbl{display:flex;justify-content:space-between;color:var(--code-dim);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.pane .k{color:var(--code-key)} .pane .d{color:var(--code-dim)}
+.pane pre{margin:0;font:inherit;white-space:pre}
+.arrow{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;color:var(--muted);padding-left:6px}
+.arrow::before{content:"";width:28px;height:1px;background:var(--accent)}
+
+/* tool */
+.tool{padding-block:44px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.sec-h h2{font-family:var(--display);font-weight:700;font-size:28px;letter-spacing:-.015em;margin:0}
+.sec-h p{margin:0;color:var(--muted);font-size:14px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:22px;align-items:start}
+@media (max-width:960px){.layout{grid-template-columns:minmax(0,1fr)}}
+.steps{display:flex;flex-direction:column;gap:14px;min-width:0}
+.step{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;padding:20px;min-width:0}
+.step h3{display:flex;gap:12px;align-items:center;font-size:16px;font-weight:600;margin:0 0 14px}
+.step h3 .n{font-family:var(--mono);font-size:12px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-weight:500}
+.hint{color:var(--muted);font-size:13px;margin:10px 0 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+label.f{display:flex;flex-direction:column;gap:5px;font-size:12.5px;color:var(--muted);min-width:0}
+input[type=text],input[type=date],select{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:7px;padding:8px 10px;min-width:0;width:100%}
+input.num{font-family:var(--mono);text-align:right}
+.drop{border:1.5px dashed var(--rule);border-radius:10px;padding:26px 18px;text-align:center;color:var(--muted);cursor:pointer;background:var(--paper)}
+.drop.over{border-color:var(--accent);background:var(--accent-soft);color:var(--ink)}
+.drop strong{display:block;color:var(--ink);font-size:15px;margin:8px 0 4px}
+.drop svg{color:var(--accent)}
+.filebar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}
+.file-name{font-family:var(--mono);font-size:12.5px;color:var(--muted);min-width:0;overflow-wrap:anywhere}
+.detect{display:inline-block;margin-left:8px;font-family:var(--sans);font-size:11.5px;font-weight:600;border-radius:4px;padding:2px 8px;background:var(--accent-soft);color:var(--ink)}
+.detect:empty{display:none}
+.bankrow{display:grid;grid-template-columns:minmax(0,320px);margin-bottom:14px}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:7px;overflow:hidden;flex-wrap:wrap}
+.seg label{padding:7px 12px;cursor:pointer;font-size:13px;color:var(--muted);position:relative}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label:has(input:checked){background:var(--accent-soft);color:var(--ink);font-weight:600}
+.seg label:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:-2px}
+.check{display:flex;gap:8px;align-items:center;font-size:13.5px;margin-top:12px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+
+aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);display:flex;flex-direction:column;gap:14px;min-width:0}
+@media (max-width:960px){aside{position:static}}
+.slip{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.slip-h{padding:12px 16px;border-bottom:1px dashed var(--rule);display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-family:var(--mono)}
+.slip-b{padding:14px 16px}
+dl.rec{display:grid;grid-template-columns:1fr auto;gap:7px 12px;margin:0;font-size:13.5px}
+dl.rec dt{color:var(--muted)}
+dl.rec dd{margin:0;text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+dl.rec .t{border-top:1px solid var(--ink);padding-top:7px;color:var(--ink);font-weight:500}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 11px;font-size:13px;font-weight:600}
+.pill.ok{background:var(--ok-bg);color:var(--ok)} .pill.bad{background:var(--bad-bg);color:var(--bad)} .pill.neutral{background:var(--zebra);color:var(--muted)}
+.status{margin-top:14px;display:flex;flex-direction:column;gap:6px}
+.status p{margin:0;font-size:12.5px;color:var(--muted)}
+ul.warn{margin:0;padding-left:18px;font-size:13px;display:flex;flex-direction:column;gap:5px}
+ul.warn li.bad{color:var(--bad)} ul.warn li.warn{color:var(--warn)} ul.warn li.info{color:var(--muted)}
+
+.tablewrap{overflow:auto;border:1px solid var(--rule);border-radius:8px;max-height:420px}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:660px}
+th,td{padding:7px 10px;border-bottom:1px solid var(--rule);text-align:left;white-space:nowrap}
+th{position:sticky;top:0;background:var(--sheet);font-weight:600;color:var(--muted);font-size:12px;z-index:1}
+tbody tr:nth-child(even) td{background:var(--zebra)}
+td.amt,th.amt{text-align:right}
+td.amt{font-family:var(--mono);font-variant-numeric:tabular-nums}
+td.neg{color:var(--bad)} td.pos{color:var(--ok)}
+td.mono{font-family:var(--mono)}
+td.name{max-width:280px;overflow:hidden;text-overflow:ellipsis}
+tr.out td{opacity:.45}
+.tag{font-size:11px;border-radius:4px;padding:2px 7px;background:var(--zebra);color:var(--muted)}
+.tag.dup{background:var(--warn-bg);color:var(--warn)}
+details summary{cursor:pointer;color:var(--muted);font-size:13.5px}
+textarea{width:100%;min-height:220px;font-family:var(--mono);font-size:12px;background:var(--code-bg);color:var(--code-ink);border:0;border-radius:8px;padding:12px;margin-top:8px}
+.toast{font-size:13px;color:var(--ok);min-height:20px}
+.note{font-size:12.5px;color:var(--muted);margin:10px 0 0}
+
+/* guide */
+.guide{padding-block:44px;border-top:1px solid var(--rule);background:var(--sheet)}
+.guide-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+@media (max-width:900px){.guide-grid{grid-template-columns:minmax(0,1fr);gap:28px}}
+.guide h2{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.01em;margin:0 0 16px}
+ol.how{list-style:none;counter-reset:s;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
+ol.how li{counter-increment:s;display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;font-size:14.5px}
+ol.how li::before{content:counter(s);font-family:var(--mono);font-size:12px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--accent);color:var(--accent);margin-top:1px}
+.path{font-family:var(--mono);font-size:12.5px;background:var(--zebra);padding:1px 6px;border-radius:4px;overflow-wrap:anywhere;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.faq details{border-bottom:1px solid var(--rule);padding:12px 0}
+.faq summary{font-weight:600;font-size:14.5px;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--accent)}
+.faq details[open] summary::after{content:"−"}
+.faq p{margin:8px 0 0;color:var(--muted);font-size:14px}
+
+.fix{margin-top:40px;padding-top:28px;border-top:1px solid var(--rule)}
+.fix h2{margin-bottom:6px}
+.fix .sub{color:var(--muted);font-size:14px;margin:0 0 16px}
+.fix ol.how li{font-size:14px}
+.linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--accent);text-decoration:underline;cursor:pointer}
+.help{margin-top:28px;padding:18px 20px;border:1px solid var(--rule);border-radius:10px;background:var(--accent-soft);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.help p{margin:0;font-size:14.5px}
+footer{padding-block:24px 40px;color:var(--muted);font-size:12.5px}
+footer p{margin:4px 0;max-width:90ch}
+</style>
+
+<header class="bar gutter">
+  <div class="inner">
+    <div class="mark">
+      <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="4" width="24" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 10h9M5 14h6M5 18h11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="20" cy="15" r="3" fill="var(--accent)"/></svg>
+      <span>CSV → QBO</span>
+    </div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="lang-ko" aria-pressed="true">한국어</button>
+      <button type="button" id="lang-en" aria-pressed="false">English</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero gutter">
+  <div class="inner">
+    <div>
+      <p class="eyebrow" data-i18n="eyebrow"></p>
+      <h1 data-i18n-html="h1"></h1>
+      <p class="lead" data-i18n="lead"></p>
+      <ul class="chips">
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l6 2.5V8c0 3.3-2.6 6.2-6 7-3.4-.8-6-3.7-6-7V3.5L8 1z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span data-i18n="chip1"></span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-i18n="chip2"></span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-i18n="chip3"></span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-i18n="chip4"></span></li>
+      </ul>
+      <div class="cta-row">
+        <button type="button" class="btn primary" id="goTool" data-i18n="cta"></button>
+        <button type="button" class="btn" id="goGuide" data-i18n="cta2"></button>
+      </div>
+    </div>
+    <div class="specimen" aria-hidden="true">
+      <div class="pane"><div class="lbl"><span>bank_october.csv</span><span>CSV</span></div>
+<pre><span class="d">Date,Description,Amount,Running Bal.</span>
+10/05/2026,Check 2051,-1200.00,6900.00
+10/07/2026,COSTCO WHSE #0478,-62.45,6837.55</pre></div>
+      <div class="arrow" data-i18n="arrow"></div>
+      <div class="pane"><div class="lbl"><span>4821_20261001_20261031.qbo</span><span>Web Connect</span></div>
+<pre><span class="k">&lt;STMTTRN&gt;</span>
+<span class="k">&lt;TRNTYPE&gt;</span>CHECK
+<span class="k">&lt;TRNAMT&gt;</span>-1200.00
+<span class="k">&lt;FITID&gt;</span>2026100589B1E3C401
+<span class="k">&lt;CHECKNUM&gt;</span>2051
+<span class="k">&lt;/STMTTRN&gt;</span></pre></div>
+    </div>
+  </div>
+</section>
+
+<section class="tool gutter" id="tool">
+  <div class="inner">
+    <div class="sec-h"><h2 data-i18n="toolTitle"></h2><p data-i18n="toolSub"></p></div>
+    <div class="layout">
+      <div class="steps">
+
+        <section class="step" aria-labelledby="s1">
+          <h3 id="s1"><span class="n">1</span><span data-i18n="s1"></span></h3>
+          <div class="bankrow"><label class="f"><span data-i18n="bankSel"></span><select id="bank"></select></label></div>
+          <div class="drop" id="drop" tabindex="0" role="button" data-i18n-aria="dropAria">
+            <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M14 18V5m0 0l-5 5m5-5l5 5M5 19v3a2 2 0 002 2h14a2 2 0 002-2v-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <strong data-i18n="dropTitle"></strong>
+            <span data-i18n="dropSub"></span>
+            <input type="file" id="file" accept=".csv,.txt,.xlsx,.xls,.qfx,.ofx,.qbo,text/csv" hidden>
+          </div>
+          <div class="filebar">
+            <span class="file-name"><span id="fileLabel"></span><span class="detect" id="detected"></span></span>
+            <button type="button" class="btn" id="loadSample" data-i18n="sampleBtn"></button>
+          </div>
+        </section>
+
+        <section class="step" aria-labelledby="s2">
+          <h3 id="s2"><span class="n">2</span><span data-i18n="s2"></span></h3>
+          <div class="row" style="margin-bottom:14px">
+            <div class="seg" role="radiogroup" data-i18n-aria="modeAria">
+              <label><input type="radio" name="mode" id="modeSplit" value="split" checked><span data-i18n="modeSplit"></span></label>
+              <label><input type="radio" name="mode" id="modeSingle" value="single"><span data-i18n="modeSingle"></span></label>
+            </div>
+          </div>
+          <div class="grid">
+            <label class="f"><span data-i18n="fDate"></span><select id="m_date"></select></label>
+            <label class="f"><span data-i18n="fName"></span><select id="m_name"></select></label>
+            <label class="f" data-mode="single"><span data-i18n="fAmount"></span><select id="m_amount"></select></label>
+            <label class="f" data-mode="split"><span data-i18n="fDebit"></span><select id="m_debit"></select></label>
+            <label class="f" data-mode="split"><span data-i18n="fCredit"></span><select id="m_credit"></select></label>
+            <label class="f"><span data-i18n="fCheck"></span><select id="m_check"></select></label>
+            <label class="f"><span data-i18n="fMemo"></span><select id="m_memo"></select></label>
+            <label class="f"><span data-i18n="fBal"></span><select id="m_balance"></select></label>
+            <label class="f"><span data-i18n="fFmt"></span><select id="datefmt">
+              <option value="MDY" data-i18n="fmtMDY"></option>
+              <option value="YMD">YYYY-MM-DD</option>
+              <option value="DMY" data-i18n="fmtDMY"></option>
+            </select></label>
+          </div>
+          <label class="check"><input type="checkbox" id="flip"><span data-i18n="flip"></span></label>
+          <p class="hint" data-i18n="s2hint"></p>
+        </section>
+
+        <section class="step" aria-labelledby="s3">
+          <h3 id="s3"><span class="n">3</span><span data-i18n="s3"></span></h3>
+          <div class="row" style="margin-bottom:14px">
+            <div class="seg" role="radiogroup" data-i18n-aria="fmtAria">
+              <label><input type="radio" name="outfmt" id="fmtQbo" value="qbo" checked><span data-i18n="fmtQbo"></span></label>
+              <label><input type="radio" name="outfmt" id="fmtIif" value="iif"><span data-i18n="fmtIif"></span></label>
+            </div>
+          </div>
+          <div class="grid">
+            <label class="f"><span data-i18n="acctType"></span><select id="accttype">
+              <option value="CHECKING" data-i18n="tChecking"></option>
+              <option value="SAVINGS" data-i18n="tSavings"></option>
+              <option value="MONEYMRKT">Money Market</option>
+              <option value="CREDITCARD" data-i18n="tCC"></option>
+            </select></label>
+            <label class="f" data-fmt="qbo"><span data-i18n="acctId"></span><input type="text" id="acctid" value="4821" inputmode="numeric" autocomplete="off"></label>
+            <label class="f" data-fmt="qbo"><span data-i18n="org"></span><input type="text" id="org" value="My Bank"></label>
+            <label class="f" data-fmt="qbo"><span data-i18n="bid"></span><input type="text" id="bid" value="3000" inputmode="numeric"></label>
+            <label class="f" data-fmt="qbo" id="routingWrap"><span data-i18n="routing"></span><input type="text" id="routing" value="000000000" inputmode="numeric"></label>
+            <label class="f" data-fmt="iif"><span data-i18n="iifAcct"></span><input type="text" id="iifacct" value="Checking" autocomplete="off"></label>
+            <label class="f" data-fmt="iif"><span id="iifOutL"></span><input type="text" id="iifout" value="Uncategorized Expenses" autocomplete="off"></label>
+            <label class="f" data-fmt="iif"><span id="iifInL"></span><input type="text" id="iifin" value="Uncategorized Income" autocomplete="off"></label>
+          </div>
+          <label class="check" data-fmt="iif" id="skipPayWrap"><input type="checkbox" id="skippay" checked><span data-i18n="skipPay"></span></label>
+          <p class="hint" data-fmt="qbo" id="bidHint"></p>
+          <p class="hint" data-fmt="qbo" data-i18n-html="s3hint"></p>
+          <p class="hint" data-fmt="qbo"><span data-i18n="fixAsk"></span> <button type="button" class="linkbtn" id="goFix" data-i18n="fixGo"></button></p>
+          <p class="hint" data-fmt="iif" data-i18n-html="s3hintIif"></p>
+        </section>
+
+        <section class="step" aria-labelledby="s4">
+          <h3 id="s4"><span class="n">4</span><span data-i18n="s4"></span></h3>
+          <div class="grid">
+            <label class="f"><span data-i18n="pStart"></span><input type="date" id="pstart"></label>
+            <label class="f"><span data-i18n="pEnd"></span><input type="date" id="pend"></label>
+            <label class="f"><span id="beginLabel"></span><input type="text" id="begin" class="num" inputmode="decimal" placeholder="0.00"></label>
+            <label class="f"><span id="endLabel"></span><input type="text" id="stmtEnd" class="num" inputmode="decimal" placeholder="0.00"></label>
+          </div>
+          <p class="hint" data-i18n="s4hint"></p>
+        </section>
+
+        <section class="step" aria-labelledby="s5">
+          <h3 id="s5"><span class="n">5</span><span data-i18n="s5"></span></h3>
+          <div class="tablewrap">
+            <table>
+              <thead><tr><th data-i18n="thLine"></th><th data-i18n="thDate"></th><th data-i18n="thName"></th><th data-i18n="thChk"></th><th class="amt" data-i18n="thAmt"></th><th data-i18n="thType"></th><th data-i18n="thStatus"></th></tr></thead>
+              <tbody id="preview"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="step" aria-labelledby="s6">
+          <h3 id="s6"><span class="n">6</span><span data-i18n="s6"></span></h3>
+          <label class="f"><span data-i18n="fname"></span><input type="text" id="fname"></label>
+          <div class="row" style="margin-top:14px">
+            <button type="button" class="btn primary" id="download"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m0 0L5 7m3 3l3-3M3 12v1.5h10V12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="dlLabel"></span></button>
+            <button type="button" class="btn" id="copy" data-i18n="copyBtn"></button>
+            <span class="toast" id="toast" role="status"></span>
+          </div>
+          <p class="note" id="dlNote"></p>
+          <details style="margin-top:12px"><summary data-i18n="viewFile"></summary><textarea id="out" readonly spellcheck="false" aria-label="QBO"></textarea></details>
+        </section>
+      </div>
+
+      <aside>
+        <div class="slip" aria-live="polite">
+          <div class="slip-h"><span data-i18n="recTitle"></span><span id="r_count">-</span></div>
+          <div class="slip-b">
+            <dl class="rec">
+              <dt data-i18n="rPeriod"></dt><dd id="r_period">-</dd>
+              <dt id="r_beginL"></dt><dd id="r_begin">-</dd>
+              <dt id="r_inL"></dt><dd id="r_in">-</dd>
+              <dt id="r_outL"></dt><dd id="r_out">-</dd>
+              <dt class="t" data-i18n="rCalc"></dt><dd class="t" id="r_calc">-</dd>
+              <dt data-i18n="rStmt"></dt><dd id="r_stmt">-</dd>
+              <dt data-i18n="rDiff"></dt><dd id="r_diff">-</dd>
+            </dl>
+            <div class="status"><span class="pill neutral" id="r_pill"></span><p id="r_msg"></p></div>
+          </div>
+        </div>
+        <div class="slip">
+          <div class="slip-h"><span data-i18n="checkTitle"></span></div>
+          <div class="slip-b"><ul class="warn" id="warnings"></ul></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="guide gutter" id="guide">
+  <div class="inner">
+    <div class="guide-grid">
+      <div>
+        <h2 data-i18n="howTitle"></h2>
+        <ol class="how">
+          <li><span data-i18n-html="how1"></span></li>
+          <li><span data-i18n-html="how2"></span></li>
+          <li><span data-i18n-html="how3"></span></li>
+          <li><span data-i18n-html="how4"></span></li>
+          <li><span data-i18n-html="how5"></span></li>
+          <li><span data-i18n-html="how6"></span></li>
+        </ol>
+        <p class="hint" data-i18n-html="howIif"></p>
+      </div>
+      <div class="faq">
+        <h2 data-i18n="faqTitle"></h2>
+        <details><summary data-i18n="q1"></summary><p data-i18n="a1"></p></details>
+        <details><summary data-i18n="q2"></summary><p data-i18n="a2"></p></details>
+        <details><summary data-i18n="q3"></summary><p data-i18n="a3"></p></details>
+        <details><summary data-i18n="q4"></summary><p data-i18n="a4"></p></details>
+        <details><summary data-i18n="q5"></summary><p data-i18n="a5"></p></details>
+        <details><summary data-i18n="q6"></summary><p data-i18n="a6"></p></details>
+        <details><summary data-i18n="q7"></summary><p data-i18n="a7"></p></details>
+        <details><summary data-i18n="q8"></summary><p data-i18n="a8"></p></details>
+        <details><summary data-i18n="q9"></summary><p data-i18n="a9"></p></details>
+        <details><summary data-i18n="q10"></summary><p data-i18n="a10"></p></details>
+      </div>
+    </div>
+    <div class="fix" id="fixAcct">
+      <h2 data-i18n="fixTitle"></h2>
+      <p class="sub" data-i18n="fixLead"></p>
+      <ol class="how">
+        <li><span data-i18n-html="fix1"></span></li>
+        <li><span data-i18n-html="fix2"></span></li>
+        <li><span data-i18n-html="fix3"></span></li>
+        <li><span data-i18n-html="fix4"></span></li>
+        <li><span data-i18n-html="fix5"></span></li>
+        <li><span data-i18n-html="fix6"></span></li>
+        <li><span data-i18n-html="fix7"></span></li>
+      </ol>
+    </div>
+    <div class="help" id="helpBox" hidden>
+      <p id="helpText"></p>
+      <a class="btn primary" id="helpLink" href="#" target="_blank" rel="noopener"></a>
+    </div>
+  </div>
+</section>
+
+<footer class="gutter">
+  <div class="inner">
+    <p data-i18n="foot1"></p>
+    <p data-i18n="foot2"></p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+(function(){
+"use strict";
+
+/* ===== Settings you can edit for your website =====
+   helpUrl: link for the "need help" box (your contact page, booking link, or mailto:). Leave "" to hide the box. */
+var CONFIG = {
+  helpUrl: "mailto:payroll@taxnpaypro.com",
+  helpText: { ko: "변환기를 쓰다 막히는 곳이 있나요? payroll@taxnpaypro.com 으로 알려 주세요.", en: "Stuck somewhere in the converter? Tell us at payroll@taxnpaypro.com." },
+  helpButton: { ko: "이메일 보내기", en: "Email us" }
+};
+
+var DICT = {
+ko: {
+  eyebrow:"QuickBooks Desktop · Web Connect · IIF",
+  h1:"은행 CSV·QFX를 QuickBooks Desktop <em>QBO·IIF 파일</em>로",
+  lead:"은행이 QBO 파일을 주지 않거나, 받은 파일이 가져와지지 않을 때 쓰세요. CSV·Excel·QFX 거래내역을 Web Connect(.qbo) 또는 IIF 파일로 바꾸고, 가져오기 전에 명세서 잔액과 맞는지 확인합니다. 주요 은행 8곳의 파일 형식은 자동으로 인식합니다.",
+  chip1:"파일이 어디에도 전송되지 않음. 내 브라우저 안에서만 처리",
+  chip2:"같은 거래는 두 번 들어가지 않음 (고유 ID)",
+  chip3:"수표 번호로 장부의 수표와 자동 매칭",
+  chip4:"은행 대조 전에 잔액 미리 확인",
+  cta:"지금 변환하기", cta2:"사용 방법 보기",
+  arrow:"변환 · 브라우저 안에서",
+  toolTitle:"변환기", toolSub:"예시 데이터가 들어 있습니다. 내 파일을 올리면 바뀝니다.",
+  s1:"파일 불러오기", dropAria:"파일 선택", dropTitle:"CSV·Excel·QFX 파일을 끌어다 놓거나 클릭",
+  dropSub:".csv · .xlsx · .xls · .qfx · .ofx · .qbo", sampleBtn:"예시 다시 불러오기",
+  sampleLabel:"예시: sample_bank_oct2026.csv (가짜 데이터)",
+  s2:"열 연결", modeAria:"금액 형식", modeSplit:"입금·출금 열이 따로", modeSingle:"금액 열 하나 (+/−)",
+  fDate:"날짜 *", fName:"거래 내용 *", fAmount:"금액 *", fDebit:"출금 (Debit) *", fCredit:"입금 (Credit) *",
+  fCheck:"수표 번호", fMemo:"메모", fBal:"잔액 (Balance)", fFmt:"날짜 형식", fmtMDY:"MM/DD/YYYY (미국)", fmtDMY:"DD/MM/YYYY",
+  none:"(없음)", choose:"(선택)",
+  flip:"부호 뒤집기 (출금이 +로 보이면 체크)",
+  s2hint:"열 이름을 보고 자동으로 연결했습니다. 틀린 곳만 고치세요. 은행 계좌는 출금이 −, 신용카드는 사용액이 −여야 합니다.",
+  s3:"출력 형식과 계좌 정보", acctType:"계좌 종류", tChecking:"Checking (당좌)", tSavings:"Savings (저축)", tCC:"Credit Card (신용카드)",
+  acctId:"계좌 번호 (끝 4자리 이상)", org:"은행 이름 (표시용)", bid:"은행 ID (INTU.BID)", routing:"라우팅 번호 (선택)",
+  s3hint:"은행 ID: QuickBooks의 <span class=\"path\">Banking › Bank Feeds › Participating Financial Institutions</span>에 내 은행이 있으면 그 번호를 쓰고, 없으면 3000을 씁니다. 같은 계좌는 매번 <b>같은 은행 ID와 계좌 번호</b>로 만들어야 같은 계좌로 인식됩니다.",
+  s4:"명세서 기간과 잔액", pStart:"명세서 시작일", pEnd:"명세서 종료일",
+  beginBank:"기초 잔액", endBank:"기말 잔액", beginCC:"기초 카드 잔액 (갚을 금액)", endCC:"기말 카드 잔액 (갚을 금액)",
+  s4hint:"파일에 잔액 정보가 있으면 자동으로 채웁니다. 은행 명세서(PDF)의 숫자와 같은지 확인하세요. 기간 밖의 거래는 빠집니다.",
+  s5:"거래 미리보기", thLine:"줄", thDate:"날짜", thName:"QuickBooks 표시 이름 (32자)", thChk:"수표#", thAmt:"금액", thType:"유형", thStatus:"상태",
+  stIn:"포함", stOut:"기간 밖", stDup:"같은 거래 {n}번째",
+  s6:"파일 저장", fname:"파일 이름", dlBtn:"{EXT} 파일 저장", copyBtn:"내용 복사",
+  dlNote:"저장 버튼이 작동하지 않는 화면에서는 '내용 복사' 후 메모장에 붙여 넣고 {ext} 확장자로 저장하세요.",
+  viewFile:"파일 내용 보기",
+  recTitle:"대조 미리 확인", rPeriod:"기간", rCount:"{n}건", rCalc:"계산된 기말 잔액", rStmt:"명세서 기말 잔액", rDiff:"차이",
+  rBeginBank:"기초 잔액", rInBank:"+ 입금", rOutBank:"− 출금", rBeginCC:"기초 카드 잔액", rInCC:"− 결제·환불", rOutCC:"+ 카드 사용",
+  pillNeed:"잔액을 입력하세요", msgNeed:"명세서의 기초·기말 잔액을 넣으면 가져오기 전에 숫자가 맞는지 확인할 수 있습니다.",
+  pillOk:"일치 · 대조 준비 완료", msgOk:"QuickBooks Reconcile 화면에 이 종료일과 기말 잔액을 그대로 넣으면 됩니다.",
+  pillBad:"차이 {d}", msgBad:"CSV에 빠진 거래나 기간 밖 거래가 없는지, 부호가 맞는지 확인하세요.",
+  checkTitle:"확인할 점", wNone:"문제 없음",
+  wDate:"날짜 열을 연결하세요.", wName:"거래 내용 열을 연결하세요.", wAmt:"금액 열을 연결하세요.", wSplit:"출금 열과 입금 열을 모두 연결하세요.",
+  wBad:"날짜나 금액을 읽지 못한 줄 {n}개는 뺐습니다 ({lines}). 합계·요약 줄이면 무시해도 됩니다.",
+  wZero:"금액이 0인 줄 {n}개는 뺐습니다.",
+  wDup:"날짜·금액·내용이 똑같은 거래가 {n}건 더 있습니다. 실제로 두 번 결제됐다면 그대로 두세요. 각각 다른 ID로 들어갑니다.",
+  wOut:"명세서 기간 밖의 거래 {n}건은 뺐습니다.",
+  wTrunc:"QuickBooks 이름은 32자까지라서 {n}건이 잘렸습니다. 전체 내용은 메모(Memo)에 들어갑니다.",
+  wAscii:"영문이 아닌 글자(한글 등) {n}건은 QuickBooks에서 깨지므로 뺐습니다.",
+  wAcct:"계좌 번호는 영문·숫자로 1~22자여야 합니다.", wBid:"은행 ID는 숫자로 입력하세요.",
+  wNoBegin:"기초 잔액이 없어 파일의 잔액은 이번 거래 합계로만 계산됩니다. 가져오기와 대조에는 영향이 없습니다.",
+  wDates:"명세서 시작일이 종료일보다 늦습니다.", wEmpty:"포함된 거래가 없습니다. 기간과 열 연결을 확인하세요.",
+  wXlsx:"Excel 파일을 읽는 기능을 불러오지 못했습니다(인터넷 연결 필요). Excel에서 CSV로 저장해서 올려 주세요.",
+  blocked:"먼저 '확인할 점'의 빨간 항목을 해결하세요.",
+  saved:"저장했습니다: {f}", saveFail:"이 화면에서는 저장할 수 없습니다. '내용 복사'를 쓰세요.",
+  copied:"복사했습니다. 메모장에 붙여 넣고 {ext}로 저장하세요.", selected:"내용을 선택했습니다. Ctrl+C(Mac은 ⌘C)로 복사하세요.",
+  howTitle:"QuickBooks Desktop에서 가져오기",
+  how1:"은행 웹사이트에서 거래내역을 <b>CSV 또는 Excel</b>로 받습니다. 명세서 기간과 같게 받으면 대조가 쉽습니다.",
+  how2:"이 변환기에 올리고, 오른쪽 <b>대조 미리 확인</b>이 '일치'인지 봅니다.",
+  how3:"가져오기 전에 <b>회사 파일을 백업</b>합니다.",
+  how4:"<span class=\"path\">Banking › Bank Feeds › Import Web Connect File</span>에서 저장한 .qbo 파일을 엽니다. 처음에는 장부의 해당 계좌를 선택합니다.",
+  how5:"<span class=\"path\">Bank Feeds Center</span>에서 거래를 확인합니다. 이미 입력한 수표·입금은 짝지어지고, 나머지는 계정을 지정해 추가합니다.",
+  how6:"<span class=\"path\">Banking › Reconcile</span>에 명세서 종료일과 기말 잔액을 넣고 대조합니다.",
+  faqTitle:"자주 묻는 질문",
+  q1:"내 은행 정보가 인터넷으로 전송되나요?", a1:"아닙니다. 파일은 이 브라우저 안에서만 읽고 변환합니다. 서버로 올라가지 않으며 페이지를 닫으면 사라집니다.",
+  q2:"어떤 QuickBooks 버전에서 쓸 수 있나요?", a2:"Bank Feeds(Web Connect)가 작동하는 QuickBooks Desktop 버전(보통 최근 3년 이내)이면 QBO를 쓰세요. Intuit가 지원을 끝낸 오래된 버전은 Web Connect 가져오기가 막혀 있으니 IIF를 고르세요. QuickBooks Online은 CSV를 바로 올릴 수 있어서 이 변환이 필요 없습니다.",
+  q3:"은행 ID는 무엇을 넣어야 하나요?", a3:"QuickBooks의 Participating Financial Institutions 목록에 내 은행이 있으면 그 번호를 쓰고, 없으면 기본값 3000을 쓰세요. 같은 계좌는 항상 같은 번호로 만들어야 합니다.",
+  q4:"같은 기간을 두 번 가져오면 중복되나요?", a4:"같은 거래에는 항상 같은 고유 ID(FITID)가 붙어서 QuickBooks가 이미 가져온 거래를 건너뜁니다. 같은 날 같은 금액의 거래가 실제로 두 건이면 서로 다른 ID가 붙습니다.",
+  q5:"신용카드 내역도 되나요?", a5:"네. 계좌 종류에서 Credit Card를 고르세요. 카드 사용액은 −, 결제·환불은 +여야 합니다. 반대로 보이면 '부호 뒤집기'를 체크하세요.",
+  q6:"한글 거래 내용은 어떻게 되나요?", a6:"QuickBooks Desktop의 Web Connect는 영문만 제대로 표시해서, 영문이 아닌 글자는 빼고 만듭니다.",
+  bankSel:"은행 (파일 형식)",
+  bankAuto:"자동 인식",
+  bankGeneric:"기타 은행 (열 직접 연결)",
+  kChk:"입출금 계좌",
+  kCC:"신용카드",
+  kAny:"입출금·카드",
+  kOfx:"QFX·OFX·QBO 파일",
+  detected:"인식: {b}",
+  notDetected:"은행 형식을 찾지 못함 · 열을 확인하세요",
+  fmtAria:"출력 형식",
+  fmtQbo:"QBO (Web Connect)",
+  fmtIif:"IIF (구버전·직접 기록)",
+  iifAcct:"QuickBooks 계좌 이름 (정확히)",
+  iifOutBank:"출금 상대 계정",
+  iifInBank:"입금 상대 계정",
+  iifOutCC:"카드 사용 상대 계정",
+  iifInCC:"환불·크레딧 상대 계정",
+  skipPay:"카드 대금 결제(PAYMENT) 줄은 빼기 (은행 계좌 쪽에서 이미 기록되는 경우)",
+  s3hintIif:"IIF는 Bank Feeds를 거치지 않고 장부에 거래를 바로 기록합니다. 계좌·상대 계정 이름은 QuickBooks <span class=\"path\">Chart of Accounts</span>의 이름과 <b>철자까지 똑같아야</b> 합니다. 없는 이름이면 QuickBooks가 새 계정을 만들어 버립니다. 하위 계정은 <b>상위:하위</b>로 씁니다.",
+  bidGeneric:"은행 ID 기본값 3000은 Wells Fargo 번호로, 목록에 없는 은행에도 널리 쓰입니다. 오류가 나면 Participating Financial Institutions 목록에서 내 은행 번호를 찾아 넣으세요.",
+  bidBofa:"Bank of America: 3000으로 안 되면 11162를 넣어 보세요. 2025년 12월 Intuit 커뮤니티에서 6526 → 11162로 바꿔 가져오기에 성공했다는 보고가 있습니다 (Intuit 공식 방법은 아님).",
+  bidOfx:"원래 파일의 은행 ID는 {b}입니다. 'unable to verify the Financial Institution' 오류가 났던 파일이면 3000을 쓰고, 문제없던 파일이면 원래 번호를 넣으세요.",
+  wIifAcct:"QuickBooks 계좌 이름을 입력하세요.",
+  wIifOff:"상대 계정 이름을 입력하세요.",
+  wIifDup:"IIF는 중복을 막아 주지 않습니다. 같은 기간을 두 번 가져오면 거래가 두 번 들어갑니다.",
+  wSkipPay:"카드 대금 결제 {n}건은 IIF에서 뺐습니다 (대조 계산에는 포함).",
+  wOfx:"원래 파일의 거래 ID(FITID)를 그대로 썼습니다. 은행에서 받은 파일과 섞어 가져와도 중복되지 않습니다.",
+  wOfxBegin:"기초 잔액은 파일의 기말 잔액에서 거꾸로 계산했습니다. 명세서와 비교하세요.",
+  wHeaderless:"제목 줄이 없는 파일이라 내용으로 열을 추정했습니다. 2단계에서 확인하세요.",
+  wOfxEmpty:"QFX·OFX 파일에서 거래를 찾지 못했습니다.",
+  howIif:"<b>IIF를 고른 경우:</b> 백업 후 <span class=\"path\">File › Utilities › Import › IIF Files</span>에서 엽니다. 거래가 계좌에 바로 기록되므로 Bank Feeds 확인 단계 없이 <span class=\"path\">Banking › Reconcile</span>로 대조합니다. 같은 파일을 두 번 가져오지 마세요.",
+  q7:"QBO와 IIF 중 무엇을 골라야 하나요?",
+  a7:"Bank Feeds가 작동하는 버전이면 QBO를 쓰세요. 이미 입력한 수표·입금과 짝을 맞추고 중복도 막아 줍니다. 2021처럼 지원이 끝나 Web Connect 가져오기가 막힌 버전이거나 'unable to verify the Financial Institution' 오류가 계속 나면 IIF를 쓰세요. IIF는 장부에 바로 기록되므로 중복은 직접 확인해야 합니다.",
+  q8:"QFX 파일도 바꿀 수 있나요?",
+  a8:"네. Quicken용 .qfx만 주는 은행이나 가져오기에 실패한 .qbo·.ofx 파일을 올리면, 거래 ID는 그대로 두고 QuickBooks Desktop용 .qbo 또는 .iif로 다시 만듭니다.",
+  q9:"은행에서 받은 QBO와 섞어 써도 되나요?",
+  a9:"CSV로 만든 파일은 은행 파일과 거래 ID가 달라서, 같은 기간을 양쪽으로 가져오면 중복됩니다. 기준일을 정해 그날부터는 한 가지 방법만 쓰세요. QFX·OFX를 변환한 경우는 원래 ID를 유지하므로 괜찮습니다.",
+  q10:"어떤 은행을 자동으로 인식하나요?",
+  a10:"Bank of America, Chase, Wells Fargo, Capital One, American Express, Citi, Discover, U.S. Bank의 웹사이트 CSV 형식을 인식해 열과 부호를 자동으로 맞춥니다 (예: Amex·Discover는 카드 사용액이 +로 나옴). 은행이 형식을 바꾸면 2단계에서 직접 고치면 됩니다.",
+  fixAsk:"가져오기 할 때 장부 계좌가 목록에 안 보이나요?",
+  fixGo:"해결 방법 보기",
+  fixTitle:"가져오기 때 계좌가 목록에 안 보일 때",
+  fixLead:"Select Bank Account 창의 'Use an existing QuickBooks account' 목록에는 파일과 종류가 같고, 다른 온라인 연결이 없는 활성 계정만 나옵니다. 위에서부터 차례로 확인하세요. 'Create a new QuickBooks account'는 고르지 마세요. 새 계정이 생겨서 장부가 두 갈래로 나뉩니다.",
+  fix1:"<b>계좌 종류 맞추기:</b> 입출금 파일에는 Bank 계정만, 카드 파일에는 Credit Card 계정만 나옵니다. 3단계 '계좌 종류'를 장부 계정과 같게 고르세요. 카드인데 Other Current Liability 계정만 보이면 은행 파일이 카드를 신용한도 계좌(CREDITLINE)로 적은 경우이니, 이 변환기에서 Credit Card로 다시 만드세요.",
+  fix2:"<b>기존 연결 끊기 (가장 흔한 원인):</b> 이미 다른 은행 ID로 연결된 계정은 목록에서 빠집니다. 먼저 <span class=\"path\">Bank Feeds Center</span>의 검토 안 한 거래를 모두 처리하세요(연결을 끊으면 사라집니다). 그다음 <span class=\"path\">Lists › Chart of Accounts</span>에서 계정을 오른쪽 클릭 → <span class=\"path\">Edit Account › Bank Feed Settings › Deactivate All Online Services</span> → Save &amp; Close 하고 파일을 다시 엽니다.",
+  fix3:"<b>비활성 계정 확인:</b> Inactive 계정은 목록에 안 나옵니다. Chart of Accounts 아래 <span class=\"path\">Include inactive</span>를 켜고 해당 계정을 오른쪽 클릭 → Make Account Active.",
+  fix4:"<b>계좌 번호 확인:</b> 카드 재발급 등으로 번호가 바뀌었거나 은행 파일에 xxxx로 가려져 있으면 다른 계좌로 인식됩니다. 3단계 '계좌 번호'에 예전과 같은 번호를 넣으세요. 이 변환기는 같은 번호·같은 은행 ID로 만들면 매번 같은 계좌로 인식됩니다.",
+  fix5:"<b>Bank Feeds 모드 바꾸기:</b> <span class=\"path\">Banking › Bank Feeds › Change Bank Feeds Mode</span>에서 Classic (Register) 모드로 바꾼 뒤 다시 가져오세요. Advanced 모드는 QuickBooks 안에서 Intuit 계정 로그인이 필요합니다.",
+  fix6:"<b>테스트 회사 파일로 확인:</b> <span class=\"path\">File › New Company</span>로 'Test' 회사를 만들어 같은 파일을 가져와 보세요. 거기서 되면 원래 장부의 계정 연결 문제이니 2번을 다시 하고 <span class=\"path\">File › Utilities › Verify Data / Rebuild Data</span>를 실행하세요.",
+  fix7:"<b>그래도 안 되면 IIF로:</b> 3단계에서 IIF를 고르면 Bank Feeds를 거치지 않고 계좌 이름으로 바로 기록하므로 이 문제가 생기지 않습니다. 단, 중복 방지가 없으니 같은 기간을 두 번 가져오지 마세요.",
+  foot1:"QuickBooks는 Intuit Inc.의 등록 상표입니다. 이 도구는 Intuit와 관련이 없으며 Intuit의 승인을 받지 않았습니다.",
+  foot2:"가져오기 전에 반드시 회사 파일을 백업하세요. 이 도구는 있는 그대로 제공되며 회계·세무 자문이 아닙니다."
+},
+en: {
+  eyebrow:"QuickBooks Desktop · Web Connect · IIF",
+  h1:"Turn bank CSV and QFX files into QuickBooks Desktop <em>QBO or IIF</em>",
+  lead:"For when your bank won't give you a QBO file, or the one it gives won't import. Convert CSV, Excel or QFX downloads into a Web Connect (.qbo) or IIF file and check it against your statement balance before you import. Eight major banks' formats are recognized automatically.",
+  chip1:"Nothing is uploaded. Runs entirely in your browser",
+  chip2:"Re-imports never create duplicates (stable IDs)",
+  chip3:"Check numbers match checks already in your books",
+  chip4:"Balance pre-check before you reconcile",
+  cta:"Convert a file", cta2:"How it works",
+  arrow:"converted · in your browser",
+  toolTitle:"Converter", toolSub:"Loaded with sample data. Drop in your own file to replace it.",
+  s1:"Load your file", dropAria:"Choose a file", dropTitle:"Drop a CSV, Excel or QFX file here, or click",
+  dropSub:".csv · .xlsx · .xls · .qfx · .ofx · .qbo", sampleBtn:"Reload sample",
+  sampleLabel:"Sample: sample_bank_oct2026.csv (fake data)",
+  s2:"Match columns", modeAria:"Amount format", modeSplit:"Separate debit & credit columns", modeSingle:"One amount column (+/−)",
+  fDate:"Date *", fName:"Description *", fAmount:"Amount *", fDebit:"Debit (withdrawals) *", fCredit:"Credit (deposits) *",
+  fCheck:"Check number", fMemo:"Memo", fBal:"Balance", fFmt:"Date format", fmtMDY:"MM/DD/YYYY (US)", fmtDMY:"DD/MM/YYYY",
+  none:"(none)", choose:"(choose)",
+  flip:"Flip signs (check this if withdrawals show as +)",
+  s2hint:"Columns were matched from their headers. Fix anything that's wrong. Bank accounts need withdrawals as −; credit cards need charges as −.",
+  s3:"Output format & account", acctType:"Account type", tChecking:"Checking", tSavings:"Savings", tCC:"Credit Card",
+  acctId:"Account number (last 4+ digits)", org:"Bank name (display)", bid:"Bank ID (INTU.BID)", routing:"Routing number (optional)",
+  s3hint:"Bank ID: if your bank appears under <span class=\"path\">Banking › Bank Feeds › Participating Financial Institutions</span> in QuickBooks, use its number; otherwise use 3000. Always use the <b>same bank ID and account number</b> for the same account so QuickBooks recognizes it.",
+  s4:"Statement period & balances", pStart:"Statement start", pEnd:"Statement end",
+  beginBank:"Beginning balance", endBank:"Ending balance", beginCC:"Beginning card balance (owed)", endCC:"Ending card balance (owed)",
+  s4hint:"Filled in automatically when the file includes balances. Compare them with your PDF statement. Transactions outside the period are left out.",
+  s5:"Preview", thLine:"Row", thDate:"Date", thName:"QuickBooks name (32 chars)", thChk:"Check #", thAmt:"Amount", thType:"Type", thStatus:"Status",
+  stIn:"Included", stOut:"Outside period", stDup:"Repeat #{n}",
+  s6:"Save the file", fname:"File name", dlBtn:"Save {EXT} file", copyBtn:"Copy contents",
+  dlNote:"If saving doesn't work on this screen, copy the contents, paste them into Notepad or TextEdit, and save with a {ext} extension.",
+  viewFile:"View file contents",
+  recTitle:"Reconciliation check", rPeriod:"Period", rCount:"{n} txns", rCalc:"Calculated ending", rStmt:"Statement ending", rDiff:"Difference",
+  rBeginBank:"Beginning balance", rInBank:"+ Deposits", rOutBank:"− Withdrawals", rBeginCC:"Beginning owed", rInCC:"− Payments & credits", rOutCC:"+ Charges",
+  pillNeed:"Enter balances", msgNeed:"Enter the statement's beginning and ending balances to confirm the numbers before you import.",
+  pillOk:"Matches · ready to reconcile", msgOk:"Use this statement end date and ending balance on the QuickBooks Reconcile screen.",
+  pillBad:"Off by {d}", msgBad:"Look for missing transactions, transactions outside the period, or reversed signs.",
+  checkTitle:"Things to check", wNone:"Nothing to fix",
+  wDate:"Choose the date column.", wName:"Choose the description column.", wAmt:"Choose the amount column.", wSplit:"Choose both the debit and credit columns.",
+  wBad:"Skipped {n} rows without a readable date or amount ({lines}). Summary or total rows are safe to ignore.",
+  wZero:"Skipped {n} rows with a zero amount.",
+  wDup:"Repeated transactions found ({n}): same date, amount and description. If they really happened more than once, leave them; each gets its own ID.",
+  wOut:"Left out {n} transactions outside the statement period.",
+  wTrunc:"QuickBooks names stop at 32 characters, so {n} were shortened. The full text goes in the memo.",
+  wAscii:"Removed non-English characters from {n} entries because QuickBooks Desktop can't display them.",
+  wAcct:"The account number must be 1–22 letters or digits.", wBid:"The bank ID must be a number.",
+  wNoBegin:"No beginning balance, so the file's balance is based on these transactions only. Importing and reconciling still work.",
+  wDates:"The statement start date is after the end date.", wEmpty:"No transactions are included. Check the period and the column matches.",
+  wXlsx:"The Excel reader couldn't load (it needs an internet connection). Save the file as CSV in Excel and upload that instead.",
+  blocked:"Fix the red items under 'Things to check' first.",
+  saved:"Saved: {f}", saveFail:"This screen can't save files. Use 'Copy contents' instead.",
+  copied:"Copied. Paste into Notepad or TextEdit and save as {ext}.", selected:"Contents selected. Press Ctrl+C (⌘C on Mac) to copy.",
+  howTitle:"Importing into QuickBooks Desktop",
+  how1:"Download your transactions from your bank's website as <b>CSV or Excel</b>. Matching the statement period makes reconciling easier.",
+  how2:"Load the file here and confirm the <b>reconciliation check</b> shows a match.",
+  how3:"<b>Back up your company file</b> before importing.",
+  how4:"Open the saved .qbo file from <span class=\"path\">Banking › Bank Feeds › Import Web Connect File</span>. The first time, link it to the matching account in your books.",
+  how5:"Review transactions in the <span class=\"path\">Bank Feeds Center</span>. Checks and deposits you already entered are matched; add the rest with an account.",
+  how6:"Reconcile in <span class=\"path\">Banking › Reconcile</span> with the statement end date and ending balance.",
+  faqTitle:"Questions",
+  q1:"Is my bank data sent anywhere?", a1:"No. The file is read and converted inside this browser. Nothing is uploaded, and it's gone when you close the page.",
+  q2:"Which QuickBooks versions work?", a2:"Use QBO on any QuickBooks Desktop version where Bank Feeds (Web Connect) still works, usually the last three releases. Older versions Intuit no longer supports can't import Web Connect files, so choose IIF there. QuickBooks Online accepts CSV uploads directly, so it doesn't need this.",
+  q3:"What bank ID should I use?", a3:"If your bank is on QuickBooks' Participating Financial Institutions list, use its number; otherwise use the default 3000. Keep using the same number for the same account.",
+  q4:"Will re-importing the same period create duplicates?", a4:"No. Each transaction always gets the same ID (FITID), so QuickBooks skips ones it already has. Two genuine same-day, same-amount transactions get different IDs.",
+  q5:"Does it work for credit cards?", a5:"Yes. Choose Credit Card as the account type. Charges should be −, payments and refunds +. If yours look reversed, check 'Flip signs'.",
+  q6:"What about non-English descriptions?", a6:"QuickBooks Desktop Web Connect only displays English characters reliably, so other characters are removed.",
+  bankSel:"Bank (file layout)",
+  bankAuto:"Auto-detect",
+  bankGeneric:"Other bank (match columns)",
+  kChk:"checking",
+  kCC:"credit card",
+  kAny:"bank or card",
+  kOfx:"QFX · OFX · QBO file",
+  detected:"Detected: {b}",
+  notDetected:"Layout not recognized · check the columns",
+  fmtAria:"Output format",
+  fmtQbo:"QBO (Web Connect)",
+  fmtIif:"IIF (older versions · direct entry)",
+  iifAcct:"QuickBooks account name (exact)",
+  iifOutBank:"Offset account for withdrawals",
+  iifInBank:"Offset account for deposits",
+  iifOutCC:"Offset account for charges",
+  iifInCC:"Offset account for refunds & credits",
+  skipPay:"Leave out card payment (PAYMENT) lines, if the bank side already records them",
+  s3hintIif:"IIF writes transactions straight into the register, without Bank Feeds. Account names must match your <span class=\"path\">Chart of Accounts</span> <b>exactly</b>. QuickBooks creates a new account for any name it doesn't find. Write subaccounts as <b>Parent:Child</b>.",
+  bidGeneric:"The default bank ID 3000 is Wells Fargo's, and it's widely used for banks that aren't listed. If you get an error, look up your bank's number under Participating Financial Institutions.",
+  bidBofa:"Bank of America: if 3000 fails, try 11162. A December 2025 Intuit Community post reported a successful import after changing 6526 to 11162 (not an official Intuit fix).",
+  bidOfx:"The original file's bank ID is {b}. If that file failed with 'unable to verify the Financial Institution', use 3000; otherwise you can keep the original number.",
+  wIifAcct:"Enter the QuickBooks account name.",
+  wIifOff:"Enter the offset account names.",
+  wIifDup:"IIF has no duplicate protection. Importing the same period twice records the transactions twice.",
+  wSkipPay:"Card payments left out of the IIF: {n} (still counted in the reconciliation check).",
+  wOfx:"Kept the original transaction IDs (FITID), so mixing with files from your bank won't create duplicates.",
+  wOfxBegin:"The beginning balance was worked back from the file's ending balance. Compare it with your statement.",
+  wHeaderless:"This file has no header row, so columns were guessed from their contents. Check step 2.",
+  wOfxEmpty:"No transactions were found in the QFX/OFX file.",
+  howIif:"<b>If you chose IIF:</b> back up, then open it from <span class=\"path\">File › Utilities › Import › IIF Files</span>. Transactions go straight into the register, so skip the Bank Feeds review and reconcile in <span class=\"path\">Banking › Reconcile</span>. Don't import the same file twice.",
+  q7:"Should I choose QBO or IIF?",
+  a7:"Use QBO if Bank Feeds works in your version. It matches checks and deposits you already entered and blocks duplicates. Use IIF if your version is past support (for example 2021) and can't import Web Connect files, or if 'unable to verify the Financial Institution' keeps appearing. IIF records directly, so watch for duplicates yourself.",
+  q8:"Can it convert QFX files?",
+  a8:"Yes. Load a Quicken .qfx file, or a .qbo or .ofx file that failed to import, and it is rebuilt as a QuickBooks Desktop .qbo or .iif with the original transaction IDs kept.",
+  q9:"Can I mix this with QBO files from my bank?",
+  a9:"Files made from CSV use different transaction IDs than your bank's files, so importing the same period both ways creates duplicates. Pick a cutover date and use one method from then on. Converted QFX/OFX files keep the original IDs, so they're safe to mix.",
+  q10:"Which banks are recognized?",
+  a10:"Website CSV layouts from Bank of America, Chase, Wells Fargo, Capital One, American Express, Citi, Discover and U.S. Bank. Columns and signs are set automatically (for example, Amex and Discover show charges as +). If a bank changes its layout, fix the columns in step 2.",
+  fixAsk:"Account missing from the list when you import?",
+  fixGo:"See how to fix it",
+  fixTitle:"When your account isn't in the list during import",
+  fixLead:"The 'Use an existing QuickBooks account' list in the Select Bank Account window only shows active accounts of the same type as the file that aren't already linked to another online connection. Work down this list. Don't choose 'Create a new QuickBooks account', which splits your books across two accounts.",
+  fix1:"<b>Match the account type:</b> bank files only list Bank accounts, and card files only list Credit Card accounts. Set 'Account type' in step 3 to match the account in your books. If a card file only shows Other Current Liability accounts, the bank labeled the card as a credit line (CREDITLINE); rebuild it here as Credit Card.",
+  fix2:"<b>Remove the old connection (most common cause):</b> accounts already linked under a different bank ID are left out of the list. First finish every unreviewed transaction in the <span class=\"path\">Bank Feeds Center</span> (they're removed when you disconnect). Then in <span class=\"path\">Lists › Chart of Accounts</span>, right-click the account → <span class=\"path\">Edit Account › Bank Feed Settings › Deactivate All Online Services</span> → Save &amp; Close, and open the file again.",
+  fix3:"<b>Check for inactive accounts:</b> inactive accounts don't appear. Turn on <span class=\"path\">Include inactive</span> in the Chart of Accounts, then right-click the account → Make Account Active.",
+  fix4:"<b>Check the account number:</b> a reissued card or a number masked with xxxx looks like a different account. Enter the same number as before in step 3. Files made here with the same number and bank ID are always recognized as the same account.",
+  fix5:"<b>Switch Bank Feeds mode:</b> in <span class=\"path\">Banking › Bank Feeds › Change Bank Feeds Mode</span>, choose Classic (Register) mode and import again. Advanced mode requires signing in to your Intuit account inside QuickBooks.",
+  fix6:"<b>Test with a new company file:</b> create a 'Test' company with <span class=\"path\">File › New Company</span> and import the same file. If it works there, the problem is the account link in your real books: repeat step 2 and run <span class=\"path\">File › Utilities › Verify Data / Rebuild Data</span>.",
+  fix7:"<b>Still stuck? Use IIF:</b> choose IIF in step 3. It records by account name without Bank Feeds, so this problem can't happen. It has no duplicate protection, so don't import the same period twice.",
+  foot1:"QuickBooks is a registered trademark of Intuit Inc. This tool is not affiliated with or endorsed by Intuit.",
+  foot2:"Always back up your company file before importing. Provided as is; not accounting or tax advice."
+}};
+
+var LANG = "ko";
+function t(k, p){
+  var s = DICT[LANG][k]; if (s == null) s = DICT.ko[k]; if (s == null) s = k;
+  if (p) s = s.replace(/\{(\w+)\}/g, function(_, x){ return p[x] != null ? p[x] : ""; });
+  return s;
+}
+var $ = function(id){ return document.getElementById(id); };
+var qsa = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+var S = { raw:[], headerIdx:0, headers:[], label:{ key:"sampleLabel", text:"" }, edited:{} };
+
+/* ---------- sample data (fake) ---------- */
+var SAMPLE = [
+"Account Name : Business Checking ****4821",
+"Statement Period : 10/01/2026 - 10/31/2026",
+"",
+"Posting Date,Description,Check or Slip #,Debit,Credit,Balance",
+"10/31/2026,INTEREST PAID,,,1.12,16354.15",
+"10/31/2026,MONTHLY SERVICE FEE,,15.00,,16353.03",
+"10/20/2026,STARBUCKS #1123 LOS ANGELES CA,,6.45,,16368.03",
+"10/20/2026,STARBUCKS #1123 LOS ANGELES CA,,6.45,,16374.48",
+"10/15/2026,ADP PAYROLL FEES 000123,,89.50,,16380.93",
+"10/15/2026,ADP PAYROLL 000123,,\"6,840.33\",,16470.43",
+"10/12/2026,SQUARE INC DEPOSIT 261012,,,\"3,105.40\",23310.76",
+"10/09/2026,LADWP UTILITY PAYMENT,,245.67,,20205.36",
+"10/08/2026,CHECK,1048,450.00,,20451.03",
+"10/06/2026,DOORDASH INC PAYOUT,,,684.10,20901.03",
+"10/05/2026,SQUARE INC DEPOSIT 261005,,,\"2,967.25\",20216.93",
+"10/03/2026,SOCALGAS PAYMENT,,312.19,,17249.68",
+"10/03/2026,CHECK,1047,\"2,800.00\",,17561.87",
+"10/02/2026,SYSCO LOS ANGELES ACH,,\"1,286.44\",,20361.87",
+"10/01/2026,SQUARE INC DEPOSIT 261001,,,\"3,412.80\",21648.31"
+].join("\r\n");
+
+/* ---------- parsing ---------- */
+function parseCSV(text){
+  text = text.replace(/^﻿/, "");
+  var head = text.split(/\r?\n/).slice(0, 15).join("\n");
+  var counts = {",":0, ";":0, "\t":0};
+  for (var k = 0; k < head.length; k++) if (counts.hasOwnProperty(head[k])) counts[head[k]]++;
+  var delim = Object.keys(counts).sort(function(a,b){ return counts[b]-counts[a]; })[0];
+  var rows = [], row = [], field = "", q = false;
+  for (var i = 0; i < text.length; i++){
+    var c = text[i];
+    if (q){ if (c === '"'){ if (text[i+1] === '"'){ field += '"'; i++; } else q = false; } else field += c; }
+    else if (c === '"') q = true;
+    else if (c === delim){ row.push(field); field = ""; }
+    else if (c === "\n" || c === "\r"){ if (c === "\r" && text[i+1] === "\n") i++; row.push(field); rows.push(row); row = []; field = ""; }
+    else field += c;
+  }
+  if (field !== "" || row.length){ row.push(field); rows.push(row); }
+  return cleanRows(rows);
+}
+function cleanRows(rows){
+  return rows.map(function(r){ return r.map(function(x){ return x == null ? "" : String(x).trim(); }); })
+             .filter(function(r){ return r.some(function(x){ return x !== ""; }); });
+}
+function findHeader(rows){
+  for (var i = 0; i < Math.min(rows.length, 25); i++){
+    var r = rows[i];
+    if (r.filter(function(x){ return x !== ""; }).length >= 3 && r.some(function(x){ return /date/i.test(x) && x.length < 30; })) return i;
+  }
+  return 0;
+}
+function pad(n){ return (n < 10 ? "0" : "") + n; }
+function parseDate(s, fmt){
+  if (!s) return null; s = String(s).trim();
+  var y, mo, d, m = s.match(/^(\d{1,4})[\/\-.](\d{1,2})[\/\-.](\d{1,4})/);
+  if (m){
+    var a = +m[1], b = +m[2], c = +m[3];
+    if (m[1].length === 4 || fmt === "YMD"){ y = a; mo = b; d = c; }
+    else if (fmt === "DMY"){ d = a; mo = b; y = c; }
+    else { mo = a; d = b; y = c; }
+    if (y < 100) y += 2000;
+  } else if ((m = s.match(/^(\d{4})(\d{2})(\d{2})$/))){ y = +m[1]; mo = +m[2]; d = +m[3]; }
+  else { var tt = Date.parse(s); if (isNaN(tt)) return null; var dt0 = new Date(tt); y = dt0.getFullYear(); mo = dt0.getMonth()+1; d = dt0.getDate(); }
+  if (!(mo >= 1 && mo <= 12 && d >= 1 && d <= 31)) return null;
+  var dt = new Date(Date.UTC(y, mo-1, d)); if (dt.getUTCMonth() !== mo-1) return null;
+  return String(y) + pad(mo) + pad(d);
+}
+function parseAmt(s){
+  if (s == null) return null; s = String(s).trim(); if (!s) return null;
+  var neg = false;
+  if (/^\(.*\)$/.test(s)){ neg = true; s = s.slice(1, -1); }
+  if (/\s*DR$/i.test(s)){ neg = true; s = s.replace(/\s*DR$/i, ""); }
+  else if (/\s*CR$/i.test(s)){ s = s.replace(/\s*CR$/i, ""); }
+  s = s.trim();
+  if (/-$/.test(s)){ neg = true; s = s.slice(0, -1); }
+  s = s.replace(/[$,\s]/g, "");
+  if (s.charAt(0) === "-"){ neg = !neg; s = s.slice(1); }
+  if (s.charAt(0) === "+") s = s.slice(1);
+  if (!/^(\d+\.?\d*|\.\d+)$/.test(s)) return null;
+  var v = Math.round(parseFloat(s) * 100);
+  return neg ? -v : v;
+}
+function money(c){
+  if (c == null || isNaN(c)) return "-";
+  var a = Math.abs(c);
+  return (c < 0 ? "−$" : "$") + Math.floor(a/100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "." + pad(a % 100);
+}
+function ofxAmt(c){ var a = Math.abs(c); return (c < 0 ? "-" : "") + Math.floor(a/100) + "." + pad(a % 100); }
+function fnv(s){ var h = 0x811c9dc5; for (var i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return ("0000000" + h.toString(16)).slice(-8).toUpperCase(); }
+function ascii(s){ var n = String(s || "").normalize("NFKD").replace(/[̀-ͯ]/g, ""); var out = n.replace(/[^\x20-\x7E]/g, ""); return { text: out.replace(/\s+/g, " ").trim(), changed: out !== n }; }
+function esc(s){ return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+function isoToYmd(v){ return v ? v.replace(/-/g, "") : ""; }
+function ymdToIso(v){ return v ? v.slice(0,4) + "-" + v.slice(4,6) + "-" + v.slice(6,8) : ""; }
+function ymdShow(v){ return v ? v.slice(4,6) + "/" + v.slice(6,8) + "/" + v.slice(0,4) : "-"; }
+
+/* ---------- mapping ---------- */
+var FIELDS = ["date","name","amount","debit","credit","check","memo","balance"];
+var PATTERNS = {
+  date: /date|posted/i, name: /desc|payee|merchant|details?$|narrative|^name$|^transaction$/i,
+  amount: /^amount|^amt|transaction amount/i, debit: /debit|withdraw|money out|charges?$/i,
+  credit: /credit|deposit|money in/i, check: /check|chk|cheque|slip/i, memo: /memo|note/i, balance: /balance|\bbal\b\.?/i
+};
+function guessMapping(headers){
+  var used = {}, map = {};
+  ["date","debit","credit","amount","check","balance","memo","name"].forEach(function(f){
+    map[f] = -1;
+    for (var i = 0; i < headers.length; i++){
+      if (used[i]) continue;
+      if (f === "credit" && /credit card/i.test(headers[i])) continue;
+      if (PATTERNS[f].test(headers[i])){ map[f] = i; used[i] = true; break; }
+    }
+  });
+  return map;
+}
+function findCol(headers, re){ for (var i = 0; i < headers.length; i++) if (re.test(String(headers[i]).trim())) return i; return -1; }
+
+/* ---------- bank layouts (website CSV downloads as of 2026; banks can change them) ---------- */
+function hasH(h, re){ return h.some(function(x){ return re.test(String(x).trim()); }); }
+var BANKS = [
+  { id:"bofa_chk", name:"Bank of America", kind:"kChk", type:"CHECKING", bidKey:"bidBofa",
+    detect:function(h){ return hasH(h, /running bal/i); },
+    map:{ date:/^date$/i, name:/^description$/i, amount:/^amount$/i, balance:/running bal/i } },
+  { id:"bofa_cc", name:"Bank of America", kind:"kCC", type:"CREDITCARD", bidKey:"bidBofa",
+    detect:function(h){ return hasH(h, /^reference number$/i) && hasH(h, /^payee$/i); },
+    map:{ date:/^posted date$/i, name:/^payee$/i, amount:/^amount$/i } },
+  { id:"chase_chk", name:"Chase", kind:"kChk", type:"CHECKING",
+    detect:function(h){ return hasH(h, /^details$/i) && hasH(h, /^posting date$/i); },
+    map:{ date:/^posting date$/i, name:/^description$/i, amount:/^amount$/i, check:/check or slip/i, balance:/^balance$/i } },
+  { id:"chase_cc", name:"Chase", kind:"kCC", type:"CREDITCARD",
+    detect:function(h){ return hasH(h, /^transaction date$/i) && hasH(h, /^post date$/i) && hasH(h, /^category$/i) && hasH(h, /^type$/i); },
+    map:{ date:/^post date$/i, name:/^description$/i, amount:/^amount$/i, memo:/^memo$/i } },
+  { id:"wf", name:"Wells Fargo", kind:"kAny", headerless:["Date","Amount","*","Check #","Description"],
+    detect:function(){ return false; },
+    map:{ date:/^date$/i, name:/^description$/i, amount:/^amount$/i, check:/^check #$/i } },
+  { id:"cap1_bank", name:"Capital One", kind:"kChk", type:"CHECKING",
+    detect:function(h){ return hasH(h, /^transaction type$/i) && hasH(h, /^transaction amount$/i); },
+    map:{ date:/^transaction date$/i, name:/^transaction description$/i, amount:/^transaction amount$/i, balance:/^balance$/i },
+    signCol:/^transaction type$/i, negIf:/debit|withdraw/i },
+  { id:"cap1_cc", name:"Capital One", kind:"kCC", type:"CREDITCARD",
+    detect:function(h){ return hasH(h, /^card no/i) && hasH(h, /^debit$/i); },
+    map:{ date:/^posted date$/i, name:/^description$/i, debit:/^debit$/i, credit:/^credit$/i } },
+  { id:"amex", name:"American Express", kind:"kCC", type:"CREDITCARD", flip:true,
+    detect:function(h){ return hasH(h, /appears on your statement|card member|extended details/i); },
+    map:{ date:/^date$/i, name:/^description$/i, amount:/^amount$/i } },
+  { id:"citi", name:"Citi", kind:"kCC", type:"CREDITCARD",
+    detect:function(h){ return hasH(h, /^status$/i) && hasH(h, /^debit$/i) && hasH(h, /^credit$/i); },
+    map:{ date:/^date$/i, name:/^description$/i, debit:/^debit$/i, credit:/^credit$/i } },
+  { id:"discover", name:"Discover", kind:"kCC", type:"CREDITCARD", flip:true,
+    detect:function(h){ return hasH(h, /^trans\.? date$/i) && hasH(h, /^post date$/i); },
+    map:{ date:/^post date$/i, name:/^description$/i, amount:/^amount$/i } },
+  { id:"usbank", name:"U.S. Bank", kind:"kAny",
+    detect:function(h){ return hasH(h, /^transaction$/i) && hasH(h, /^name$/i) && hasH(h, /^memo$/i) && hasH(h, /^amount$/i); },
+    map:{ date:/^date$/i, name:/^name$/i, amount:/^amount$/i, memo:/^memo$/i } }
+];
+var OFX_LAYOUT = { id:"ofx", name:"", kind:"kOfx", map:{ date:/^date$/i, name:/^name$/i, amount:/^amount$/i, check:/^check #$/i, memo:/^memo$/i } };
+function bankById(id){ return BANKS.filter(function(b){ return b.id === id; })[0] || null; }
+function fillBanks(){
+  var sel = $("bank"), cur = sel.value || "auto"; sel.innerHTML = "";
+  var add = function(v, txt){ var o = document.createElement("option"); o.value = v; o.textContent = txt; sel.appendChild(o); };
+  add("auto", t("bankAuto"));
+  BANKS.forEach(function(b){ add(b.id, b.name + " · " + t(b.kind)); });
+  add("generic", t("bankGeneric"));
+  sel.value = cur;
+}
+function isHeaderless(rows){
+  var r0 = rows[0] || [];
+  if (r0.length < 3 || !parseDate(r0[0], "MDY")) return false;
+  return !rows.slice(0, 25).some(function(r){ return r.some(function(x){ return /date/i.test(x) && x.length < 30; }); });
+}
+function headersByContent(rows){
+  var n = Math.max.apply(null, rows.slice(0, 30).map(function(r){ return r.length; })), h = [], sample = rows.slice(0, 30);
+  var got = {};
+  for (var c = 0; c < n; c++){
+    var vals = sample.map(function(r){ return r[c] || ""; }).filter(function(v){ return v !== ""; });
+    var isDate = vals.length && vals.every(function(v){ return parseDate(v, "MDY"); });
+    var isNum = vals.length && vals.every(function(v){ return parseAmt(v) != null; });
+    var avg = vals.reduce(function(a, v){ return a + v.length; }, 0) / (vals.length || 1);
+    h.push({ c: c, isDate: isDate, isNum: isNum, avg: avg });
+  }
+  var names = h.map(function(x){ return "Column " + (x.c + 1); });
+  var d = h.filter(function(x){ return x.isDate; })[0]; if (d){ names[d.c] = "Date"; got[d.c] = 1; }
+  var a = h.filter(function(x){ return x.isNum && !got[x.c]; })[0]; if (a){ names[a.c] = "Amount"; got[a.c] = 1; }
+  var txt = h.filter(function(x){ return !x.isNum && !x.isDate; }).sort(function(p, q){ return q.avg - p.avg; })[0]; if (txt) names[txt.c] = "Description";
+  return names;
+}
+
+/* ---------- QFX / OFX / QBO input ---------- */
+function unent(s){ return s.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&amp;/g, "&"); }
+function ofxTag(block, name){ var m = block.match(new RegExp("<" + name.replace(".", "\\.") + ">([^<\\r\\n]*)", "i")); return m ? unent(m[1].trim()) : ""; }
+function parseOFX(text){
+  var acctType = ofxTag(text, "ACCTTYPE").toUpperCase();
+  var isCC = /<CCACCTFROM>/i.test(text) || acctType === "CREDITLINE";
+  var info = { isCC: isCC, acctType: isCC ? "CREDITCARD" : (/^(CHECKING|SAVINGS|MONEYMRKT)$/.test(acctType) ? acctType : "CHECKING"),
+    acctid: ofxTag(text, "ACCTID").replace(/[^A-Za-z0-9]/g, "").slice(-22), bankid: ofxTag(text, "BANKID").replace(/\D/g, ""),
+    org: ofxTag(text, "ORG"), bid: ofxTag(text, "INTU.BID") || ofxTag(text, "FID"),
+    start: ofxTag(text, "DTSTART").slice(0, 8), end: ofxTag(text, "DTEND").slice(0, 8), ledger: null };
+  var lb = text.match(/<LEDGERBAL>[\s\S]*?<BALAMT>([^<\r\n]*)/i); if (lb) info.ledger = parseAmt(lb[1]);
+  var rows = [["Date", "Name", "Amount", "Check #", "Memo", "FITID"]];
+  text.split(/<STMTTRN>/i).slice(1).forEach(function(b){
+    b = b.split(/<\/STMTTRN>|<\/BANKTRANLIST>/i)[0];
+    var d = ofxTag(b, "DTPOSTED").slice(0, 8);
+    rows.push([d.length === 8 ? d.slice(0, 4) + "-" + d.slice(4, 6) + "-" + d.slice(6, 8) : "", ofxTag(b, "NAME"), ofxTag(b, "TRNAMT"), ofxTag(b, "CHECKNUM"), ofxTag(b, "MEMO"), ofxTag(b, "FITID")]);
+  });
+  return { rows: rows, info: info };
+}
+function loadOFX(text, label){ var p = parseOFX(text); loadRows(p.rows, label, p.info); }
+
+var OPTIONAL = { m_check:1, m_memo:1, m_balance:1 };
+function fillSelect(id, val){
+  var sel = $(id); sel.innerHTML = "";
+  var o = document.createElement("option"); o.value = "-1"; o.textContent = OPTIONAL[id] ? t("none") : t("choose"); sel.appendChild(o);
+  S.headers.forEach(function(h, i){ var op = document.createElement("option"); op.value = String(i); op.textContent = h || ("#" + (i+1)); sel.appendChild(op); });
+  sel.value = String(val);
+}
+function loadRows(rows, label, ofx){
+  S.raw = rows; S.label = label; S.edited = {}; S.ofx = ofx || null; S.headerless = false;
+  var choice = $("bank").value || "auto", preset = null;
+  if (ofx){ S.headerIdx = 0; S.headers = rows[0]; preset = OFX_LAYOUT; }
+  else if (rows.length && isHeaderless(rows)){
+    S.headerIdx = -1; S.headerless = true;
+    var wfLike = rows[0].length === 5 && rows[0][2] === "*";
+    if ((choice === "auto" && wfLike) || choice === "wf"){ preset = bankById("wf"); S.headers = preset.headerless.slice(); }
+    else S.headers = headersByContent(rows);
+  } else {
+    S.headerIdx = findHeader(rows); S.headers = rows[S.headerIdx] || [];
+    if (choice === "auto") preset = BANKS.filter(function(b){ return b.detect(S.headers); })[0] || null;
+    else if (choice !== "generic") preset = bankById(choice);
+  }
+  S.preset = preset;
+  var m = guessMapping(S.headers);
+  if (preset && preset.map) FIELDS.forEach(function(f){
+    var c = preset.map[f] ? findCol(S.headers, preset.map[f]) : -1;
+    m[f] = preset.map[f] && c < 0 ? m[f] : c;
+  });
+  S.signCol = preset && preset.signCol ? findCol(S.headers, preset.signCol) : -1;
+  S.fitidCol = ofx ? 5 : -1;
+  FIELDS.forEach(function(f){ fillSelect("m_" + f, m[f]); });
+  $(m.debit >= 0 && m.credit >= 0 ? "modeSplit" : "modeSingle").checked = true;
+  $("flip").checked = !!(preset && preset.flip);
+  if (ofx){
+    $("datefmt").value = "YMD"; $("accttype").value = ofx.acctType;
+    if (ofx.acctid) $("acctid").value = ofx.acctid;
+    if (ofx.bankid && ofx.bankid.length === 9) $("routing").value = ofx.bankid;
+    if (ofx.org) $("org").value = ascii(ofx.org).text || $("org").value;
+  } else {
+    if ($("datefmt").value === "YMD") $("datefmt").value = "MDY";
+    if (preset && preset.type) $("accttype").value = preset.type;
+    else if (preset && preset.kind === "kAny") $("accttype").value = "CHECKING";
+    if (preset && preset.name) $("org").value = preset.name;
+  }
+  ["pstart","pend","begin","stmtEnd","fname"].forEach(function(id){ $(id).value = ""; });
+  update();
+}
+function loadText(text, label){ loadRows(parseCSV(text), label); }
+function getMap(){ var m = { mode: $("modeSingle").checked ? "single" : "split" }; FIELDS.forEach(function(f){ m[f] = +$("m_" + f).value; }); return m; }
+
+/* ---------- build ---------- */
+function compute(){
+  var m = getMap(), fmt = $("datefmt").value, flip = $("flip").checked, isCC = $("accttype").value === "CREDITCARD";
+  var warn = [], bad = [], zero = 0, txs = [], balRow = null;
+  if (S.xlsxFail) return { txs: [], inc: [], dep: 0, wd: 0, begin: null, stmtEnd: null, calc: null, ps: "", pe: "", isCC: isCC, warn: [["bad", t("wXlsx")]] };
+  if (m.date < 0) warn.push(["bad", t("wDate")]);
+  if (m.name < 0) warn.push(["bad", t("wName")]);
+  if (m.mode === "single" && m.amount < 0) warn.push(["bad", t("wAmt")]);
+  if (m.mode === "split" && (m.debit < 0 || m.credit < 0)) warn.push(["bad", t("wSplit")]);
+  S.raw.slice(S.headerIdx + 1).forEach(function(r, i){
+    var line = S.headerIdx + 2 + i;
+    var desc0 = m.name >= 0 ? String(r[m.name] || "") : "";
+    if (/^(beginning|ending|opening|closing) balance/i.test(desc0)){ if (/^(beginning|opening)/i.test(desc0) && m.balance >= 0) balRow = parseAmt(r[m.balance]); return; }
+    var date = m.date >= 0 ? parseDate(r[m.date], fmt) : null, amt = null;
+    if (m.mode === "single") amt = m.amount >= 0 ? parseAmt(r[m.amount]) : null;
+    else {
+      var d = m.debit >= 0 ? parseAmt(r[m.debit]) : null, c = m.credit >= 0 ? parseAmt(r[m.credit]) : null;
+      if (d != null || c != null) amt = (c ? Math.abs(c) : 0) - (d ? Math.abs(d) : 0);
+    }
+    if (!date || amt == null){ bad.push(line); return; }
+    if (amt === 0){ zero++; return; }
+    if (m.mode === "single" && S.signCol >= 0) amt = S.preset.negIf.test(String(r[S.signCol] || "")) ? -Math.abs(amt) : Math.abs(amt);
+    if (flip) amt = -amt;
+    var rawName = m.name >= 0 ? (r[m.name] || "") : "";
+    var chk = m.check >= 0 ? String(r[m.check] || "").replace(/[^0-9]/g, "") : "";
+    if (!chk){ var cm = rawName.match(/^(?:check|chk)\s*#?\s*(\d{2,})\b/i); if (cm) chk = cm[1]; }
+    txs.push({ line: line, date: date, amt: amt, rawName: rawName, chk: chk, memo: m.memo >= 0 ? (r[m.memo] || "") : "", bal: m.balance >= 0 ? parseAmt(r[m.balance]) : null, idx: i, fitidRaw: S.fitidCol >= 0 ? String(r[S.fitidCol] || "") : "" });
+  });
+  if (bad.length) warn.push(["warn", t("wBad", { n: bad.length, lines: bad.slice(0, 6).join(", ") + (bad.length > 6 ? "…" : "") })]);
+  if (zero) warn.push(["info", t("wZero", { n: zero })]);
+
+  var hint = { start: null, end: null, endBal: null };
+  S.raw.forEach(function(r){
+    var line = r.join(" "), mm;
+    if ((mm = line.match(/(?:beginning|opening) balance as of\s+([\d\/\-.]+)/i))) hint.start = hint.start || parseDate(mm[1], fmt);
+    if ((mm = line.match(/(?:ending|closing) balance as of\s+([\d\/\-.]+)/i))){
+      hint.end = hint.end || parseDate(mm[1], fmt);
+      for (var c = r.length - 1; c >= 0; c--){ var v = parseAmt(r[c]); if (v != null){ if (hint.endBal == null) hint.endBal = v; break; } }
+    }
+    if ((mm = line.match(/statement period\s*:?\s*([\d\/\-.]+)\s*(?:-|to|–)\s*([\d\/\-.]+)/i))){ hint.start = hint.start || parseDate(mm[1], fmt); hint.end = hint.end || parseDate(mm[2], fmt); }
+  });
+  if (S.ofx){
+    if (/^\d{8}$/.test(S.ofx.start)) hint.start = S.ofx.start;
+    if (/^\d{8}$/.test(S.ofx.end)) hint.end = S.ofx.end;
+    if (!txs.length) warn.push(["bad", t("wOfxEmpty")]);
+  }
+  if (S.headerless && !S.preset) warn.push(["warn", t("wHeaderless")]);
+  var dates = txs.map(function(x){ return x.date; }).sort();
+  if (!S.edited.pstart && (hint.start || dates.length)) $("pstart").value = ymdToIso(hint.start || dates[0]);
+  if (!S.edited.pend && (hint.end || dates.length)) $("pend").value = ymdToIso(hint.end || dates[dates.length-1]);
+  var ps = isoToYmd($("pstart").value), pe = isoToYmd($("pend").value);
+
+  if (!isCC && m.balance >= 0 && txs.length && txs.every(function(x){ return x.bal != null; })){
+    var asc = txs[0].date <= txs[txs.length-1].date;
+    var first = asc ? txs[0] : txs[txs.length-1], lastT = asc ? txs[txs.length-1] : txs[0];
+    if (!S.edited.begin) $("begin").value = ofxAmt(balRow != null ? balRow : first.bal - first.amt);
+    if (!S.edited.stmtEnd) $("stmtEnd").value = ofxAmt(hint.endBal != null ? hint.endBal : lastT.bal);
+  }
+  if (!isCC && hint.endBal != null && !S.edited.stmtEnd && !$("stmtEnd").value) $("stmtEnd").value = ofxAmt(hint.endBal);
+
+  var seen = {}, dupCount = 0, nonAscii = 0, truncated = 0, outside = 0;
+  txs.forEach(function(x){
+    var a = ascii(x.rawName); if (a.changed) nonAscii++;
+    x.name = a.text || "UNKNOWN";
+    var key = [x.date, x.amt, x.name.toUpperCase(), x.chk].join("|");
+    seen[key] = (seen[key] || 0) + 1; x.dupN = seen[key]; if (x.dupN > 1) dupCount++;
+    var keep = x.fitidRaw ? ascii(x.fitidRaw).text.replace(/[<>&\s]/g, "").slice(0, 255) : "";
+    x.fitid = keep || (x.date + fnv(key) + pad(x.dupN));
+    x.qbName = x.name.slice(0, 32); if (x.name.length > 32) truncated++;
+    var mm = ascii(x.memo); if (mm.changed) nonAscii++;
+    x.memoText = mm.text;
+    var parts = []; if (x.name.length > 32) parts.push(x.name); if (mm.text) parts.push(mm.text);
+    x.qbMemo = parts.join(" / ").slice(0, 255);
+    x.type = (x.chk && x.amt < 0) ? "CHECK" : (x.amt < 0 ? "DEBIT" : "CREDIT");
+    x.inPeriod = (!ps || x.date >= ps) && (!pe || x.date <= pe); if (!x.inPeriod) outside++;
+  });
+  if (dupCount) warn.push(["warn", t("wDup", { n: dupCount })]);
+  if (outside) warn.push(["info", t("wOut", { n: outside })]);
+  if (truncated) warn.push(["info", t("wTrunc", { n: truncated })]);
+  if (nonAscii) warn.push(["warn", t("wAscii", { n: nonAscii })]);
+  var out = outFmt();
+  if (out === "qbo"){
+    if (!/^[A-Za-z0-9-]{1,22}$/.test($("acctid").value.trim())) warn.push(["bad", t("wAcct")]);
+    if (!/^\d{1,9}$/.test($("bid").value.trim())) warn.push(["bad", t("wBid")]);
+  } else {
+    if (!iifClean($("iifacct").value)) warn.push(["bad", t("wIifAcct")]);
+    if (!iifClean($("iifout").value) || !iifClean($("iifin").value)) warn.push(["bad", t("wIifOff")]);
+  }
+  if (S.ofx && txs.length) warn.push(["info", t("wOfx")]);
+
+  var inc = txs.filter(function(x){ return x.inPeriod; }), dep = 0, wd = 0;
+  inc.forEach(function(x){ if (x.amt > 0) dep += x.amt; else wd += -x.amt; });
+  if (S.ofx && S.ofx.ledger != null && inc.length){
+    var endOwed = isCC ? -S.ofx.ledger : S.ofx.ledger;
+    if (!S.edited.stmtEnd) $("stmtEnd").value = ofxAmt(endOwed);
+    if (!S.edited.begin){ $("begin").value = ofxAmt(isCC ? endOwed - wd + dep : endOwed - dep + wd); warn.push(["info", t("wOfxBegin")]); }
+  }
+  var iifRows = inc, skipped = 0;
+  if (out === "iif" && isCC && $("skippay").checked){
+    iifRows = inc.filter(function(x){ var p = x.amt > 0 && /payment|pymt|autopay|thank you/i.test(x.name); if (p) skipped++; return !p; });
+  }
+  if (skipped) warn.push(["info", t("wSkipPay", { n: skipped })]);
+  if (out === "iif") warn.push(["warn", t("wIifDup")]);
+  var begin = parseAmt($("begin").value), stmtEnd = parseAmt($("stmtEnd").value), calc = null;
+  if (begin != null) calc = isCC ? begin + wd - dep : begin + dep - wd;
+  if (begin == null) warn.push(["info", t("wNoBegin")]);
+  if (ps && pe && ps > pe) warn.push(["bad", t("wDates")]);
+  if (!inc.length && !warn.some(function(w){ return w[0] === "bad"; })) warn.push(["bad", t("wEmpty")]);
+  return { txs: txs, inc: inc, iifRows: iifRows, dep: dep, wd: wd, begin: begin, stmtEnd: stmtEnd, calc: calc, ps: ps, pe: pe, isCC: isCC, warn: warn };
+}
+
+function outFmt(){ return $("fmtIif").checked ? "iif" : "qbo"; }
+function iifClean(s){ return ascii(s).text.replace(/[\t"]/g, " ").replace(/\s+/g, " ").trim(); }
+function makeIIF(r){
+  var acct = iifClean($("iifacct").value), outA = iifClean($("iifout").value), inA = iifClean($("iifin").value);
+  var L = ["!TRNS\tTRNSID\tTRNSTYPE\tDATE\tACCNT\tNAME\tAMOUNT\tDOCNUM\tMEMO\tCLEAR",
+           "!SPL\tSPLID\tTRNSTYPE\tDATE\tACCNT\tNAME\tAMOUNT\tDOCNUM\tMEMO\tCLEAR",
+           "!ENDTRNS"];
+  r.iifRows.slice().sort(function(a, b){ return a.date < b.date ? -1 : a.date > b.date ? 1 : a.idx - b.idx; }).forEach(function(x){
+    var type = r.isCC ? (x.amt < 0 ? "CREDIT CARD" : "CC CREDIT") : (x.amt < 0 ? "CHECK" : "DEPOSIT");
+    var d = x.date.slice(4, 6) + "/" + x.date.slice(6, 8) + "/" + x.date.slice(0, 4);
+    var doc = (x.type === "CHECK" && x.chk) ? x.chk : "";
+    var memo = iifClean([x.name, x.memoText].filter(Boolean).join(" / ")).slice(0, 250);
+    L.push(["TRNS", "", type, d, acct, "", ofxAmt(x.amt), doc, memo, "N"].join("\t"));
+    L.push(["SPL", "", type, d, x.amt < 0 ? outA : inA, "", ofxAmt(-x.amt), doc, memo, "N"].join("\t"));
+    L.push("ENDTRNS");
+  });
+  return L.join("\r\n") + "\r\n";
+}
+
+function makeQBO(r){
+  var now = new Date();
+  var stamp = now.getFullYear() + pad(now.getMonth()+1) + pad(now.getDate()) + pad(now.getHours()) + pad(now.getMinutes()) + pad(now.getSeconds());
+  var bid = $("bid").value.trim(), acct = $("acctid").value.trim(), org = esc(ascii($("org").value).text || "Bank");
+  var ps = r.ps || (r.inc[0] && r.inc[0].date), pe = r.pe || (r.inc.length && r.inc[r.inc.length-1].date);
+  var L = ["OFXHEADER:100","DATA:OFXSGML","VERSION:102","SECURITY:NONE","ENCODING:USASCII","CHARSET:1252","COMPRESSION:NONE","OLDFILEUID:NONE","NEWFILEUID:NONE",""];
+  L.push("<OFX>","<SIGNONMSGSRSV1>","<SONRS>","<STATUS>","<CODE>0","<SEVERITY>INFO","</STATUS>","<DTSERVER>" + stamp,"<LANGUAGE>ENG","<FI>","<ORG>" + org,"<FID>" + bid,"</FI>","<INTU.BID>" + bid,"</SONRS>","</SIGNONMSGSRSV1>");
+  var tl = ["<BANKTRANLIST>","<DTSTART>" + ps + "120000","<DTEND>" + pe + "120000"];
+  r.inc.slice().sort(function(a, b){ return a.date < b.date ? -1 : a.date > b.date ? 1 : a.idx - b.idx; }).forEach(function(x){
+    tl.push("<STMTTRN>","<TRNTYPE>" + x.type,"<DTPOSTED>" + x.date + "120000","<TRNAMT>" + ofxAmt(x.amt),"<FITID>" + x.fitid);
+    if (x.chk && x.type === "CHECK") tl.push("<CHECKNUM>" + x.chk);
+    tl.push("<NAME>" + esc(x.qbName)); if (x.qbMemo) tl.push("<MEMO>" + esc(x.qbMemo)); tl.push("</STMTTRN>");
+  });
+  tl.push("</BANKTRANLIST>");
+  var endBal = r.calc != null ? r.calc : (r.isCC ? r.wd - r.dep : r.dep - r.wd);
+  var ledger = ["<LEDGERBAL>","<BALAMT>" + ofxAmt(r.isCC ? -endBal : endBal),"<DTASOF>" + pe + "120000","</LEDGERBAL>"];
+  if (r.isCC){
+    L.push("<CREDITCARDMSGSRSV1>","<CCSTMTTRNRS>","<TRNUID>1","<STATUS>","<CODE>0","<SEVERITY>INFO","</STATUS>","<CCSTMTRS>","<CURDEF>USD","<CCACCTFROM>","<ACCTID>" + acct,"</CCACCTFROM>");
+    L.push.apply(L, tl); L.push.apply(L, ledger); L.push("</CCSTMTRS>","</CCSTMTTRNRS>","</CREDITCARDMSGSRSV1>");
+  } else {
+    var routing = $("routing").value.replace(/\D/g, "") || "000000000";
+    L.push("<BANKMSGSRSV1>","<STMTTRNRS>","<TRNUID>1","<STATUS>","<CODE>0","<SEVERITY>INFO","</STATUS>","<STMTRS>","<CURDEF>USD","<BANKACCTFROM>","<BANKID>" + routing,"<ACCTID>" + acct,"<ACCTTYPE>" + $("accttype").value,"</BANKACCTFROM>");
+    L.push.apply(L, tl); L.push.apply(L, ledger); L.push("</STMTRS>","</STMTTRNRS>","</BANKMSGSRSV1>");
+  }
+  L.push("</OFX>");
+  return L.join("\r\n") + "\r\n";
+}
+
+/* ---------- render ---------- */
+function update(){
+  var single = $("modeSingle").checked, isCC = $("accttype").value === "CREDITCARD", out = outFmt();
+  var ext = out === "iif" ? ".iif" : ".qbo";
+  qsa("[data-mode]").forEach(function(el){ el.hidden = (el.getAttribute("data-mode") === "single") !== single; });
+  qsa("[data-fmt]").forEach(function(el){ el.hidden = el.getAttribute("data-fmt") !== out; });
+  $("routingWrap").hidden = isCC || out !== "qbo";
+  $("skipPayWrap").hidden = out !== "iif" || !isCC;
+  if (!S.iifAcctEdited) $("iifacct").value = isCC ? "Credit Card" : "Checking";
+  $("iifOutL").textContent = t(isCC ? "iifOutCC" : "iifOutBank");
+  $("iifInL").textContent = t(isCC ? "iifInCC" : "iifInBank");
+  $("bidHint").textContent = (S.ofx && S.ofx.bid) ? t("bidOfx", { b: S.ofx.bid }) : t(S.preset && S.preset.bidKey ? S.preset.bidKey : "bidGeneric");
+  $("dlLabel").textContent = t("dlBtn", { EXT: ext.slice(1).toUpperCase() });
+  $("dlNote").textContent = t("dlNote", { ext: ext });
+  var det = "";
+  if (S.ofx) det = t("detected", { b: t("kOfx") });
+  else if (S.preset) det = t("detected", { b: S.preset.name + " · " + t(S.preset.kind) });
+  else if (S.label.text && $("bank").value === "auto" && S.raw.length) det = t("notDetected");
+  $("detected").textContent = det;
+  $("beginLabel").textContent = t(isCC ? "beginCC" : "beginBank");
+  $("endLabel").textContent = t(isCC ? "endCC" : "endBank");
+  $("r_beginL").textContent = t(isCC ? "rBeginCC" : "rBeginBank");
+  $("r_inL").textContent = t(isCC ? "rInCC" : "rInBank");
+  $("r_outL").textContent = t(isCC ? "rOutCC" : "rOutBank");
+  $("fileLabel").textContent = S.label.key ? t(S.label.key) : S.label.text;
+
+  var r = compute();
+  $("r_period").textContent = r.ps ? ymdShow(r.ps) + " – " + ymdShow(r.pe) : "-";
+  $("r_count").textContent = t("rCount", { n: r.inc.length });
+  $("r_begin").textContent = money(r.begin); $("r_in").textContent = money(r.dep); $("r_out").textContent = money(r.wd);
+  $("r_calc").textContent = money(r.calc); $("r_stmt").textContent = money(r.stmtEnd);
+  var pill = $("r_pill"), msg = $("r_msg");
+  if (r.calc == null || r.stmtEnd == null){ $("r_diff").textContent = "-"; pill.className = "pill neutral"; pill.textContent = t("pillNeed"); msg.textContent = t("msgNeed"); }
+  else {
+    var diff = r.stmtEnd - r.calc; $("r_diff").textContent = money(diff);
+    if (diff === 0){ pill.className = "pill ok"; pill.textContent = t("pillOk"); msg.textContent = t("msgOk"); }
+    else { pill.className = "pill bad"; pill.textContent = t("pillBad", { d: money(diff) }); msg.textContent = t("msgBad"); }
+  }
+  var ul = $("warnings"); ul.innerHTML = "";
+  (r.warn.length ? r.warn : [["info", t("wNone")]]).forEach(function(w){ var li = document.createElement("li"); li.className = w[0]; li.textContent = w[1]; ul.appendChild(li); });
+
+  var tb = $("preview"); tb.innerHTML = "";
+  r.txs.slice(0, 500).forEach(function(x){
+    var tr = document.createElement("tr"); if (!x.inPeriod) tr.className = "out";
+    [[String(x.line), "mono"], [ymdShow(x.date), "mono"], [x.qbName, "name"], [x.type === "CHECK" ? x.chk : "", "mono"],
+     [money(x.amt), "amt " + (x.amt < 0 ? "neg" : "pos")], [x.type, "mono"]].forEach(function(c){
+      var td = document.createElement("td"); td.textContent = c[0]; td.className = c[1]; tr.appendChild(td);
+    });
+    var td = document.createElement("td"), sp = document.createElement("span");
+    sp.className = "tag" + (x.dupN > 1 ? " dup" : "");
+    sp.textContent = !x.inPeriod ? t("stOut") : (x.dupN > 1 ? t("stDup", { n: x.dupN }) : t("stIn"));
+    td.appendChild(sp); tr.appendChild(td); tb.appendChild(tr);
+  });
+
+  if (!S.edited.fname){
+    var acct = $("acctid").value.replace(/[^A-Za-z0-9]/g, "").slice(-4) || "acct";
+    $("fname").value = acct + "_" + (r.ps || "start") + "_" + (r.pe || "end") + ext;
+  } else $("fname").value = $("fname").value.replace(/\.(qbo|iif)$/i, ext);
+  var blocked = r.warn.some(function(w){ return w[0] === "bad"; });
+  S.outText = blocked ? "" : (out === "iif" ? makeIIF(r) : makeQBO(r));
+  $("out").value = blocked ? t("blocked") : S.outText;
+  $("download").disabled = blocked; $("copy").disabled = blocked;
+}
+
+/* ---------- language ---------- */
+function applyLang(lang){
+  LANG = lang === "en" ? "en" : "ko";
+  document.documentElement.lang = LANG;
+  qsa("[data-i18n]").forEach(function(el){ el.textContent = t(el.getAttribute("data-i18n")); });
+  qsa("[data-i18n-html]").forEach(function(el){ el.innerHTML = t(el.getAttribute("data-i18n-html")); });
+  qsa("[data-i18n-aria]").forEach(function(el){ el.setAttribute("aria-label", t(el.getAttribute("data-i18n-aria"))); });
+  $("lang-ko").setAttribute("aria-pressed", LANG === "ko"); $("lang-en").setAttribute("aria-pressed", LANG === "en");
+  FIELDS.forEach(function(f){ var sel = $("m_" + f); if (sel.options.length) sel.options[0].textContent = OPTIONAL["m_" + f] ? t("none") : t("choose"); });
+  fillBanks();
+  if (CONFIG.helpUrl){
+    $("helpBox").hidden = false; $("helpText").textContent = CONFIG.helpText[LANG];
+    $("helpLink").textContent = CONFIG.helpButton[LANG]; $("helpLink").href = CONFIG.helpUrl;
+  }
+  try { localStorage.setItem("csv2qbo-lang", LANG); } catch (e) {}
+  if (location.hash !== "#" + LANG){ try { history.replaceState(null, "", "#" + LANG); } catch (e) {} }
+  if (S.raw.length) update();
+}
+$("lang-ko").addEventListener("click", function(){ applyLang("ko"); });
+$("lang-en").addEventListener("click", function(){ applyLang("en"); });
+window.addEventListener("hashchange", function(){ var h = location.hash.slice(1); if ((h === "ko" || h === "en") && h !== LANG) applyLang(h); });
+
+/* ---------- events ---------- */
+function readFile(f){
+  if (!f) return;
+  S.xlsxFail = false;
+  if (/\.(xlsx|xls)$/i.test(f.name)){
+    if (!window.XLSX){ S.xlsxFail = true; loadRows([], { text: f.name }); return; }
+    var rb = new FileReader();
+    rb.onload = function(){
+      try {
+        var wb = XLSX.read(new Uint8Array(rb.result), { type: "array", cellDates: false });
+        var ws = wb.Sheets[wb.SheetNames[0]];
+        var rows = XLSX.utils.sheet_to_json(ws, { header: 1, raw: false, defval: "" });
+        loadRows(cleanRows(rows), { text: f.name });
+      } catch (e) { S.xlsxFail = true; loadRows([], { text: f.name }); }
+    };
+    rb.readAsArrayBuffer(f); return;
+  }
+  var rd = new FileReader();
+  rd.onload = function(){
+    var text = String(rd.result);
+    if (/\.(qfx|ofx|qbo)$/i.test(f.name) || /<OFX>/i.test(text.slice(0, 4000))) loadOFX(text, { text: f.name });
+    else loadText(text, { text: f.name });
+  };
+  rd.readAsText(f);
+}
+var drop = $("drop");
+drop.addEventListener("click", function(){ $("file").click(); });
+drop.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " "){ e.preventDefault(); $("file").click(); } });
+$("file").addEventListener("change", function(e){ readFile(e.target.files[0]); e.target.value = ""; });
+["dragenter","dragover"].forEach(function(ev){ drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.add("over"); }); });
+["dragleave","drop"].forEach(function(ev){ drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.remove("over"); }); });
+drop.addEventListener("drop", function(e){ readFile(e.dataTransfer.files[0]); });
+$("loadSample").addEventListener("click", function(){ S.xlsxFail = false; loadText(SAMPLE, { key: "sampleLabel" }); });
+$("goTool").addEventListener("click", function(){ $("tool").scrollIntoView({ behavior: "smooth", block: "start" }); });
+$("goGuide").addEventListener("click", function(){ $("guide").scrollIntoView({ behavior: "smooth", block: "start" }); });
+$("goFix").addEventListener("click", function(){ $("fixAcct").scrollIntoView({ behavior: "smooth", block: "start" }); });
+
+["pstart","pend","begin","stmtEnd","fname"].forEach(function(id){ $(id).addEventListener("input", function(){ S.edited[id] = true; update(); }); });
+["m_date","m_name","m_amount","m_debit","m_credit","m_check","m_memo","m_balance","datefmt","flip","modeSplit","modeSingle"].forEach(function(id){ $(id).addEventListener("change", update); });
+["acctid","org","bid","routing","iifacct","iifout","iifin"].forEach(function(id){ $(id).addEventListener("input", function(){ if (id === "iifacct") S.iifAcctEdited = true; update(); }); });
+["fmtQbo","fmtIif","skippay"].forEach(function(id){ $(id).addEventListener("change", update); });
+$("bank").addEventListener("change", function(){ if (S.raw.length && !S.ofx && !S.xlsxFail) loadRows(S.raw, S.label); });
+$("accttype").addEventListener("change", function(){ S.edited.begin = S.edited.stmtEnd = false; $("begin").value = ""; $("stmtEnd").value = ""; update(); });
+
+function toast(s){ $("toast").textContent = s; setTimeout(function(){ $("toast").textContent = ""; }, 3500); }
+$("download").addEventListener("click", function(){
+  var ext = outFmt() === "iif" ? ".iif" : ".qbo";
+  var text = S.outText, name = $("fname").value.trim() || ("bank" + ext);
+  if (name.slice(-4).toLowerCase() !== ext) name += ext;
+  try {
+    var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type: ext === ".iif" ? "application/octet-stream" : "application/vnd.intu.qbo" })); a.download = name;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000);
+    toast(t("saved", { f: name }));
+  } catch (e) { toast(t("saveFail")); }
+});
+$("copy").addEventListener("click", function(){
+  var text = S.outText;
+  var fallback = function(){ $("out").closest("details").open = true; $("out").focus(); $("out").select(); toast(t("selected")); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function(){ toast(t("copied", { ext: outFmt() === "iif" ? ".iif" : ".qbo" })); }, fallback);
+  else fallback();
+});
+
+window.__bank2qbo = { loadText: loadText, loadOFX: loadOFX, applyLang: applyLang, text: function(){ return S.outText; } };
+
+/* ---------- start ---------- */
+var start = "ko";
+var h0 = location.hash.slice(1);
+if (h0 === "ko" || h0 === "en") start = h0;
+else {
+  var saved = null; try { saved = localStorage.getItem("csv2qbo-lang"); } catch (e) {}
+  if (saved === "ko" || saved === "en") start = saved;
+  else if (!/^ko/i.test(navigator.language || "")) start = "en";
+}
+applyLang(start);
+loadText(SAMPLE, { key: "sampleLabel" });
+})();
+</script>
+
+</body></html>
