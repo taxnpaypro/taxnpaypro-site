@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-07",
+  "category": "qbo",
+  "slug": {
+    "ko": "quickbooks-online-basics-korean",
+    "en": "quickbooks-online-basics-for-beginners"
+  },
+  "title": {
+    "ko": "QuickBooks Online 기초 가이드: 처음 시작할 때 꼭 알아야 할 10가지",
+    "en": "QuickBooks Online Basics for Beginners: 10 Things to Know Before You Start"
+  },
+  "excerpt": {
+    "ko": "요금제, 첫 설정, 화면 구조, 계정과목, 수입·지출 입력, 은행 연결, Reconcile, 3대 리포트까지 그림과 표로 자세히 정리했습니다.",
+    "en": "Plans, first settings, the home screen, chart of accounts, invoices and bills, bank feeds, reconciling and three key reports, step by step."
+  }
+}
