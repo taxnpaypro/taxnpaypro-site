@@ -173,7 +173,7 @@ def main():
     # visitor statistics (Cloudflare Web Analytics): token in data/site_base.json "cfAnalyticsToken"; empty = off
     tok = (base.get('cfAnalyticsToken') or '').strip()
     if tok and not re.fullmatch(r'[0-9a-f]{32}', tok): print('ERRORS:\n - cfAnalyticsToken must be 32 hex characters'); sys.exit(1)
-    snip = ("<!--cfwa--><script defer src=\"https://static.cloudflareinsights.com/beacon.min.js\" data-cf-beacon='{\"token\": \"%s\"}'></script><!--/cfwa-->" % tok) if tok else ''
+    snip = ("<!--cfwa--><script type=\"module\" src=\"https://static.cloudflareinsights.com/beacon.min.js\" data-cf-beacon='{\"token\": \"%s\"}'></script><!--/cfwa-->" % tok) if tok else ''
     pages = [os.path.join(R, 'index.html'), os.path.join(R, 'csv-to-qbo.html')] + glob.glob(os.path.join(B, '*.html'))
     for f in pages:
         s = open(f, encoding='utf-8').read()
