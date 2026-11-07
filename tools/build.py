@@ -162,6 +162,26 @@ def main():
     assert home.count('__FALLBACK__') == 1
     fb = json.dumps(site, ensure_ascii=False).replace('</', '<\\/')
     open(os.path.join(R, 'index.html'), 'w', encoding='utf-8').write(home.replace('__FALLBACK__', fb))
+    # sitemap.xml + robots.txt for Google Search Console
+    urls = [('https://%s/' % DOMAIN, site['updated']), ('https://%s/csv-to-qbo' % DOMAIN, site['updated']), ('https://%s/blog/' % DOMAIN, site['updated'])]
+    for p in posts:
+        for lang in ('ko', 'en'): urls.append((p['url'][lang], p['date']))
+    sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(
+        '  <url><loc>%s</loc><lastmod>%s</lastmod></url>\n' % (html.escape(u), d) for u, d in urls) + '</urlset>\n'
+    open(os.path.join(R, 'sitemap.xml'), 'w', encoding='utf-8').write(sm)
+    open(os.path.join(R, 'robots.txt'), 'w', encoding='utf-8').write('User-agent: *\nAllow: /\nSitemap: https://%s/sitemap.xml\n' % DOMAIN)
+    # visitor statistics (Cloudflare Web Analytics): token in data/site_base.json "cfAnalyticsToken"; empty = off
+    tok = (base.get('cfAnalyticsToken') or '').strip()
+    if tok and not re.fullmatch(r'[0-9a-f]{32}', tok): print('ERRORS:\n - cfAnalyticsToken must be 32 hex characters'); sys.exit(1)
+    snip = ("<!--cfwa--><script defer src=\"https://static.cloudflareinsights.com/beacon.min.js\" data-cf-beacon='{\"token\": \"%s\"}'></script><!--/cfwa-->" % tok) if tok else ''
+    pages = [os.path.join(R, 'index.html'), os.path.join(R, 'csv-to-qbo.html')] + glob.glob(os.path.join(B, '*.html'))
+    for f in pages:
+        s = open(f, encoding='utf-8').read()
+        s = re.sub(r'<!--cfwa-->.*?<!--/cfwa-->', '', s, flags=re.S)
+        if snip:
+            i = s.rfind('</body>')
+            s = s[:i] + snip + s[i:] if i >= 0 else s + snip
+        open(f, 'w', encoding='utf-8').write(s)
     print('built %d posts' % len(posts))
 
 if __name__ == '__main__':

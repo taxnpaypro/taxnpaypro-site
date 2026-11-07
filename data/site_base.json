@@ -50,5 +50,6 @@
         "en": "Setup, bank imports, and fixes for common errors"
       }
     }
-  ]
+  ],
+  "cfAnalyticsToken": ""
 }
