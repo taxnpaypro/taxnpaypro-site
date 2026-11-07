@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-07",
+  "category": "quickbooks",
+  "slug": {
+    "ko": "quickbooks-online-basics-korean",
+    "en": "quickbooks-online-basics-for-beginners"
+  },
+  "title": {
+    "ko": "QuickBooks Online 기초 수업: 처음 쓰는 사장님을 위한 10교시 완전 정리",
+    "en": "QuickBooks Online Basics for Beginners: A 10-Lesson Class for New Users"
+  },
+  "excerpt": {
+    "ko": "요금제, 첫 설정, 화면 구조, 계정과목, 인보이스와 비용, 은행 연결, Reconcile, 3대 리포트까지. 그림과 표로 차근차근 배웁니다.",
+    "en": "Plans, first settings, the home screen, chart of accounts, invoices and bills, bank feeds, reconciling and three key reports, step by step."
+  }
+}
