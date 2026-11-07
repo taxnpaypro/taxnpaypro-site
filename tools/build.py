@@ -4,7 +4,7 @@
 Each post lives in src/<YYYY-MM-DD>_<Slug>/ with:
   Blog_<Slug>_KR.html, Blog_<Slug>_EN.html   post bodies (inline styles, images by file name)
   Fig*.png                                  figures
-  meta.json  {"date","category" (accounting|tax|payroll|quickbooks),
+  meta.json  {"date","category" (accounting|tax|payroll|quickbooks|qbo),
               "slug":{"ko","en"}, "title":{"ko","en"}, "excerpt":{"ko","en"}}
 Run:  python3 tools/build.py
       writes blog/<slug>.html, blog/img/, blog/index.html (blog list),
@@ -62,7 +62,7 @@ a:focus-visible{{outline:2px solid var(--gold);outline-offset:3px}}
 </body></html>
 '''
 
-CAT = {'accounting': ('회계', 'Accounting'), 'tax': ('세무', 'Tax'), 'payroll': ('급여', 'Payroll'), 'quickbooks': ('QuickBooks Desktop', 'QuickBooks Desktop')}
+CAT = {'accounting': ('회계', 'Accounting'), 'tax': ('세무', 'Tax'), 'payroll': ('급여', 'Payroll'), 'quickbooks': ('QuickBooks Desktop', 'QuickBooks Desktop'), 'qbo': ('QuickBooks Online', 'QuickBooks Online')}
 
 def main():
     base = json.load(open(os.path.join(R, 'data', 'site_base.json'), encoding='utf-8'))
