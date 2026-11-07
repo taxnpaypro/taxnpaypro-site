@@ -1,6 +1,8 @@
 import re,sys
 TOK='§SITE§'
 def clean(t):
+    # links to the free converter and the blog are allowed; only service-offer sentences are removed
+    t=t.replace('taxnpaypro.com/csv-to-qbo','§CONV§').replace('taxnpaypro.com/blog','§BLOG§')
     t=t.replace('taxnpaypro.com',TOK)
     out=[]
     def fix_p(m):
@@ -15,7 +17,7 @@ def clean(t):
         if not re.sub('<[^>]+>','',nb).strip(): return ''
         return head+nb+tail
     t=re.sub(r'<p[^>]*>.*?</p>',fix_p,t,flags=re.S)
-    return t.replace(TOK,'taxnpaypro.com')
+    return t.replace(TOK,'taxnpaypro.com').replace('§CONV§','taxnpaypro.com/csv-to-qbo').replace('§BLOG§','taxnpaypro.com/blog')
 if __name__=='__main__':
     import glob
     for f in sorted(glob.glob('blogsrc/*/*.html')):

@@ -20,6 +20,9 @@ B = os.path.join(R, 'blog')
 PAGE = '''<!doctype html>
 <html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{title} · BIZLEX</title>
+<meta name="description" content="{desc}">
+<link rel="canonical" href="https://taxnpaypro.com/blog/{slug}.html">
+<link rel="alternate" hreflang="{lang}" href="https://taxnpaypro.com/blog/{slug}.html"><link rel="alternate" hreflang="{olang}" href="https://taxnpaypro.com/blog/{oslug}.html">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;800&family=Noto+Sans+KR:wght@400;700&display=swap">
 <style>
 :root{{color-scheme:light;--navy:#14202E;--gold:#D4A845;--bg:#FFFFFF;--ink:#222;--muted:#5A6573}}
@@ -39,6 +42,8 @@ main{{max-width:820px;margin:0 auto;padding-block:36px 64px;padding-left:max(16p
 h1.t{{font-family:Manrope,"Noto Sans KR",sans-serif;font-weight:800;font-size:clamp(28px,4.4vw,40px);line-height:1.25;color:#1F3A5F;margin:0 0 18px;text-wrap:balance}}
 main img{{max-width:100%;height:auto}}
 main table{{display:block;max-width:100%;overflow-x:auto}} main pre,main p{{max-width:100%}}
+.conv{{margin-top:36px;padding:16px 18px;border:1px solid #dde3ea;border-left:5px solid var(--gold);border-radius:8px;background:#FBF8F0;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}}
+.conv b{{color:#1F3A5F}} .conv span{{color:var(--muted);flex:1 1 260px}} .conv a{{color:#fff;background:var(--navy);padding:8px 14px;border-radius:6px;text-decoration:none;font-weight:700;min-height:40px;display:inline-flex;align-items:center}}
 .back{{margin-top:40px;padding-top:20px;border-top:1px solid #dde3ea}}
 .back a{{color:#1F3A5F;font-weight:700;text-decoration:none}}
 a:focus-visible{{outline:2px solid var(--gold);outline-offset:3px}}
@@ -51,6 +56,7 @@ a:focus-visible{{outline:2px solid var(--gold);outline-offset:3px}}
 <p class="meta">{date} · {cat}</p>
 <h1 class="t">{title}</h1>
 {body}
+<aside class="conv"><b>{convh}</b><span>{convt}</span><a href="/csv-to-qbo">{convb}</a></aside>
 <p class="back"><a href="index.html">{backtxt}</a></p>
 </main>
 </body></html>
@@ -84,7 +90,10 @@ def main():
                 if '/' in src or not os.path.exists(os.path.join(d, src)): errors.append('%s: missing image %s' % (folder, src))
             body = re.sub(r'src="([^"/]+\.png)"', lambda x: 'src="img/%s/%s"' % (folder, x.group(1)), body)
             o = 'en' if lang == 'ko' else 'ko'
-            page = PAGE.format(lang=lang, title=title, body=body, date=m['date'], cat=CAT[m['category']][0 if lang == 'ko' else 1],
+            page = PAGE.format(lang=lang, title=html.escape(title), body=body, desc=html.escape(m['excerpt'][lang], quote=True), slug=m['slug'][lang], oslug=m['slug'][o],
+                               convh='무료 은행 CSV → QBO 변환기' if lang == 'ko' else 'Free bank CSV to QBO converter',
+                               convt='은행 CSV를 QuickBooks Desktop용 .qbo·.iif 파일로. 브라우저 안에서만 처리합니다.' if lang == 'ko' else 'Turn bank CSV files into QuickBooks Desktop .qbo or .iif files, right in your browser.',
+                               convb='변환기 열기' if lang == 'ko' else 'Open the converter', date=m['date'], cat=CAT[m['category']][0 if lang == 'ko' else 1],
                                blog='블로그' if lang == 'ko' else 'Blog', other='%s.html' % m['slug'][o], olang=o,
                                oname='English' if lang == 'ko' else '한국어', backtxt='← 블로그 글 목록' if lang == 'ko' else '← All articles')
             open(os.path.join(B, m['slug'][lang] + '.html'), 'w', encoding='utf-8').write(page)

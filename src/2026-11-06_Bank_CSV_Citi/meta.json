@@ -1,0 +1,16 @@
+{
+ "date": "2026-11-06",
+ "category": "quickbooks",
+ "slug": {
+  "en": "citi-csv-to-qbo-quickbooks-desktop",
+  "ko": "citi-csv-to-qbo-korean"
+ },
+ "title": {
+  "ko": "Citi CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)",
+  "en": "How to Import Citi CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)"
+ },
+ "excerpt": {
+  "ko": "Citi에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.",
+  "en": "Download the Citi CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile."
+ }
+}
