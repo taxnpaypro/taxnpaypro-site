@@ -86,6 +86,26 @@
     },
     {
       "date": "2026-11-07",
+      "category": "quickbooks",
+      "title": {
+        "ko": "외부 급여 서비스를 쓰는데 QuickBooks에 급여가 두 번 잡힐 때: Payroll Clearing 계정으로 정리하는 법",
+        "en": "Outside Payroll Showing Up Twice in QuickBooks? Fix It With a Payroll Clearing Account"
+      },
+      "excerpt": {
+        "ko": "급여대장은 분개 1건으로, 은행 출금은 모두 Payroll Clearing으로. 잔액이 0이면 끝입니다. Desktop·Online 단계별.",
+        "en": "Record the payroll register once, send every withdrawal to Payroll Clearing, and the balance hits zero."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/quickbooks-outside-payroll-clearing-korean.html",
+        "en": "https://taxnpaypro.com/blog/outside-payroll-quickbooks-payroll-clearing.html"
+      },
+      "previewUrl": {
+        "ko": "blog/quickbooks-outside-payroll-clearing-korean.html",
+        "en": "blog/outside-payroll-quickbooks-payroll-clearing.html"
+      }
+    },
+    {
+      "date": "2026-11-07",
       "category": "qbo",
       "title": {
         "ko": "QuickBooks Online 기초 가이드: 처음 시작할 때 꼭 알아야 할 10가지",
