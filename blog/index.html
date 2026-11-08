@@ -1,50 +1,432 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>BIZLEX Blog · Accounting, Tax, Payroll, QuickBooks Desktop</title>
-    <meta name="description" content="회계·세무·급여·QuickBooks Desktop을 한국어와 영어로 쉽게 설명하는 BIZLEX 블로그. Accounting, tax, payroll and QuickBooks Desktop articles in Korean and English.">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;800&family=Noto+Sans+KR:wght@400;700&display=swap">
-    <style>
-    :root{color-scheme:light}*{box-sizing:border-box}html,body{margin:0;background:#F5F6F4;color:#14202E}
-    body{font-family:"Noto Sans KR",Manrope,system-ui,sans-serif;word-break:keep-all;overflow-wrap:anywhere}
-    .top{background:#14202E;padding:12px max(16px,env(safe-area-inset-left,0px))}
-    .top .in,.wrap{max-width:980px;margin:0 auto}
-    .top .in{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-    .logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:Manrope,sans-serif}
-    .logo b{font-weight:800;font-size:22px;letter-spacing:3px}.logo i{width:4px;height:26px;background:#D4A845}.logo span{font-size:22px;letter-spacing:3px}
-    .lang{display:inline-flex;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:3px}
-    .lang button{font:inherit;font-size:13px;border:0;background:none;color:#C9D3DE;padding:5px 13px;border-radius:999px;cursor:pointer;min-height:32px}
-    .lang button[aria-pressed=true]{background:#D4A845;color:#14202E;font-weight:700}
-    .wrap{padding:40px max(16px,env(safe-area-inset-left,0px)) 64px}
-    h1{font-family:Manrope,"Noto Sans KR",sans-serif;font-weight:800;font-size:clamp(30px,4.6vw,44px);margin:0 0 8px}
-    .sub{color:#556170;margin:0 0 28px}
-    .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-    .tabs button{font:inherit;font-size:14px;border:1px solid #D9DDDF;background:#fff;border-radius:999px;padding:7px 14px;cursor:pointer;min-height:40px}
-    .tabs button[aria-pressed=true]{background:#14202E;color:#fff;border-color:#14202E}
-    .post{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:4px 24px;padding:20px 0;border-bottom:1px solid #D9DDDF;color:inherit;text-decoration:none;align-items:baseline}
-    @media(max-width:680px){.post{grid-template-columns:minmax(0,1fr)}}
-    .post .d{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:#556170}
-    .post b{display:block;font-size:19px;line-height:1.4}.post em{display:block;font-style:normal;color:#556170;font-size:14.5px;margin-top:4px}
-    .post .c{font-size:12.5px;background:#EEF0EE;border-radius:999px;padding:3px 10px;white-space:nowrap;justify-self:start}
-    .post:hover b{text-decoration:underline}
-    footer{color:#556170;font-size:13px;margin-top:40px}footer p{margin:4px 0}
-    [hidden]{display:none!important}
-    :focus-visible{outline:2px solid #D4A845;outline-offset:3px}
-    </style></head><body>
-    <header class="top"><div class="in"><a class="logo" href="/" aria-label="BIZLEX, INC."><b>BIZ</b><i aria-hidden="true"></i><span>LEX</span></a>
-    <div class="lang" role="group" aria-label="Language"><button type="button" id="lk" aria-pressed="true">한국어</button><button type="button" id="le" aria-pressed="false">English</button></div></div></header>
-    <main class="wrap">
-    <section id="ko"><h1>BIZLEX 블로그</h1><p class="sub">회계·세무·급여·QuickBooks Desktop을 쉬운 한국어로.</p><div class="tabs"><button type="button" data-cat="all">전체</button><button type="button" data-cat="accounting">회계</button><button type="button" data-cat="tax">세무</button><button type="button" data-cat="payroll">급여</button><button type="button" data-cat="quickbooks">QuickBooks Desktop</button><button type="button" data-cat="qbo">QuickBooks Online</button></div><div class="list"><a class="post" data-cat="tax" href="church-giving-statement-korean.html"><span class="d">2026-11-07</span><span class="b"><b>교회·비영리 연말 기부금 영수증, IRS 요건과 엑셀로 직접 만드는 법</b><em>교회·비영리 연말 기부금 영수증에 꼭 들어갈 내용과 $250·$75 기준, 교인 번호 하나로 영수증을 뽑는 엑셀 수식을 정리했습니다.</em></span><span class="c">세무</span></a><a class="post" data-cat="tax" href="solo-401k-sep-ira-2026-korean.html"><span class="d">2026-11-07</span><span class="b"><b>2026년 1인 401(k)와 SEP-IRA, 어느 쪽이 더 넣을 수 있을까? 최대 납입액 직접 계산하기</b><em>2026년 한도와 자영업자 20% 계산식, 순이익별 예시, 12월 31일 근로자 납입 선택까지 1인 401(k)와 SEP-IRA를 비교합니다.</em></span><span class="c">세무</span></a><a class="post" data-cat="payroll" href="bonus-gross-up-2026-korean.html"><span class="d">2026-11-07</span><span class="b"><b>2026년 연말 보너스 그로스업: 약속한 실수령액을 정확히 맞추는 계산법 (수식·예시)</b><em>약속한 실수령 보너스를 맞추는 그로스업 수식, $184,500·$200,000 예외, 회사 부담 비용, $25 선물 규칙까지.</em></span><span class="c">급여</span></a><a class="post" data-cat="payroll" href="nanny-tax-2026-korean.html"><span class="d">2026-11-07</span><span class="b"><b>2026년 내니 택스: 내가 대상인지, Schedule H와 W-2 숫자를 직접 계산하는 법</b><em>2026년 $3,000·분기 $1,000 기준과 가족 예외로 대상 여부를 확인하고, Schedule H·W-2 숫자와 마감일을 정리합니다.</em></span><span class="c">급여</span></a><a class="post" data-cat="tax" href="charitable-deduction-2026-korean-guide.html"><span class="d">2026-11-07</span><span class="b"><b>2026년 기부금 공제, 새 규칙으로 직접 계산하는 법: 표준공제 받아도 기부가 세금을 줄일까?</b><em>2026년부터 표준공제에 현금 기부 최대 $1,000(부부 $2,000) 추가, 항목별은 AGI 0.5% 초과분만. 두 합계 비교로 직접 계산합니다.</em></span><span class="c">세무</span></a><a class="post" data-cat="quickbooks" href="quickbooks-outside-payroll-clearing-korean.html"><span class="d">2026-11-07</span><span class="b"><b>외부 급여 서비스를 쓰는데 QuickBooks에 급여가 두 번 잡힐 때: Payroll Clearing 계정으로 정리하는 법</b><em>급여대장은 분개 1건으로, 은행 출금은 모두 Payroll Clearing으로. 잔액이 0이면 끝입니다. Desktop·Online 단계별.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="qbo" href="quickbooks-online-basics-korean.html"><span class="d">2026-11-07</span><span class="b"><b>QuickBooks Online 기초 가이드: 처음 시작할 때 꼭 알아야 할 10가지</b><em>요금제, 첫 설정, 화면 구조, 계정과목, 수입·지출 입력, 은행 연결, Reconcile, 3대 리포트까지 그림과 표로 자세히 정리했습니다.</em></span><span class="c">QuickBooks Online</span></a><a class="post" data-cat="tax" href="2026-mileage-rate-log-korean.html"><span class="d">2026-11-06</span><span class="b"><b>2026년 마일리지 요율 7월 변경: 운행 기록·공제액 계산법</b><em>2026년 IRS 업무용 마일리지 요율은 6월 30일까지 72.5센트, 7월 1일부터 76센트. 날짜별 요율 적용 수식과 표준 vs 실제 경비 비교.</em></span><span class="c">세무</span></a><a class="post" data-cat="accounting" href="duplicate-transactions-reconciliation-difference-korean.html"><span class="d">2026-11-06</span><span class="b"><b>은행 거래 중복·대사 차이, 엑셀로 끝까지 찾는 법</b><em>은행 재연결 후 생긴 중복 거래와 맞지 않는 대사 차이를 내보내기 파일 두 개와 엑셀 수식으로 찾는 6단계. QuickBooks Online·Desktop 메뉴 포함.</em></span><span class="c">회계</span></a><a class="post" data-cat="quickbooks" href="bulk-reclass-journal-entry-korean.html"><span class="d">2026-11-06</span><span class="b"><b>잘못 분류된 거래 수십 건, 재분류 분개로 한 번에 정리하기</b><em>Uncategorized Expense·잘못된 계정의 거래를 엑셀 목록 하나로 점검하고, CSV(Online)·IIF(Desktop) 분개로 한 번에 옮기는 방법.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="undeposited-funds-cleanup-korean.html"><span class="d">2026-11-06</span><span class="b"><b>Undeposited Funds 정리법: 오래된 입금, 매출 중복 없이 정리하기</b><em>Undeposited Funds에 남은 오래된 결제를 경과일로 나누고, 은행 입금과 맞추고, 두 번 잡힌 매출을 찾아 정리하는 7단계.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="american-express-csv-to-qbo-korean.html"><span class="d">2026-11-06</span><span class="b"><b>American Express CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)</b><em>American Express에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="bank-of-america-csv-to-qbo-korean.html"><span class="d">2026-11-06</span><span class="b"><b>Bank of America CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)</b><em>Bank of America에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="capital-one-csv-to-qbo-korean.html"><span class="d">2026-11-06</span><span class="b"><b>Capital One CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)</b><em>Capital One에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="chase-csv-to-qbo-korean.html"><span class="d">2026-11-06</span><span class="b"><b>Chase CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)</b><em>Chase에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="citi-csv-to-qbo-korean.html"><span class="d">2026-11-06</span><span class="b"><b>Citi CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)</b><em>Citi에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="discover-csv-to-qbo-korean.html"><span class="d">2026-11-06</span><span class="b"><b>Discover CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)</b><em>Discover에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="us-bank-csv-to-qbo-korean.html"><span class="d">2026-11-06</span><span class="b"><b>U.S. Bank CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)</b><em>U.S. Bank에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="wells-fargo-csv-to-qbo-korean.html"><span class="d">2026-11-06</span><span class="b"><b>Wells Fargo CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)</b><em>Wells Fargo에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="accounting" href="quickbooks-obe-jeongri.html"><span class="d">2026-11-06</span><span class="b"><b>QuickBooks OBE(Opening Balance Equity) 잔액 정리법: 찾고, 고치고, 0으로 만들기</b><em>대차대조표에 남은 OBE 잔액의 원인을 찾고, 잘못된 줄을 고치고, 정리 분개로 0으로 만드는 방법. Desktop·Online 단계별 안내.</em></span><span class="c">회계</span></a><a class="post" data-cat="accounting" href="quickbooks-prepaid-sanggak.html"><span class="d">2026-11-06</span><span class="b"><b>QuickBooks 선급비용 상각, 엑셀 수식으로 매달 깔끔하게 정리하는 법</b><em>연간 보험료·소프트웨어 같은 선급비용을 매달 상각하는 법. 엑셀 수식 4개, 월별 분개 1건, 잔액 대조까지 예시로 설명합니다.</em></span><span class="c">회계</span></a><a class="post" data-cat="qbo" href="quickbooks-desktop-to-online-korean.html"><span class="d">2026-11-02</span><span class="b"><b>QuickBooks Desktop에서 Online으로: 한인 사장님을 위한 단계별 전환 가이드</b><em>Desktop 지원 종료 일정, 비용 비교, 넘어가는 것과 안 넘어가는 것, 전환 전 준비와 전환 후 확인까지 한 번에 정리했습니다.</em></span><span class="c">QuickBooks Online</span></a><a class="post" data-cat="tax" href="us-llc-korean-nonresident-korean.html"><span class="d">2026-11-02</span><span class="b"><b>한국인 비거주자를 위한 미국 LLC 설립 가이드: 설립보다 중요한 두 가지 신고</b><em>설립 주 고르기, SSN 없이 EIN 받기, 매년 내야 하는 Form 5472, 송금 전 해외직접투자 신고까지 단계별로 정리했습니다.</em></span><span class="c">세무</span></a></div></section>
-    <section id="en" hidden><h1>BIZLEX Blog</h1><p class="sub">Accounting, tax, payroll and QuickBooks Desktop in plain English.</p><div class="tabs"><button type="button" data-cat="all">All</button><button type="button" data-cat="accounting">Accounting</button><button type="button" data-cat="tax">Tax</button><button type="button" data-cat="payroll">Payroll</button><button type="button" data-cat="quickbooks">QuickBooks Desktop</button><button type="button" data-cat="qbo">QuickBooks Online</button></div><div class="list"><a class="post" data-cat="tax" href="church-year-end-giving-statements.html"><span class="d">2026-11-07</span><span class="b"><b>Year-End Giving Statements for Churches and Small Nonprofits: What the IRS Requires and How to Build Them in a Spreadsheet</b><em>What a giving statement must include, the $250 and $75 rules, and spreadsheet formulas to print one per donor.</em></span><span class="c">Tax</span></a><a class="post" data-cat="tax" href="solo-401k-vs-sep-ira-2026.html"><span class="d">2026-11-07</span><span class="b"><b>Solo 401(k) or SEP-IRA for 2026? Calculate Your Maximum Contribution Step by Step</b><em>2026 limits, the 20% self-employed formula, worked examples and the Dec 31 deadline for a Solo 401(k) or SEP-IRA.</em></span><span class="c">Tax</span></a><a class="post" data-cat="payroll" href="holiday-bonus-gross-up-2026.html"><span class="d">2026-11-07</span><span class="b"><b>How to Gross Up a Holiday Bonus in 2026 So Employees Take Home the Exact Amount (Formulas and Examples)</b><em>Pay an exact take-home bonus: 2026 rates, the gross-up formula, edge cases, employer cost and the $25 gift rule.</em></span><span class="c">Payroll</span></a><a class="post" data-cat="payroll" href="nanny-tax-2026-household-employer.html"><span class="d">2026-11-07</span><span class="b"><b>Nanny Tax 2026: Do You Owe It, and How to Work Out the Schedule H and W-2 Numbers Yourself</b><em>The 2026 $3,000 and $1,000 tests, family exceptions, spreadsheet formulas, Schedule H and W-2 numbers and deadlines.</em></span><span class="c">Payroll</span></a><a class="post" data-cat="tax" href="charitable-deduction-2026-standard-vs-itemized.html"><span class="d">2026-11-07</span><span class="b"><b>2026 Charitable Deduction Rules: Will Your Donations Lower Your Taxes? (Standard vs. Itemized, Step by Step)</b><em>New for 2026: up to $1,000 ($2,000 joint) for non-itemizers and a 0.5% AGI floor for itemizers. Compare two totals.</em></span><span class="c">Tax</span></a><a class="post" data-cat="quickbooks" href="outside-payroll-quickbooks-payroll-clearing.html"><span class="d">2026-11-07</span><span class="b"><b>Outside Payroll Showing Up Twice in QuickBooks? Fix It With a Payroll Clearing Account</b><em>Record the payroll register once, send every withdrawal to Payroll Clearing, and the balance hits zero.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="qbo" href="quickbooks-online-basics-for-beginners.html"><span class="d">2026-11-07</span><span class="b"><b>QuickBooks Online Basics for Beginners: 10 Things to Know Before You Start</b><em>Plans, first settings, the home screen, chart of accounts, invoices and bills, bank feeds, reconciling and three key reports, step by step.</em></span><span class="c">QuickBooks Online</span></a><a class="post" data-cat="tax" href="2026-mileage-log-two-irs-rates.html"><span class="d">2026-11-06</span><span class="b"><b>Two IRS Mileage Rates in One Year: How to Log and Calculate Your 2026 Business Mileage</b><em>The 2026 IRS business rate is 72.5 cents through June 30 and 76 cents from July 1. Log trips, apply the right rate by date, compare actual costs.</em></span><span class="c">Tax</span></a><a class="post" data-cat="accounting" href="find-duplicate-transactions-reconciliation-difference.html"><span class="d">2026-11-06</span><span class="b"><b>Duplicate Bank Transactions and a Reconciliation That Won&#x27;t Balance: How to Find Every Difference</b><em>Find duplicate bank transactions and explain every reconciliation difference with two exports and Excel formulas. QuickBooks Online and Desktop steps.</em></span><span class="c">Accounting</span></a><a class="post" data-cat="quickbooks" href="bulk-reclassify-transactions-journal-entry.html"><span class="d">2026-11-06</span><span class="b"><b>Dozens of Transactions in the Wrong Account? How to Reclassify Them in Bulk with One Checked Journal Entry</b><em>Move dozens of miscoded transactions with one checked reclass journal entry: debit/credit rule, Excel formulas, CSV for Online and IIF for Desktop.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="clean-up-undeposited-funds.html"><span class="d">2026-11-06</span><span class="b"><b>Old Payments Stuck in Undeposited Funds? A Step-by-Step Cleanup That Doesn&#x27;t Double Your Income</b><em>Age old payments, match them to bank deposits, catch double-counted income and clear the rest. Excel formulas included.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="american-express-csv-to-qbo-quickbooks-desktop.html"><span class="d">2026-11-06</span><span class="b"><b>How to Import American Express CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)</b><em>Download the American Express CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="bank-of-america-csv-to-qbo-quickbooks-desktop.html"><span class="d">2026-11-06</span><span class="b"><b>How to Import Bank of America CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)</b><em>Download the Bank of America CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="capital-one-csv-to-qbo-quickbooks-desktop.html"><span class="d">2026-11-06</span><span class="b"><b>How to Import Capital One CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)</b><em>Download the Capital One CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="chase-csv-to-qbo-quickbooks-desktop.html"><span class="d">2026-11-06</span><span class="b"><b>How to Import Chase CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)</b><em>Download the Chase CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="citi-csv-to-qbo-quickbooks-desktop.html"><span class="d">2026-11-06</span><span class="b"><b>How to Import Citi CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)</b><em>Download the Citi CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="discover-csv-to-qbo-quickbooks-desktop.html"><span class="d">2026-11-06</span><span class="b"><b>How to Import Discover CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)</b><em>Download the Discover CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="us-bank-csv-to-qbo-quickbooks-desktop.html"><span class="d">2026-11-06</span><span class="b"><b>How to Import U.S. Bank CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)</b><em>Download the U.S. Bank CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="quickbooks" href="wells-fargo-csv-to-qbo-quickbooks-desktop.html"><span class="d">2026-11-06</span><span class="b"><b>How to Import Wells Fargo CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)</b><em>Download the Wells Fargo CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile.</em></span><span class="c">QuickBooks Desktop</span></a><a class="post" data-cat="accounting" href="clean-up-opening-balance-equity-quickbooks.html"><span class="d">2026-11-06</span><span class="b"><b>How to Clean Up Opening Balance Equity in QuickBooks: Find It, Fix It, Close It</b><em>Why Opening Balance Equity still has a balance, how to fix wrong lines, and the journal entry to close it to equity. Desktop and Online steps.</em></span><span class="c">Accounting</span></a><a class="post" data-cat="accounting" href="prepaid-expense-amortization-quickbooks.html"><span class="d">2026-11-06</span><span class="b"><b>Prepaid Expenses in QuickBooks: A Simple Monthly Amortization Method (With Formulas)</b><em>A simple way to amortize prepaid insurance and software each month: four spreadsheet formulas, one journal entry, and a balance tie-out.</em></span><span class="c">Accounting</span></a><a class="post" data-cat="qbo" href="quickbooks-desktop-to-online-migration.html"><span class="d">2026-11-02</span><span class="b"><b>Moving from QuickBooks Desktop to Online: A Step-by-Step Guide</b><em>Desktop end-of-support dates, cost comparison, what carries over and what doesn&#x27;t, and what to check before and after the move.</em></span><span class="c">QuickBooks Online</span></a><a class="post" data-cat="tax" href="us-llc-for-korean-nonresidents.html"><span class="d">2026-11-02</span><span class="b"><b>Forming a US LLC as a Korean Nonresident: The Two Filings That Matter More Than Setup</b><em>Choosing a state, getting an EIN without an SSN, the yearly Form 5472, and the Korean overseas investment report to file before you send money.</em></span><span class="c">Tax</span></a></div></section>
-    <footer><p>© 2026 BIZLEX, INC. · taxnpaypro.com</p><p>QuickBooks is a registered trademark of Intuit Inc.; not affiliated with or endorsed by Intuit. Articles are general information, not tax, legal or accounting advice.</p></footer>
-    </main>
-    <script>
-    (function(){
-    function lang(l){document.getElementById('ko').hidden=l!=='ko';document.getElementById('en').hidden=l!=='en';document.documentElement.lang=l;
-    document.getElementById('lk').setAttribute('aria-pressed',l==='ko');document.getElementById('le').setAttribute('aria-pressed',l==='en');try{localStorage.setItem('bizlex-lang',l)}catch(e){}}
-    document.getElementById('lk').onclick=function(){lang('ko')};document.getElementById('le').onclick=function(){lang('en')};
-    var s=null;try{s=localStorage.getItem('bizlex-lang')}catch(e){};lang(s==='en'?'en':'ko');
-    document.querySelectorAll('section').forEach(function(sec){var bs=sec.querySelectorAll('.tabs button');
-    function pick(c){bs.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.cat===c)});sec.querySelectorAll('.post').forEach(function(p){p.hidden=!(c==='all'||p.dataset.cat===c)})}
-    bs.forEach(function(b){b.onclick=function(){pick(b.dataset.cat)}});pick('all')});
-    })();
-    </script><!--cfwa--><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "711a0a4eb51c474fb4648cdc53ddda69"}'></script><!--/cfwa--></body></html>
-    
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BIZLEX, INC. · 회계·세무·급여·QuickBooks Desktop · taxnpaypro.com</title>
+<link rel="canonical" href="https://taxnpaypro.com/">
+<meta property="og:type" content="website"><meta property="og:url" content="https://taxnpaypro.com/"><meta property="og:title" content="BIZLEX, INC. · Accounting, Tax, Payroll & QuickBooks Desktop">
+<meta name="description" content="BIZLEX, INC. · taxnpaypro.com — 회계·세무·급여·QuickBooks Desktop 블로그와 무료 QBO 변환기. Accounting, tax, payroll and QuickBooks Desktop blog with a free bank CSV to QBO converter.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* layout: navy masthead with the split BIZ|LEX mark → hero that spells out the name (BIZ = business, LEX = law) → blog by four subjects + latest posts → free QBO converter with how-to → about the name → contact */
+:root{
+  --navy:#14202E; --gold:#D4A845; --gold-ink:#8A6512;
+  --bg:#F5F6F4; --sheet:#FFFFFF; --ink:#14202E; --muted:#556170; --rule:#D9DDDF; --soft:#EEF0EE;
+  --on-navy:#FFFFFF; --on-navy-dim:#AEB9C6;
+  --code-ink:#DCE6F2; --code-dim:#8494AA; --code-key:#E7C878;
+  --display:"Manrope","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --sans:"Noto Sans KR","Manrope","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E151F; --sheet:#152030; --ink:#E6EBF1; --muted:#9DA9B7; --rule:#26354A; --soft:#1A2738;
+  --gold-ink:#E2BC63; --navy:#0A1018; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E151F; --sheet:#152030; --ink:#E6EBF1; --muted:#9DA9B7; --rule:#26354A; --soft:#1A2738;
+  --gold-ink:#E2BC63; --navy:#0A1018; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+h1,h2,h3,h4,p,li,dd{word-break:keep-all;overflow-wrap:anywhere}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--navy)}
+.g{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:1140px;margin:0 auto}
+a{color:var(--gold-ink)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;margin:0}
+.lbl{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink);margin:0}
+
+/* masthead */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--navy);color:var(--on-navy);border-bottom:1px solid rgba(255,255,255,.08)}
+.top .in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--on-navy)}
+.logo .biz{font-family:Manrope,sans-serif;font-weight:800;font-size:26px;letter-spacing:3px;line-height:1}
+.logo .bar{width:4px;height:32px;background:var(--gold)}
+.logo .lex{display:flex;flex-direction:column;gap:3px}
+.logo .lex b{font-family:Manrope,sans-serif;font-weight:400;font-size:26px;letter-spacing:3px;line-height:1}
+.logo .lex i{font-style:normal;font-family:Manrope,sans-serif;font-weight:800;font-size:8px;letter-spacing:5px;color:var(--gold)}
+nav{display:flex;gap:4px 18px;flex-wrap:wrap;align-items:center}
+nav a{color:var(--on-navy-dim);text-decoration:none;font-size:14px;padding:6px 0}
+nav a:hover{color:var(--on-navy)}
+.lang{display:inline-flex;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:3px}
+.lang button{font:inherit;font-size:13px;border:0;background:transparent;color:var(--on-navy-dim);padding:5px 13px;border-radius:999px;cursor:pointer;min-height:32px}
+.lang button[aria-pressed="true"]{background:var(--gold);color:#14202E;font-weight:700}
+@media (max-width:760px){nav{order:3;width:100%;gap:2px 16px}}
+
+/* hero */
+.hero{background:var(--navy);color:var(--on-navy);padding-block:64px 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 31px,rgba(255,255,255,.035) 31px 32px);pointer-events:none}
+.hero .in{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center}
+@media (max-width:880px){.hero .in{grid-template-columns:minmax(0,1fr);gap:36px}.hero{padding-block:44px 52px}}
+.hero .lbl{color:var(--gold)}
+.hero h1{font-weight:800;font-size:clamp(34px,5vw,56px);line-height:1.14;letter-spacing:-.02em;margin-top:18px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p.lead{color:var(--on-navy-dim);font-size:18px;max-width:52ch;margin:20px 0 0}
+.notice{display:inline-flex;align-items:center;gap:10px;margin:0 0 18px;padding:6px 14px;border:1px solid rgba(212,168,69,.5);border-radius:999px;font-size:14px;color:var(--on-navy)}
+.notice::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{font:inherit;font-size:15px;font-weight:700;border-radius:6px;padding:12px 22px;min-height:46px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;border:1px solid transparent}
+.btn.gold{background:var(--gold);color:#14202E}
+.btn.ghost{border-color:rgba(255,255,255,.3);color:var(--on-navy);background:transparent}
+.btn.line{border-color:var(--rule);color:var(--ink);background:var(--sheet)}
+@media (prefers-reduced-motion:no-preference){.btn{transition:transform .15s}.btn:hover{transform:translateY(-1px)}}
+
+/* the name, spelled out */
+.name{border-top:1px solid rgba(255,255,255,.2)}
+.name div{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 22px;align-items:baseline;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.name .w{grid-row:1 / span 2;font-family:Manrope,sans-serif;font-size:46px;line-height:1;letter-spacing:3px;color:var(--on-navy);min-width:3.6ch}
+.name .w.biz{font-weight:800}
+.name .w.lex{font-weight:400}
+.name .m{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.name .k{font-size:15px;color:var(--on-navy-dim)}
+.name p{margin:16px 0 0;color:var(--on-navy-dim);font-size:14.5px}
+
+/* sections */
+section.s{padding-block:72px}
+@media (max-width:700px){section.s{padding-block:52px}}
+.sh{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 40px;align-items:end;margin-bottom:36px}
+@media (max-width:760px){.sh{grid-template-columns:minmax(0,1fr)}}
+.sh h2{font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-.015em;line-height:1.2;margin-top:10px}
+.sh p{margin:0;color:var(--muted);max-width:56ch}
+
+/* blog */
+.cats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:2px solid var(--ink)}
+@media (max-width:980px){.cats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:600px){.cats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cat{font:inherit;text-align:left;background:transparent;border:0;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);padding:18px 16px;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;gap:6px;min-height:44px}
+.cat:last-child{border-right:0}
+.cat .cn{font-family:var(--display);font-weight:800;font-size:18px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.cat .cn small{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--muted)}
+.cat .cd{color:var(--muted);font-size:13.5px}
+.cat:hover{background:var(--sheet)}
+.cat[aria-pressed="true"]{box-shadow:inset 0 -3px 0 var(--gold);background:var(--sheet)}
+.cat[aria-pressed="true"] .cn span{color:var(--gold-ink)}
+.posts{margin-top:8px;display:flex;flex-direction:column}
+.post{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:6px 28px;padding:20px 0;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);align-items:baseline}
+@media (max-width:700px){.post{grid-template-columns:minmax(0,1fr);gap:4px}}
+.post .pd{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.post h3{font-weight:800;font-size:19px;line-height:1.4}
+.post p{margin:4px 0 0;color:var(--muted);font-size:14.5px}
+.post .pc{font-size:12.5px;padding:3px 10px;border-radius:999px;background:var(--soft);white-space:nowrap;justify-self:start}
+a.post:hover h3{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.empty{margin-top:28px;padding:28px;border:1px dashed var(--rule);border-radius:8px;display:flex;flex-direction:column;gap:6px}
+.empty b{font-family:var(--display);font-size:18px}
+.empty span{color:var(--muted);font-size:14.5px}
+.blogall{margin-top:24px}
+
+/* converter */
+.tool{background:var(--sheet);border-block:1px solid var(--rule)}
+.tool .in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+@media (max-width:900px){.tool .in{grid-template-columns:minmax(0,1fr);gap:32px}}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#14202E;background:var(--gold);border-radius:4px;padding:3px 10px}
+.tool h2{font-weight:800;font-size:clamp(28px,3.4vw,40px);letter-spacing:-.015em;line-height:1.18;margin-top:16px}
+.tool h2 em{font-style:normal;color:var(--gold-ink)}
+.tool p.lead{color:var(--muted);margin:16px 0 0;max-width:54ch}
+.checks{list-style:none;padding:0;margin:22px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 20px}
+@media (max-width:520px){.checks{grid-template-columns:minmax(0,1fr)}}
+.checks li{display:flex;gap:10px;font-size:14.5px;align-items:flex-start}
+.checks svg{flex:none;margin-top:4px;color:var(--gold-ink)}
+.banks{font-size:13px;color:var(--muted);margin:18px 0 0}
+.spec{display:flex;flex-direction:column;gap:10px;min-width:0}
+.pane{background:var(--navy);color:var(--code-ink);border-radius:8px;padding:14px 16px;font-family:var(--mono);font-size:12.5px;line-height:1.75;overflow-x:auto}
+.pane .h{display:flex;justify-content:space-between;gap:12px;color:var(--code-dim);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.pane pre{margin:0;font:inherit;white-space:pre}
+.pane .k{color:var(--code-key)} .pane .d{color:var(--code-dim)}
+.arrow{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;color:var(--muted);padding-left:8px}
+.arrow::before{content:"";width:32px;height:2px;background:var(--gold)}
+.tool .in.tooldetail{align-items:start;margin-top:48px;padding-top:40px;border-top:1px solid var(--rule);gap:40px 48px}
+.td-col h3{font-weight:800;font-size:20px;margin-bottom:16px}
+.steps4{list-style:none;counter-reset:s;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+.steps4 li{counter-increment:s;display:grid;grid-template-columns:32px minmax(0,1fr);column-gap:12px;row-gap:2px}
+.steps4 li::before{content:counter(s);grid-row:1 / span 2;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--gold);font-family:var(--mono);font-size:13px;font-weight:500}
+.steps4 b{font-size:15.5px}
+.steps4 span{color:var(--muted);font-size:14.5px}
+.cmp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:480px){.cmp{grid-template-columns:minmax(0,1fr)}}
+.cmp > div{border:1px solid var(--rule);border-radius:8px;padding:14px 16px;background:var(--bg)}
+.cmp-h{margin:0 0 8px;font-family:var(--mono);font-size:13px;font-weight:500;color:var(--gold-ink)}
+.cmp ul{margin:0;padding-left:18px;font-size:14px;display:flex;flex-direction:column;gap:4px}
+.td-faq-h{margin-top:28px}
+.td-faq details{border-bottom:1px solid var(--rule);padding:12px 0}
+.td-faq summary{cursor:pointer;font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:12px;min-height:28px}
+.td-faq summary::-webkit-details-marker{display:none}
+.td-faq summary::after{content:"+";font-family:var(--mono);color:var(--gold-ink)}
+.td-faq details[open] summary::after{content:"−"}
+.td-faq p{margin:8px 0 0;color:var(--muted);font-size:14.5px}
+
+/* about + contact */
+.about .in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px}
+@media (max-width:880px){.about .in{grid-template-columns:minmax(0,1fr);gap:32px}}
+.about h2{font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-.015em;line-height:1.2;margin-top:10px}
+.about p{color:var(--muted);max-width:60ch}
+.eq{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin:22px 0 6px;font-family:Manrope,sans-serif;font-size:22px}
+.eq b{font-weight:800;letter-spacing:2px}
+.eq span{color:var(--muted);font-size:16px;font-family:var(--sans)}
+.eq i{font-style:normal;color:var(--gold-ink);font-weight:800}
+.slip{background:var(--navy);color:var(--on-navy);border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:18px;align-self:start}
+.slip h3{font-weight:800;font-size:22px}
+.slip p{margin:0;color:var(--on-navy-dim);font-size:15px}
+.slip dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px 14px;align-items:center}
+.slip dt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.slip dd{margin:0;font-size:15px;overflow-wrap:anywhere;user-select:all}
+.copy{font:inherit;font-size:12px;border:1px solid rgba(255,255,255,.25);background:transparent;color:var(--on-navy);border-radius:4px;padding:4px 10px;cursor:pointer;min-height:32px}
+.toast{font-size:13px;color:var(--gold);min-height:20px;margin:0}
+
+footer{border-top:1px solid var(--rule);padding-block:28px 44px;color:var(--muted);font-size:13px}
+footer .in{display:flex;flex-direction:column;gap:6px}
+footer p{margin:0;max-width:95ch}
+footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--ink);font-weight:500}
+</style>
+
+<header class="top g">
+  <div class="in">
+    <a class="logo" href="#top" aria-label="BIZLEX, INC.">
+      <span class="biz">BIZ</span><span class="bar" aria-hidden="true"></span>
+      <span class="lex"><b>LEX</b><i>INC.</i></span>
+    </a>
+    <nav aria-label="Main">
+      <a href="#blog" data-en="Blog">블로그</a>
+      <a href="#tool" data-en="QBO converter">QBO 변환기</a>
+      <a href="#about" data-en="About">소개</a>
+      <a href="#contact" data-en="Contact">문의</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="lk" aria-pressed="true">한국어</button>
+      <button type="button" id="le" aria-pressed="false">English</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero g" id="top">
+  <div class="in">
+    <div>
+      <p class="notice" id="notice" hidden></p>
+      <p class="lbl">Accounting · Tax · Payroll · QuickBooks Desktop</p>
+      <h1 data-en="Business numbers and the rules behind them, <em>made clear</em>">사업의 숫자와 규칙을<br><em>쉽게 풀어 드립니다</em></h1>
+      <p class="lead" data-en="Plain-language articles on accounting, tax, payroll and QuickBooks Desktop, in Korean and English, plus a free tool that turns bank CSV files into QuickBooks Desktop QBO files.">회계·세무·급여·QuickBooks Desktop을 한국어와 영어로 쉽게 설명하는 블로그와, 은행 CSV를 QuickBooks Desktop QBO 파일로 바꾸는 무료 변환기를 운영합니다.</p>
+      <div class="cta">
+        <a class="btn gold" href="#blog" data-en="Read the blog">블로그 읽기</a>
+        <a class="btn ghost" href="#tool" data-en="Open the QBO converter">QBO 변환기</a>
+      </div>
+    </div>
+    <div class="name" aria-label="BIZLEX = BIZ + LEX">
+      <div><span class="w biz">BIZ</span><span class="m">Business</span><span class="k" data-en="the work of running a business">비즈니스, 사업</span></div>
+      <div><span class="w lex">LEX</span><span class="m">Latin · Law</span><span class="k" data-en="law, the rules a business follows">법, 사업이 지켜야 할 규칙</span></div>
+      <p data-en="BIZLEX = business + law. Where the numbers of a business meet its rules.">BIZLEX = 비즈니스 + 법. 사업의 숫자와 규칙이 만나는 곳.</p>
+    </div>
+  </div>
+</section>
+
+<section class="s g" id="blog">
+  <div class="in">
+    <div class="sh">
+      <div><p class="lbl" data-en="Blog">블로그</p><h2 data-en="Read by subject">주제별로 읽기</h2></div>
+      <p data-en="Short, practical articles for small business owners and the people who keep their books.">스몰 비즈니스 사장님과 장부를 맡은 분들이 바로 쓸 수 있는 짧고 실용적인 글입니다.</p>
+    </div>
+    <div class="cats" id="cats" role="group" aria-label="Blog subjects"></div>
+    <div class="posts" id="posts"></div>
+    <div class="empty" id="empty" hidden><b id="empty-t"></b><span id="empty-s"></span></div>
+    <div class="blogall" id="blogall" hidden><a class="btn line" id="lnk-blog" href="/blog" target="_top" data-en="All articles">전체 글 보기</a></div>
+  </div>
+</section>
+
+<section class="s g tool" id="tool">
+  <div class="in">
+    <div>
+      <span class="tag" data-en="Free tool">무료 도구</span>
+      <h2 data-en="Turn bank CSV and QFX files into QuickBooks Desktop <em>QBO or IIF</em>">은행 CSV·QFX를 QuickBooks Desktop <em>QBO·IIF 파일</em>로</h2>
+      <p class="lead" data-en="For when your bank won't give you a QBO file, or the one it gives won't import. Check against your statement balance before you import.">은행이 QBO 파일을 주지 않거나 받은 파일이 가져와지지 않을 때 쓰세요. 가져오기 전에 명세서 잔액과 맞는지 먼저 확인합니다.</p>
+      <ul class="checks">
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l6 2.5V8c0 3.3-2.6 6.2-6 7-3.4-.8-6-3.7-6-7V3.5L8 1z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span data-en="Nothing is uploaded. Runs in your browser">파일이 전송되지 않음. 브라우저 안에서만 처리</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Re-imports never create duplicates">다시 가져와도 중복 없음 (고유 ID)</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Check numbers match your books">수표 번호로 장부와 자동 매칭</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Balance check before you reconcile">대조 전에 잔액 미리 확인</span></li>
+      </ul>
+      <p class="banks" data-en="Recognizes Bank of America, Chase, Wells Fargo, Capital One, Amex, Citi, Discover and U.S. Bank layouts.">Bank of America, Chase, Wells Fargo, Capital One, Amex, Citi, Discover, U.S. Bank 형식 자동 인식</p>
+      <div class="cta">
+        <a class="btn gold" id="lnk-converter" href="/csv-to-qbo" data-en="Open the converter">변환기 열기</a>
+      </div>
+    </div>
+    <div class="spec" aria-hidden="true">
+      <div class="pane"><div class="h"><span>bank_october.csv</span><span>CSV</span></div>
+<pre><span class="d">Date,Description,Amount,Running Bal.</span>
+10/05/2026,Check 2051,-1200.00,6900.00
+10/07/2026,COSTCO WHSE #0478,-62.45,6837.55</pre></div>
+      <div class="arrow" data-en="converted · in your browser">변환 · 브라우저 안에서</div>
+      <div class="pane"><div class="h"><span>4821_20261001_20261031.qbo</span><span>Web Connect</span></div>
+<pre><span class="k">&lt;STMTTRN&gt;</span>
+<span class="k">&lt;TRNTYPE&gt;</span>CHECK
+<span class="k">&lt;TRNAMT&gt;</span>-1200.00
+<span class="k">&lt;CHECKNUM&gt;</span>2051
+<span class="k">&lt;/STMTTRN&gt;</span></pre></div>
+    </div>
+  </div>
+  <div class="in tooldetail">
+    <div class="td-col">
+      <h3 data-en="How it works">사용 순서</h3>
+      <ol class="steps4">
+        <li><b data-en="Download from your bank">은행에서 내려받기</b><span data-en="Download transactions as CSV or Excel. Matching the statement period makes reconciling easier.">거래내역을 CSV나 Excel로 받습니다. 명세서 기간과 같게 받으면 대조가 쉽습니다.</span></li>
+        <li><b data-en="Load it in the converter">변환기에 올리기</b><span data-en="Columns and signs are matched automatically for 8 major banks. Fix anything that's off.">주요 은행 8곳은 열과 부호를 자동으로 맞춥니다. 틀린 곳만 고치면 됩니다.</span></li>
+        <li><b data-en="Check the balance">잔액 확인</b><span data-en="Enter the statement's beginning and ending balances. The check shows whether they match before you import.">명세서의 기초·기말 잔액을 넣으면 가져오기 전에 일치하는지 바로 보여 줍니다.</span></li>
+        <li><b data-en="Import into QuickBooks Desktop">QuickBooks Desktop에서 가져오기</b><span data-en="Back up first, then open the .qbo from Banking › Bank Feeds › Import Web Connect File, or the .iif from File › Utilities › Import.">백업 후 .qbo는 Banking › Bank Feeds › Import Web Connect File, .iif는 File › Utilities › Import에서 엽니다.</span></li>
+      </ol>
+    </div>
+    <div class="td-col">
+      <h3 data-en="QBO or IIF?">QBO와 IIF, 무엇을 고를까</h3>
+      <div class="cmp">
+        <div><p class="cmp-h">QBO (Web Connect)</p>
+          <ul><li data-en="For versions where Bank Feeds still works">Bank Feeds가 작동하는 버전용</li><li data-en="Matches checks and deposits already entered">이미 입력한 수표·입금과 자동 매칭</li><li data-en="Re-importing never duplicates">다시 가져와도 중복 없음</li></ul></div>
+        <div><p class="cmp-h">IIF</p>
+          <ul><li data-en="For older versions where Web Connect is blocked">Web Connect가 막힌 구버전용</li><li data-en="Writes straight into the account register">계좌 장부에 바로 기록</li><li data-en="No duplicate protection, so import once">중복 방지가 없어 한 번만 가져오기</li></ul></div>
+      </div>
+      <h3 class="td-faq-h" data-en="Questions">자주 묻는 질문</h3>
+      <div class="td-faq">
+        <details><summary data-en="Is my bank data sent anywhere?">은행 정보가 인터넷으로 전송되나요?</summary><p data-en="No. The file is read and converted inside your browser and never uploaded.">아닙니다. 파일은 브라우저 안에서만 읽고 변환하며 서버로 올라가지 않습니다.</p></details>
+        <details><summary data-en="Does it work for credit cards and QFX files?">신용카드와 QFX 파일도 되나요?</summary><p data-en="Yes. Choose Credit Card as the account type. QFX, OFX and QBO files that failed to import can be rebuilt with their original IDs.">네. 계좌 종류에서 Credit Card를 고르세요. 가져오기에 실패한 QFX·OFX·QBO 파일도 원래 거래 ID를 유지한 채 다시 만듭니다.</p></details>
+        <details><summary data-en="Do I need this for QuickBooks Online?">QuickBooks Online에도 필요한가요?</summary><p data-en="No. QuickBooks Online accepts CSV uploads directly. This tool is for QuickBooks Desktop.">아닙니다. QuickBooks Online은 CSV를 바로 올릴 수 있습니다. 이 도구는 QuickBooks Desktop용입니다.</p></details>
+        <details><summary data-en="Is it free?">무료인가요?</summary><p data-en="Yes, free to use. Always back up your company file before importing.">네, 무료입니다. 가져오기 전에는 꼭 회사 파일을 백업하세요.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s g about" id="about">
+  <div class="in">
+    <div>
+      <p class="lbl" data-en="About">소개</p>
+      <h2>BIZLEX, INC.</h2>
+      <div class="eq" aria-label="BIZ plus LEX equals BIZLEX"><b>BIZ</b><span data-en="business">비즈니스</span><i>+</i><b>LEX</b><span data-en="law">법</span><i>=</i><b>BIZLEX</b></div>
+      <p data-en="Our name joins BIZ, short for business, with LEX, the Latin word for law. Every business runs on two things at once: its numbers, and the rules those numbers have to follow.">BIZLEX는 비즈니스를 뜻하는 BIZ와, 라틴어로 '법'을 뜻하는 LEX를 합친 이름입니다. 사업은 언제나 두 가지로 움직입니다. 숫자, 그리고 그 숫자가 지켜야 하는 규칙입니다.</p>
+      <p data-en="On this site we explain accounting, tax, payroll and QuickBooks Desktop in plain Korean and English, and we build free tools like the QBO converter for the jobs that keep coming up.">이 사이트에서는 회계·세무·급여·QuickBooks Desktop을 쉬운 한국어와 영어로 풀어 쓰고, 자주 막히는 일을 덜어 주는 QBO 변환기 같은 무료 도구를 만듭니다.</p>
+    </div>
+    <div class="slip" id="contact">
+      <h3 data-en="Contact">문의</h3>
+      <p data-en="Questions about an article or the converter? Email us. We reply in Korean or English.">블로그 글이나 변환기에 대한 문의는 이메일로 보내 주세요. 한국어 또는 영어로 답변드립니다.</p>
+      <dl>
+        <dt data-en="Email">이메일</dt><dd id="v-email"></dd><button type="button" class="copy" data-copy="v-email" data-en="Copy">복사</button>
+        <dt data-en="Web">웹</dt><dd>taxnpaypro.com</dd><span></span>
+      </dl>
+      <p class="toast" id="toast" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<footer class="g">
+  <div class="in">
+    <div class="row"><span>© 2026 BIZLEX, INC.</span><span>taxnpaypro.com</span></div>
+    <p data-en="QuickBooks is a registered trademark of Intuit Inc. This site is not affiliated with or endorsed by Intuit.">QuickBooks는 Intuit Inc.의 등록 상표입니다. 이 사이트는 Intuit와 관련이 없으며 Intuit의 승인을 받지 않았습니다.</p>
+    <p data-en="Articles and tools on this site are general information, not tax, legal or accounting advice for your situation.">이 사이트의 글과 도구는 일반적인 정보이며, 개별 상황에 대한 세무·법률·회계 자문이 아닙니다.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+/* ===== 설정 / Settings =====
+   DATA_URL: GitHub의 site.json 주소. 비어 있거나 못 읽으면 아래 기본 내용(FALLBACK)을 씁니다.
+   ON_SITE: Squarespace에 올린 코드에서만 true (블로그 글을 사이트 안 /blog 주소로 연결). */
+var CONFIG = {
+  DATA_URL:  "/site.json",
+  ON_SITE:   true,
+  email:     "payroll@taxnpaypro.com"
+};
+var FALLBACK = {"updated": "2026-11-07", "notice": {"ko": "", "en": ""}, "blogUrl": "https://taxnpaypro.com/blog/", "categories": [{"id": "accounting", "name": {"ko": "회계", "en": "Accounting"}, "desc": {"ko": "장부 정리, 은행 대조, 재무제표를 읽는 법", "en": "Keeping the books, reconciling accounts, reading your statements"}}, {"id": "tax", "name": {"ko": "세무", "en": "Tax"}, "desc": {"ko": "미국 사업자 세금 신고와 마감일, 서류 준비", "en": "US business tax filings, deadlines and paperwork"}}, {"id": "payroll", "name": {"ko": "급여", "en": "Payroll"}, "desc": {"ko": "직원 급여, 원천징수, W-2·941 같은 급여 신고", "en": "Paying employees, withholding, and payroll filings like W-2 and 941"}}, {"id": "quickbooks", "name": {"ko": "QuickBooks Desktop", "en": "QuickBooks Desktop"}, "desc": {"ko": "설정, 은행 가져오기, 자주 막히는 오류 해결", "en": "Setup, bank imports, and fixes for common errors"}}, {"id": "qbo", "name": {"ko": "QuickBooks Online", "en": "QuickBooks Online"}, "desc": {"ko": "QBO 기초부터 은행 연결, 판매세, 월말 마감까지 단계별 안내", "en": "Step-by-step QBO guides, from setup and bank feeds to sales tax and month-end close"}}], "cfAnalyticsToken": "711a0a4eb51c474fb4648cdc53ddda69", "posts": [{"date": "2026-11-07", "category": "tax", "title": {"ko": "교회·비영리 연말 기부금 영수증, IRS 요건과 엑셀로 직접 만드는 법", "en": "Year-End Giving Statements for Churches and Small Nonprofits: What the IRS Requires and How to Build Them in a Spreadsheet"}, "excerpt": {"ko": "교회·비영리 연말 기부금 영수증에 꼭 들어갈 내용과 $250·$75 기준, 교인 번호 하나로 영수증을 뽑는 엑셀 수식을 정리했습니다.", "en": "What a giving statement must include, the $250 and $75 rules, and spreadsheet formulas to print one per donor."}, "url": {"ko": "https://taxnpaypro.com/blog/church-giving-statement-korean.html", "en": "https://taxnpaypro.com/blog/church-year-end-giving-statements.html"}, "previewUrl": {"ko": "blog/church-giving-statement-korean.html", "en": "blog/church-year-end-giving-statements.html"}}, {"date": "2026-11-07", "category": "tax", "title": {"en": "Solo 401(k) or SEP-IRA for 2026? Calculate Your Maximum Contribution Step by Step", "ko": "2026년 1인 401(k)와 SEP-IRA, 어느 쪽이 더 넣을 수 있을까? 최대 납입액 직접 계산하기"}, "excerpt": {"ko": "2026년 한도와 자영업자 20% 계산식, 순이익별 예시, 12월 31일 근로자 납입 선택까지 1인 401(k)와 SEP-IRA를 비교합니다.", "en": "2026 limits, the 20% self-employed formula, worked examples and the Dec 31 deadline for a Solo 401(k) or SEP-IRA."}, "url": {"ko": "https://taxnpaypro.com/blog/solo-401k-sep-ira-2026-korean.html", "en": "https://taxnpaypro.com/blog/solo-401k-vs-sep-ira-2026.html"}, "previewUrl": {"ko": "blog/solo-401k-sep-ira-2026-korean.html", "en": "blog/solo-401k-vs-sep-ira-2026.html"}}, {"date": "2026-11-07", "category": "payroll", "title": {"en": "How to Gross Up a Holiday Bonus in 2026 So Employees Take Home the Exact Amount (Formulas and Examples)", "ko": "2026년 연말 보너스 그로스업: 약속한 실수령액을 정확히 맞추는 계산법 (수식·예시)"}, "excerpt": {"ko": "약속한 실수령 보너스를 맞추는 그로스업 수식, $184,500·$200,000 예외, 회사 부담 비용, $25 선물 규칙까지.", "en": "Pay an exact take-home bonus: 2026 rates, the gross-up formula, edge cases, employer cost and the $25 gift rule."}, "url": {"ko": "https://taxnpaypro.com/blog/bonus-gross-up-2026-korean.html", "en": "https://taxnpaypro.com/blog/holiday-bonus-gross-up-2026.html"}, "previewUrl": {"ko": "blog/bonus-gross-up-2026-korean.html", "en": "blog/holiday-bonus-gross-up-2026.html"}}, {"date": "2026-11-07", "category": "payroll", "title": {"ko": "2026년 내니 택스: 내가 대상인지, Schedule H와 W-2 숫자를 직접 계산하는 법", "en": "Nanny Tax 2026: Do You Owe It, and How to Work Out the Schedule H and W-2 Numbers Yourself"}, "excerpt": {"ko": "2026년 $3,000·분기 $1,000 기준과 가족 예외로 대상 여부를 확인하고, Schedule H·W-2 숫자와 마감일을 정리합니다.", "en": "The 2026 $3,000 and $1,000 tests, family exceptions, spreadsheet formulas, Schedule H and W-2 numbers and deadlines."}, "url": {"ko": "https://taxnpaypro.com/blog/nanny-tax-2026-korean.html", "en": "https://taxnpaypro.com/blog/nanny-tax-2026-household-employer.html"}, "previewUrl": {"ko": "blog/nanny-tax-2026-korean.html", "en": "blog/nanny-tax-2026-household-employer.html"}}, {"date": "2026-11-07", "category": "tax", "title": {"ko": "2026년 기부금 공제, 새 규칙으로 직접 계산하는 법: 표준공제 받아도 기부가 세금을 줄일까?", "en": "2026 Charitable Deduction Rules: Will Your Donations Lower Your Taxes? (Standard vs. Itemized, Step by Step)"}, "excerpt": {"ko": "2026년부터 표준공제에 현금 기부 최대 $1,000(부부 $2,000) 추가, 항목별은 AGI 0.5% 초과분만. 두 합계 비교로 직접 계산합니다.", "en": "New for 2026: up to $1,000 ($2,000 joint) for non-itemizers and a 0.5% AGI floor for itemizers. Compare two totals."}, "url": {"ko": "https://taxnpaypro.com/blog/charitable-deduction-2026-korean-guide.html", "en": "https://taxnpaypro.com/blog/charitable-deduction-2026-standard-vs-itemized.html"}, "previewUrl": {"ko": "blog/charitable-deduction-2026-korean-guide.html", "en": "blog/charitable-deduction-2026-standard-vs-itemized.html"}}, {"date": "2026-11-07", "category": "quickbooks", "title": {"ko": "외부 급여 서비스를 쓰는데 QuickBooks에 급여가 두 번 잡힐 때: Payroll Clearing 계정으로 정리하는 법", "en": "Outside Payroll Showing Up Twice in QuickBooks? Fix It With a Payroll Clearing Account"}, "excerpt": {"ko": "급여대장은 분개 1건으로, 은행 출금은 모두 Payroll Clearing으로. 잔액이 0이면 끝입니다. Desktop·Online 단계별.", "en": "Record the payroll register once, send every withdrawal to Payroll Clearing, and the balance hits zero."}, "url": {"ko": "https://taxnpaypro.com/blog/quickbooks-outside-payroll-clearing-korean.html", "en": "https://taxnpaypro.com/blog/outside-payroll-quickbooks-payroll-clearing.html"}, "previewUrl": {"ko": "blog/quickbooks-outside-payroll-clearing-korean.html", "en": "blog/outside-payroll-quickbooks-payroll-clearing.html"}},{"date": "2026-11-07", "category": "qbo", "title": {"ko": "QuickBooks Online 기초 가이드: 처음 시작할 때 꼭 알아야 할 10가지", "en": "QuickBooks Online Basics for Beginners: 10 Things to Know Before You Start"}, "excerpt": {"ko": "요금제, 첫 설정, 화면 구조, 계정과목, 수입·지출 입력, 은행 연결, Reconcile, 3대 리포트까지 그림과 표로 자세히 정리했습니다.", "en": "Plans, first settings, the home screen, chart of accounts, invoices and bills, bank feeds, reconciling and three key reports, step by step."}, "url": {"ko": "https://taxnpaypro.com/blog/quickbooks-online-basics-korean.html", "en": "https://taxnpaypro.com/blog/quickbooks-online-basics-for-beginners.html"}, "previewUrl": {"ko": "blog/quickbooks-online-basics-korean.html", "en": "blog/quickbooks-online-basics-for-beginners.html"}}, {"date": "2026-11-06", "category": "tax", "title": {"ko": "2026년 마일리지 요율 7월 변경: 운행 기록·공제액 계산법", "en": "Two IRS Mileage Rates in One Year: How to Log and Calculate Your 2026 Business Mileage"}, "excerpt": {"ko": "2026년 IRS 업무용 마일리지 요율은 6월 30일까지 72.5센트, 7월 1일부터 76센트. 날짜별 요율 적용 수식과 표준 vs 실제 경비 비교.", "en": "The 2026 IRS business rate is 72.5 cents through June 30 and 76 cents from July 1. Log trips, apply the right rate by date, compare actual costs."}, "url": {"ko": "https://taxnpaypro.com/blog/2026-mileage-rate-log-korean.html", "en": "https://taxnpaypro.com/blog/2026-mileage-log-two-irs-rates.html"}, "previewUrl": {"ko": "blog/2026-mileage-rate-log-korean.html", "en": "blog/2026-mileage-log-two-irs-rates.html"}}, {"date": "2026-11-06", "category": "accounting", "title": {"ko": "은행 거래 중복·대사 차이, 엑셀로 끝까지 찾는 법", "en": "Duplicate Bank Transactions and a Reconciliation That Won't Balance: How to Find Every Difference"}, "excerpt": {"ko": "은행 재연결 후 생긴 중복 거래와 맞지 않는 대사 차이를 내보내기 파일 두 개와 엑셀 수식으로 찾는 6단계. QuickBooks Online·Desktop 메뉴 포함.", "en": "Find duplicate bank transactions and explain every reconciliation difference with two exports and Excel formulas. QuickBooks Online and Desktop steps."}, "url": {"ko": "https://taxnpaypro.com/blog/duplicate-transactions-reconciliation-difference-korean.html", "en": "https://taxnpaypro.com/blog/find-duplicate-transactions-reconciliation-difference.html"}, "previewUrl": {"ko": "blog/duplicate-transactions-reconciliation-difference-korean.html", "en": "blog/find-duplicate-transactions-reconciliation-difference.html"}}, {"date": "2026-11-06", "category": "quickbooks", "title": {"ko": "잘못 분류된 거래 수십 건, 재분류 분개로 한 번에 정리하기", "en": "Dozens of Transactions in the Wrong Account? How to Reclassify Them in Bulk with One Checked Journal Entry"}, "excerpt": {"ko": "Uncategorized Expense·잘못된 계정의 거래를 엑셀 목록 하나로 점검하고, CSV(Online)·IIF(Desktop) 분개로 한 번에 옮기는 방법.", "en": "Move dozens of miscoded transactions with one checked reclass journal entry: debit/credit rule, Excel formulas, CSV for Online and IIF for Desktop."}, "url": {"ko": "https://taxnpaypro.com/blog/bulk-reclass-journal-entry-korean.html", "en": "https://taxnpaypro.com/blog/bulk-reclassify-transactions-journal-entry.html"}, "previewUrl": {"ko": "blog/bulk-reclass-journal-entry-korean.html", "en": "blog/bulk-reclassify-transactions-journal-entry.html"}}, {"date": "2026-11-06", "category": "quickbooks", "title": {"ko": "Undeposited Funds 정리법: 오래된 입금, 매출 중복 없이 정리하기", "en": "Old Payments Stuck in Undeposited Funds? A Step-by-Step Cleanup That Doesn't Double Your Income"}, "excerpt": {"ko": "Undeposited Funds에 남은 오래된 결제를 경과일로 나누고, 은행 입금과 맞추고, 두 번 잡힌 매출을 찾아 정리하는 7단계.", "en": "Age old payments, match them to bank deposits, catch double-counted income and clear the rest. Excel formulas included."}, "url": {"ko": "https://taxnpaypro.com/blog/undeposited-funds-cleanup-korean.html", "en": "https://taxnpaypro.com/blog/clean-up-undeposited-funds.html"}, "previewUrl": {"ko": "blog/undeposited-funds-cleanup-korean.html", "en": "blog/clean-up-undeposited-funds.html"}}, {"date": "2026-11-06", "category": "quickbooks", "title": {"ko": "American Express CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)", "en": "How to Import American Express CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)"}, "excerpt": {"ko": "American Express에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.", "en": "Download the American Express CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile."}, "url": {"en": "https://taxnpaypro.com/blog/american-express-csv-to-qbo-quickbooks-desktop.html", "ko": "https://taxnpaypro.com/blog/american-express-csv-to-qbo-korean.html"}, "previewUrl": {"en": "blog/american-express-csv-to-qbo-quickbooks-desktop.html", "ko": "blog/american-express-csv-to-qbo-korean.html"}}, {"date": "2026-11-06", "category": "quickbooks", "title": {"ko": "Bank of America CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)", "en": "How to Import Bank of America CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)"}, "excerpt": {"ko": "Bank of America에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.", "en": "Download the Bank of America CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile."}, "url": {"en": "https://taxnpaypro.com/blog/bank-of-america-csv-to-qbo-quickbooks-desktop.html", "ko": "https://taxnpaypro.com/blog/bank-of-america-csv-to-qbo-korean.html"}, "previewUrl": {"en": "blog/bank-of-america-csv-to-qbo-quickbooks-desktop.html", "ko": "blog/bank-of-america-csv-to-qbo-korean.html"}}, {"date": "2026-11-06", "category": "quickbooks", "title": {"ko": "Capital One CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)", "en": "How to Import Capital One CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)"}, "excerpt": {"ko": "Capital One에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.", "en": "Download the Capital One CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile."}, "url": {"en": "https://taxnpaypro.com/blog/capital-one-csv-to-qbo-quickbooks-desktop.html", "ko": "https://taxnpaypro.com/blog/capital-one-csv-to-qbo-korean.html"}, "previewUrl": {"en": "blog/capital-one-csv-to-qbo-quickbooks-desktop.html", "ko": "blog/capital-one-csv-to-qbo-korean.html"}}, {"date": "2026-11-06", "category": "quickbooks", "title": {"ko": "Chase CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)", "en": "How to Import Chase CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)"}, "excerpt": {"ko": "Chase에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.", "en": "Download the Chase CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile."}, "url": {"en": "https://taxnpaypro.com/blog/chase-csv-to-qbo-quickbooks-desktop.html", "ko": "https://taxnpaypro.com/blog/chase-csv-to-qbo-korean.html"}, "previewUrl": {"en": "blog/chase-csv-to-qbo-quickbooks-desktop.html", "ko": "blog/chase-csv-to-qbo-korean.html"}}, {"date": "2026-11-06", "category": "quickbooks", "title": {"ko": "Citi CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)", "en": "How to Import Citi CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)"}, "excerpt": {"ko": "Citi에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.", "en": "Download the Citi CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile."}, "url": {"en": "https://taxnpaypro.com/blog/citi-csv-to-qbo-quickbooks-desktop.html", "ko": "https://taxnpaypro.com/blog/citi-csv-to-qbo-korean.html"}, "previewUrl": {"en": "blog/citi-csv-to-qbo-quickbooks-desktop.html", "ko": "blog/citi-csv-to-qbo-korean.html"}}, {"date": "2026-11-06", "category": "quickbooks", "title": {"ko": "Discover CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)", "en": "How to Import Discover CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)"}, "excerpt": {"ko": "Discover에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.", "en": "Download the Discover CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile."}, "url": {"en": "https://taxnpaypro.com/blog/discover-csv-to-qbo-quickbooks-desktop.html", "ko": "https://taxnpaypro.com/blog/discover-csv-to-qbo-korean.html"}, "previewUrl": {"en": "blog/discover-csv-to-qbo-quickbooks-desktop.html", "ko": "blog/discover-csv-to-qbo-korean.html"}}, {"date": "2026-11-06", "category": "quickbooks", "title": {"ko": "U.S. Bank CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)", "en": "How to Import U.S. Bank CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)"}, "excerpt": {"ko": "U.S. Bank에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.", "en": "Download the U.S. Bank CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile."}, "url": {"en": "https://taxnpaypro.com/blog/us-bank-csv-to-qbo-quickbooks-desktop.html", "ko": "https://taxnpaypro.com/blog/us-bank-csv-to-qbo-korean.html"}, "previewUrl": {"en": "blog/us-bank-csv-to-qbo-quickbooks-desktop.html", "ko": "blog/us-bank-csv-to-qbo-korean.html"}}, {"date": "2026-11-06", "category": "quickbooks", "title": {"ko": "Wells Fargo CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)", "en": "How to Import Wells Fargo CSV Transactions into QuickBooks Desktop (Free CSV to QBO Converter)"}, "excerpt": {"ko": "Wells Fargo에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.", "en": "Download the Wells Fargo CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile."}, "url": {"en": "https://taxnpaypro.com/blog/wells-fargo-csv-to-qbo-quickbooks-desktop.html", "ko": "https://taxnpaypro.com/blog/wells-fargo-csv-to-qbo-korean.html"}, "previewUrl": {"en": "blog/wells-fargo-csv-to-qbo-quickbooks-desktop.html", "ko": "blog/wells-fargo-csv-to-qbo-korean.html"}}, {"date": "2026-11-06", "category": "accounting", "title": {"ko": "QuickBooks OBE(Opening Balance Equity) 잔액 정리법: 찾고, 고치고, 0으로 만들기", "en": "How to Clean Up Opening Balance Equity in QuickBooks: Find It, Fix It, Close It"}, "excerpt": {"ko": "대차대조표에 남은 OBE 잔액의 원인을 찾고, 잘못된 줄을 고치고, 정리 분개로 0으로 만드는 방법. Desktop·Online 단계별 안내.", "en": "Why Opening Balance Equity still has a balance, how to fix wrong lines, and the journal entry to close it to equity. Desktop and Online steps."}, "url": {"ko": "https://taxnpaypro.com/blog/quickbooks-obe-jeongri.html", "en": "https://taxnpaypro.com/blog/clean-up-opening-balance-equity-quickbooks.html"}, "previewUrl": {"ko": "blog/quickbooks-obe-jeongri.html", "en": "blog/clean-up-opening-balance-equity-quickbooks.html"}}, {"date": "2026-11-06", "category": "accounting", "title": {"ko": "QuickBooks 선급비용 상각, 엑셀 수식으로 매달 깔끔하게 정리하는 법", "en": "Prepaid Expenses in QuickBooks: A Simple Monthly Amortization Method (With Formulas)"}, "excerpt": {"ko": "연간 보험료·소프트웨어 같은 선급비용을 매달 상각하는 법. 엑셀 수식 4개, 월별 분개 1건, 잔액 대조까지 예시로 설명합니다.", "en": "A simple way to amortize prepaid insurance and software each month: four spreadsheet formulas, one journal entry, and a balance tie-out."}, "url": {"ko": "https://taxnpaypro.com/blog/quickbooks-prepaid-sanggak.html", "en": "https://taxnpaypro.com/blog/prepaid-expense-amortization-quickbooks.html"}, "previewUrl": {"ko": "blog/quickbooks-prepaid-sanggak.html", "en": "blog/prepaid-expense-amortization-quickbooks.html"}}, {"date": "2026-11-02", "category": "qbo", "title": {"ko": "QuickBooks Desktop에서 Online으로: 한인 사장님을 위한 단계별 전환 가이드", "en": "Moving from QuickBooks Desktop to Online: A Step-by-Step Guide"}, "excerpt": {"ko": "Desktop 지원 종료 일정, 비용 비교, 넘어가는 것과 안 넘어가는 것, 전환 전 준비와 전환 후 확인까지 한 번에 정리했습니다.", "en": "Desktop end-of-support dates, cost comparison, what carries over and what doesn't, and what to check before and after the move."}, "url": {"ko": "https://taxnpaypro.com/blog/quickbooks-desktop-to-online-korean.html", "en": "https://taxnpaypro.com/blog/quickbooks-desktop-to-online-migration.html"}, "previewUrl": {"ko": "blog/quickbooks-desktop-to-online-korean.html", "en": "blog/quickbooks-desktop-to-online-migration.html"}}, {"date": "2026-11-02", "category": "tax", "title": {"ko": "한국인 비거주자를 위한 미국 LLC 설립 가이드: 설립보다 중요한 두 가지 신고", "en": "Forming a US LLC as a Korean Nonresident: The Two Filings That Matter More Than Setup"}, "excerpt": {"ko": "설립 주 고르기, SSN 없이 EIN 받기, 매년 내야 하는 Form 5472, 송금 전 해외직접투자 신고까지 단계별로 정리했습니다.", "en": "Choosing a state, getting an EIN without an SSN, the yearly Form 5472, and the Korean overseas investment report to file before you send money."}, "url": {"ko": "https://taxnpaypro.com/blog/us-llc-korean-nonresident-korean.html", "en": "https://taxnpaypro.com/blog/us-llc-for-korean-nonresidents.html"}, "previewUrl": {"ko": "blog/us-llc-korean-nonresident-korean.html", "en": "blog/us-llc-for-korean-nonresidents.html"}}]};
+var DATA = FALLBACK;
+var lang = "ko";
+var current = "all";
+
+document.getElementById("v-email").textContent = CONFIG.email;
+
+function tx(o){ if(o == null) return ""; if(typeof o === "string") return o; return o[lang] || o.ko || o.en || ""; }
+function el(tag, cls, text){ var e = document.createElement(tag); if(cls) e.className = cls; if(text != null) e.textContent = text; return e; }
+function postUrl(u){ if(!u) return ""; if(/^https:\/\//.test(u)) return u; if(!CONFIG.ON_SITE && /^blog\/[a-z0-9\-]+\.html$/.test(u)) return u; if(CONFIG.ON_SITE && /^\/[A-Za-z0-9\/_.\-]*$/.test(u)) return u; return ""; }
+
+function render(){
+  var d = DATA || FALLBACK;
+  var n = document.getElementById("notice"), nt = tx(d.notice);
+  n.textContent = nt; n.hidden = !nt;
+  var cats = d.categories || [], posts = (d.posts || []).slice().sort(function(a, b){ return (b.date || "").localeCompare(a.date || ""); });
+  var cw = document.getElementById("cats"); cw.textContent = "";
+  var all = [{ id: "all", name: { ko: "전체", en: "All" }, desc: { ko: "네 가지 주제의 최신 글", en: "Latest from all four subjects" } }];
+  all.concat(cats).forEach(function(c){
+    var b = el("button", "cat"); b.type = "button";
+    var count = c.id === "all" ? posts.length : posts.filter(function(p){ return p.category === c.id; }).length;
+    var cn = el("span", "cn"); cn.appendChild(el("span", null, tx(c.name))); cn.appendChild(el("small", null, String(count)));
+    b.appendChild(cn); b.appendChild(el("span", "cd", tx(c.desc)));
+    b.setAttribute("aria-pressed", current === c.id ? "true" : "false");
+    b.addEventListener("click", function(){ current = c.id; render(); });
+    cw.appendChild(b);
+  });
+  var catName = {}; cats.forEach(function(c){ catName[c.id] = tx(c.name); });
+  var list = current === "all" ? posts : posts.filter(function(p){ return p.category === current; });
+  var pw = document.getElementById("posts"); pw.textContent = "";
+  list.slice(0, 8).forEach(function(p){
+    var u = CONFIG.ON_SITE ? postUrl(tx(p.url)) : postUrl(tx(p.previewUrl)), row = el(u ? "a" : "div", "post");
+    if (u) { row.href = u; if (/^https:\/\/(www\.)?taxnpaypro\.com\//.test(u)) { row.target = "_top"; } else if (/^https:/.test(u)) { row.target = "_blank"; row.rel = "noopener"; } else if (CONFIG.ON_SITE) { row.target = "_top"; } }
+    row.appendChild(el("span", "pd", p.date || ""));
+    var t = el("div"); t.appendChild(el("h3", null, tx(p.title))); if (p.excerpt) t.appendChild(el("p", null, tx(p.excerpt))); row.appendChild(t);
+    row.appendChild(el("span", "pc", catName[p.category] || ""));
+    pw.appendChild(row);
+  });
+  var em = document.getElementById("empty");
+  em.hidden = list.length > 0;
+  document.getElementById("empty-t").textContent = lang === "en" ? "The first articles are on the way" : "첫 글을 준비하고 있습니다";
+  document.getElementById("empty-s").textContent = current === "all"
+    ? (lang === "en" ? "New articles on accounting, tax, payroll and QuickBooks Desktop will appear here." : "회계·세무·급여·QuickBooks Desktop 새 글이 올라오면 여기에 표시됩니다.")
+    : (lang === "en" ? "No articles in this subject yet." : "이 주제의 글은 아직 없습니다.");
+  document.getElementById("blogall").hidden = !(CONFIG.ON_SITE && posts.length > 0);
+  if (d.blogUrl && CONFIG.ON_SITE) document.getElementById("lnk-blog").href = d.blogUrl;
+}
+
+if (CONFIG.DATA_URL) {
+  try {
+    fetch(CONFIG.DATA_URL + "?t=" + Math.floor(Date.now() / 300000), { cache: "no-store" })
+      .then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(j){ if (j && (j.categories || j.posts)) { DATA = j; render(); } })
+      .catch(function(){});
+  } catch (e) {}
+}
+
+/* language */
+var nodes = [];
+function collect(){
+  nodes = Array.prototype.slice.call(document.querySelectorAll("[data-en]"));
+  nodes.forEach(function(n){ if(n.dataset.ko == null) n.dataset.ko = n.innerHTML; });
+}
+function setLang(l){
+  lang = l; collect();
+  nodes.forEach(function(n){ n.innerHTML = l === "en" ? n.dataset.en : n.dataset.ko; });
+  document.documentElement.lang = l;
+  document.getElementById("lk").setAttribute("aria-pressed", l === "ko");
+  document.getElementById("le").setAttribute("aria-pressed", l === "en");
+  try{ localStorage.setItem("bizlex-lang", l); }catch(e){}
+  render();
+}
+document.getElementById("lk").addEventListener("click", function(){ setLang("ko"); });
+document.getElementById("le").addEventListener("click", function(){ setLang("en"); });
+var saved = null; try{ saved = localStorage.getItem("bizlex-lang"); }catch(e){}
+setLang(saved === "en" ? "en" : "ko");
+
+/* copy */
+var toast = document.getElementById("toast");
+document.querySelectorAll(".copy").forEach(function(b){
+  b.addEventListener("click", function(){
+    var el2 = document.getElementById(b.getAttribute("data-copy"));
+    var text = el2.textContent;
+    var done = function(){ toast.textContent = lang === "en" ? "Copied: " + text : "복사했습니다: " + text; };
+    var fallback = function(){
+      var r = document.createRange(); r.selectNodeContents(el2);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      toast.textContent = lang === "en" ? "Selected. Press Ctrl+C to copy." : "선택했습니다. Ctrl+C로 복사하세요.";
+    };
+    try{ navigator.clipboard.writeText(text).then(done, fallback); }catch(e){ fallback(); }
+  });
+});
+})();
+</script>
+
+</html>
+<!--cfwa--><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "711a0a4eb51c474fb4648cdc53ddda69"}'></script><!--/cfwa-->
