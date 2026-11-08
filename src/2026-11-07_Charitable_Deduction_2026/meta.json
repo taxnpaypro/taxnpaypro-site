@@ -12,5 +12,16 @@
   "excerpt": {
     "ko": "2026년부터 표준공제에 현금 기부 최대 $1,000(부부 $2,000) 추가, 항목별은 AGI 0.5% 초과분만. 두 합계 비교로 직접 계산합니다.",
     "en": "New for 2026: up to $1,000 ($2,000 joint) for non-itemizers and a 0.5% AGI floor for itemizers. Compare two totals."
+  },
+  "downloads": {
+    "kit": "charitable-donation-planner",
+    "en": [
+      "Charitable_Donation_Deduction_Planner_2026_EN.xlsx",
+      "Charitable_Giving_Deduction_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Charitable_Donation_Deduction_Planner_2026_EN_KR.xlsx",
+      "Charitable_Giving_Deduction_Guide_2026_EN_KR.pdf"
+    ]
   }
 }

@@ -12,5 +12,16 @@
   "excerpt": {
     "ko": "Uncategorized Expense·잘못된 계정의 거래를 엑셀 목록 하나로 점검하고, CSV(Online)·IIF(Desktop) 분개로 한 번에 옮기는 방법.",
     "en": "Move dozens of miscoded transactions with one checked reclass journal entry: debit/credit rule, Excel formulas, CSV for Online and IIF for Desktop."
+  },
+  "downloads": {
+    "kit": "bulk-reclass-je-builder",
+    "en": [
+      "Bulk_Reclass_JE_Builder_2026_EN.xlsx",
+      "Bulk_Reclass_JE_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Bulk_Reclass_JE_Builder_2026_EN_KR.xlsx",
+      "Bulk_Reclass_JE_Guide_2026_EN_KR.pdf"
+    ]
   }
 }

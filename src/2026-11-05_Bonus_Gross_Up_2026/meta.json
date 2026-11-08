@@ -12,5 +12,16 @@
   "excerpt": {
     "ko": "약속한 실수령 보너스를 맞추는 그로스업 수식, $184,500·$200,000 예외, 회사 부담 비용, $25 선물 규칙까지.",
     "en": "Pay an exact take-home bonus: 2026 rates, the gross-up formula, edge cases, employer cost and the $25 gift rule."
+  },
+  "downloads": {
+    "kit": "holiday-bonus-gross-up",
+    "en": [
+      "Holiday_Bonus_Gross_Up_Calculator_2026_EN.xlsx",
+      "Year_End_Bonus_and_Gift_Checklist_2026_EN.pdf"
+    ],
+    "ko": [
+      "Holiday_Bonus_Gross_Up_Calculator_2026_EN_KR.xlsx",
+      "Year_End_Bonus_and_Gift_Checklist_2026_EN_KR.pdf"
+    ]
   }
 }

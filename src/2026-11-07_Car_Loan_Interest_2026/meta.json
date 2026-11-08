@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-07",
+  "category": "tax",
+  "slug": {
+    "ko": "car-loan-interest-deduction-2026-korean",
+    "en": "car-loan-interest-deduction-2026"
+  },
+  "title": {
+    "ko": "2026년 자동차 대출 이자 공제: 누가 받을 수 있고 얼마나 공제될까 (최대 $10,000)",
+    "en": "Car Loan Interest Deduction 2026: Who Qualifies and How to Calculate It (Up to $10,000)"
+  },
+  "excerpt": {
+    "ko": "미국 조립 새 차 대출 이자 연 최대 $10,000, 표준공제자도 가능. 일곱 가지 조건과 5단계 계산, 예시 4가지.",
+    "en": "Up to $10,000 a year for new, US-assembled vehicles, even with the standard deduction. Seven checks, five steps, four examples."
+  },
+  "downloads": {
+    "kit": "car-loan-interest-deduction",
+    "en": [
+      "Car_Loan_Interest_Deduction_Calculator_2026_EN.xlsx",
+      "Car_Loan_Interest_Deduction_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Car_Loan_Interest_Deduction_Calculator_2026_EN_KR.xlsx",
+      "Car_Loan_Interest_Deduction_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}

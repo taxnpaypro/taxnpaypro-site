@@ -26,6 +26,14 @@ main img{max-width:100%;height:auto}
 main table{display:block;max-width:100%;overflow-x:auto} main pre,main p{max-width:100%}
 .conv{margin-top:36px;padding:16px 18px;border:1px solid #dde3ea;border-left:5px solid var(--gold);border-radius:8px;background:#FBF8F0;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
 .conv b{color:#1F3A5F} .conv span{color:var(--muted);flex:1 1 260px} .conv a{color:#fff;background:var(--navy);padding:8px 14px;border-radius:6px;text-decoration:none;font-weight:700;min-height:40px;display:inline-flex;align-items:center}
+.kittop{margin:0 0 22px} .kittop a{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border-radius:6px;background:#FBF8F0;border:1px solid var(--gold);color:#1F3A5F;font-weight:700;text-decoration:none}
+.kit{margin-top:40px;padding:20px 20px 14px;border:2px solid var(--navy);border-radius:10px;background:#F7F9FB;scroll-margin-top:16px}
+.kit h2{margin:0 0 6px;font-size:22px;color:#1F3A5F} .kit>p{margin:0 0 12px;color:var(--muted)}
+.kit ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.kit li{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;padding:10px 12px;background:#fff;border:1px solid #dde3ea;border-radius:8px}
+.kit li a{color:#fff;background:var(--navy);padding:8px 14px;border-radius:6px;text-decoration:none;font-weight:700;min-height:40px;display:inline-flex;align-items:center}
+.kit li small{color:var(--muted);font-size:13px;overflow-wrap:anywhere}
+.kit .fine{font-size:12.5px;color:var(--muted);margin:12px 0 0}
 .back{margin-top:40px;padding-top:20px;border-top:1px solid #dde3ea}
 .back a{color:#1F3A5F;font-weight:700;text-decoration:none}
 a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
@@ -37,7 +45,7 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 <main>
 <p class="meta">2026-11-06 · 회계</p>
 <h1 class="t">QuickBooks OBE(Opening Balance Equity) 잔액 정리법: 찾고, 고치고, 0으로 만들기</h1>
-<h1 style="font-size:34px;color:#1F3A5F;line-height:1.25;margin:0 0 14px;">QuickBooks OBE(Opening Balance Equity) 잔액 정리법: 찾고, 고치고, 0으로 만들기</h1>
+<p class="kittop"><a href="#kit">↓ 이 글의 무료 Excel·PDF 키트 받기</a></p><h1 style="font-size:34px;color:#1F3A5F;line-height:1.25;margin:0 0 14px;">QuickBooks OBE(Opening Balance Equity) 잔액 정리법: 찾고, 고치고, 0으로 만들기</h1>
 <p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">장부 설정을 마친 지 한참 지났는데도 대차대조표에 <b>Opening Balance Equity(OBE)</b>라는 줄이 남아 있나요? 매년 봄 CPA가 이 금액이 뭐냐고 묻는데, 안에 무엇이 들어 있는지 모르겠고, 인터넷 답변은 "분개 하나 하면 된다"는 말뿐, 어떤 분개를 해야 하는지, 잔액이 맞기는 한지 알려 주지 않습니다.</p>
 <p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">이 글은 정리 과정을 처음부터 끝까지 단계별로 설명합니다. 계정에 무엇이 들어 있는지 확인하고, 잘못된 부분은 고치고, 나머지는 알맞은 자본 계정으로 옮깁니다. 리포트 내보내기와 엑셀만 있으면 혼자서도 할 수 있습니다. QuickBooks Desktop과 Online 방법을 모두 적었습니다.</p>
 <div style="background:#EAF3F5;border-left:5px solid #2A7F8F;padding:12px 16px;margin:16px 0;"><p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;"><b>이런 분께:</b> 설정·전환 이후 또는 몇 년간 "맞추기" 분개를 하다 보니 대차대조표에 OBE 잔액이 남아 있는 자영업자와 북키퍼.</p>
@@ -92,10 +100,10 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 <h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">체크리스트</h2>
 <ul style="margin:8px 0 12px 22px;padding:0;"><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ OBE(전체 기간)를 내보내 합계가 대차대조표와 같은지 확인</li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 모든 줄에 유지·수정·CPA 문의 표시</li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 수정 줄은 원래 거래에서 고치기</li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ CPA 문의 줄은 답을 받기</li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 정리 분개 입력, 차대 일치 확인</li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 대차대조표 OBE = 0.00 확인, 마감일 설정과 백업</li></ul>
 <h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">더 빨리 끝내고 싶다면</h2>
-<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">바로 쓰는 워크북이 필요하면, 위의 점검을 자동으로 해 주고 차대가 맞는 정리 분개까지 만들어 주는 <b>OBE 잔액 정리 워크북 (영한판)</b>을 Etsy와 Gumroad에서 받을 수 있습니다.</p>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">위 과정을 그대로 해 주는 <b>OBE 잔액 정리 워크북</b>은(는) 아래 <a href="#kit" style="color:#1F4E99;font-weight:700;">무료 키트 다운로드</a>에서 가입 없이 무료로 받으실 수 있습니다(엑셀 + PDF 가이드).</p>
 <p style="font-size:13px;color:#666;line-height:1.6;margin:8px 0;">이 글은 교육용이며 세무·법률·회계 자문이 아니고, 결과는 각자의 기록에 따라 다릅니다. 메뉴 이름은 바뀔 수 있습니다. QuickBooks는 Intuit Inc.의 등록 상표이며, 이 글은 Intuit과 제휴·보증 관계가 없습니다.</p>
 <p style="font-size:13px;color:#666;line-height:1.6;margin:8px 0;">출처: Intuit, "Lock your books in QuickBooks Online" (도움말, 2026-09-15 갱신): https://quickbooks.intuit.com/learn-support/en-us/help-article/close-books/close-books-quickbooks-online/L59LelyPM_US_en_US · QuickBooks 커뮤니티 OBE 정리 토론: https://quickbooks.intuit.com/community/other-questions-72/clearing-opening-balance-equity-147225 , https://quickbooks.intuit.com/community/reports-and-accounting-5/opening-balance-equity-and-retained-earnings-45836</p>
-
+<section class="kit" id="kit"><h2>무료 키트 다운로드</h2><p>글에서 설명한 내용을 그대로 따라 할 수 있는 도구입니다. 가입 없이 바로 받으세요.</p><ul><li><a href="/downloads/opening-balance-equity-cleanup/Opening_Balance_Equity_Cleanup_Workbook_2026_EN_KR.xlsx" download>Excel 계산 도구 (.xlsx)</a><small>Opening_Balance_Equity_Cleanup_Workbook_2026_EN_KR.xlsx · 30 KB</small></li><li><a href="/downloads/opening-balance-equity-cleanup/Opening_Balance_Equity_Cleanup_Guide_2026_EN_KR.pdf" download>단계별 가이드 (PDF)</a><small>Opening_Balance_Equity_Cleanup_Guide_2026_EN_KR.pdf · 400 KB</small></li></ul><p class="fine">본인과 본인 사업에 무료로 쓰세요. 재판매·재배포는 하지 마세요. 일반 정보이며 세무·법률·회계 자문이 아닙니다. 숫자는 본인 자료로 꼭 확인하세요. QuickBooks는 Intuit Inc.의 상표이며 BIZLEX는 Intuit과 관련이 없습니다.</p></section>
 <aside class="conv"><b>무료 은행 CSV → QBO 변환기</b><span>은행 CSV를 QuickBooks Desktop용 .qbo·.iif 파일로. 브라우저 안에서만 처리합니다.</span><a href="/csv-to-qbo">변환기 열기</a></aside>
 <p class="back"><a href="/blog/">← 블로그 글 목록</a></p>
 </main>

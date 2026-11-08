@@ -82,7 +82,8 @@
       "previewUrl": {
         "ko": "blog/church-giving-statement-korean.html",
         "en": "blog/church-year-end-giving-statements.html"
-      }
+      },
+      "freeKit": false
     },
     {
       "date": "2026-11-07",
@@ -102,7 +103,8 @@
       "previewUrl": {
         "ko": "blog/solo-401k-sep-ira-2026-korean.html",
         "en": "blog/solo-401k-vs-sep-ira-2026.html"
-      }
+      },
+      "freeKit": false
     },
     {
       "date": "2026-11-07",
@@ -122,7 +124,8 @@
       "previewUrl": {
         "ko": "blog/bonus-gross-up-2026-korean.html",
         "en": "blog/holiday-bonus-gross-up-2026.html"
-      }
+      },
+      "freeKit": true
     },
     {
       "date": "2026-11-07",
@@ -142,7 +145,50 @@
       "previewUrl": {
         "ko": "blog/nanny-tax-2026-korean.html",
         "en": "blog/nanny-tax-2026-household-employer.html"
-      }
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-07",
+      "category": "tax",
+      "title": {
+        "ko": "2026년 업무 식사·연말 파티 경비, 50%·100%·0% 중 몇 %가 공제될까",
+        "en": "Business Meals and Holiday Party Deductions in 2026: What Is 50%, 100% and 0% Now"
+      },
+      "excerpt": {
+        "ko": "고객 식사 50%, 직원 연말 파티 100%, 2026년부터 사무실 간식은 0%. 기록 방법과 1년치 예시 계산.",
+        "en": "Client meals 50%, staff holiday parties 100%, and office snacks 0% starting 2026. Records and a worked example."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/business-meals-party-deduction-2026-korean.html",
+        "en": "https://taxnpaypro.com/blog/business-meals-holiday-party-deduction-2026.html"
+      },
+      "previewUrl": {
+        "ko": "blog/business-meals-party-deduction-2026-korean.html",
+        "en": "blog/business-meals-holiday-party-deduction-2026.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-07",
+      "category": "tax",
+      "title": {
+        "ko": "2026년 자동차 대출 이자 공제: 누가 받을 수 있고 얼마나 공제될까 (최대 $10,000)",
+        "en": "Car Loan Interest Deduction 2026: Who Qualifies and How to Calculate It (Up to $10,000)"
+      },
+      "excerpt": {
+        "ko": "미국 조립 새 차 대출 이자 연 최대 $10,000, 표준공제자도 가능. 일곱 가지 조건과 5단계 계산, 예시 4가지.",
+        "en": "Up to $10,000 a year for new, US-assembled vehicles, even with the standard deduction. Seven checks, five steps, four examples."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/car-loan-interest-deduction-2026-korean.html",
+        "en": "https://taxnpaypro.com/blog/car-loan-interest-deduction-2026.html"
+      },
+      "previewUrl": {
+        "ko": "blog/car-loan-interest-deduction-2026-korean.html",
+        "en": "blog/car-loan-interest-deduction-2026.html"
+      },
+      "freeKit": true
     },
     {
       "date": "2026-11-07",
@@ -162,7 +208,8 @@
       "previewUrl": {
         "ko": "blog/charitable-deduction-2026-korean-guide.html",
         "en": "blog/charitable-deduction-2026-standard-vs-itemized.html"
-      }
+      },
+      "freeKit": true
     },
     {
       "date": "2026-11-07",
@@ -182,7 +229,8 @@
       "previewUrl": {
         "ko": "blog/quickbooks-outside-payroll-clearing-korean.html",
         "en": "blog/outside-payroll-quickbooks-payroll-clearing.html"
-      }
+      },
+      "freeKit": true
     },
     {
       "date": "2026-11-07",
@@ -202,7 +250,8 @@
       "previewUrl": {
         "ko": "blog/quickbooks-online-basics-korean.html",
         "en": "blog/quickbooks-online-basics-for-beginners.html"
-      }
+      },
+      "freeKit": false
     },
     {
       "date": "2026-11-06",
@@ -222,7 +271,8 @@
       "previewUrl": {
         "ko": "blog/2026-mileage-rate-log-korean.html",
         "en": "blog/2026-mileage-log-two-irs-rates.html"
-      }
+      },
+      "freeKit": false
     },
     {
       "date": "2026-11-06",
@@ -242,7 +292,8 @@
       "previewUrl": {
         "ko": "blog/duplicate-transactions-reconciliation-difference-korean.html",
         "en": "blog/find-duplicate-transactions-reconciliation-difference.html"
-      }
+      },
+      "freeKit": true
     },
     {
       "date": "2026-11-06",
@@ -262,7 +313,8 @@
       "previewUrl": {
         "ko": "blog/bulk-reclass-journal-entry-korean.html",
         "en": "blog/bulk-reclassify-transactions-journal-entry.html"
-      }
+      },
+      "freeKit": true
     },
     {
       "date": "2026-11-06",
@@ -282,7 +334,8 @@
       "previewUrl": {
         "ko": "blog/undeposited-funds-cleanup-korean.html",
         "en": "blog/clean-up-undeposited-funds.html"
-      }
+      },
+      "freeKit": true
     },
     {
       "date": "2026-11-06",
@@ -302,7 +355,8 @@
       "previewUrl": {
         "en": "blog/american-express-csv-to-qbo-quickbooks-desktop.html",
         "ko": "blog/american-express-csv-to-qbo-korean.html"
-      }
+      },
+      "freeKit": false
     },
     {
       "date": "2026-11-06",
@@ -322,7 +376,8 @@
       "previewUrl": {
         "en": "blog/bank-of-america-csv-to-qbo-quickbooks-desktop.html",
         "ko": "blog/bank-of-america-csv-to-qbo-korean.html"
-      }
+      },
+      "freeKit": false
     },
     {
       "date": "2026-11-06",
@@ -342,7 +397,8 @@
       "previewUrl": {
         "en": "blog/capital-one-csv-to-qbo-quickbooks-desktop.html",
         "ko": "blog/capital-one-csv-to-qbo-korean.html"
-      }
+      },
+      "freeKit": false
     },
     {
       "date": "2026-11-06",
@@ -362,7 +418,8 @@
       "previewUrl": {
         "en": "blog/chase-csv-to-qbo-quickbooks-desktop.html",
         "ko": "blog/chase-csv-to-qbo-korean.html"
-      }
+      },
+      "freeKit": false
     },
     {
       "date": "2026-11-06",
@@ -382,7 +439,8 @@
       "previewUrl": {
         "en": "blog/citi-csv-to-qbo-quickbooks-desktop.html",
         "ko": "blog/citi-csv-to-qbo-korean.html"
-      }
+      },
+      "freeKit": false
     },
     {
       "date": "2026-11-06",
@@ -402,7 +460,8 @@
       "previewUrl": {
         "en": "blog/discover-csv-to-qbo-quickbooks-desktop.html",
         "ko": "blog/discover-csv-to-qbo-korean.html"
-      }
+      },
+      "freeKit": false
     },
     {
       "date": "2026-11-06",
@@ -422,7 +481,8 @@
       "previewUrl": {
         "en": "blog/us-bank-csv-to-qbo-quickbooks-desktop.html",
         "ko": "blog/us-bank-csv-to-qbo-korean.html"
-      }
+      },
+      "freeKit": false
     },
     {
       "date": "2026-11-06",
@@ -442,7 +502,8 @@
       "previewUrl": {
         "en": "blog/wells-fargo-csv-to-qbo-quickbooks-desktop.html",
         "ko": "blog/wells-fargo-csv-to-qbo-korean.html"
-      }
+      },
+      "freeKit": false
     },
     {
       "date": "2026-11-06",
@@ -462,7 +523,8 @@
       "previewUrl": {
         "ko": "blog/quickbooks-obe-jeongri.html",
         "en": "blog/clean-up-opening-balance-equity-quickbooks.html"
-      }
+      },
+      "freeKit": true
     },
     {
       "date": "2026-11-06",
@@ -482,7 +544,8 @@
       "previewUrl": {
         "ko": "blog/quickbooks-prepaid-sanggak.html",
         "en": "blog/prepaid-expense-amortization-quickbooks.html"
-      }
+      },
+      "freeKit": true
     },
     {
       "date": "2026-11-02",
@@ -502,7 +565,8 @@
       "previewUrl": {
         "ko": "blog/quickbooks-desktop-to-online-korean.html",
         "en": "blog/quickbooks-desktop-to-online-migration.html"
-      }
+      },
+      "freeKit": false
     },
     {
       "date": "2026-11-02",
@@ -522,7 +586,8 @@
       "previewUrl": {
         "ko": "blog/us-llc-korean-nonresident-korean.html",
         "en": "blog/us-llc-for-korean-nonresidents.html"
-      }
+      },
+      "freeKit": false
     }
   ]
 }

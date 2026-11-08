@@ -12,5 +12,16 @@
   "excerpt": {
     "ko": "Undeposited Funds에 남은 오래된 결제를 경과일로 나누고, 은행 입금과 맞추고, 두 번 잡힌 매출을 찾아 정리하는 7단계.",
     "en": "Age old payments, match them to bank deposits, catch double-counted income and clear the rest. Excel formulas included."
+  },
+  "downloads": {
+    "kit": "undeposited-funds-cleanup",
+    "en": [
+      "Undeposited_Funds_Cleanup_Workbook_2026_EN.xlsx",
+      "Undeposited_Funds_Cleanup_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Undeposited_Funds_Cleanup_Workbook_2026_EN_KR.xlsx",
+      "Undeposited_Funds_Cleanup_Guide_2026_EN_KR.pdf"
+    ]
   }
 }
