@@ -4,6 +4,7 @@
 <meta name="description" content="Wells Fargo에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.">
 <link rel="canonical" href="https://taxnpaypro.com/blog/wells-fargo-csv-to-qbo-korean.html">
 <link rel="alternate" hreflang="ko" href="https://taxnpaypro.com/blog/wells-fargo-csv-to-qbo-korean.html"><link rel="alternate" hreflang="en" href="https://taxnpaypro.com/blog/wells-fargo-csv-to-qbo-quickbooks-desktop.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;800&family=Noto+Sans+KR:wght@400;700&display=swap">
 <style>
 :root{color-scheme:light;--navy:#14202E;--gold:#D4A845;--bg:#FFFFFF;--ink:#222;--muted:#5A6573}
@@ -31,14 +32,14 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 </style></head><body>
 <header class="top"><div class="in">
 <a class="logo" href="/" aria-label="BIZLEX, INC."><b>BIZ</b><i aria-hidden="true"></i><span>LEX</span></a>
-<nav class="nav"><a href="index.html">블로그</a><a class="lang" href="wells-fargo-csv-to-qbo-quickbooks-desktop.html" lang="en">English</a></nav>
+<nav class="nav"><a href="/blog/">블로그</a><a class="lang" href="wells-fargo-csv-to-qbo-quickbooks-desktop.html" lang="en">English</a></nav>
 </div></header>
 <main>
 <p class="meta">2026-11-06 · QuickBooks Desktop</p>
 <h1 class="t">Wells Fargo CSV를 QuickBooks Desktop으로 가져오는 법 (무료 QBO 변환기)</h1>
 <p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">Wells Fargo에서 거래 내역을 CSV로 받았는데, QuickBooks Desktop은 CSV를 은행 계좌에 바로 넣지 못합니다. Desktop이 받는 것은 <b>Web Connect(.qbo)</b> 파일이고, 오래된 버전은 IIF 파일입니다. 이 글에서는 Wells Fargo CSV를 받는 법, 열 구성, 브라우저에서 무료로 .qbo로 바꾸는 법, 가져온 뒤 확인하는 법까지 순서대로 설명합니다.</p>
 <p style="font-size:17px;line-height:1.75;color:#222;margin:16px 0;background:#EAF3F5;border-left:5px solid #2A7F8F;padding:12px 16px;"><b>요약:</b> Wells Fargo에서 CSV 받기 → <a href="https://taxnpaypro.com/csv-to-qbo">무료 CSV→QBO 변환기</a> 열기 → 은행에서 Wells Fargo 선택 → 미리보기와 잔액 확인 → .qbo 저장 → QuickBooks Desktop에서 <b>Banking › Bank Feeds › Import Web Connect File</b>.</p>
-<figure style="margin:20px 0;"><img src="img/2026-11-06_Bank_CSV_Wells_Fargo/Fig01_Wells_Fargo_Flow_KR.png" alt="순서도: Wells Fargo에서 CSV 받기, 브라우저에서 QBO로 변환, Web Connect로 가져오기, 대사(Reconcile)" width="1200" style="max-width:100%;height:auto;border:1px solid #dde3ea;border-radius:8px;" /><figcaption style="font-size:13px;color:#666;margin:4px 0 18px;">그림 1. Wells Fargo CSV에서 대사까지 4단계.</figcaption></figure>
+<figure style="margin:20px 0;"><img src="img/2026-11-06_Bank_CSV_Wells_Fargo/Fig01_Wells_Fargo_Flow_KR.png" alt="순서도: Wells Fargo에서 CSV 받기, 브라우저에서 QBO로 변환, Web Connect로 가져오기, 대사(Reconcile)" width="1200" height="434" style="max-width:100%;height:auto;border:1px solid #dde3ea;border-radius:8px;" /><figcaption style="font-size:13px;color:#666;margin:4px 0 18px;">그림 1. Wells Fargo CSV에서 대사까지 4단계.</figcaption></figure>
 <h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">1단계. Wells Fargo에서 CSV 받기</h2>
 <p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">Wells Fargo 온라인에서 계좌를 고르고 Accounts 탭의 <b>Download Account Activity</b>로 들어갑니다. From·To 날짜를 확인하고 <b>Comma Delimited</b>를 고른 뒤 <b>Download</b>를 누릅니다. 기본은 최근 90일이고, 계좌 종류에 따라 최대 18개월까지 고를 수 있습니다.</p>
 <h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">2단계. Wells Fargo CSV 형식 알아 두기</h2>
@@ -70,6 +71,6 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 <p style="font-size:13px;color:#666;line-height:1.6;margin:8px 0;">출처: <a href="https://www.wellsfargo.com/help/online-banking/activity-faqs/">Wells Fargo: Account Activity questions</a> · <a href="https://www.wellsfargo.com/biz/online-banking/software/quickbooks/webconnect/">Wells Fargo: QuickBooks (Web Connect)</a> · <a href="https://taxnpaypro.com/csv-to-qbo">무료 은행 CSV→QBO 변환기</a></p>
 
 <aside class="conv"><b>무료 은행 CSV → QBO 변환기</b><span>은행 CSV를 QuickBooks Desktop용 .qbo·.iif 파일로. 브라우저 안에서만 처리합니다.</span><a href="/csv-to-qbo">변환기 열기</a></aside>
-<p class="back"><a href="index.html">← 블로그 글 목록</a></p>
+<p class="back"><a href="/blog/">← 블로그 글 목록</a></p>
 </main>
 <!--cfwa--><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "711a0a4eb51c474fb4648cdc53ddda69"}'></script><!--/cfwa--></body></html>

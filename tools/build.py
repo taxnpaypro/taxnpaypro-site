@@ -17,12 +17,34 @@ import clean_blog
 DOMAIN = 'taxnpaypro.com'
 B = os.path.join(R, 'blog')
 
+def png_size(path):
+    # width/height from the PNG header, so pages can reserve image space (prevents layout shift / CLS)
+    with open(path, 'rb') as f:
+        h = f.read(24)
+    if h[:8] != b'\x89PNG\r\n\x1a\n': return None
+    return int.from_bytes(h[16:20], 'big'), int.from_bytes(h[20:24], 'big')
+
+def add_img_size(body, folder_dir):
+    def fix(m):
+        tag = m.group(0)
+        if re.search(r'\sheight="', tag): return tag
+        sm = re.search(r'src="img/[^/"]+/([^"]+\.png)"', tag)
+        sz = png_size(os.path.join(folder_dir, sm.group(1))) if sm else None
+        if not sz: return tag
+        w, h = sz
+        wm = re.search(r'\swidth="(\d+)"', tag)
+        if wm:
+            dw = int(wm.group(1)); return tag.replace(wm.group(0), ' width="%d" height="%d"' % (dw, round(dw * h / w)), 1)
+        return tag.replace('<img', '<img width="%d" height="%d"' % (w, h), 1)
+    return re.sub(r'<img\b[^>]*>', fix, body)
+
 PAGE = '''<!doctype html>
 <html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{title} · BIZLEX</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="https://taxnpaypro.com/blog/{slug}.html">
 <link rel="alternate" hreflang="{lang}" href="https://taxnpaypro.com/blog/{slug}.html"><link rel="alternate" hreflang="{olang}" href="https://taxnpaypro.com/blog/{oslug}.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;800&family=Noto+Sans+KR:wght@400;700&display=swap">
 <style>
 :root{{color-scheme:light;--navy:#14202E;--gold:#D4A845;--bg:#FFFFFF;--ink:#222;--muted:#5A6573}}
@@ -50,14 +72,14 @@ a:focus-visible{{outline:2px solid var(--gold);outline-offset:3px}}
 </style></head><body>
 <header class="top"><div class="in">
 <a class="logo" href="/" aria-label="BIZLEX, INC."><b>BIZ</b><i aria-hidden="true"></i><span>LEX</span></a>
-<nav class="nav"><a href="index.html">{blog}</a><a class="lang" href="{other}" lang="{olang}">{oname}</a></nav>
+<nav class="nav"><a href="/blog/">{blog}</a><a class="lang" href="{other}" lang="{olang}">{oname}</a></nav>
 </div></header>
 <main>
 <p class="meta">{date} · {cat}</p>
 <h1 class="t">{title}</h1>
 {body}
 <aside class="conv"><b>{convh}</b><span>{convt}</span><a href="/csv-to-qbo">{convb}</a></aside>
-<p class="back"><a href="index.html">{backtxt}</a></p>
+<p class="back"><a href="/blog/">{backtxt}</a></p>
 </main>
 </body></html>
 '''
@@ -89,6 +111,7 @@ def main():
             for src in re.findall(r'src="([^"]+)"', body):
                 if '/' in src or not os.path.exists(os.path.join(d, src)): errors.append('%s: missing image %s' % (folder, src))
             body = re.sub(r'src="([^"/]+\.png)"', lambda x: 'src="img/%s/%s"' % (folder, x.group(1)), body)
+            body = add_img_size(body, d)
             o = 'en' if lang == 'ko' else 'ko'
             page = PAGE.format(lang=lang, title=html.escape(title), body=body, desc=html.escape(m['excerpt'][lang], quote=True), slug=m['slug'][lang], oslug=m['slug'][o],
                                convh='무료 은행 CSV → QBO 변환기' if lang == 'ko' else 'Free bank CSV to QBO converter',
@@ -114,11 +137,13 @@ def main():
     for p in posts:
         for lang in ('ko', 'en'):
             rows[lang].append('<a class="post" data-cat="%s" href="%s"><span class="d">%s</span><span class="b"><b>%s</b><em>%s</em></span><span class="c">%s</span></a>' % (
-                p['category'], p['previewUrl'][lang].split('/')[-1], p['date'], html.escape(p['title'][lang]), html.escape(p['excerpt'][lang]), html.escape(CATN[p['category']][lang])))
+                p['category'], '/blog/' + p['previewUrl'][lang].split('/')[-1], p['date'], html.escape(p['title'][lang]), html.escape(p['excerpt'][lang]), html.escape(CATN[p['category']][lang])))
     tabs = lambda lang: ''.join('<button type="button" data-cat="%s">%s</button>' % (k, v) for k, v in [('all', '전체' if lang == 'ko' else 'All')] + [(c['id'], c['name'][lang]) for c in site['categories']])
     INDEX = '''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BIZLEX Blog · Accounting, Tax, Payroll, QuickBooks Desktop</title>
     <meta name="description" content="회계·세무·급여·QuickBooks Desktop을 한국어와 영어로 쉽게 설명하는 BIZLEX 블로그. Accounting, tax, payroll and QuickBooks Desktop articles in Korean and English.">
+    <link rel="canonical" href="https://taxnpaypro.com/blog/">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;800&family=Noto+Sans+KR:wght@400;700&display=swap">
     <style>
     :root{color-scheme:light}*{box-sizing:border-box}html,body{margin:0;background:#F5F6F4;color:#14202E}
