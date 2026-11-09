@@ -12,5 +12,16 @@
   "excerpt": {
     "ko": "연간 보험료·소프트웨어 같은 선급비용을 매달 상각하는 법. 엑셀 수식 4개, 월별 분개 1건, 잔액 대조까지 예시로 설명합니다.",
     "en": "A simple way to amortize prepaid insurance and software each month: four spreadsheet formulas, one journal entry, and a balance tie-out."
+  },
+  "downloads": {
+    "kit": "prepaid-expense-amortization",
+    "en": [
+      "Prepaid_Expense_Amortization_Scheduler_2026_EN.xlsx",
+      "Prepaid_Expense_Amortization_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Prepaid_Expense_Amortization_Scheduler_2026_EN_KR.xlsx",
+      "Prepaid_Expense_Amortization_Guide_2026_EN_KR.pdf"
+    ]
   }
 }

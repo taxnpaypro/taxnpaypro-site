@@ -12,5 +12,20 @@
   "excerpt": {
     "ko": "급여대장은 분개 1건으로, 은행 출금은 모두 Payroll Clearing으로. 잔액이 0이면 끝입니다. Desktop·Online 단계별.",
     "en": "Record the payroll register once, send every withdrawal to Payroll Clearing, and the balance hits zero."
+  },
+  "downloads": {
+    "kit": "outside-payroll-je-builder",
+    "en": [
+      "Outside_Payroll_JE_Builder_2026_EN.xlsx",
+      "Outside_Payroll_Guide_2026_EN.pdf",
+      "Example_Payroll_JE_Desktop_EN.iif",
+      "Example_Payroll_JE_Online_EN.csv"
+    ],
+    "ko": [
+      "Outside_Payroll_JE_Builder_2026_EN_KR.xlsx",
+      "Outside_Payroll_Guide_2026_EN_KR.pdf",
+      "Example_Payroll_JE_Desktop_EN_KR.iif",
+      "Example_Payroll_JE_Online_EN_KR.csv"
+    ]
   }
 }

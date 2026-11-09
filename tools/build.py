@@ -66,6 +66,14 @@ main img{{max-width:100%;height:auto}}
 main table{{display:block;max-width:100%;overflow-x:auto}} main pre,main p{{max-width:100%}}
 .conv{{margin-top:36px;padding:16px 18px;border:1px solid #dde3ea;border-left:5px solid var(--gold);border-radius:8px;background:#FBF8F0;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}}
 .conv b{{color:#1F3A5F}} .conv span{{color:var(--muted);flex:1 1 260px}} .conv a{{color:#fff;background:var(--navy);padding:8px 14px;border-radius:6px;text-decoration:none;font-weight:700;min-height:40px;display:inline-flex;align-items:center}}
+.kittop{{margin:0 0 22px}} .kittop a{{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border-radius:6px;background:#FBF8F0;border:1px solid var(--gold);color:#1F3A5F;font-weight:700;text-decoration:none}}
+.kit{{margin-top:40px;padding:20px 20px 14px;border:2px solid var(--navy);border-radius:10px;background:#F7F9FB;scroll-margin-top:16px}}
+.kit h2{{margin:0 0 6px;font-size:22px;color:#1F3A5F}} .kit>p{{margin:0 0 12px;color:var(--muted)}}
+.kit ul{{list-style:none;margin:0;padding:0;display:grid;gap:10px}}
+.kit li{{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;padding:10px 12px;background:#fff;border:1px solid #dde3ea;border-radius:8px}}
+.kit li a{{color:#fff;background:var(--navy);padding:8px 14px;border-radius:6px;text-decoration:none;font-weight:700;min-height:40px;display:inline-flex;align-items:center}}
+.kit li small{{color:var(--muted);font-size:13px;overflow-wrap:anywhere}}
+.kit .fine{{font-size:12.5px;color:var(--muted);margin:12px 0 0}}
 .back{{margin-top:40px;padding-top:20px;border-top:1px solid #dde3ea}}
 .back a{{color:#1F3A5F;font-weight:700;text-decoration:none}}
 a:focus-visible{{outline:2px solid var(--gold);outline-offset:3px}}
@@ -83,6 +91,44 @@ a:focus-visible{{outline:2px solid var(--gold);outline-offset:3px}}
 </main>
 </body></html>
 '''
+
+def human_size(n):
+    return '%d KB' % max(1, round(n / 1024)) if n < 1024 * 1024 else '%.1f MB' % (n / 1048576)
+
+def file_label(name, lang):
+    ko = lang == 'ko'
+    n = name.lower()
+    if n.endswith('.pdf'): return '단계별 가이드 (PDF)' if ko else 'Step-by-step guide (PDF)'
+    if n.endswith('.iif'): return 'QuickBooks Desktop 가져오기 예시 (.iif)' if ko else 'QuickBooks Desktop import example (.iif)'
+    if n.endswith('.csv'): return 'QuickBooks Online 가져오기 예시 (.csv)' if ko else 'QuickBooks Online import example (.csv)'
+    if 'sample' in n: return '예시 데이터가 채워진 Excel' if ko else 'Excel workbook with sample data'
+    if 'blank' in n: return '빈 Excel 양식' if ko else 'Blank Excel workbook'
+    return 'Excel 계산 도구 (.xlsx)' if ko else 'Excel workbook (.xlsx)'
+
+def kit_boxes(m, lang, folder, errors, qb=False):
+    """meta.json "downloads": {"kit": "<folder under /downloads>", "ko": [files], "en": [files]}
+    Returns (top link, full box) HTML; ('', '') when the post has no kit."""
+    dl = m.get('downloads')
+    if not dl: return '', ''
+    kit, files = dl.get('kit', ''), dl.get(lang, [])
+    if not re.fullmatch(r'[a-z0-9-]+', kit) or not files:
+        errors.append('%s: bad downloads entry' % folder); return '', ''
+    ko = lang == 'ko'
+    items = []
+    for f in files:
+        p = os.path.join(R, 'downloads', kit, f)
+        if '/' in f or not os.path.isfile(p):
+            errors.append('%s: missing download downloads/%s/%s' % (folder, kit, f)); continue
+        items.append('<li><a href="/downloads/%s/%s" download>%s</a><small>%s · %s</small></li>' % (
+            kit, html.escape(f, quote=True), file_label(f, lang), html.escape(f), human_size(os.path.getsize(p))))
+    top = '<p class="kittop"><a href="#kit">%s</a></p>' % ('↓ 이 글의 무료 Excel·PDF 키트 받기' if ko else '↓ Get the free Excel + PDF kit for this article')
+    box = ('<section class="kit" id="kit"><h2>%s</h2><p>%s</p><ul>%s</ul><p class="fine">%s</p></section>' % (
+        '무료 키트 다운로드' if ko else 'Free kit download',
+        '글에서 설명한 내용을 그대로 따라 할 수 있는 도구입니다. 가입 없이 바로 받으세요.' if ko else 'Tools to follow this article step by step. No sign-up needed.',
+        ''.join(items),
+        ('본인과 본인 사업에 무료로 쓰세요. 재판매·재배포는 하지 마세요. 일반 정보이며 세무·법률·회계 자문이 아닙니다. 숫자는 본인 자료로 꼭 확인하세요.' + (' QuickBooks는 Intuit Inc.의 상표이며 BIZLEX는 Intuit과 관련이 없습니다.' if qb else '')) if ko else
+        ('Free to use for yourself and your own business; please do not resell or redistribute. General information, not tax, legal or accounting advice; check every figure against your own records.' + (' QuickBooks is a trademark of Intuit Inc.; BIZLEX is not affiliated with Intuit.' if qb else ''))))
+    return top, box
 
 CAT = {'accounting': ('회계', 'Accounting'), 'tax': ('세무', 'Tax'), 'payroll': ('급여', 'Payroll'), 'quickbooks': ('QuickBooks Desktop', 'QuickBooks Desktop'), 'qbo': ('QuickBooks Online', 'QuickBooks Online')}
 
@@ -113,7 +159,12 @@ def main():
             body = re.sub(r'src="([^"/]+\.png)"', lambda x: 'src="img/%s/%s"' % (folder, x.group(1)), body)
             body = add_img_size(body, d)
             o = 'en' if lang == 'ko' else 'ko'
-            page = PAGE.format(lang=lang, title=html.escape(title), body=body, desc=html.escape(m['excerpt'][lang], quote=True), slug=m['slug'][lang], oslug=m['slug'][o],
+            ktop, kbox = kit_boxes(m, lang, folder, errors, qb='QuickBooks' in body)
+            if kbox:
+                # put the download box before the Sources heading so readers see it before the reference list
+                src_h = [x.start() for x in re.finditer(r'<h2\b[^>]*>\s*(Sources|출처)\s*</h2>', body)]
+                body = body[:src_h[-1]] + kbox + body[src_h[-1]:] if src_h else body + kbox
+            page = PAGE.format(lang=lang, title=html.escape(title), body=ktop + body, desc=html.escape(m['excerpt'][lang], quote=True), slug=m['slug'][lang], oslug=m['slug'][o],
                                convh='무료 은행 CSV → QBO 변환기' if lang == 'ko' else 'Free bank CSV to QBO converter',
                                convt='은행 CSV를 QuickBooks Desktop용 .qbo·.iif 파일로. 브라우저 안에서만 처리합니다.' if lang == 'ko' else 'Turn bank CSV files into QuickBooks Desktop .qbo or .iif files, right in your browser.',
                                convb='변환기 열기' if lang == 'ko' else 'Open the converter', date=m['date'], cat=CAT[m['category']][0 if lang == 'ko' else 1],
@@ -125,7 +176,7 @@ def main():
             if f.endswith('.png'): shutil.copy(os.path.join(d, f), os.path.join(imgdir, f))
         posts.append({'date': m['date'], 'category': m['category'], 'title': m['title'], 'excerpt': m['excerpt'],
                       'url': {k: 'https://%s/blog/%s.html' % (DOMAIN, v) for k, v in m['slug'].items()},
-                      'previewUrl': {k: 'blog/%s.html' % v for k, v in m['slug'].items()}})
+                      'previewUrl': {k: 'blog/%s.html' % v for k, v in m['slug'].items()}, 'freeKit': bool(m.get('downloads'))})
     if errors:
         print('ERRORS:'); [print(' -', e) for e in errors]; sys.exit(1)
     posts.sort(key=lambda p: p['date'], reverse=True)
@@ -137,7 +188,8 @@ def main():
     for p in posts:
         for lang in ('ko', 'en'):
             rows[lang].append('<a class="post" data-cat="%s" href="%s"><span class="d">%s</span><span class="b"><b>%s</b><em>%s</em></span><span class="c">%s</span></a>' % (
-                p['category'], '/blog/' + p['previewUrl'][lang].split('/')[-1], p['date'], html.escape(p['title'][lang]), html.escape(p['excerpt'][lang]), html.escape(CATN[p['category']][lang])))
+                p['category'], '/blog/' + p['previewUrl'][lang].split('/')[-1], p['date'], html.escape(p['title'][lang]), html.escape(p['excerpt'][lang]),
+                ('<i class="k">%s</i>' % ('무료 키트' if lang == 'ko' else 'Free kit') if p.get('freeKit') else '') + html.escape(CATN[p['category']][lang])))
     tabs = lambda lang: ''.join('<button type="button" data-cat="%s">%s</button>' % (k, v) for k, v in [('all', '전체' if lang == 'ko' else 'All')] + [(c['id'], c['name'][lang]) for c in site['categories']])
     INDEX = '''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BIZLEX Blog · Accounting, Tax, Payroll, QuickBooks Desktop</title>
@@ -168,6 +220,7 @@ def main():
     .post b{display:block;font-size:19px;line-height:1.4}.post em{display:block;font-style:normal;color:#556170;font-size:14.5px;margin-top:4px}
     .post .c{font-size:12.5px;background:#EEF0EE;border-radius:999px;padding:3px 10px;white-space:nowrap;justify-self:start}
     .post:hover b{text-decoration:underline}
+    .post .k{font-style:normal;font-weight:700;color:#14202E;background:#D4A845;border-radius:999px;padding:2px 8px;margin-right:6px}
     footer{color:#556170;font-size:13px;margin-top:40px}footer p{margin:4px 0}
     [hidden]{display:none!important}
     :focus-visible{outline:2px solid #D4A845;outline-offset:3px}

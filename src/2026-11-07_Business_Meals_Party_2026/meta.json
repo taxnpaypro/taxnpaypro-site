@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-07",
+  "category": "tax",
+  "slug": {
+    "ko": "business-meals-party-deduction-2026-korean",
+    "en": "business-meals-holiday-party-deduction-2026"
+  },
+  "title": {
+    "ko": "2026년 업무 식사·연말 파티 경비, 50%·100%·0% 중 몇 %가 공제될까",
+    "en": "Business Meals and Holiday Party Deductions in 2026: What Is 50%, 100% and 0% Now"
+  },
+  "excerpt": {
+    "ko": "고객 식사 50%, 직원 연말 파티 100%, 2026년부터 사무실 간식은 0%. 기록 방법과 1년치 예시 계산.",
+    "en": "Client meals 50%, staff holiday parties 100%, and office snacks 0% starting 2026. Records and a worked example."
+  },
+  "downloads": {
+    "kit": "business-meals-party-log",
+    "en": [
+      "Business_Meals_and_Holiday_Party_Log_2026_EN.xlsx",
+      "Business_Meals_and_Party_Deduction_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Business_Meals_and_Holiday_Party_Log_2026_EN_KR.xlsx",
+      "Business_Meals_and_Party_Deduction_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}

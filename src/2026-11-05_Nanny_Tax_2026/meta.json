@@ -12,5 +12,16 @@
   "excerpt": {
     "ko": "2026년 $3,000·분기 $1,000 기준과 가족 예외로 대상 여부를 확인하고, Schedule H·W-2 숫자와 마감일을 정리합니다.",
     "en": "The 2026 $3,000 and $1,000 tests, family exceptions, spreadsheet formulas, Schedule H and W-2 numbers and deadlines."
+  },
+  "downloads": {
+    "kit": "household-employee-tax",
+    "en": [
+      "Household_Employee_Tax_Calculator_2026_EN.xlsx",
+      "Household_Employer_Checklist_2026_EN.pdf"
+    ],
+    "ko": [
+      "Household_Employee_Tax_Calculator_2026_EN_KR.xlsx",
+      "Household_Employer_Checklist_2026_EN_KR.pdf"
+    ]
   }
 }

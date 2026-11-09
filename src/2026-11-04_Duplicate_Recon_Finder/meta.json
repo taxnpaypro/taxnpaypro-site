@@ -12,5 +12,18 @@
   "excerpt": {
     "ko": "은행 재연결 후 생긴 중복 거래와 맞지 않는 대사 차이를 내보내기 파일 두 개와 엑셀 수식으로 찾는 6단계. QuickBooks Online·Desktop 메뉴 포함.",
     "en": "Find duplicate bank transactions and explain every reconciliation difference with two exports and Excel formulas. QuickBooks Online and Desktop steps."
+  },
+  "downloads": {
+    "kit": "duplicate-recon-finder",
+    "en": [
+      "QB_Duplicate_Recon_Finder_BLANK.xlsx",
+      "QB_Duplicate_Recon_Finder_SAMPLE.xlsx",
+      "Guide_EN_Duplicate_Recon_Finder.pdf"
+    ],
+    "ko": [
+      "QB_Duplicate_Recon_Finder_BLANK.xlsx",
+      "QB_Duplicate_Recon_Finder_SAMPLE.xlsx",
+      "Guide_KR_Duplicate_Recon_Finder.pdf"
+    ]
   }
 }

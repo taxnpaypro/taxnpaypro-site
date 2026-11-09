@@ -26,6 +26,14 @@ main img{max-width:100%;height:auto}
 main table{display:block;max-width:100%;overflow-x:auto} main pre,main p{max-width:100%}
 .conv{margin-top:36px;padding:16px 18px;border:1px solid #dde3ea;border-left:5px solid var(--gold);border-radius:8px;background:#FBF8F0;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
 .conv b{color:#1F3A5F} .conv span{color:var(--muted);flex:1 1 260px} .conv a{color:#fff;background:var(--navy);padding:8px 14px;border-radius:6px;text-decoration:none;font-weight:700;min-height:40px;display:inline-flex;align-items:center}
+.kittop{margin:0 0 22px} .kittop a{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border-radius:6px;background:#FBF8F0;border:1px solid var(--gold);color:#1F3A5F;font-weight:700;text-decoration:none}
+.kit{margin-top:40px;padding:20px 20px 14px;border:2px solid var(--navy);border-radius:10px;background:#F7F9FB;scroll-margin-top:16px}
+.kit h2{margin:0 0 6px;font-size:22px;color:#1F3A5F} .kit>p{margin:0 0 12px;color:var(--muted)}
+.kit ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.kit li{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;padding:10px 12px;background:#fff;border:1px solid #dde3ea;border-radius:8px}
+.kit li a{color:#fff;background:var(--navy);padding:8px 14px;border-radius:6px;text-decoration:none;font-weight:700;min-height:40px;display:inline-flex;align-items:center}
+.kit li small{color:var(--muted);font-size:13px;overflow-wrap:anywhere}
+.kit .fine{font-size:12.5px;color:var(--muted);margin:12px 0 0}
 .back{margin-top:40px;padding-top:20px;border-top:1px solid #dde3ea}
 .back a{color:#1F3A5F;font-weight:700;text-decoration:none}
 a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
@@ -37,7 +45,7 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 <main>
 <p class="meta">2026-11-06 · 회계</p>
 <h1 class="t">은행 거래가 중복되고 대사(Reconcile)가 안 맞을 때: 차이를 끝까지 찾는 방법</h1>
-<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">대사(Reconcile) 화면을 열었는데 차이가 0이 아닙니다. 지난달엔 맞았는데 이번 달엔 시작 잔액부터 틀어져 있기도 합니다. 자세히 보니 같은 손님 입금이 두 번, 같은 주유비가 두 번, 은행 연결을 다시 했더니 몇 달 치 거래가 통째로 또 들어와 있습니다.</p>
+<p class="kittop"><a href="#kit">↓ 이 글의 무료 Excel·PDF 키트 받기</a></p><p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">대사(Reconcile) 화면을 열었는데 차이가 0이 아닙니다. 지난달엔 맞았는데 이번 달엔 시작 잔액부터 틀어져 있기도 합니다. 자세히 보니 같은 손님 입금이 두 번, 같은 주유비가 두 번, 은행 연결을 다시 했더니 몇 달 치 거래가 통째로 또 들어와 있습니다.</p>
 <p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">이 글은 거래를 하나도 고치기 전에, 내보내기 파일 두 개와 엑셀만으로 <b>모든</b> 중복과 <b>모든</b> 대사 차이를 찾아내는 방법을 설명합니다. QuickBooks Online과 Desktop 모두, 어느 은행이든 똑같이 쓸 수 있습니다.</p>
 <p style="font-size:17px;line-height:1.75;color:#222;margin:16px 0;background:#EAF3F5;border-left:5px solid #2A7F8F;padding:12px 16px;"><b>이런 분께 필요합니다:</b> 은행·카드 계정 대사가 맞지 않는 사장님, 또는 은행 재연결 후 같은 거래가 다시 들어와 정리해야 하는 북키퍼.</p>
 <h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">중복과 차이는 왜 생길까</h2>
@@ -104,10 +112,10 @@ G: =IF(F2&gt;E2,&quot;장부 초과&quot;,IF(E2=0,&quot;은행에 없음&quot;,&
 <h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">체크리스트</h2>
 <ul style="margin:8px 0 12px 22px;padding:0;"><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;list-style:none;margin-left:-18px;">☐ 같은 계정·같은 기간으로 은행 CSV와 장부 내역 내보내기</li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;list-style:none;margin-left:-18px;">☐ 두 시트 모두 날짜/내용/금액 형식, 날짜는 진짜 날짜</li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;list-style:none;margin-left:-18px;">☐ 중복 표시를 한 줄씩 확인</li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;list-style:none;margin-left:-18px;">☐ "장부 초과", "장부 누락" 목록 작성</li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;list-style:none;margin-left:-18px;">☐ 차이를 전부 설명 (설명 안 된 금액 = 0.00)</li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;list-style:none;margin-left:-18px;">☐ 중복은 원래 거래에서 제거, 누락은 추가, 대사 완료분은 유지</li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;list-style:none;margin-left:-18px;">☐ 다시 대사해 0.00 확인, 보고서 저장</li></ul>
 <h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">엑셀 파일이 바로 필요하다면</h2>
-<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">내보낸 파일 두 개를 붙여 넣기만 하면 수식이 대조해 주는 <b>Duplicate Transaction &amp; Bank Reconciliation Difference Finder(은행 중복거래 &amp; 대사 차이 찾기 키트)</b>를 Etsy와 Gumroad에서 판매하고 있습니다. 영어·한국어 병기판도 있습니다.</p>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">위 과정을 그대로 해 주는 <b>은행 중복거래 &amp; 대사 차이 찾기 키트</b>은(는) 아래 <a href="#kit" style="color:#1F4E99;font-weight:700;">무료 키트 다운로드</a>에서 가입 없이 무료로 받으실 수 있습니다(엑셀 + PDF 가이드).</p>
 <p style="font-size:13px;color:#666;line-height:1.6;margin:8px 0;">이 글은 교육용 자료이며 세무·법률·회계 자문이 아닙니다. 결과는 각자의 기록에 따라 다르며 특정 결과를 보장하지 않습니다. 예시 값은 가상입니다. 메뉴 이름은 바뀔 수 있습니다. QuickBooks is a registered trademark of Intuit Inc.; not affiliated with or endorsed by Intuit.</p>
 <p style="font-size:13px;color:#666;line-height:1.6;margin:8px 0;">출처(2026년 11월 확인): Intuit, "Fix duplicate transactions in QuickBooks Online bank feeds": https://quickbooks.intuit.com/learn-support/en-us/help-article/duplicate-transactions/fix-duplicate-transactions-quickbooks-online-bank-feeds/L1fjxl88f_US_en_US · Intuit, "Exclude duplicate transactions in QuickBooks Online": https://quickbooks.intuit.com/learn-support/en-us/help-article/bank-transactions/exclude-duplicate-transactions-quickbooks-online/L8jyr7WpC_US_en_US · Intuit, "Fix beginning balance issues when reconciling in QuickBooks Online": https://quickbooks.intuit.com/learn-support/en-us/help-article/statement-reconciliation/fix-issues-accounts-reconciled-past-quickbooks/L8lx6PQQ5_US_en_US · Intuit, "Undo or remove transactions from reconciliations in QuickBooks Online": https://quickbooks.intuit.com/learn-support/en-us/help-article/accounting-bookkeeping/undo-remove-transactions-reconciliations-online/L6ERlEXxn_US_en_US</p>
-
+<section class="kit" id="kit"><h2>무료 키트 다운로드</h2><p>글에서 설명한 내용을 그대로 따라 할 수 있는 도구입니다. 가입 없이 바로 받으세요.</p><ul><li><a href="/downloads/duplicate-recon-finder/QB_Duplicate_Recon_Finder_BLANK.xlsx" download>빈 Excel 양식</a><small>QB_Duplicate_Recon_Finder_BLANK.xlsx · 220 KB</small></li><li><a href="/downloads/duplicate-recon-finder/QB_Duplicate_Recon_Finder_SAMPLE.xlsx" download>예시 데이터가 채워진 Excel</a><small>QB_Duplicate_Recon_Finder_SAMPLE.xlsx · 187 KB</small></li><li><a href="/downloads/duplicate-recon-finder/Guide_KR_Duplicate_Recon_Finder.pdf" download>단계별 가이드 (PDF)</a><small>Guide_KR_Duplicate_Recon_Finder.pdf · 246 KB</small></li></ul><p class="fine">본인과 본인 사업에 무료로 쓰세요. 재판매·재배포는 하지 마세요. 일반 정보이며 세무·법률·회계 자문이 아닙니다. 숫자는 본인 자료로 꼭 확인하세요. QuickBooks는 Intuit Inc.의 상표이며 BIZLEX는 Intuit과 관련이 없습니다.</p></section>
 <aside class="conv"><b>무료 은행 CSV → QBO 변환기</b><span>은행 CSV를 QuickBooks Desktop용 .qbo·.iif 파일로. 브라우저 안에서만 처리합니다.</span><a href="/csv-to-qbo">변환기 열기</a></aside>
 <p class="back"><a href="/blog/">← 블로그 글 목록</a></p>
 </main>

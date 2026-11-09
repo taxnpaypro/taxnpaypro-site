@@ -23,3 +23,13 @@
  "excerpt": {"ko": "한 줄 요약", "en": "One-line summary"}}
 ```
 category는 accounting(회계) · tax(세무) · payroll(급여) · quickbooks(QuickBooks Desktop) · qbo(QuickBooks Online) 중 하나입니다.
+
+### 무료 키트(엑셀·PDF) 붙이기
+키트 파일은 `downloads/<키트-이름>/`에 넣고, 글의 `meta.json`에 아래처럼 적습니다. 빌드하면 글 맨 위에 "무료 키트 받기" 링크, 출처 위에 다운로드 상자가 생기고 블로그 목록에 "무료 키트" 표시가 붙습니다. 영어 글(en)에는 EN판, 한국어 글(ko)에는 EN_KR판을 연결합니다.
+```json
+"downloads": {"kit": "car-loan-interest-deduction",
+  "en": ["Car_Loan_Interest_Deduction_Calculator_2026_EN.xlsx", "Car_Loan_Interest_Deduction_Guide_2026_EN.pdf"],
+  "ko": ["Car_Loan_Interest_Deduction_Calculator_2026_EN_KR.xlsx", "Car_Loan_Interest_Deduction_Guide_2026_EN_KR.pdf"]}
+```
+엑셀 파일은 올리기 전에 문서 속성(작성자·마지막 수정자)에 개인 이름이 없는지 확인합니다. 글 본문에서는 Etsy·Gumroad 대신 `<a href="#kit">무료 키트 다운로드</a>`로 안내합니다.
+
