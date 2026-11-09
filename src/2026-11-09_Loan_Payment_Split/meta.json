@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-09",
+  "category": "accounting",
+  "slug": {
+    "ko": "quickbooks-loan-principal-interest-korean",
+    "en": "loan-payment-principal-interest-quickbooks"
+  },
+  "title": {
+    "ko": "대출 상환금, 전부 비용으로 잡고 계신가요? 원금·이자 나누고 연말에 대출 잔액 맞추는 법",
+    "en": "Booking the Whole Loan Payment as an Expense? How to Split Principal and Interest and Tie Out the Loan at Year-End"
+  },
+  "excerpt": {
+    "ko": "대출 상환금을 원금과 이자로 나눠 QuickBooks에 기록하고, 연말에 대출 잔액을 은행 명세서와 맞추는 방법입니다.",
+    "en": "Split each loan payment into principal and interest in QuickBooks and tie the loan balance to the lender at year-end."
+  },
+  "downloads": {
+    "kit": "loan-payment-splitter",
+    "en": [
+      "Loan_Payment_Splitter_2026_EN.xlsx",
+      "Loan_Payment_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Loan_Payment_Splitter_2026_EN_KR.xlsx",
+      "Loan_Payment_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}
