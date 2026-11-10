@@ -33,3 +33,6 @@ category는 accounting(회계) · tax(세무) · payroll(급여) · quickbooks(Q
 ```
 엑셀 파일은 올리기 전에 문서 속성(작성자·마지막 수정자)에 개인 이름이 없는지 확인합니다. 글 본문에서는 Etsy·Gumroad 대신 `<a href="#kit">무료 키트 다운로드</a>`로 안내합니다.
 
+
+
+
