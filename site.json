@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-07",
+  "updated": "2026-11-09",
   "notice": {
     "ko": "",
     "en": ""
@@ -64,6 +64,111 @@
   ],
   "cfAnalyticsToken": "711a0a4eb51c474fb4648cdc53ddda69",
   "posts": [
+    {
+      "date": "2026-11-09",
+      "category": "accounting",
+      "title": {
+        "ko": "대출 상환금, 전부 비용으로 잡고 계신가요? 원금·이자 나누고 연말에 대출 잔액 맞추는 법",
+        "en": "Booking the Whole Loan Payment as an Expense? How to Split Principal and Interest and Tie Out the Loan at Year-End"
+      },
+      "excerpt": {
+        "ko": "대출 상환금을 원금과 이자로 나눠 QuickBooks에 기록하고, 연말에 대출 잔액을 은행 명세서와 맞추는 방법입니다.",
+        "en": "Split each loan payment into principal and interest in QuickBooks and tie the loan balance to the lender at year-end."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/quickbooks-loan-principal-interest-korean.html",
+        "en": "https://taxnpaypro.com/blog/loan-payment-principal-interest-quickbooks.html"
+      },
+      "previewUrl": {
+        "ko": "blog/quickbooks-loan-principal-interest-korean.html",
+        "en": "blog/loan-payment-principal-interest-quickbooks.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-09",
+      "category": "tax",
+      "title": {
+        "ko": "목회자 주택수당(Housing Allowance) 2026: 비과세 한도 계산, 자영업세, 2027년 지정 방법",
+        "en": "Minister Housing Allowance (2026): How Much Is Tax-Free, What Is Taxable, and How to Designate for 2027"
+      },
+      "excerpt": {
+        "ko": "목회자 주택수당 중 비과세 한도 계산법, 초과분 신고와 자영업세, 2027년분 지정 방법을 예시로 정리했습니다.",
+        "en": "How much of a minister housing allowance is tax-free, how to report the excess, and how to designate for 2027."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/minister-housing-allowance-korean.html",
+        "en": "https://taxnpaypro.com/blog/minister-housing-allowance-2026-tax-free-limit.html"
+      },
+      "previewUrl": {
+        "ko": "blog/minister-housing-allowance-korean.html",
+        "en": "blog/minister-housing-allowance-2026-tax-free-limit.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-09",
+      "category": "qbo",
+      "title": {
+        "ko": "QBO 처음 시작하기: 기초 잔액과 Chart of Accounts 제대로 세팅하는 법",
+        "en": "Starting QuickBooks Online Right: How to Set Up Opening Balances and Your Chart of Accounts"
+      },
+      "excerpt": {
+        "ko": "시작일 정하기, 계정과목 정리와 번호 체계, 은행·카드·대출·고정자산 기초 잔액 입력과 OBE 확인까지 예시로 정리했습니다.",
+        "en": "Pick a start date, clean up and number your chart of accounts, and enter opening balances that tie to statements."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-opening-balances-chart-of-accounts-setup-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-opening-balances-chart-of-accounts-setup.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-opening-balances-chart-of-accounts-setup-korean.html",
+        "en": "blog/qbo-opening-balances-chart-of-accounts-setup.html"
+      },
+      "freeKit": false
+    },
+    {
+      "date": "2026-11-08",
+      "category": "payroll",
+      "title": {
+        "ko": "자녀를 가족 사업에 고용할 때 (2026): 급여세 면제 조건, 절세액 계산, 필요한 서류",
+        "en": "Hiring Your Child in Your Family Business (2026): Payroll Tax Rules, Savings Math and Paperwork"
+      },
+      "excerpt": {
+        "ko": "자녀에게 사업체에서 급여를 줄 때 급여세가 면제되는 조건, 절세액 계산법, 필요한 W-2 서류를 2026년 기준으로 정리했습니다.",
+        "en": "2026 rules for paying your child from your business: payroll tax exemptions, savings math and W-2 paperwork."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/hiring-your-child-payroll-korean.html",
+        "en": "https://taxnpaypro.com/blog/hiring-your-child-family-business-payroll-2026.html"
+      },
+      "previewUrl": {
+        "ko": "blog/hiring-your-child-payroll-korean.html",
+        "en": "blog/hiring-your-child-family-business-payroll-2026.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-08",
+      "category": "qbo",
+      "title": {
+        "ko": "식당·세탁소 QuickBooks 세팅: 계정과목표 만들기와 은행 입금과 맞아떨어지는 일일 마감",
+        "en": "Restaurant or Dry Cleaner in QuickBooks: Set Up a Chart of Accounts and a Daily Close That Matches the Bank"
+      },
+      "excerpt": {
+        "ko": "식당·세탁소용 계정과목표를 QuickBooks Online에 세팅하고, 판매세·팁·카드 수수료를 나눠 은행 입금과 맞는 일일 마감을 하는 법.",
+        "en": "Set up a restaurant or dry cleaner chart of accounts in QuickBooks Online and run a daily close that ties to the bank."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/restaurant-dry-cleaner-quickbooks-setup-korean.html",
+        "en": "https://taxnpaypro.com/blog/restaurant-dry-cleaner-quickbooks-setup-daily-close.html"
+      },
+      "previewUrl": {
+        "ko": "blog/restaurant-dry-cleaner-quickbooks-setup-korean.html",
+        "en": "blog/restaurant-dry-cleaner-quickbooks-setup-daily-close.html"
+      },
+      "freeKit": false
+    },
     {
       "date": "2026-11-07",
       "category": "tax",

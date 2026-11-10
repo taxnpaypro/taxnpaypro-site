@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-08",
+  "category": "payroll",
+  "slug": {
+    "ko": "hiring-your-child-payroll-korean",
+    "en": "hiring-your-child-family-business-payroll-2026"
+  },
+  "title": {
+    "ko": "자녀를 가족 사업에 고용할 때 (2026): 급여세 면제 조건, 절세액 계산, 필요한 서류",
+    "en": "Hiring Your Child in Your Family Business (2026): Payroll Tax Rules, Savings Math and Paperwork"
+  },
+  "excerpt": {
+    "ko": "자녀에게 사업체에서 급여를 줄 때 급여세가 면제되는 조건, 절세액 계산법, 필요한 W-2 서류를 2026년 기준으로 정리했습니다.",
+    "en": "2026 rules for paying your child from your business: payroll tax exemptions, savings math and W-2 paperwork."
+  },
+  "downloads": {
+    "kit": "hiring-your-child-payroll-planner",
+    "en": [
+      "Hiring_Your_Child_Payroll_Planner_2026_EN.xlsx",
+      "Hiring_Your_Child_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Hiring_Your_Child_Payroll_Planner_2026_EN_KR.xlsx",
+      "Hiring_Your_Child_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}
