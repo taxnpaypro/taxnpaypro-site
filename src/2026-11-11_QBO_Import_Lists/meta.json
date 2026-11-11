@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-11",
+  "category": "qbo",
+  "slug": {
+    "ko": "qbo-import-customers-vendors-products-korean",
+    "en": "qbo-import-customers-vendors-products"
+  },
+  "title": {
+    "ko": "QBO 고객·거래처·상품 목록, 엑셀로 한 번에 가져오기: 중복과 오류 없이 Import하는 법",
+    "en": "How to Import Customers, Vendors and Products into QuickBooks Online from Excel Without Duplicates or Errors"
+  },
+  "excerpt": {
+    "ko": "고객·거래처·상품 목록을 엑셀로 QBO에 가져올 때 파일 정리, 1,000행 분할, 매핑, 검증까지 단계별로 정리했습니다.",
+    "en": "Clean, split, map and verify: a step-by-step guide to importing customer, vendor and product lists into QBO."
+  },
+  "series_no": 3
+}

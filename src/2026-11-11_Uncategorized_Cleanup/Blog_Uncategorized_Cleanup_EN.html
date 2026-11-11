@@ -1,0 +1,113 @@
+<!-- Title: How to Clear Uncategorized Income, Expense and "Ask My Accountant" Before Year-End -->
+<p style="font-size:17px;line-height:1.7;color:#1d2733;">Open your Profit and Loss in November and you may find a line called <b>Uncategorized Expense</b> or <b>Uncategorized Income</b> with a number much bigger than you expected. On the Balance Sheet there may be an <b>Uncategorized Asset</b>, and in older desktop files an account called <b>Ask My Accountant</b>. These accounts fill up quietly all year: a bank-feed transaction gets added without a category, a deposit is saved "for later", an import brings in rows with no account. Owners and bookkeepers ask about them in accounting forums every year-end, and the usual answer is "go through them one by one" — which is right, but not very helpful when there are 300 rows.</p>
+<p style="font-size:17px;line-height:1.7;color:#1d2733;">Why it matters: money in these accounts is not on the right line of your tax return. Real expenses can be missed, personal spending can look like business spending, customer payments can be counted twice, and a contractor you paid $3,000 may never show up on your 1099 list. This guide shows a method you can follow with a spreadsheet you build yourself, then the exact places to fix each row in QuickBooks Desktop and QuickBooks Online.</p>
+
+<figure style="margin:24px 0;"><img src="Fig01_Cleanup_Flow_EN.png" alt="Flowchart of the six-step uncategorized cleanup: export, paste and add rules, read flags, send owner questions, fix in QuickBooks, re-run the report" style="width:100%;height:auto;border:1px solid #dde3ea;border-radius:6px;"><figcaption style="font-size:14px;color:#5a6775;margin-top:6px;">The whole cleanup in six steps.</figcaption></figure>
+
+<h2 style="font-size:26px;color:#1F3A5F;margin:32px 0 12px;">Step 1: Back up, then export one report per account</h2>
+<p style="font-size:17px;line-height:1.7;color:#1d2733;">Before you change anything, back up your company file (Desktop) or save your current reports (Online). Then run <b>Transaction Detail by Account</b> for the full year, filtered to one uncategorized account at a time.</p>
+<ul style="font-size:17px;line-height:1.7;color:#1d2733;">
+<li><b>QuickBooks Desktop:</b> Reports › Accountant &amp; Taxes › Transaction Detail by Account › Customize Report. On Display set the dates; on Filters choose Account and pick the uncategorized account. Export with Excel › Create New Worksheet.</li>
+<li><b>QuickBooks Online:</b> Reports › search "Transaction Detail by Account", set the period to the full year, filter the report to the uncategorized account (the filter is labelled Account or Distribution account depending on your report view), then Export › Export to Excel.</li>
+</ul>
+<p style="font-size:17px;line-height:1.7;color:#1d2733;">Keep these columns: Date, Type, Num, Name, Memo/Description, Amount. Add one column called <b>Source</b> and type which account the rows came from. Delete the running Balance column.</p>
+
+<h2 style="font-size:26px;color:#1F3A5F;margin:32px 0 12px;">Step 2: Let keyword rules do the easy 60%</h2>
+<p style="font-size:17px;line-height:1.7;color:#1d2733;">Most uncategorized rows are boring repeat vendors: fuel, phone, software, bank fees. Make a small rules table on the side — a keyword in column K and the category in column L (for example SHELL → Car &amp; Truck - Fuel, COMCAST → Telephone &amp; Internet). Then, with Name in column D and Memo in column E, this formula in the first row suggests a category:</p>
+<p style="font-family:Consolas,Menlo,monospace;font-size:15px;background:#f4f7fb;border:1px solid #c8d3df;padding:12px;border-radius:6px;color:#1d2733;">=IFERROR(LOOKUP(2,1/((ISNUMBER(SEARCH($K$2:$K$40,D2&amp;" "&amp;E2)))*($K$2:$K$40&lt;&gt;"")),$L$2:$L$40),"ASK OWNER")</p>
+<p style="font-size:17px;line-height:1.7;color:#1d2733;">If two keywords match, the lower rule in the list wins, so put specific rules (for example CARD PAYMENT) below general ones (TRANSFER). In Google Sheets, wrap the formula in ARRAYFORMULA( ). Copy it down. Every row that still says ASK OWNER is a real question.</p>
+
+<h2 style="font-size:26px;color:#1F3A5F;margin:32px 0 12px;">Step 3: Add three warning formulas</h2>
+<p style="font-size:17px;line-height:1.7;color:#1d2733;">A category suggestion is not enough. Three quick checks catch the expensive mistakes (Amount in column F, Date in column A):</p>
+<ul style="font-size:17px;line-height:1.7;color:#1d2733;">
+<li><b>Possible duplicate:</b> <span style="font-family:Consolas,Menlo,monospace;">=COUNTIFS($A:$A,A2,$D:$D,D2,$F:$F,F2)&gt;1</span> — same date, name and amount, often a bank-feed row plus a manual entry.</li>
+<li><b>Round amount:</b> <span style="font-family:Consolas,Menlo,monospace;">=AND(MOD(ABS(F2),100)=0,ABS(F2)&gt;=500)</span> — $500, $1,000, $5,000 are usually transfers, loans or owner money, not purchases.</li>
+<li><b>Large amount:</b> <span style="font-family:Consolas,Menlo,monospace;">=ABS(F2)&gt;=2500</span> — ask for the receipt; equipment and loan proceeds hide here.</li>
+</ul>
+<p style="font-size:17px;line-height:1.7;color:#1d2733;">For every row from Uncategorized Income, also search your open invoices for the same amount. A deposit that matches an open invoice is a customer payment, not new income.</p>
+
+<table style="width:100%;border-collapse:collapse;font-size:15px;margin:18px 0;">
+<tr><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Name (example)</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:right;">Amount</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Source</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Suggested</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Warning</th></tr>
+<tr><td style="border:1px solid #c8d3df;padding:8px;">SHELL OIL 57443</td><td style="border:1px solid #c8d3df;padding:8px;text-align:right;">$64.18</td><td style="border:1px solid #c8d3df;padding:8px;">Uncategorized Expense</td><td style="border:1px solid #c8d3df;padding:8px;">Car &amp; Truck - Fuel</td><td style="border:1px solid #c8d3df;padding:8px;">—</td></tr>
+<tr><td style="border:1px solid #c8d3df;padding:8px;">ADOBE CREATIVE CLD</td><td style="border:1px solid #c8d3df;padding:8px;text-align:right;">$59.99</td><td style="border:1px solid #c8d3df;padding:8px;">Uncategorized Expense</td><td style="border:1px solid #c8d3df;padding:8px;">Software</td><td style="border:1px solid #c8d3df;padding:8px;">Possible duplicate</td></tr>
+<tr><td style="border:1px solid #c8d3df;padding:8px;">ZELLE FROM CUSTOMER</td><td style="border:1px solid #c8d3df;padding:8px;text-align:right;">$975.00</td><td style="border:1px solid #c8d3df;padding:8px;">Uncategorized Income</td><td style="border:1px solid #c8d3df;padding:8px;">ASK OWNER</td><td style="border:1px solid #c8d3df;padding:8px;">Check open invoices</td></tr>
+<tr><td style="border:1px solid #c8d3df;padding:8px;">DEPOSIT</td><td style="border:1px solid #c8d3df;padding:8px;text-align:right;">$5,000.00</td><td style="border:1px solid #c8d3df;padding:8px;">Uncategorized Asset</td><td style="border:1px solid #c8d3df;padding:8px;">ASK OWNER</td><td style="border:1px solid #c8d3df;padding:8px;">Round + large amount</td></tr>
+<tr><td style="border:1px solid #c8d3df;padding:8px;">AMZN Mktp US (return)</td><td style="border:1px solid #c8d3df;padding:8px;text-align:right;">($42.50)</td><td style="border:1px solid #c8d3df;padding:8px;">Uncategorized Expense</td><td style="border:1px solid #c8d3df;padding:8px;">Office Supplies</td><td style="border:1px solid #c8d3df;padding:8px;">Refund: use original category</td></tr>
+</table>
+<p style="font-size:14px;color:#5a6775;">Table 1. Example rows after Steps 2 and 3. All names and amounts are examples.</p>
+
+<h2 style="font-size:26px;color:#1F3A5F;margin:32px 0 12px;">Step 4: Send one question list to the owner</h2>
+<p style="font-size:17px;line-height:1.7;color:#1d2733;">Filter the sheet to ASK OWNER, sort by amount (largest first), and send that list once. Ask for short answers — "fuel", "personal", "loan", "customer #1021" — and receipts for anything large. Never ask for bank passwords or full account numbers; you do not need them. The decision tree below covers most deposits.</p>
+<figure style="margin:24px 0;"><img src="Fig03_Deposit_Decision_Tree_EN.png" alt="Decision tree for a deposit in Uncategorized Income: invoice payment, transfer, loan, owner money, sales or vendor refund" style="width:100%;height:auto;border:1px solid #dde3ea;border-radius:6px;"><figcaption style="font-size:14px;color:#5a6775;margin-top:6px;">Work down the questions until one is "yes".</figcaption></figure>
+
+<table style="width:100%;border-collapse:collapse;font-size:15px;margin:18px 0;">
+<tr><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">You see</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">It is often</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Usually goes to</th></tr>
+<tr><td style="border:1px solid #c8d3df;padding:8px;">Credit card payment from checking</td><td style="border:1px solid #c8d3df;padding:8px;">Paying the card balance</td><td style="border:1px solid #c8d3df;padding:8px;">Transfer to the card account (not an expense)</td></tr>
+<tr><td style="border:1px solid #c8d3df;padding:8px;">Personal purchase on a business card</td><td style="border:1px solid #c8d3df;padding:8px;">Owner's spending</td><td style="border:1px solid #c8d3df;padding:8px;">Owner draw / distribution or shareholder account</td></tr>
+<tr><td style="border:1px solid #c8d3df;padding:8px;">Loan payment</td><td style="border:1px solid #c8d3df;padding:8px;">Principal plus interest</td><td style="border:1px solid #c8d3df;padding:8px;">Split: loan liability + interest expense</td></tr>
+<tr><td style="border:1px solid #c8d3df;padding:8px;">Payroll provider debit</td><td style="border:1px solid #c8d3df;padding:8px;">Net pay, taxes, fees</td><td style="border:1px solid #c8d3df;padding:8px;">Split using the payroll report</td></tr>
+<tr><td style="border:1px solid #c8d3df;padding:8px;">IRS or state tax payment</td><td style="border:1px solid #c8d3df;padding:8px;">Payroll, business or personal tax</td><td style="border:1px solid #c8d3df;padding:8px;">Liability, tax expense or owner draw — check the notice</td></tr>
+<tr><td style="border:1px solid #c8d3df;padding:8px;">Zelle or Venmo to a person</td><td style="border:1px solid #c8d3df;padding:8px;">Contractor, refund or personal</td><td style="border:1px solid #c8d3df;padding:8px;">Contract labor (get a W-9), refund or draw</td></tr>
+</table>
+<p style="font-size:14px;color:#5a6775;">Table 2. General patterns only; the right account depends on your entity type and your accountant's setup.</p>
+
+<h2 style="font-size:26px;color:#1F3A5F;margin:32px 0 12px;">Step 5: Fix each row in QuickBooks</h2>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">QuickBooks Desktop</h3>
+<ol style="font-size:17px;line-height:1.7;color:#1d2733;">
+<li>Open the same Transaction Detail by Account report in QuickBooks and double-click a row.</li>
+<li>Change only the account on that line, then Save &amp; Close. Keep the date, amount and bank account the same so reconciliations are not affected.</li>
+<li>Accountant and Enterprise editions can do many rows at once: Accountant › Client Data Review › Reclassify Transactions, select rows, tick Account to, pick the account and click Reclassify. Intuit notes the tool cannot change transactions that use A/R or A/P (invoices, bills) or transactions linked to other transactions — open those one by one.</li>
+</ol>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">QuickBooks Online</h3>
+<ol style="font-size:17px;line-height:1.7;color:#1d2733;">
+<li>Run the report in QuickBooks Online and click a row; the transaction opens. Change the category on that line and save.</li>
+<li>For rows that came from the bank feed, you can also go to Banking › Bank transactions, open the tab with already-added transactions, choose Undo on the row and categorize it again. Undo is the cleanest fix when a row was matched to the wrong transaction. Tab names have changed over time, so look for the tab that holds added transactions.</li>
+<li>With QuickBooks Online Advanced, or through your accountant's QuickBooks Online Accountant, use Settings (gear) › Reclassify transactions (in some versions under Dimensions › Dimension assignment). Choose the account type and the uncategorized account, select rows, Reclassify, pick the new account and Apply. Intuit lists limits: the bank account on an expense cannot be changed there, transactions with items allow class changes only, and payroll transactions cannot be changed.</li>
+</ol>
+<figure style="margin:24px 0;"><img src="Fig02_Before_After_EN.png" alt="Before and after mock table: five rows in Uncategorized Expense moved to fuel, internet, credit card transfer, software and one duplicate removed" style="width:100%;height:auto;border:1px solid #dde3ea;border-radius:6px;"><figcaption style="font-size:14px;color:#5a6775;margin-top:6px;">Example: the account goes to $0 and the credit card payment stops being counted as an expense.</figcaption></figure>
+
+<h2 style="font-size:26px;color:#1F3A5F;margin:32px 0 12px;">Step 6: Re-run the report and check your 1099 list</h2>
+<p style="font-size:17px;line-height:1.7;color:#1d2733;">Run the report again. Each uncategorized account should be $0, or a small balance you can explain in one sentence. Then total money paid per payee with <span style="font-family:Consolas,Menlo,monospace;">=SUMIFS($F:$F,$D:$D,D2)</span> and review anyone at $2,000 or more. For payments made in 2026, the IRS minimum for reporting nonemployee compensation on Form 1099-NEC is $2,000. Payments you made by credit card, debit card or a payment app are reported by the payment company on Form 1099-K, not by you on 1099-NEC. Form 1099-NEC is due January 31; for 2026 payments that date is a Sunday, so the due date is February 1, 2027.</p>
+<figure style="margin:24px 0;"><img src="Fig04_Year_End_Timeline_EN.png" alt="Timeline: November export and questions, December fixes and 1099 review, December 31 year end, February 1 2027 Form 1099-NEC due" style="width:100%;height:auto;border:1px solid #dde3ea;border-radius:6px;"><figcaption style="font-size:14px;color:#5a6775;margin-top:6px;">Start in November so the answers arrive before the 1099 deadline.</figcaption></figure>
+
+<h2 style="font-size:26px;color:#1F3A5F;margin:32px 0 12px;">Common mistakes</h2>
+<ul style="font-size:17px;line-height:1.7;color:#1d2733;">
+<li><b>Booking a deposit as income when the invoice is still open.</b> Your income is counted twice and the customer still looks unpaid.</li>
+<li><b>Calling a credit card payment an expense.</b> The purchases on the card are already expenses.</li>
+<li><b>Changing the amount or bank account while fixing the category.</b> That breaks a reconciliation you already finished.</li>
+<li><b>Editing a year that is already filed.</b> Ask your accountant whether to adjust in the current year instead.</li>
+<li><b>Moving everything to "Miscellaneous".</b> It empties the account but keeps the problem.</li>
+<li><b>Asking the owner twenty separate times.</b> One sorted list gets answered; twenty texts do not.</li>
+</ul>
+
+<h2 style="font-size:26px;color:#1F3A5F;margin:32px 0 12px;">FAQ</h2>
+<h3 style="font-size:19px;color:#1F3A5F;margin:18px 0 6px;">Will recategorizing undo my bank reconciliation?</h3>
+<p style="font-size:17px;line-height:1.7;color:#1d2733;">Changing only the category (income or expense account) does not change the cleared amount, so the reconciliation stays the same. Changing the date, amount or bank account can.</p>
+<h3 style="font-size:19px;color:#1F3A5F;margin:18px 0 6px;">Can I just make one journal entry to move the whole balance?</h3>
+<p style="font-size:17px;line-height:1.7;color:#1d2733;">You can move a total with a journal entry, but the original transactions keep the wrong account, vendor reports stay wrong and 1099 totals are not fixed. Fixing each transaction is slower but cleaner; ask your accountant if you prefer an entry.</p>
+<h3 style="font-size:19px;color:#1F3A5F;margin:18px 0 6px;">What is Uncategorized Asset, and should it be zero?</h3>
+<p style="font-size:17px;line-height:1.7;color:#1d2733;">It often holds transfers with one side missing, opening balances or deposits brought in without an account. Compare it to your bank and loan statements. Talk to your accountant before moving an old balance to equity.</p>
+<h3 style="font-size:19px;color:#1F3A5F;margin:18px 0 6px;">The owner does not remember a transaction. Now what?</h3>
+<p style="font-size:17px;line-height:1.7;color:#1d2733;">Look at the bank statement image or the card receipt, write a one-line note, and leave it for your tax preparer as a clearly listed open question rather than guessing.</p>
+
+<h2 style="font-size:26px;color:#1F3A5F;margin:32px 0 12px;">Checklist</h2>
+<ul style="font-size:17px;line-height:1.7;color:#1d2733;">
+<li>Backed up the file or saved reports</li>
+<li>Exported each uncategorized account for the full year</li>
+<li>Rules added for repeat vendors; warnings checked</li>
+<li>One owner question list sent and answered</li>
+<li>Rows fixed in QuickBooks, largest first, category only</li>
+<li>Report re-run: $0 or explained</li>
+<li>Payees of $2,000+ reviewed for Form 1099-NEC (due February 1, 2027)</li>
+</ul>
+
+<p style="font-size:17px;line-height:1.7;color:#1d2733;">You can download the ready-made <b>Uncategorized Transactions Cleanup Kit</b> for free in the <a href="#kit" style="color:#1F4E99;font-weight:700;">Free kit download</a> box below (Excel + PDF guide, no sign-up).</p>
+
+<p style="font-size:14px;line-height:1.6;color:#5a6775;border-top:1px solid #dde3ea;padding-top:12px;">This article is for education only and is not tax, legal or accounting advice. Rules change and every business is different; talk to your tax professional about your situation. All names and amounts shown are examples. QuickBooks is a registered trademark of Intuit Inc.; not affiliated with or endorsed by Intuit.</p>
+<h3 style="font-size:17px;color:#1F3A5F;margin:18px 0 6px;">Sources</h3>
+<ul style="font-size:14px;line-height:1.6;color:#5a6775;">
+<li>IRS — <a href="https://www.irs.gov/instructions/i1099mec" style="color:#1F4E99;">Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026)</a></li>
+<li>Intuit — <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/reclassify-transactions/reclassify-move-multiple-transactions/L249lPKyg_US_en_US" style="color:#1F4E99;">Reclassify or move multiple transactions (QuickBooks Online)</a></li>
+<li>Intuit — <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/reclassify-transactions/accountant-tools-reclassify-clients-transactions/L5ZJQODLR_US_en_US" style="color:#1F4E99;">Accountant tools: Reclassify your client's transactions (QuickBooks Desktop)</a></li>
+<li>Intuit Community — <a href="https://quickbooks.intuit.com/learn-support/en-us/reports-and-accounting/how-to-clear-my-uncategorized-asset-chart-of-account/00/903142" style="color:#1F4E99;">How to clear my uncategorized asset account</a></li>
+</ul>

@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-11",
+  "category": "tax",
+  "slug": {
+    "ko": "substantial-presence-test-korean",
+    "en": "substantial-presence-test-183-day-rule-2026"
+  },
+  "title": {
+    "ko": "나는 미국 세법상 거주자일까? 183일 실질 체류 테스트 일수 세는 법 (2026)",
+    "en": "Am I a US Tax Resident? How to Count Your Days for the 183-Day Test (2026)"
+  },
+  "excerpt": {
+    "ko": "한국과 미국을 오가는 분을 위해 31일·183일 조건, 엑셀 수식, Form 8840·8843 예외와 마감일을 정리했습니다.",
+    "en": "Count your US days for the 2026 substantial presence test: 31-day and 183-day rules, exceptions and due dates."
+  },
+  "downloads": {
+    "kit": "us-tax-residency-day-counter",
+    "en": [
+      "US_Tax_Residency_Day_Counter_2026_EN.xlsx",
+      "US_Tax_Residency_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "US_Tax_Residency_Day_Counter_2026_EN_KR.xlsx",
+      "US_Tax_Residency_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}
