@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-09",
+  "updated": "2026-11-10",
   "notice": {
     "ko": "",
     "en": ""
@@ -64,6 +64,69 @@
   ],
   "cfAnalyticsToken": "711a0a4eb51c474fb4648cdc53ddda69",
   "posts": [
+    {
+      "date": "2026-11-10",
+      "category": "tax",
+      "title": {
+        "ko": "직원 팁에 낸 FICA, 돌려받을 수 있습니다: 식당·네일샵·미용실 FICA 팁 세액공제(Form 8846) 계산법 2026",
+        "en": "Paying FICA on Employee Tips? How to Figure the FICA Tip Credit (Form 8846) for Restaurants and Salons in 2026"
+      },
+      "excerpt": {
+        "ko": "직원 팁에 낸 고용주 FICA를 Form 8846 세액공제로 돌려받는 월별 계산법과 예시, 2027년 마감일을 정리했습니다.",
+        "en": "How to figure the FICA tip credit on Form 8846 month by month, with worked examples, formulas and 2027 due dates."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/fica-tip-credit-korean-nail-salon-restaurant.html",
+        "en": "https://taxnpaypro.com/blog/fica-tip-credit-form-8846-restaurants-salons-2026.html"
+      },
+      "previewUrl": {
+        "ko": "blog/fica-tip-credit-korean-nail-salon-restaurant.html",
+        "en": "blog/fica-tip-credit-form-8846-restaurants-salons-2026.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-10",
+      "category": "accounting",
+      "title": {
+        "ko": "은행 대사에 몇 년째 남은 미결제 수표, 신고 끝난 연도를 건드리지 않고 정리하는 법",
+        "en": "Old Uncleared Checks in Your Bank Reconciliation: How to Clear Them Without Changing a Filed Year"
+      },
+      "excerpt": {
+        "ko": "은행 대사에 남은 오래된 미결제 수표를 삭제 없이 현재 기간 분개로 정리하고 미청구 재산 신고까지 챙기는 법입니다.",
+        "en": "Clear old uncleared checks from your bank reconciliation with one current-period entry and handle unclaimed property."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/old-uncleared-checks-cleanup-korean.html",
+        "en": "https://taxnpaypro.com/blog/old-uncleared-checks-bank-reconciliation.html"
+      },
+      "previewUrl": {
+        "ko": "blog/old-uncleared-checks-cleanup-korean.html",
+        "en": "blog/old-uncleared-checks-bank-reconciliation.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-10",
+      "category": "qbo",
+      "title": {
+        "ko": "QBO 업종별 Chart of Accounts 예시: 식당·네일샵·세탁소·리테일 계정과목표, 이렇게 만드세요",
+        "en": "QuickBooks Online Chart of Accounts Examples by Industry: Restaurant, Nail Salon, Dry Cleaner and Retail"
+      },
+      "excerpt": {
+        "ko": "식당·네일샵·세탁소·리테일별 계정 예시와 Schedule C 연결, QBO 입력 단계를 가상의 네일샵 예시로 정리했습니다.",
+        "en": "Sample charts of accounts for restaurants, nail salons, dry cleaners and retail, mapped to Schedule C and set up in QBO."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-chart-of-accounts-by-industry-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-chart-of-accounts-by-industry.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-chart-of-accounts-by-industry-korean.html",
+        "en": "blog/qbo-chart-of-accounts-by-industry.html"
+      },
+      "freeKit": false
+    },
     {
       "date": "2026-11-09",
       "category": "accounting",

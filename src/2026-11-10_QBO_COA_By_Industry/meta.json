@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-10",
+  "category": "qbo",
+  "slug": {
+    "ko": "qbo-chart-of-accounts-by-industry-korean",
+    "en": "qbo-chart-of-accounts-by-industry"
+  },
+  "title": {
+    "ko": "QBO 업종별 Chart of Accounts 예시: 식당·네일샵·세탁소·리테일 계정과목표, 이렇게 만드세요",
+    "en": "QuickBooks Online Chart of Accounts Examples by Industry: Restaurant, Nail Salon, Dry Cleaner and Retail"
+  },
+  "excerpt": {
+    "ko": "식당·네일샵·세탁소·리테일별 계정 예시와 Schedule C 연결, QBO 입력 단계를 가상의 네일샵 예시로 정리했습니다.",
+    "en": "Sample charts of accounts for restaurants, nail salons, dry cleaners and retail, mapped to Schedule C and set up in QBO."
+  },
+  "series_no": 2
+}

@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-10",
+  "category": "tax",
+  "slug": {
+    "ko": "fica-tip-credit-korean-nail-salon-restaurant",
+    "en": "fica-tip-credit-form-8846-restaurants-salons-2026"
+  },
+  "title": {
+    "ko": "직원 팁에 낸 FICA, 돌려받을 수 있습니다: 식당·네일샵·미용실 FICA 팁 세액공제(Form 8846) 계산법 2026",
+    "en": "Paying FICA on Employee Tips? How to Figure the FICA Tip Credit (Form 8846) for Restaurants and Salons in 2026"
+  },
+  "excerpt": {
+    "ko": "직원 팁에 낸 고용주 FICA를 Form 8846 세액공제로 돌려받는 월별 계산법과 예시, 2027년 마감일을 정리했습니다.",
+    "en": "How to figure the FICA tip credit on Form 8846 month by month, with worked examples, formulas and 2027 due dates."
+  },
+  "downloads": {
+    "kit": "fica-tip-credit-calculator",
+    "en": [
+      "FICA_Tip_Credit_Calculator_2026_EN.xlsx",
+      "FICA_Tip_Credit_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "FICA_Tip_Credit_Calculator_2026_EN_KR.xlsx",
+      "FICA_Tip_Credit_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}

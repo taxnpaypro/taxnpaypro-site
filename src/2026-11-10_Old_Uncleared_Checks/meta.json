@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-10",
+  "category": "accounting",
+  "slug": {
+    "ko": "old-uncleared-checks-cleanup-korean",
+    "en": "old-uncleared-checks-bank-reconciliation"
+  },
+  "title": {
+    "ko": "은행 대사에 몇 년째 남은 미결제 수표, 신고 끝난 연도를 건드리지 않고 정리하는 법",
+    "en": "Old Uncleared Checks in Your Bank Reconciliation: How to Clear Them Without Changing a Filed Year"
+  },
+  "excerpt": {
+    "ko": "은행 대사에 남은 오래된 미결제 수표를 삭제 없이 현재 기간 분개로 정리하고 미청구 재산 신고까지 챙기는 법입니다.",
+    "en": "Clear old uncleared checks from your bank reconciliation with one current-period entry and handle unclaimed property."
+  },
+  "downloads": {
+    "kit": "stale-check-cleanup",
+    "en": [
+      "Stale_Check_Cleanup_Tracker_2026_EN.xlsx",
+      "Stale_Check_Cleanup_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Stale_Check_Cleanup_Tracker_2026_EN_KR.xlsx",
+      "Stale_Check_Cleanup_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}
