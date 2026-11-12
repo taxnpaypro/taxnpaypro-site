@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-12",
+  "category": "tax",
+  "slug": {
+    "ko": "delaware-franchise-tax-korean-guide-2026",
+    "en": "delaware-franchise-tax-assumed-par-value-2026"
+  },
+  "title": {
+    "ko": "델라웨어 프랜차이즈세가 수만 달러? 의제 액면가 자본 방식으로 다시 계산하는 법 (2026년분 연례보고서)",
+    "en": "Delaware Franchise Tax Bill Too High? How to Recalculate It With the Assumed Par Value Capital Method (2026 Annual Report)"
+  },
+  "excerpt": {
+    "ko": "델라웨어 법인 프랜차이즈세 안내가 수만 달러라면, 의제 액면가 자본 방식으로 다시 계산해 2027년 3월 1일까지 더 낮은 세금을 내는 법입니다.",
+    "en": "Huge Delaware franchise tax notice? Recalculate it with the Assumed Par Value Capital method and pay the lower tax."
+  },
+  "downloads": {
+    "kit": "delaware-franchise-tax-calculator",
+    "en": [
+      "Delaware_Franchise_Tax_Calculator_2026_EN.xlsx",
+      "Delaware_Franchise_Tax_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Delaware_Franchise_Tax_Calculator_2026_EN_KR.xlsx",
+      "Delaware_Franchise_Tax_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}

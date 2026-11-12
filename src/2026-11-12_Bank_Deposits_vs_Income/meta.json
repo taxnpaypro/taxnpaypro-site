@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-12",
+  "category": "accounting",
+  "slug": {
+    "ko": "bank-deposits-vs-income-tie-out-kr",
+    "en": "bank-deposits-vs-income-tie-out"
+  },
+  "title": {
+    "ko": "손익계산서 매출이 은행 입금과 안 맞을 때: 연말에 직접 하는 입금·매출 대조법",
+    "en": "Income on Your P&L Doesn't Match Your Bank Deposits? A Year-End Tie-Out You Can Do Yourself"
+  },
+  "excerpt": {
+    "ko": "손익계산서 매출과 은행 입금이 다를 때, QuickBooks에서 직접 하는 5단계 연말 대조법과 흔한 이중 기록 원인을 정리했습니다.",
+    "en": "P&L income higher or lower than bank deposits? A 5-step year-end tie-out for QuickBooks Desktop and Online."
+  },
+  "downloads": {
+    "kit": "deposit-income-tie-out",
+    "en": [
+      "Deposit_Income_TieOut_2026_EN.xlsx",
+      "Deposit_Income_TieOut_2026_Guide_EN.pdf"
+    ],
+    "ko": [
+      "Deposit_Income_TieOut_2026_EN_KR.xlsx",
+      "Deposit_Income_TieOut_2026_Guide_EN_KR.pdf"
+    ]
+  }
+}

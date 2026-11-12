@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-11",
+  "updated": "2026-11-12",
   "notice": {
     "ko": "",
     "en": ""
@@ -64,6 +64,69 @@
   ],
   "cfAnalyticsToken": "711a0a4eb51c474fb4648cdc53ddda69",
   "posts": [
+    {
+      "date": "2026-11-12",
+      "category": "accounting",
+      "title": {
+        "ko": "손익계산서 매출이 은행 입금과 안 맞을 때: 연말에 직접 하는 입금·매출 대조법",
+        "en": "Income on Your P&L Doesn't Match Your Bank Deposits? A Year-End Tie-Out You Can Do Yourself"
+      },
+      "excerpt": {
+        "ko": "손익계산서 매출과 은행 입금이 다를 때, QuickBooks에서 직접 하는 5단계 연말 대조법과 흔한 이중 기록 원인을 정리했습니다.",
+        "en": "P&L income higher or lower than bank deposits? A 5-step year-end tie-out for QuickBooks Desktop and Online."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/bank-deposits-vs-income-tie-out-kr.html",
+        "en": "https://taxnpaypro.com/blog/bank-deposits-vs-income-tie-out.html"
+      },
+      "previewUrl": {
+        "ko": "blog/bank-deposits-vs-income-tie-out-kr.html",
+        "en": "blog/bank-deposits-vs-income-tie-out.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-12",
+      "category": "tax",
+      "title": {
+        "ko": "델라웨어 프랜차이즈세가 수만 달러? 의제 액면가 자본 방식으로 다시 계산하는 법 (2026년분 연례보고서)",
+        "en": "Delaware Franchise Tax Bill Too High? How to Recalculate It With the Assumed Par Value Capital Method (2026 Annual Report)"
+      },
+      "excerpt": {
+        "ko": "델라웨어 법인 프랜차이즈세 안내가 수만 달러라면, 의제 액면가 자본 방식으로 다시 계산해 2027년 3월 1일까지 더 낮은 세금을 내는 법입니다.",
+        "en": "Huge Delaware franchise tax notice? Recalculate it with the Assumed Par Value Capital method and pay the lower tax."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/delaware-franchise-tax-korean-guide-2026.html",
+        "en": "https://taxnpaypro.com/blog/delaware-franchise-tax-assumed-par-value-2026.html"
+      },
+      "previewUrl": {
+        "ko": "blog/delaware-franchise-tax-korean-guide-2026.html",
+        "en": "blog/delaware-franchise-tax-assumed-par-value-2026.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-12",
+      "category": "qbo",
+      "title": {
+        "ko": "QBO 직원·회계사 초대와 권한 설정: 비밀번호 공유 없이 2단계 인증으로 장부 지키는 법",
+        "en": "Stop Sharing Your QuickBooks Online Password: Set Up Users, Roles, Accountant Access and 2-Step Verification"
+      },
+      "excerpt": {
+        "ko": "QBO에 직원·회계사를 따로 초대하고 역할을 나눈 뒤, 2단계 인증과 Audit log로 장부를 지키는 방법을 단계별로 정리합니다.",
+        "en": "Invite staff and your accountant to QBO with the right roles, then protect sign-ins with 2-step verification."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-users-permissions-security-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-users-permissions-security.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-users-permissions-security-korean.html",
+        "en": "blog/qbo-users-permissions-security.html"
+      },
+      "freeKit": false
+    },
     {
       "date": "2026-11-11",
       "category": "qbo",

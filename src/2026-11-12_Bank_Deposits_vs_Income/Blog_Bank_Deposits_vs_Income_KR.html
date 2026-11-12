@@ -1,0 +1,59 @@
+<!-- Title: 손익계산서 매출이 은행 입금과 안 맞을 때: 연말에 직접 하는 입금·매출 대조법 -->
+<p style="line-height:1.7">12월에 손익계산서(P&amp;L)를 열어 보니 매출이 생각보다 너무 많거나, 반대로 통장에 넣은 돈보다 적게 나오는 경우가 있습니다. QuickBooks 사용자 커뮤니티에서 해마다 반복되는 질문도 바로 이것입니다. "매출이 두 배로 잡혀요", "인보이스와 은행 입금이 둘 다 매출로 나와요", "입금이랑 매출이 왜 안 맞죠?" 버튼 하나로 해결되는 일은 드뭅니다. 대신 간단한 대조로 풀 수 있습니다. 은행 입금에서 출발해 매출이 아닌 돈을 빼고, 은행에 안 들어온 매출을 더한 뒤 장부와 비교하는 방법입니다. 연말 전에 해 두면 세무 담당자에게 설명할 수 있는 숫자를 넘길 수 있습니다.</p>
+<h2>누구에게 생기고, 왜 중요한가</h2>
+<p style="line-height:1.7">인보이스를 보내면서 은행 피드도 쓰는 사업, 카드 결제사나 마켓플레이스에서 수수료를 뗀 금액만 받는 사업, 개인 계좌와 사업 계좌 사이에 돈을 자주 옮기는 사장님께 특히 많이 생깁니다. 매출이 부풀려지면 벌지 않은 돈에 세금을 낼 수 있고, 매출이 빠지면 나중에 숫자의 근거를 묻는 질문에 답하기 어렵습니다. IRS도 입금 기록을 매출을 뒷받침하는 자료로 듭니다.</p>
+<h2>한 줄 계산식</h2>
+<p style="line-height:1.7"><b>예상 매출 = 은행 입금 − 매출 아닌 입금 + 가산 항목 ± 시차</b>, 그리고 <b>차이 = 장부 매출 − 예상 매출</b>입니다. 차이가 0에 가까우면 장부가 맞는 것입니다.</p>
+<figure style="margin:20px 0"><img src="Fig01_TieOut_Flow_KR.png" alt="흐름도: 은행 입금에서 매출 아닌 입금을 빼고 가산 항목을 더한 예상 매출을 손익계산서 매출과 비교" style="width:100%;height:auto;border:1px solid #ddd"><figcaption style="font-size:13px;color:#666;margin-top:6px">그림 1. 입금·매출 대조 흐름 (예시)</figcaption></figure>
+<h3>1단계: 은행 입금 합계 구하기</h3>
+<p style="line-height:1.7">모든 사업 계좌의 12개월 명세서에서 "총 입금(total deposits)" 줄을 더합니다. 기준은 은행 숫자입니다. 엑셀이나 구글 시트에서 B2:B13에 월별 합계를 넣고 <code>=SUM(B2:B13)</code>을 입력하세요.</p>
+<h3>2단계: 매출이 아닌 입금 적기</h3>
+<p style="line-height:1.7">내 다른 계좌에서 온 이체, 대출·크레딧라인 입금, 사장님이 넣은 개인 돈, 거래처 환불·리베이트, 손님에게 받은 판매세를 찾아 적습니다. C열에 유형, D열에 금액을 넣으면 <code>=SUMIF(C:C,"Loan",D:D)</code>로 유형별 합계를, <code>=SUM(D:D)</code>로 뺄 총액을 구할 수 있습니다.</p>
+<h3>3단계: 은행에 안 들어온 매출 더하기</h3>
+<p style="line-height:1.7">카드사와 마켓플레이스는 수수료를 떼고 정산하므로 실제 매출은 입금보다 큽니다. 이 수수료, 입금 전에 쓴 현금 매출, 12월 31일에 미입금 자금(Undeposited Funds)에 남아 있는 결제를 더합니다.</p>
+<h3>4단계: 1월·12월 시차 조정</h3>
+<p style="line-height:1.7">작년 매출이 올해 1월에 입금된 금액은 빼고, 올해 매출이 내년 1월에 입금된 금액은 더합니다. 손익계산서가 발생주의라면 1년간 늘어난 미수금(A/R)도 더합니다.</p>
+<h3>5단계: 비교하고 차이 읽기</h3>
+<table style="border-collapse:collapse;width:100%;margin:12px 0;font-size:15px"><thead><tr><th style="background:#D9E2F3;border:1px solid #bbb;padding:8px;text-align:left">항목 (예시 숫자)</th><th style="background:#D9E2F3;border:1px solid #bbb;padding:8px;text-align:left">금액</th></tr></thead><tbody><tr><td style="border:1px solid #ccc;padding:8px">은행 입금 합계</td><td style="border:1px solid #ccc;padding:8px;text-align:right">$186,450</td></tr><tr><td style="border:1px solid #ccc;padding:8px">− 매출 아닌 입금 (이체, 대출, 사장님 돈, 환불)</td><td style="border:1px solid #ccc;padding:8px;text-align:right">($22,850)</td></tr><tr><td style="border:1px solid #ccc;padding:8px">+ 결제 수수료, 쓴 현금, 미입금 자금</td><td style="border:1px solid #ccc;padding:8px;text-align:right">+$3,940</td></tr><tr><td style="border:1px solid #ccc;padding:8px">− 작년 매출의 1월 입금</td><td style="border:1px solid #ccc;padding:8px;text-align:right">($3,400)</td></tr><tr><td style="border:1px solid #ccc;padding:8px">+ 올해 매출의 내년 1월 입금</td><td style="border:1px solid #ccc;padding:8px;text-align:right">+$2,750</td></tr><tr><td style="border:1px solid #ccc;padding:8px"><b>= 예상 매출</b></td><td style="border:1px solid #ccc;padding:8px;text-align:right"><b>$166,890</b></td></tr><tr><td style="border:1px solid #ccc;padding:8px">손익계산서 매출</td><td style="border:1px solid #ccc;padding:8px;text-align:right">$171,690</td></tr><tr><td style="border:1px solid #ccc;padding:8px"><b>차이</b></td><td style="border:1px solid #ccc;padding:8px;text-align:right"><b>+$4,800</b></td></tr></tbody></table>
+<p style="line-height:1.7">엑셀에서는 예상 매출을 <code>=B1-B2+B3-B4+B5</code>, 차이를 <code>=B7-B6</code>로 구합니다. 차이가 플러스면 대개 이중 기록, 마이너스면 매출 누락이나 입금을 대차대조표 계정으로 처리한 경우입니다.</p>
+<h2>이중 기록 찾기</h2>
+<p style="line-height:1.7">QuickBooks의 Transaction Detail by Account 보고서를 매출 계정만 골라 엑셀로 내보내고, A열 날짜·B열 유형·E열 금액으로 정리합니다. 아래 수식은 Deposit 줄마다 7일 안에 같은 금액의 판매가 있으면 표시해 줍니다. <code>=IF(B2="Deposit",IF(COUNTIFS(B:B,"&lt;&gt;Deposit",E:E,E2,A:A,"&gt;="&amp;A2-7,A:A,"&lt;="&amp;A2+7)&gt;0,"CHECK",""),"")</code></p>
+<figure style="margin:20px 0"><img src="Fig02_Before_After_KR.png" alt="수정 전후 표: 인보이스와 입금이 모두 매출로 잡힌 상태와 입금을 결제에 연결한 상태" style="width:100%;height:auto;border:1px solid #ddd"><figcaption style="font-size:13px;color:#666;margin-top:6px">그림 2. 같은 $4,800이 두 번 잡힌 경우와 수정 후 (예시)</figcaption></figure>
+<h3>QuickBooks Desktop에서 고치기</h3>
+<ol><li>손님 결제는 Receive Payments(또는 판매 영수증)로 기록해 미입금 자금으로 들어가게 합니다.</li>
+<li>Banking &gt; Make Deposits에서 Payments to Deposit 창의 결제를 고르고 입금 계좌를 선택해 Save &amp; Close 합니다.</li>
+<li>같은 돈이 이미 매출 계정 줄로 입금에 들어가 있다면 그 입금을 열어 매출 줄을 지우고, 미입금 자금의 결제를 추가합니다.</li>
+<li>입금 내역은 Reports &gt; Report Center &gt; Banking &gt; Deposit Detail로 확인합니다.</li></ol>
+<h3>QuickBooks Online에서 고치기</h3>
+<p style="line-height:1.7">온라인은 데스크톱과 화면 구성이 달라 순서대로 적었습니다.</p>
+<ol><li>Bank transactions 화면을 엽니다. 새 화면은 All apps &gt; Accounting &gt; Bank transactions, 예전 화면은 Transactions &gt; Bank transactions입니다.</li>
+<li>이미 매출 카테고리로 추가된 입금은 처리된 목록(예전 화면의 Categorized)에서 Undo를 눌러 검토 대기 목록으로 되돌립니다.</li>
+<li>카테고리를 고르지 말고 <b>Match</b>를 선택해 기존 인보이스 결제나 판매 영수증과 연결합니다. Intuit 도움말도 Match는 이미 있는 기록과 연결해 중복 입력을 막는다고 설명합니다.</li>
+<li>여러 결제가 한 번에 들어왔다면 + Create(또는 + New) &gt; Bank Deposit에서 결제를 체크하고, 합계가 은행 금액과 같은지 확인해 저장한 뒤 은행 줄을 그 입금에 Match합니다.</li>
+<li>수수료를 뺀 정산은 입금 화면에 수수료를 마이너스 금액으로 수수료 비용 계정에 한 줄 추가합니다.</li>
+<li>확인은 Reports &gt; Standard reports에서 Deposit Detail을 검색해 실행합니다.</li></ol>
+<figure style="margin:20px 0"><img src="Fig03_Gap_Decision_Tree_KR.png" alt="결정 트리: 차이가 플러스일 때와 마이너스일 때의 원인" style="width:100%;height:auto;border:1px solid #ddd"><figcaption style="font-size:13px;color:#666;margin-top:6px">그림 3. 차이의 부호에 따라 먼저 볼 곳</figcaption></figure>
+<h2>흔한 원인 한눈에 보기</h2>
+<table style="border-collapse:collapse;width:100%;margin:12px 0;font-size:15px"><thead><tr><th style="background:#D9E2F3;border:1px solid #bbb;padding:8px;text-align:left">원인</th><th style="background:#D9E2F3;border:1px solid #bbb;padding:8px;text-align:left">차이</th><th style="background:#D9E2F3;border:1px solid #bbb;padding:8px;text-align:left">해결</th></tr></thead><tbody><tr><td style="border:1px solid #ccc;padding:8px">입금을 매출로 + 인보이스 결제도 기록</td><td style="border:1px solid #ccc;padding:8px">많음</td><td style="border:1px solid #ccc;padding:8px">입금을 결제에 Match</td></tr><tr><td style="border:1px solid #ccc;padding:8px">내 계좌 간 이체를 매출로</td><td style="border:1px solid #ccc;padding:8px">많음</td><td style="border:1px solid #ccc;padding:8px">이체(Transfer)로 기록</td></tr><tr><td style="border:1px solid #ccc;padding:8px">대출금·사장님 돈을 매출로</td><td style="border:1px solid #ccc;padding:8px">많음</td><td style="border:1px solid #ccc;padding:8px">대출 계정 또는 자본 계정으로</td></tr><tr><td style="border:1px solid #ccc;padding:8px">은행 피드 입금 중복</td><td style="border:1px solid #ccc;padding:8px">많음</td><td style="border:1px solid #ccc;padding:8px">중복분 Exclude 또는 삭제</td></tr><tr><td style="border:1px solid #ccc;padding:8px">수수료 뺀 정산, 수수료 미기록</td><td style="border:1px solid #ccc;padding:8px">적음</td><td style="border:1px solid #ccc;padding:8px">입금에 수수료 줄 추가</td></tr><tr><td style="border:1px solid #ccc;padding:8px">매출 입력 누락</td><td style="border:1px solid #ccc;padding:8px">적음</td><td style="border:1px solid #ccc;padding:8px">매출 입력 후 입금에 Match</td></tr></tbody></table>
+<h2>자주 하는 실수</h2>
+<ul><li>은행 명세서가 아니라 QuickBooks 입금 보고서에서 출발하기. 장부가 틀리면 보고서도 틀립니다.</li>
+<li>두 번째 사업 계좌를 빼먹어 계좌 간 이체가 전부 매출처럼 보이게 하기.</li>
+<li>현금주의 신고와 발생주의 손익계산서를 비교하기 (또는 그 반대).</li>
+<li>세무 담당자가 이미 신고에 쓴 기간의 거래를 말없이 지우기.</li>
+<li>Form 1099-K를 입금액과 비교하기. 1099-K는 수수료·환불 전 총액이므로 총매출과 비교해야 합니다.</li></ul>
+<h2>자주 묻는 질문</h2>
+<h3>어느 정도면 맞았다고 보나요?</h3><p style="line-height:1.7">몇 달러 정도의 차이(반올림, 소액 이자 시차)는 넘어가는 경우가 많습니다. 차이가 입금 한 건과 같거나 딱 떨어지는 숫자라면 꼭 확인하세요.</p>
+<h3>은행 이자는 문제가 되나요?</h3><p style="line-height:1.7">아닙니다. 이자는 장부 매출이자 입금이므로 따로 조정할 필요가 없습니다.</p>
+<h3>2026년분 Form 1099-K를 받게 되나요?</h3><p style="line-height:1.7">IRS에 따르면 2026년분은 결제 앱·마켓플레이스의 상품·서비스 대금이 $20,000 초과이고 200건 초과일 때 일반적으로 발행됩니다. 1099-K를 받지 않아도 사업 소득은 모두 신고해야 합니다.</p>
+<h3>거래처에서 받은 환불은요?</h3><p style="line-height:1.7">입금이지만 매출은 아닙니다. 원래 비용을 줄이는 쪽으로 기록하고, 대조표에서는 매출 아닌 입금으로 적으세요.</p>
+<h2>간단 체크리스트</h2>
+<ul><li>모든 사업 계좌를 12/31까지 대사</li><li>매출 아닌 입금을 적고 합계 확인</li><li>수수료·쓴 현금·미입금 자금 가산</li><li>1월·12월 시차 조정</li><li>손익계산서를 신고와 같은 기준으로 출력</li><li>표시된 입금을 한 건씩 확인·수정</li><li>최종 대조표를 PDF로 연말 서류와 보관</li></ul>
+<p style="line-height:1.7">위 과정을 그대로 해 주는 <b>은행 입금 vs 매출 대조 키트</b>는 아래 <a href="#kit" style="color:#1F4E99;font-weight:700;">무료 키트 다운로드</a>에서 가입 없이 무료로 받으실 수 있습니다(엑셀 + PDF 가이드).</p>
+<p style="font-size:13px;color:#666;line-height:1.6">이 글은 교육용 정보이며 세무·법률·회계 자문이 아닙니다. 입금을 세금 신고에 어떻게 보고할지는 상황에 따라 다르니 자격 있는 세무 전문가와 상의하세요. QuickBooks Online 메뉴 이름은 자주 바뀌어 화면과 다를 수 있습니다. QuickBooks is a registered trademark of Intuit Inc.; not affiliated with or endorsed by Intuit. (QuickBooks는 Intuit Inc.의 등록상표이며, 이 글은 Intuit과 제휴·보증 관계가 없습니다.)</p>
+<h3>출처</h3>
+<ul style="font-size:13px"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/bank-deposits/record-make-bank-deposits-quickbooks-online/L2BBZOPdr_US_en_US">Intuit: Record and make bank deposits in QuickBooks Online</a></li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/bank-deposits/record-make-bank-deposits-quickbooks-desktop/L2R3J0uic_US_en_US">Intuit: Record and make bank deposits in QuickBooks Desktop</a></li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/bank-transactions/match-transactions-quickbooks-online/L0MF3Fn6y_US_en_US">Intuit: Match transactions in QuickBooks Online</a></li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/banking/fix-mismatched-miscategorized-bank-transactions/L1yowJr3i_US_en_US">Intuit: Fix downloaded bank transactions</a></li>
+<li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/what-kind-of-records-should-i-keep">IRS: What kind of records should I keep</a></li>
+<li><a href="https://www.irs.gov/newsroom/irs-issues-faqs-on-form-1099-k-threshold-under-the-one-big-beautiful-bill-dollar-limit-reverts-to-20000">IRS: Form 1099-K 기준 FAQ (One, Big, Beautiful Bill)</a></li></ul>

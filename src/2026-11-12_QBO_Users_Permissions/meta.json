@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-12",
+  "category": "qbo",
+  "slug": {
+    "ko": "qbo-users-permissions-security-korean",
+    "en": "qbo-users-permissions-security"
+  },
+  "title": {
+    "ko": "QBO 직원·회계사 초대와 권한 설정: 비밀번호 공유 없이 2단계 인증으로 장부 지키는 법",
+    "en": "Stop Sharing Your QuickBooks Online Password: Set Up Users, Roles, Accountant Access and 2-Step Verification"
+  },
+  "excerpt": {
+    "ko": "QBO에 직원·회계사를 따로 초대하고 역할을 나눈 뒤, 2단계 인증과 Audit log로 장부를 지키는 방법을 단계별로 정리합니다.",
+    "en": "Invite staff and your accountant to QBO with the right roles, then protect sign-ins with 2-step verification."
+  },
+  "series_no": 4
+}
