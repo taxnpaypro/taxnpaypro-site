@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-11",
+  "category": "tax",
+  "slug": {
+    "ko": "scorp-one-shareholder-two-partners-fair-split-korean",
+    "en": "scorp-one-shareholder-two-partners-fair-split"
+  },
+  "title": {
+    "ko": "S-corp 서류상 주주는 1명, 같이 일하는 사람은 2명: 이익을 공평하게 나누는 계산법 (무료 엑셀)",
+    "en": "One Shareholder on Paper, Two People Doing the Work: How to Split S Corporation Profit Fairly (Free Excel)"
+  },
+  "excerpt": {
+    "ko": "K-1은 서류상 주주만 받는 S-corp에서 두 사람 몫의 차이와 급여로 메우는 금액을 엑셀로 계산합니다.",
+    "en": "When only one partner gets the K-1, measure the gap and the W-2 bonus that closes it, with a free Excel calculator."
+  },
+  "downloads": {
+    "kit": "scorp-fair-split-calculator",
+    "en": [
+      "SCorp_Fair_Split_Calculator_2026_EN.xlsx"
+    ],
+    "ko": [
+      "SCorp_Fair_Split_Calculator_2026_EN_KR.xlsx"
+    ]
+  }
+}

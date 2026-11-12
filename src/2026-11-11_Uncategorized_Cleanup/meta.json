@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-11",
+  "category": "accounting",
+  "slug": {
+    "ko": "quickbooks-uncategorized-cleanup-korean",
+    "en": "fix-uncategorized-income-expense-year-end"
+  },
+  "title": {
+    "ko": "연말 전에 꼭 정리해야 할 QuickBooks 미분류 거래(Uncategorized·Ask My Accountant) 정리법",
+    "en": "How to Clear Uncategorized Income, Expense and \"Ask My Accountant\" Before Year-End"
+  },
+  "excerpt": {
+    "ko": "Uncategorized 수입·비용·자산과 Ask My Accountant 잔액을 키워드 규칙, 사장님 질문지로 연말 전에 정리하는 법입니다.",
+    "en": "Clear Uncategorized Income, Expense, Asset and Ask My Accountant step by step before year-end, in Desktop or Online."
+  },
+  "downloads": {
+    "kit": "uncategorized-cleanup-kit",
+    "en": [
+      "Uncategorized_Cleanup_Workbook_2026_EN.xlsx",
+      "Uncategorized_Cleanup_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Uncategorized_Cleanup_Workbook_2026_EN_KR.xlsx",
+      "Uncategorized_Cleanup_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}

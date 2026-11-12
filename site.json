@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10",
+  "updated": "2026-11-11",
   "notice": {
     "ko": "",
     "en": ""
@@ -64,6 +64,90 @@
   ],
   "cfAnalyticsToken": "711a0a4eb51c474fb4648cdc53ddda69",
   "posts": [
+    {
+      "date": "2026-11-11",
+      "category": "qbo",
+      "title": {
+        "ko": "QBO 고객·거래처·상품 목록, 엑셀로 한 번에 가져오기: 중복과 오류 없이 Import하는 법",
+        "en": "How to Import Customers, Vendors and Products into QuickBooks Online from Excel Without Duplicates or Errors"
+      },
+      "excerpt": {
+        "ko": "고객·거래처·상품 목록을 엑셀로 QBO에 가져올 때 파일 정리, 1,000행 분할, 매핑, 검증까지 단계별로 정리했습니다.",
+        "en": "Clean, split, map and verify: a step-by-step guide to importing customer, vendor and product lists into QBO."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-import-customers-vendors-products-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-import-customers-vendors-products.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-import-customers-vendors-products-korean.html",
+        "en": "blog/qbo-import-customers-vendors-products.html"
+      },
+      "freeKit": false
+    },
+    {
+      "date": "2026-11-11",
+      "category": "tax",
+      "title": {
+        "ko": "S-corp 서류상 주주는 1명, 같이 일하는 사람은 2명: 이익을 공평하게 나누는 계산법 (무료 엑셀)",
+        "en": "One Shareholder on Paper, Two People Doing the Work: How to Split S Corporation Profit Fairly (Free Excel)"
+      },
+      "excerpt": {
+        "ko": "K-1은 서류상 주주만 받는 S-corp에서 두 사람 몫의 차이와 급여로 메우는 금액을 엑셀로 계산합니다.",
+        "en": "When only one partner gets the K-1, measure the gap and the W-2 bonus that closes it, with a free Excel calculator."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/scorp-one-shareholder-two-partners-fair-split-korean.html",
+        "en": "https://taxnpaypro.com/blog/scorp-one-shareholder-two-partners-fair-split.html"
+      },
+      "previewUrl": {
+        "ko": "blog/scorp-one-shareholder-two-partners-fair-split-korean.html",
+        "en": "blog/scorp-one-shareholder-two-partners-fair-split.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-11",
+      "category": "tax",
+      "title": {
+        "ko": "나는 미국 세법상 거주자일까? 183일 실질 체류 테스트 일수 세는 법 (2026)",
+        "en": "Am I a US Tax Resident? How to Count Your Days for the 183-Day Test (2026)"
+      },
+      "excerpt": {
+        "ko": "한국과 미국을 오가는 분을 위해 31일·183일 조건, 엑셀 수식, Form 8840·8843 예외와 마감일을 정리했습니다.",
+        "en": "Count your US days for the 2026 substantial presence test: 31-day and 183-day rules, exceptions and due dates."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/substantial-presence-test-korean.html",
+        "en": "https://taxnpaypro.com/blog/substantial-presence-test-183-day-rule-2026.html"
+      },
+      "previewUrl": {
+        "ko": "blog/substantial-presence-test-korean.html",
+        "en": "blog/substantial-presence-test-183-day-rule-2026.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-11",
+      "category": "accounting",
+      "title": {
+        "ko": "연말 전에 꼭 정리해야 할 QuickBooks 미분류 거래(Uncategorized·Ask My Accountant) 정리법",
+        "en": "How to Clear Uncategorized Income, Expense and \"Ask My Accountant\" Before Year-End"
+      },
+      "excerpt": {
+        "ko": "Uncategorized 수입·비용·자산과 Ask My Accountant 잔액을 키워드 규칙, 사장님 질문지로 연말 전에 정리하는 법입니다.",
+        "en": "Clear Uncategorized Income, Expense, Asset and Ask My Accountant step by step before year-end, in Desktop or Online."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/quickbooks-uncategorized-cleanup-korean.html",
+        "en": "https://taxnpaypro.com/blog/fix-uncategorized-income-expense-year-end.html"
+      },
+      "previewUrl": {
+        "ko": "blog/quickbooks-uncategorized-cleanup-korean.html",
+        "en": "blog/fix-uncategorized-income-expense-year-end.html"
+      },
+      "freeKit": true
+    },
     {
       "date": "2026-11-10",
       "category": "tax",
