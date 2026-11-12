@@ -1,0 +1,115 @@
+<!-- Title: Delaware Franchise Tax Bill Too High? How to Recalculate It With the Assumed Par Value Capital Method (2026 Annual Report) -->
+<p style="font-size:17px;line-height:1.7;">Many founders of Delaware corporations open their first franchise tax notice and see a number like <b>$85,165</b>. For a young startup with a few hundred thousand dollars in the bank, that looks impossible. In most of these cases, the number is not what the company actually has to pay. It is simply the tax under one of two methods Delaware allows, and the other method can be a few hundred dollars.</p>
+<p style="font-size:17px;line-height:1.7;">This post shows you how to figure both methods yourself, with formulas you can type into Excel or Google Sheets, so you can check your 2026 annual report before the <b>March 1, 2027</b> deadline. It applies to Delaware <b>corporations</b>. Delaware LLCs, LPs and GPs pay a flat annual tax instead and are covered briefly at the end.</p>
+
+<h2 style="color:#1F3A5F;">The rule in one sentence</h2>
+<p style="font-size:17px;line-height:1.7;">Delaware's Division of Corporations says the tax can be figured with the <b>Authorized Shares method</b> or the <b>Assumed Par Value Capital method</b>, and you should <b>use the method that results in the lesser tax</b>. The first method looks only at how many shares your charter authorizes. The second also looks at how many shares you actually issued and how much the company owns (its total gross assets).</p>
+
+<figure style="margin:24px 0;"><img src="Fig01_Two_Methods_Flow_EN.png" alt="Flowchart: authorized shares feed the Authorized Shares method, issued shares and gross assets feed the Assumed Par Value Capital method, and the lower of the two results is the tax" style="width:100%;height:auto;"><figcaption style="font-size:14px;color:#6b7280;">Figure 1. Two methods, one answer: pay the lower result.</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">Step 1: Gather four numbers</h2>
+<ol style="font-size:17px;line-height:1.7;">
+<li><b>Authorized shares</b> and <b>par value</b> per share, from your certificate of incorporation (including every amendment). If you have more than one class, such as common and preferred, note each class separately.</li>
+<li><b>Issued shares</b> at year-end, including treasury shares, from your stock ledger or cap table.</li>
+<li><b>Total gross assets</b>: the "total assets" figure on Form 1120, Schedule L, for the fiscal year ending in 2026.</li>
+</ol>
+
+<h2 style="color:#1F3A5F;">Step 2: Figure the Authorized Shares method</h2>
+<p style="font-size:17px;line-height:1.7;">The schedule on Delaware's "How to Calculate Franchise Taxes" page is:</p>
+<table style="border-collapse:collapse;width:100%;font-size:16px;margin:16px 0;">
+<tr><th style="background:#1F3A5F;color:#fff;padding:10px;text-align:left;">Authorized shares</th><th style="background:#1F3A5F;color:#fff;padding:10px;text-align:left;">Tax</th></tr>
+<tr><td style="border:1px solid #cbd5e1;padding:9px;">5,000 or fewer</td><td style="border:1px solid #cbd5e1;padding:9px;">$175 (minimum)</td></tr>
+<tr><td style="border:1px solid #cbd5e1;padding:9px;">5,001 to 10,000</td><td style="border:1px solid #cbd5e1;padding:9px;">$250</td></tr>
+<tr><td style="border:1px solid #cbd5e1;padding:9px;">Each additional 10,000 shares or portion</td><td style="border:1px solid #cbd5e1;padding:9px;">add $85</td></tr>
+<tr><td style="border:1px solid #cbd5e1;padding:9px;">Maximum</td><td style="border:1px solid #cbd5e1;padding:9px;">$200,000</td></tr>
+</table>
+<p style="font-size:17px;line-height:1.7;">Put authorized shares in cell B1 and type this formula:</p>
+<p style="font-family:monospace;background:#f3f4f6;padding:10px;border-radius:6px;font-size:15px;">=MIN(IF(B1&lt;=5000,175,IF(B1&lt;=10000,250,250+CEILING((B1-10000)/10000,1)*85)),200000)</p>
+<p style="font-size:17px;line-height:1.7;">For 10,000,000 authorized shares: 9,990,000 shares above the first 10,000 make 999 blocks. 999 &times; $85 = $84,915, plus $250 = <b>$85,165</b>. That is where the scary number comes from.</p>
+
+<h2 style="color:#1F3A5F;">Step 3: Figure the Assumed Par Value Capital method</h2>
+<ol style="font-size:17px;line-height:1.7;">
+<li><b>Assumed par</b> = total gross assets &divide; issued shares, to 6 decimal places.</li>
+<li>For each class whose par value is <b>below</b> assumed par, multiply assumed par by that class's authorized shares. For a class whose par value is <b>above</b> assumed par, multiply its own par value by its authorized shares.</li>
+<li>Add the results. This is the <b>assumed par value capital</b>.</li>
+<li>The tax is <b>$400 for each $1,000,000 or portion</b>, so round up to the next million. The minimum is $400 and the maximum is $200,000.</li>
+</ol>
+<p style="font-size:17px;line-height:1.7;">With gross assets in B2, issued shares in B3 and par value in B4 (one class), these formulas do it:</p>
+<p style="font-family:monospace;background:#f3f4f6;padding:10px;border-radius:6px;font-size:15px;">B5 (assumed par): =ROUND(B2/B3,6)<br>B6 (capital): =IF(B4&lt;B5,B5,B4)*B1<br>B7 (tax): =MIN(MAX(400,CEILING(B6/1000000,1)*400),200000)</p>
+<p style="font-size:17px;line-height:1.7;">Then the tax you pay is the lower one: <span style="font-family:monospace;">=MIN(B7, Authorized Shares result)</span>. The annual report filing fee of $50 for a non-exempt domestic corporation is added on top.</p>
+
+<h2 style="color:#1F3A5F;">A worked example</h2>
+<p style="font-size:17px;line-height:1.7;">Example values: a seed-stage startup with 10,000,000 authorized shares at $0.00001 par, 8,000,000 shares issued and $250,000 of total assets on Schedule L.</p>
+<table style="border-collapse:collapse;width:100%;font-size:16px;margin:16px 0;">
+<tr><th style="background:#1F3A5F;color:#fff;padding:10px;text-align:left;">Step (example values)</th><th style="background:#1F3A5F;color:#fff;padding:10px;text-align:left;">Math</th><th style="background:#1F3A5F;color:#fff;padding:10px;text-align:left;">Result</th></tr>
+<tr><td style="border:1px solid #cbd5e1;padding:9px;">Authorized Shares method</td><td style="border:1px solid #cbd5e1;padding:9px;">$250 + 999 &times; $85</td><td style="border:1px solid #cbd5e1;padding:9px;">$85,165</td></tr>
+<tr><td style="border:1px solid #cbd5e1;padding:9px;">Assumed par</td><td style="border:1px solid #cbd5e1;padding:9px;">$250,000 &divide; 8,000,000</td><td style="border:1px solid #cbd5e1;padding:9px;">$0.031250</td></tr>
+<tr><td style="border:1px solid #cbd5e1;padding:9px;">Assumed par value capital</td><td style="border:1px solid #cbd5e1;padding:9px;">$0.031250 &times; 10,000,000</td><td style="border:1px solid #cbd5e1;padding:9px;">$312,500</td></tr>
+<tr><td style="border:1px solid #cbd5e1;padding:9px;">Assumed Par Value Capital method</td><td style="border:1px solid #cbd5e1;padding:9px;">under $1M, so the $400 minimum</td><td style="border:1px solid #cbd5e1;padding:9px;">$400</td></tr>
+<tr><td style="border:1px solid #cbd5e1;padding:9px;background:#C6EFCE;"><b>Tax + $50 report fee</b></td><td style="border:1px solid #cbd5e1;padding:9px;background:#C6EFCE;">$400 + $50</td><td style="border:1px solid #cbd5e1;padding:9px;background:#C6EFCE;"><b>$450</b></td></tr>
+</table>
+
+<figure style="margin:24px 0;"><img src="Fig02_Before_After_EN.png" alt="Before and after comparison for the example company: $85,165 under the Authorized Shares method versus $450 total with the Assumed Par Value Capital method and the $50 fee" style="width:100%;height:auto;"><figcaption style="font-size:14px;color:#6b7280;">Figure 2. Same company, same year, two methods (example values).</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">Three more cases worth knowing</h2>
+<table style="border-collapse:collapse;width:100%;font-size:16px;margin:16px 0;">
+<tr><th style="background:#1F3A5F;color:#fff;padding:10px;text-align:left;">Case (example values)</th><th style="background:#1F3A5F;color:#fff;padding:10px;text-align:left;">Authorized Shares</th><th style="background:#1F3A5F;color:#fff;padding:10px;text-align:left;">Assumed Par</th><th style="background:#1F3A5F;color:#fff;padding:10px;text-align:left;">Lower tax</th></tr>
+<tr><td style="border:1px solid #cbd5e1;padding:9px;">Series A: 15M common + 5M preferred, $0.0001 par, 12M issued, $8M assets</td><td style="border:1px solid #cbd5e1;padding:9px;">$170,165</td><td style="border:1px solid #cbd5e1;padding:9px;">$5,600</td><td style="border:1px solid #cbd5e1;padding:9px;">$5,600</td></tr>
+<tr><td style="border:1px solid #cbd5e1;padding:9px;">Small family corporation: 1,500 no-par shares, 1,000 issued, $600,000 assets</td><td style="border:1px solid #cbd5e1;padding:9px;">$175</td><td style="border:1px solid #cbd5e1;padding:9px;">$400</td><td style="border:1px solid #cbd5e1;padding:9px;">$175</td></tr>
+<tr><td style="border:1px solid #cbd5e1;padding:9px;">High par: 5,000,000 shares at $1.00 par, 1,000,000 issued, $500,000 assets</td><td style="border:1px solid #cbd5e1;padding:9px;">$42,665</td><td style="border:1px solid #cbd5e1;padding:9px;">$2,000</td><td style="border:1px solid #cbd5e1;padding:9px;">$2,000</td></tr>
+</table>
+<p style="font-size:17px;line-height:1.7;">In the Series A case, assumed par is $8,000,000 &divide; 12,000,000 = $0.666667. Both classes have a lower par, so assumed par applies to all 20,000,000 authorized shares: $13,333,340, which rounds up to 14 millions &times; $400 = $5,600. In the high-par case, the $1.00 par is above the $0.50 assumed par, so the par value is used. In the small no-par company, the Authorized Shares minimum of $175 wins; Delaware notes that for no-par stock this method always gives the lesser tax.</p>
+
+<figure style="margin:24px 0;"><img src="Fig03_Million_Steps_EN.png" alt="Bar chart for 10,000,000 authorized and 8,000,000 issued shares: the Assumed Par Value Capital tax stays at $400 up to about $800,000 of assets and then rises in $400 steps" style="width:100%;height:auto;"><figcaption style="font-size:14px;color:#6b7280;">Figure 3. The tax rises in $400 steps as assets grow (example: 10M authorized, 8M issued shares).</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">Step 4: File, pay and plan ahead</h2>
+<ul style="font-size:17px;line-height:1.7;">
+<li><b>March 1, 2027 (Monday):</b> the 2026 annual report and franchise tax are due, filed online. Enter <b>both</b> issued shares and total gross assets in the report; the Assumed Par Value Capital method depends on those two figures.</li>
+<li><b>Tax of $5,000 or more:</b> Delaware asks for estimated payments: 40% by June 1, 20% by September 1, 20% by December 1, and the rest by March 1.</li>
+<li><b>Late:</b> a $200 penalty plus 1.5% interest per month on the tax and penalty.</li>
+<li><b>Shares changed during the year?</b> Delaware prorates each period by the days it was in effect over 365 and adds the periods together.</li>
+</ul>
+
+<figure style="margin:24px 0;"><img src="Fig04_Timeline_EN.png" alt="Timeline: March 1, 2027 annual report and tax, June 1 first estimate 40 percent, September 1 20 percent, December 1 20 percent, March 1, 2028 remainder" style="width:100%;height:auto;"><figcaption style="font-size:14px;color:#6b7280;">Figure 4. Key Delaware dates; the estimate dates apply only when the tax is $5,000 or more.</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">Common mistakes</h2>
+<ol style="font-size:17px;line-height:1.7;">
+<li><b>Paying the first number you see</b> without figuring the second method.</li>
+<li><b>Dividing by authorized shares</b> instead of issued shares when you figure assumed par.</li>
+<li><b>Leaving out treasury shares</b> or a second class of stock.</li>
+<li><b>Using a different asset figure</b> (cash only, or equity) instead of total assets on Schedule L.</li>
+<li><b>Forgetting the $50 filing fee</b>, which makes the payment short.</li>
+<li><b>Paying a look-alike notice.</b> Delaware warns businesses to be suspicious of mail that does not come from the State or the company's registered agent.</li>
+</ol>
+
+<h2 style="color:#1F3A5F;">FAQ</h2>
+<h3 style="color:#1F3A5F;">Is choosing the Assumed Par Value Capital method a special election?</h3>
+<p style="font-size:17px;line-height:1.7;">Delaware's instructions simply say to use the method that results in the lesser tax. In practice, you enter issued shares and gross assets in the online annual report so the second method can be applied.</p>
+<h3 style="color:#1F3A5F;">My company had almost no assets. Do I still owe tax?</h3>
+<p style="font-size:17px;line-height:1.7;">Yes. Each method has a minimum: $175 under Authorized Shares and $400 under Assumed Par Value Capital, plus the $50 report fee. With very few assets, watch the par value: if it is higher than assumed par, the par value is used.</p>
+<h3 style="color:#1F3A5F;">Does this apply to my Delaware LLC?</h3>
+<p style="font-size:17px;line-height:1.7;">No. Delaware LLCs, LPs and GPs file no franchise tax report. They pay a flat annual tax by June 1; the Division of Corporations page reviewed in November 2026 lists $400.</p>
+<h3 style="color:#1F3A5F;">What if the online system shows a different number from my spreadsheet?</h3>
+<p style="font-size:17px;line-height:1.7;">Check the figures you entered against your stock ledger and Form 1120 first. If they match and the amount still differs, contact the Division of Corporations or your registered agent.</p>
+
+<h2 style="color:#1F3A5F;">Checklist</h2>
+<ul style="font-size:17px;line-height:1.7;">
+<li>Authorized shares and par value for each class, from the latest charter</li>
+<li>Issued shares at year-end, including treasury shares</li>
+<li>Total assets from Form 1120, Schedule L</li>
+<li>Both methods figured; lower result noted</li>
+<li>Report filed and tax + $50 paid by March 1, 2027</li>
+<li>Estimate dates on the calendar if the tax is $5,000 or more</li>
+</ul>
+
+<p style="font-size:15px;line-height:1.6;color:#4b5563;"><i>This post is for education only and is not tax or legal advice. Rules and amounts can change; confirm them with the Delaware Division of Corporations before you file. All dollar figures above are examples.</i></p>
+
+<p style="font-size:17px;line-height:1.7;">You can download the ready-made <b>Delaware Franchise Tax Calculator 2026</b> for free in the <a href="#kit" style="color:#1F4E99;font-weight:700;">Free kit download</a> box below (Excel + PDF guide, no sign-up).</p>
+
+<h3 style="color:#1F3A5F;">Sources</h3>
+<ul style="font-size:15px;line-height:1.6;">
+<li><a href="https://corp.delaware.gov/frtaxcalc/" style="color:#1F4E99;">Delaware Division of Corporations: How to Calculate Franchise Taxes</a></li>
+<li><a href="https://corp.delaware.gov/paytaxes/" style="color:#1F4E99;">Delaware Division of Corporations: Annual Report and Tax Information</a></li>
+<li><a href="https://corp.delaware.gov/alt-entitytaxinstructions/" style="color:#1F4E99;">Delaware Division of Corporations: LLC, LP and GP Tax Instructions</a></li>
+<li><a href="https://corp.delaware.gov/exemptcorp/" style="color:#1F4E99;">Delaware Division of Corporations: Exempt Corporations</a></li>
+</ul>
