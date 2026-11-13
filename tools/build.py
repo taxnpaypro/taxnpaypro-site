@@ -248,7 +248,11 @@ def main():
     home = open(os.path.join(R, 'data', 'home_template.html'), encoding='utf-8').read()
     assert home.count('__FALLBACK__') == 1
     fb = json.dumps(site, ensure_ascii=False).replace('</', '<\\/')
-    open(os.path.join(R, 'index.html'), 'w', encoding='utf-8').write(home.replace('__FALLBACK__', fb))
+    # latest posts as plain HTML links so crawlers see them without running the script (the script redraws this list)
+    assert home.count('__HOME_POSTS__') == 1
+    hp = ''.join('<a class="post" href="%s" target="_top"><span class="pd">%s</span><div><h3>%s</h3><p>%s</p></div><span class="pc">%s</span></a>' % (
+        html.escape(p['url']['ko']), p['date'], html.escape(p['title']['ko']), html.escape(p['excerpt']['ko']), html.escape(CATN[p['category']]['ko'])) for p in posts[:8])
+    open(os.path.join(R, 'index.html'), 'w', encoding='utf-8').write(home.replace('__FALLBACK__', fb).replace('__HOME_POSTS__', hp))
     # sitemap.xml + robots.txt for Google Search Console
     urls = [('https://%s/' % DOMAIN, site['updated']), ('https://%s/csv-to-qbo' % DOMAIN, site['updated']), ('https://%s/blog/' % DOMAIN, site['updated'])]
     for p in posts:
