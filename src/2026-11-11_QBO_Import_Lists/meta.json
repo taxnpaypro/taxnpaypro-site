@@ -13,5 +13,8 @@
     "ko": "고객·거래처·상품 목록을 엑셀로 QBO에 가져올 때 파일 정리, 1,000행 분할, 매핑, 검증까지 단계별로 정리했습니다.",
     "en": "Clean, split, map and verify: a step-by-step guide to importing customer, vendor and product lists into QBO."
   },
-  "series_no": 3
+  "series_no": 3,
+  "seoTitle": {
+    "en": "Import Customers & Vendors into QBO from Excel"
+  }
 }
