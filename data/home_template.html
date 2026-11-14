@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* layout: navy masthead with the split BIZ|LEX mark → hero that spells out the name (BIZ = business, LEX = law) → blog by four subjects + latest posts → free QBO converter with how-to → about the name → contact */
+/* layout: navy masthead with the split BIZ|LEX mark → hero that spells out the name (BIZ = business, LEX = law) → blog by subject + latest posts → free QBO converter with how-to → about the name → contact */
 :root{
   --navy:#14202E; --gold:#D4A845; --gold-ink:#8A6512;
   --bg:#F5F6F4; --sheet:#FFFFFF; --ink:#14202E; --muted:#556170; --rule:#D9DDDF; --soft:#EEF0EE;
@@ -94,7 +94,7 @@ section.s{padding-block:72px}
 .sh p{margin:0;color:var(--muted);max-width:56ch}
 
 /* blog */
-.cats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:2px solid var(--ink)}
+.cats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--ink)}
 @media (max-width:980px){.cats{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:600px){.cats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .cat{font:inherit;text-align:left;background:transparent;border:0;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);padding:18px 16px;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;gap:6px;min-height:44px}
@@ -230,7 +230,7 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;c
     <div class="cats" id="cats" role="group" aria-label="Blog subjects"></div>
     <div class="posts" id="posts">__HOME_POSTS__</div>
     <div class="empty" id="empty" hidden><b id="empty-t"></b><span id="empty-s"></span></div>
-    <div class="blogall" id="blogall"><a class="btn line" id="lnk-blog" href="/blog" target="_top" data-en="All articles">전체 글 보기</a></div>
+    <div class="blogall" id="blogall"><a class="btn line" id="lnk-blog" href="/blog/" target="_top" data-en="All articles">전체 글 보기</a></div>
   </div>
 </section>
 
@@ -351,7 +351,7 @@ function render(){
   n.textContent = nt; n.hidden = !nt;
   var cats = d.categories || [], posts = (d.posts || []).slice().sort(function(a, b){ return (b.date || "").localeCompare(a.date || ""); });
   var cw = document.getElementById("cats"); cw.textContent = "";
-  var all = [{ id: "all", name: { ko: "전체", en: "All" }, desc: { ko: "네 가지 주제의 최신 글", en: "Latest from all four subjects" } }];
+  var all = [{ id: "all", name: { ko: "전체", en: "All" }, desc: { ko: "모든 주제의 최신 글", en: "Latest from every subject" } }];
   all.concat(cats).forEach(function(c){
     var b = el("button", "cat"); b.type = "button";
     var count = c.id === "all" ? posts.length : posts.filter(function(p){ return p.category === c.id; }).length;

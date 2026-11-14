@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* layout: navy masthead with the split BIZ|LEX mark → hero that spells out the name (BIZ = business, LEX = law) → blog by four subjects + latest posts → free QBO converter with how-to → about the name → contact */
+/* layout: navy masthead with the split BIZ|LEX mark → hero that spells out the name (BIZ = business, LEX = law) → blog by subject + latest posts → free QBO converter with how-to → about the name → contact */
 :root{
   --navy:#14202E; --gold:#D4A845; --gold-ink:#8A6512;
   --bg:#F5F6F4; --sheet:#FFFFFF; --ink:#14202E; --muted:#556170; --rule:#D9DDDF; --soft:#EEF0EE;
@@ -94,7 +94,7 @@ section.s{padding-block:72px}
 .sh p{margin:0;color:var(--muted);max-width:56ch}
 
 /* blog */
-.cats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:2px solid var(--ink)}
+.cats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--ink)}
 @media (max-width:980px){.cats{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:600px){.cats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .cat{font:inherit;text-align:left;background:transparent;border:0;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);padding:18px 16px;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;gap:6px;min-height:44px}
@@ -230,7 +230,7 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;c
     <div class="cats" id="cats" role="group" aria-label="Blog subjects"></div>
     <div class="posts" id="posts"><a class="post" href="https://taxnpaypro.com/blog/qbo-bank-feeds-match-add-rules-korean.html" target="_top"><span class="pd">2026-11-13</span><div><h3>QBO 은행 연결 완전 정리: 쌓여 가는 은행 거래, Match·Add·Rule로 분류 자동화하는 법</h3><p>QBO 은행 거래를 Match·Categorize·Exclude 중 무엇으로 처리할지 고르는 기준과, Rule로 반복 거래를 자동 분류하는 방법을 정리합니다.</p></div><span class="pc">QuickBooks Online</span></a><a class="post" href="https://taxnpaypro.com/blog/quickbooks-t-bill-money-market-recording-korean.html" target="_top"><span class="pd">2026-11-13</span><div><h3>QuickBooks에서 T-Bill·머니마켓 펀드 기록하는 법: 원가와 이자 나누기부터 1099 대조까지</h3><p>QuickBooks에서 T-Bill을 원가와 이자로 나눠 기록하고, 롤오버·월별 대조·연말 1099-INT 대조까지 하는 방법입니다.</p></div><span class="pc">회계</span></a><a class="post" href="https://taxnpaypro.com/blog/true-cost-of-employee-korean-guide-2026.html" target="_top"><span class="pd">2026-11-13</span><div><h3>직원 한 명 뽑으면 실제로 얼마 들까? 시급 외 고용주 세금·보험·복리후생 계산법 (2026·2027)</h3><p>시급 외에 고용주가 내는 급여세·FUTA·SUTA·산재보험·복리후생까지 더해 직원 1명의 1년 실제 비용을 계산하는 법입니다.</p></div><span class="pc">급여</span></a><a class="post" href="https://taxnpaypro.com/blog/bank-deposits-vs-income-tie-out-kr.html" target="_top"><span class="pd">2026-11-12</span><div><h3>손익계산서 매출이 은행 입금과 안 맞을 때: 연말에 직접 하는 입금·매출 대조법</h3><p>손익계산서 매출과 은행 입금이 다를 때, QuickBooks에서 직접 하는 5단계 연말 대조법과 흔한 이중 기록 원인을 정리했습니다.</p></div><span class="pc">회계</span></a><a class="post" href="https://taxnpaypro.com/blog/delaware-franchise-tax-korean-guide-2026.html" target="_top"><span class="pd">2026-11-12</span><div><h3>델라웨어 프랜차이즈세가 수만 달러? 의제 액면가 자본 방식으로 다시 계산하는 법 (2026년분 연례보고서)</h3><p>델라웨어 법인 프랜차이즈세 안내가 수만 달러라면, 의제 액면가 자본 방식으로 다시 계산해 2027년 3월 1일까지 더 낮은 세금을 내는 법입니다.</p></div><span class="pc">세무</span></a><a class="post" href="https://taxnpaypro.com/blog/qbo-users-permissions-security-korean.html" target="_top"><span class="pd">2026-11-12</span><div><h3>QBO 직원·회계사 초대와 권한 설정: 비밀번호 공유 없이 2단계 인증으로 장부 지키는 법</h3><p>QBO에 직원·회계사를 따로 초대하고 역할을 나눈 뒤, 2단계 인증과 Audit log로 장부를 지키는 방법을 단계별로 정리합니다.</p></div><span class="pc">QuickBooks Online</span></a><a class="post" href="https://taxnpaypro.com/blog/qbo-import-customers-vendors-products-korean.html" target="_top"><span class="pd">2026-11-11</span><div><h3>QBO 고객·거래처·상품 목록, 엑셀로 한 번에 가져오기: 중복과 오류 없이 Import하는 법</h3><p>고객·거래처·상품 목록을 엑셀로 QBO에 가져올 때 파일 정리, 1,000행 분할, 매핑, 검증까지 단계별로 정리했습니다.</p></div><span class="pc">QuickBooks Online</span></a><a class="post" href="https://taxnpaypro.com/blog/scorp-one-shareholder-two-partners-fair-split-korean.html" target="_top"><span class="pd">2026-11-11</span><div><h3>S-corp 서류상 주주는 1명, 같이 일하는 사람은 2명: 이익을 공평하게 나누는 계산법 (무료 엑셀)</h3><p>K-1은 서류상 주주만 받는 S-corp에서 두 사람 몫의 차이와 급여로 메우는 금액을 엑셀로 계산합니다.</p></div><span class="pc">세무</span></a></div>
     <div class="empty" id="empty" hidden><b id="empty-t"></b><span id="empty-s"></span></div>
-    <div class="blogall" id="blogall"><a class="btn line" id="lnk-blog" href="/blog" target="_top" data-en="All articles">전체 글 보기</a></div>
+    <div class="blogall" id="blogall"><a class="btn line" id="lnk-blog" href="/blog/" target="_top" data-en="All articles">전체 글 보기</a></div>
   </div>
 </section>
 
@@ -351,7 +351,7 @@ function render(){
   n.textContent = nt; n.hidden = !nt;
   var cats = d.categories || [], posts = (d.posts || []).slice().sort(function(a, b){ return (b.date || "").localeCompare(a.date || ""); });
   var cw = document.getElementById("cats"); cw.textContent = "";
-  var all = [{ id: "all", name: { ko: "전체", en: "All" }, desc: { ko: "네 가지 주제의 최신 글", en: "Latest from all four subjects" } }];
+  var all = [{ id: "all", name: { ko: "전체", en: "All" }, desc: { ko: "모든 주제의 최신 글", en: "Latest from every subject" } }];
   all.concat(cats).forEach(function(c){
     var b = el("button", "cat"); b.type = "button";
     var count = c.id === "all" ? posts.length : posts.filter(function(p){ return p.category === c.id; }).length;
