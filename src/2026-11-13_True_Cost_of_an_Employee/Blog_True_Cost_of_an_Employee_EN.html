@@ -1,0 +1,114 @@
+<!-- Title: How Much Does an Employee Really Cost? Calculate Payroll Taxes, Insurance and Benefits Before You Hire (2026-2027) -->
+<p style="font-size:17px;line-height:1.7;">You found a great candidate and agreed on $22 an hour. Then the first quarter ends and the bank account says the hire cost a lot more than $22 an hour. That gap is normal. On top of wages, an employer pays its own share of Social Security and Medicare, federal and state unemployment tax, workers' compensation insurance and any benefits it offers. This guide shows small business owners how to calculate the true yearly cost of one employee by hand, with formulas you can type into Excel or Google Sheets, so you can set a hiring budget and prices that actually cover it.</p>
+
+<p style="font-size:15px;line-height:1.7;background:#FFF4E5;border-left:5px solid #E08A00;padding:10px 14px;"><b>Educational information only.</b> This post is not tax, legal or payroll advice. State and local payroll taxes, insurance prices and labor laws vary, so check your state agency, insurer and payroll provider before you decide. All dollar amounts in the examples are <b>example values</b>.</p>
+
+<h2 style="color:#1F3A5F;">Why the hourly rate is not the cost</h2>
+<p style="font-size:16px;line-height:1.7;">When you run payroll you handle two kinds of money. The first is money you <b>withhold</b> from the employee: their 6.2% Social Security, 1.45% Medicare and income tax. That money is part of their gross pay, so it is not an extra cost to you. The second is money you pay <b>on top of</b> gross pay: your matching 6.2% and 1.45%, unemployment taxes, insurance and benefits. Only the second kind raises your cost, and it is the part most hiring budgets forget.</p>
+
+<figure style="margin:24px 0;"><img src="Fig04_Who_Pays_What_EN.png" alt="Two tables comparing the employee side and employer side of taxes on a $1,000 paycheck, example values" style="max-width:100%;height:auto;border:1px solid #dde3ea;"><figcaption style="font-size:14px;color:#556;">Figure 1. On a $1,000 paycheck the employee's withheld taxes come out of the $1,000; your share is added on top. Example values.</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">The 2026 and 2027 federal numbers you need</h2>
+<table style="border-collapse:collapse;width:100%;font-size:15px;margin:12px 0 18px;">
+<tr style="background:#1F3A5F;color:#fff;"><th style="padding:8px;text-align:left;">Employer cost</th><th style="padding:8px;text-align:right;">2026</th><th style="padding:8px;text-align:right;">2027</th><th style="padding:8px;text-align:left;">How it works</th></tr>
+<tr><td style="padding:8px;border-bottom:1px solid #d5dbe3;">Social Security (employer share)</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">6.2%</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">6.2%</td><td style="padding:8px;border-bottom:1px solid #d5dbe3;">On wages up to the wage base</td></tr>
+<tr><td style="padding:8px;border-bottom:1px solid #d5dbe3;">Social Security wage base</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$184,500</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$192,300</td><td style="padding:8px;border-bottom:1px solid #d5dbe3;">No 6.2% on wages above this</td></tr>
+<tr><td style="padding:8px;border-bottom:1px solid #d5dbe3;">Medicare (employer share)</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">1.45%</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">1.45%</td><td style="padding:8px;border-bottom:1px solid #d5dbe3;">On all wages, no limit</td></tr>
+<tr><td style="padding:8px;border-bottom:1px solid #d5dbe3;">FUTA (federal unemployment)</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">0.6%</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">0.6%</td><td style="padding:8px;border-bottom:1px solid #d5dbe3;">6.0% on the first $7,000, less up to a 5.4% credit</td></tr>
+<tr><td style="padding:8px;border-bottom:1px solid #d5dbe3;">SUTA (state unemployment)</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">your rate</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">your rate</td><td style="padding:8px;border-bottom:1px solid #d5dbe3;">Rate and wage base set by your state</td></tr>
+</table>
+<p style="font-size:16px;line-height:1.7;">The Additional Medicare Tax of 0.9% on wages over $200,000 is withheld from the employee only; employers do not pay a matching share. FUTA's 5.4% credit assumes you paid your state unemployment tax on time. In a "credit reduction state" the credit is smaller and you owe extra on Form 940; the U.S. Department of Labor publishes the final list each November, so check it before you finish your year-end budget.</p>
+
+<h2 style="color:#1F3A5F;">Step-by-step: calculate the true cost of one employee</h2>
+<figure style="margin:24px 0;"><img src="Fig02_Five_Steps_EN.png" alt="Flowchart of five steps: gross pay, Social Security and Medicare, FUTA and SUTA, insurance and benefits, divide by hours worked" style="max-width:100%;height:auto;border:1px solid #dde3ea;"><figcaption style="font-size:14px;color:#556;">Figure 2. The five steps to the true cost.</figcaption></figure>
+
+<h3 style="color:#1F4E99;">Step 1. Gross pay</h3>
+<p style="font-size:16px;line-height:1.7;">Gross pay = hourly rate x hours per week x weeks paid, plus any bonus. Include paid vacation and holidays, because they are paid weeks. For a salaried employee, gross pay is the salary plus bonus. In a sheet with the rate in B2, hours in B3, weeks in B4 and bonus in B5: <span style="font-family:Consolas,monospace;background:#F4F6F9;padding:1px 4px;">=B2*B3*B4+B5</span>.</p>
+
+<h3 style="color:#1F4E99;">Step 2. Social Security and Medicare (employer share)</h3>
+<p style="font-size:16px;line-height:1.7;">With gross pay in B6, for 2027 type <span style="font-family:Consolas,monospace;background:#F4F6F9;padding:1px 4px;">=MIN(B6,192300)*6.2%</span> for Social Security and <span style="font-family:Consolas,monospace;background:#F4F6F9;padding:1px 4px;">=B6*1.45%</span> for Medicare. For 2026 use 184500 instead of 192300. The MIN() keeps the 6.2% from going past the wage base.</p>
+
+<h3 style="color:#1F4E99;">Step 3. Unemployment taxes (FUTA and SUTA)</h3>
+<p style="font-size:16px;line-height:1.7;">FUTA: <span style="font-family:Consolas,monospace;background:#F4F6F9;padding:1px 4px;">=MIN(B6,7000)*0.6%</span>, which is at most $42 per employee per year. SUTA: <span style="font-family:Consolas,monospace;background:#F4F6F9;padding:1px 4px;">=MIN(B6,B7)*B8</span>, where B7 is your state's taxable wage base and B8 is the rate on your state notice. New employers usually get a standard new-employer rate. Do not copy another state's numbers; wage bases range from the federal minimum of $7,000 to much higher amounts.</p>
+
+<h3 style="color:#1F4E99;">Step 4. Insurance, benefits and other costs</h3>
+<p style="font-size:16px;line-height:1.7;">Workers' compensation is usually quoted per $100 of payroll: <span style="font-family:Consolas,monospace;background:#F4F6F9;padding:1px 4px;">=B6/100*B9</span>. Add your monthly share of health insurance x 12, any retirement match (for example <span style="font-family:Consolas,monospace;background:#F4F6F9;padding:1px 4px;">=B6*3%</span>) and other yearly costs such as payroll service fees, uniforms, equipment and training. Employer-paid health premiums and retirement contributions are generally not wages for Social Security and Medicare, so you do not add payroll tax on them.</p>
+
+<h3 style="color:#1F4E99;">Step 5. Total, and cost per hour actually worked</h3>
+<p style="font-size:16px;line-height:1.7;">Add steps 1 to 4 for the true yearly cost. Then divide by the hours the person actually works: paid hours minus paid days off. With paid days off in B10: <span style="font-family:Consolas,monospace;background:#F4F6F9;padding:1px 4px;">=Total/(B3*B4-B10*B3/5)</span>. This is the number to use when you price a service or decide whether a shift pays for itself.</p>
+
+<h2 style="color:#1F3A5F;">Worked examples (2027)</h2>
+<p style="font-size:16px;line-height:1.7;">Here are three common jobs, calculated with the steps above. <b>All values are examples</b>, including the state rates and insurance prices.</p>
+<table style="border-collapse:collapse;width:100%;font-size:15px;margin:12px 0 18px;">
+<tr style="background:#1F3A5F;color:#fff;"><th style="padding:8px;text-align:left;">Example</th><th style="padding:8px;text-align:right;">A: Part-time cashier</th><th style="padding:8px;text-align:right;">B: Full-time staff</th><th style="padding:8px;text-align:right;">C: Salaried manager</th></tr>
+<tr><td style="padding:8px;border-bottom:1px solid #d5dbe3;">Pay</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$17/hr x 25 hrs</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$22/hr x 40 hrs + $1,000 bonus</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$200,000 salary</td></tr>
+<tr><td style="padding:8px;border-bottom:1px solid #d5dbe3;">Gross pay</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$22,100.00</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$46,760.00</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$200,000.00</td></tr>
+<tr><td style="padding:8px;border-bottom:1px solid #d5dbe3;">Social Security + Medicare</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$1,690.65</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$3,577.14</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$14,822.60</td></tr>
+<tr><td style="padding:8px;border-bottom:1px solid #d5dbe3;">FUTA + SUTA</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$280.00 (3.4% on $7,000)</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$1,042.00 (2.5% on $40,000)</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$147.00 (1.5% on $7,000)</td></tr>
+<tr><td style="padding:8px;border-bottom:1px solid #d5dbe3;">Workers' comp</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$265.20 ($1.20/$100)</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$1,636.60 ($3.50/$100)</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$600.00 ($0.30/$100)</td></tr>
+<tr><td style="padding:8px;border-bottom:1px solid #d5dbe3;">Health + retirement + other</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$300.00</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$7,602.80</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$20,800.00</td></tr>
+<tr style="background:#D9F2D0;font-weight:700;"><td style="padding:8px;">True yearly cost</td><td style="padding:8px;text-align:right;">$24,635.85</td><td style="padding:8px;text-align:right;">$60,618.54</td><td style="padding:8px;text-align:right;">$236,369.60</td></tr>
+<tr><td style="padding:8px;border-bottom:1px solid #d5dbe3;">Extra cost on top of pay</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">11.5%</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">29.6%</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">18.2%</td></tr>
+<tr><td style="padding:8px;border-bottom:1px solid #d5dbe3;">Cost per hour actually worked</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$19.40 (6 days off)</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$30.93 (15 days off)</td><td style="padding:8px;text-align:right;border-bottom:1px solid #d5dbe3;">$123.11 (20 days off)</td></tr>
+</table>
+<p style="font-size:16px;line-height:1.7;"><b>Check example B by hand:</b> $22 x 40 x 52 = $45,760, plus $1,000 bonus = $46,760. Social Security $46,760 x 6.2% = $2,899.12; Medicare $678.02; FUTA $42; SUTA $40,000 x 2.5% = $1,000; workers' comp $1,636.60; health $450 x 12 = $5,400; retirement 3% = $1,402.80; other $800. Total $60,618.54. Worked hours = 2,080 - 120 = 1,960, so $60,618.54 / 1,960 = $30.93 per hour worked, about 40% more than the $22 pay rate.</p>
+<p style="font-size:16px;line-height:1.7;"><b>Example C</b> shows the wage base cap: Social Security is $192,300 x 6.2% = $11,922.60, not $200,000 x 6.2% = $12,400.</p>
+
+<figure style="margin:24px 0;"><img src="Fig01_Cost_Stack_EN.png" alt="Before and after bar chart: $46,260 gross pay grows to a $57,561 true yearly cost with payroll taxes, insurance, benefits and other costs, example values" style="max-width:100%;height:auto;border:1px solid #dde3ea;"><figcaption style="font-size:14px;color:#556;">Figure 3. Before and after for a $22/hour employee with a $500 bonus, $400/month health insurance and a 3% match. Example values.</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">Plan for the January cash spike</h2>
+<p style="font-size:16px;line-height:1.7;">FUTA and most state unemployment taxes apply only to the first part of each employee's wages each year. For a full-time employee you pay almost all of it in the first one or two months, and it starts over every January. If the same $46,260 employee is paid evenly, the January cost is about $4,928 and the March cost about $4,773. That is a small difference for one person but a real one for a team of ten, and it lands right when year-end bills arrive.</p>
+<figure style="margin:24px 0;"><img src="Fig03_Monthly_Spike_EN.png" alt="Monthly bar chart where January and February are higher because FUTA and SUTA are paid on the first $7,000 of wages, example values" style="max-width:100%;height:auto;border:1px solid #dde3ea;"><figcaption style="font-size:14px;color:#556;">Figure 4. Monthly employer cost for one employee; the orange part is FUTA plus SUTA. Example values.</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">How much more do you need to sell?</h2>
+<p style="font-size:16px;line-height:1.7;">Wages are paid from gross profit, not from sales. If you keep 60 cents of every sales dollar after the cost of goods, the extra sales needed to cover a $57,561 employee are <span style="font-family:Consolas,monospace;background:#F4F6F9;padding:1px 4px;">=57561/60%</span> = $95,934 a year, about $7,995 a month or $1,845 a week. Run this number before you post the job, not after.</p>
+
+<h2 style="color:#1F3A5F;">Common mistakes</h2>
+<ul style="font-size:16px;line-height:1.7;">
+<li><b>Budgeting the hourly rate only.</b> Use the true yearly cost.</li>
+<li><b>Counting withheld taxes as your cost.</b> The employee's 7.65% and income tax come out of their gross pay.</li>
+<li><b>Forgetting the wage base cap</b> for high earners, or applying it to Medicare (Medicare has no cap).</li>
+<li><b>Using another state's SUTA rate or wage base.</b> Use the notice from your own state.</li>
+<li><b>Ignoring paid time off</b> when you price by the hour.</li>
+<li><b>Forgetting part-timers each have their own $7,000 base.</b> Five part-timers can cost more in unemployment tax than one full-timer with the same total pay.</li>
+<li><b>Calling an employee a contractor to avoid these costs.</b> Misclassification can lead to back taxes and penalties.</li>
+</ul>
+
+<h2 style="color:#1F3A5F;">FAQ</h2>
+<h3 style="color:#1F4E99;">How much does an employee cost on top of salary?</h3>
+<p style="font-size:16px;line-height:1.7;">Employer payroll taxes alone are about 7.65% plus unemployment tax. With workers' comp, health insurance and a retirement match, many small businesses see 10% to 30% or more on top of gross pay. Calculate your own number; it depends heavily on benefits and your state.</p>
+<h3 style="color:#1F4E99;">Do I pay the 0.9% Additional Medicare Tax as the employer?</h3>
+<p style="font-size:16px;line-height:1.7;">No. You withhold it from wages over $200,000, but there is no employer match.</p>
+<h3 style="color:#1F4E99;">What if I hire someone in November or December?</h3>
+<p style="font-size:16px;line-height:1.7;">FUTA and SUTA apply to that year's first wages, then start again in January for the same person. Budget for both.</p>
+<h3 style="color:#1F4E99;">Are tips part of the calculation?</h3>
+<p style="font-size:16px;line-height:1.7;">Reported tips are wages for Social Security and Medicare, so the employer share applies to them. Add expected yearly tips to gross pay when you estimate employer FICA.</p>
+<h3 style="color:#1F4E99;">Where do I find my state unemployment rate?</h3>
+<p style="font-size:16px;line-height:1.7;">Your state unemployment insurance agency sends a rate notice, usually around the start of each year. New employers get a rate when they register.</p>
+
+<h2 style="color:#1F3A5F;">Quick checklist before you hire</h2>
+<ul style="font-size:16px;line-height:1.7;">
+<li>Gross pay calculated, including bonus and paid time off</li>
+<li>Employer Social Security (with the wage base cap) and Medicare added</li>
+<li>FUTA, plus SUTA from your own state notice</li>
+<li>Workers' comp quote for the job class</li>
+<li>Health insurance share, retirement match, payroll fees and other costs</li>
+<li>State disability, training or paid-leave taxes and city taxes checked</li>
+<li>Cost per hour actually worked and break-even sales calculated</li>
+<li>First-quarter cash set aside for the January spike</li>
+</ul>
+
+<p style="font-size:17px;line-height:1.7;">You can download the ready-made <b>True Cost of an Employee Calculator 2026-2027</b> for free in the <a href="#kit" style="color:#1F4E99;font-weight:700;">Free kit download</a> box below (Excel + PDF guide, no sign-up).</p>
+
+<p style="font-size:14px;line-height:1.6;color:#556;"><b>Disclaimer:</b> This article is for educational purposes only and is not tax, legal or payroll advice. Rates and rules change; verify with the official sources below or a qualified professional before relying on any number.</p>
+
+<h3 style="color:#1F4E99;">Sources</h3>
+<ul style="font-size:14px;line-height:1.6;">
+<li><a href="https://www.irs.gov/publications/p15">IRS Publication 15 (Circular E), Employer's Tax Guide</a></li>
+<li><a href="https://www.irs.gov/taxtopics/tc751">IRS Topic No. 751, Social Security and Medicare withholding rates</a></li>
+<li><a href="https://www.irs.gov/taxtopics/tc759">IRS Topic No. 759, Form 940 (FUTA)</a></li>
+<li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/futa-credit-reduction">IRS: FUTA credit reduction</a></li>
+<li><a href="https://www.ssa.gov/oact/cola/cbb.html">SSA: Contribution and Benefit Base</a></li>
+<li><a href="https://www.ssa.gov/news/en/cola/factsheets/2027.html">SSA: 2027 Cost-of-Living Adjustment Fact Sheet</a></li>
+<li><a href="https://oui.doleta.gov/unemploy/futa_credit.asp">U.S. Department of Labor: FUTA Credit Reductions</a></li>
+</ul>

@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-13",
+  "category": "accounting",
+  "slug": {
+    "ko": "quickbooks-t-bill-money-market-recording-korean",
+    "en": "record-treasury-bills-money-market-quickbooks"
+  },
+  "title": {
+    "ko": "QuickBooks에서 T-Bill·머니마켓 펀드 기록하는 법: 원가와 이자 나누기부터 1099 대조까지",
+    "en": "How to Record Treasury Bills and Money Market Funds in QuickBooks (Without Doubling Your Income)"
+  },
+  "excerpt": {
+    "ko": "QuickBooks에서 T-Bill을 원가와 이자로 나눠 기록하고, 롤오버·월별 대조·연말 1099-INT 대조까지 하는 방법입니다.",
+    "en": "Record T-bills in QuickBooks: split cost and interest, handle rollovers, tie out monthly and match 1099-INT."
+  },
+  "downloads": {
+    "kit": "tbill-money-market-recording-kit",
+    "en": [
+      "TBill_Investment_Tracker_2026_EN.xlsx",
+      "TBill_Investment_Tracker_2026_Guide_EN.pdf"
+    ],
+    "ko": [
+      "TBill_Investment_Tracker_2026_EN_KR.xlsx",
+      "TBill_Investment_Tracker_2026_Guide_EN_KR.pdf"
+    ]
+  },
+  "seoTitle": {
+    "en": "Record T-Bills & Money Market Funds in QuickBooks",
+    "ko": "QuickBooks T-Bill·머니마켓 펀드 기록법"
+  }
+}
