@@ -103,7 +103,6 @@ section.s{padding-block:72px}
 .cat .cn{font-family:var(--display);font-weight:800;font-size:18px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
 .cat .cn small{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--muted)}
 .cat .cd{color:var(--muted);font-size:13.5px}
-.cat .ci{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:6px;margin-bottom:6px;background:var(--soft)}
 .cat:hover{background:var(--sheet)}
 .cat[aria-pressed="true"]{box-shadow:inset 0 -3px 0 var(--gold);background:var(--sheet)}
 .cat[aria-pressed="true"] .cn span{color:var(--gold-ink)}
@@ -342,7 +341,6 @@ var CONFIG = {
   ON_SITE:   true,
   email:     "payroll@taxnpaypro.com"
 };
-var CAT_IMG = { all: 1, accounting: 1, tax: 1, payroll: 1, quickbooks: 1, qbo: 1 };
 var FALLBACK = __FALLBACK__;
 var DATA = FALLBACK;
 var lang = "ko";
@@ -363,7 +361,6 @@ function render(){
   var all = [{ id: "all", name: { ko: "전체", en: "All" }, desc: { ko: "모든 주제의 최신 글", en: "Latest from every subject" } }];
   all.concat(cats).forEach(function(c){
     var b = el("button", "cat"); b.type = "button";
-    if (CAT_IMG[c.id]) { var ci = el("img", "ci"); ci.src = "/img/home/cat-" + c.id + ".jpg"; ci.alt = ""; ci.width = 720; ci.height = 405; ci.loading = "lazy"; ci.decoding = "async"; b.appendChild(ci); }
     var count = c.id === "all" ? posts.length : posts.filter(function(p){ return p.category === c.id; }).length;
     var cn = el("span", "cn"); cn.appendChild(el("span", null, tx(c.name))); cn.appendChild(el("small", null, String(count)));
     b.appendChild(cn); b.appendChild(el("span", "cd", tx(c.desc)));
