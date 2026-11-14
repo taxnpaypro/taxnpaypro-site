@@ -103,9 +103,7 @@ section.s{padding-block:72px}
 .cat .cn{font-family:var(--display);font-weight:800;font-size:18px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
 .cat .cn small{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--muted)}
 .cat .cd{color:var(--muted);font-size:13.5px}
-.cat.ph{background:linear-gradient(rgba(245,246,244,.18) 0%,rgba(245,246,244,.55) 40%,rgba(245,246,244,.93) 78%),var(--ph) center/cover no-repeat;min-height:150px;justify-content:flex-end}
-.cat.ph:hover,.cat.ph[aria-pressed="true"]{background:linear-gradient(rgba(255,255,255,.08) 0%,rgba(255,255,255,.5) 40%,rgba(255,255,255,.93) 78%),var(--ph) center/cover no-repeat}
-@media (max-width:600px){.cat.ph,.cat.ph:hover,.cat.ph[aria-pressed="true"]{background:linear-gradient(rgba(245,246,244,.35) 0%,rgba(245,246,244,.8) 35%,rgba(245,246,244,.94) 70%),var(--ph) center/cover no-repeat}}
+.cat .ci{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:6px;margin-bottom:6px;background:var(--soft)}
 .cat:hover{background:var(--sheet)}
 .cat[aria-pressed="true"]{box-shadow:inset 0 -3px 0 var(--gold);background:var(--sheet)}
 .cat[aria-pressed="true"] .cn span{color:var(--gold-ink)}
@@ -365,7 +363,7 @@ function render(){
   var all = [{ id: "all", name: { ko: "전체", en: "All" }, desc: { ko: "모든 주제의 최신 글", en: "Latest from every subject" } }];
   all.concat(cats).forEach(function(c){
     var b = el("button", "cat"); b.type = "button";
-    if (CAT_IMG[c.id]) { b.classList.add("ph"); b.style.setProperty("--ph", "url(/img/home/cat-" + c.id + ".jpg)"); }
+    if (CAT_IMG[c.id]) { var ci = el("img", "ci"); ci.src = "/img/home/cat-" + c.id + ".jpg"; ci.alt = ""; ci.width = 720; ci.height = 405; ci.loading = "lazy"; ci.decoding = "async"; b.appendChild(ci); }
     var count = c.id === "all" ? posts.length : posts.filter(function(p){ return p.category === c.id; }).length;
     var cn = el("span", "cn"); cn.appendChild(el("span", null, tx(c.name))); cn.appendChild(el("small", null, String(count)));
     b.appendChild(cn); b.appendChild(el("span", "cd", tx(c.desc)));
