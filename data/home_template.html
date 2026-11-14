@@ -58,7 +58,8 @@ nav a:hover{color:var(--on-navy)}
 @media (max-width:760px){nav{order:3;width:100%;gap:2px 16px}}
 
 /* hero */
-.hero{background:var(--navy);color:var(--on-navy);padding-block:64px 72px;position:relative;overflow:hidden}
+.hero{background:linear-gradient(90deg,rgba(20,32,46,.97) 0%,rgba(20,32,46,.9) 48%,rgba(20,32,46,.74) 100%),url(/img/home/hero-desk.jpg) right center/cover no-repeat,var(--navy);color:var(--on-navy);padding-block:64px 72px;position:relative;overflow:hidden}
+@media (max-width:880px){.hero{background:linear-gradient(rgba(20,32,46,.92),rgba(20,32,46,.92)),url(/img/home/hero-desk.jpg) 70% center/cover no-repeat,var(--navy)}}
 .hero::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 31px,rgba(255,255,255,.035) 31px 32px);pointer-events:none}
 .hero .in{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center}
 @media (max-width:880px){.hero .in{grid-template-columns:minmax(0,1fr);gap:36px}.hero{padding-block:44px 52px}}
@@ -102,6 +103,7 @@ section.s{padding-block:72px}
 .cat .cn{font-family:var(--display);font-weight:800;font-size:18px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
 .cat .cn small{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--muted)}
 .cat .cd{color:var(--muted);font-size:13.5px}
+.cat .ci{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:6px;margin-bottom:6px;background:var(--soft)}
 .cat:hover{background:var(--sheet)}
 .cat[aria-pressed="true"]{box-shadow:inset 0 -3px 0 var(--gold);background:var(--sheet)}
 .cat[aria-pressed="true"] .cn span{color:var(--gold-ink)}
@@ -163,6 +165,7 @@ a.post:hover h3{text-decoration:underline;text-decoration-thickness:1px;text-und
 @media (max-width:880px){.about .in{grid-template-columns:minmax(0,1fr);gap:32px}}
 .about h2{font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-.015em;line-height:1.2;margin-top:10px}
 .about p{color:var(--muted);max-width:60ch}
+.aboutimg{margin:24px 0 0}.aboutimg img{display:block;width:100%;height:auto;border-radius:8px}
 .eq{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin:22px 0 6px;font-family:Manrope,sans-serif;font-size:22px}
 .eq b{font-weight:800;letter-spacing:2px}
 .eq span{color:var(--muted);font-size:16px;font-family:var(--sans)}
@@ -302,6 +305,7 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;c
       <div class="eq" aria-label="BIZ plus LEX equals BIZLEX"><b>BIZ</b><span data-en="business">비즈니스</span><i>+</i><b>LEX</b><span data-en="law">법</span><i>=</i><b>BIZLEX</b></div>
       <p data-en="Our name joins BIZ, short for business, with LEX, the Latin word for law. Every business runs on two things at once: its numbers, and the rules those numbers have to follow.">BIZLEX는 비즈니스를 뜻하는 BIZ와, 라틴어로 '법'을 뜻하는 LEX를 합친 이름입니다. 사업은 언제나 두 가지로 움직입니다. 숫자, 그리고 그 숫자가 지켜야 하는 규칙입니다.</p>
       <p data-en="On this site we explain accounting, tax, payroll and QuickBooks (Desktop and Online) in plain Korean and English, and we build free tools like the QBO converter for the jobs that keep coming up.">이 사이트에서는 회계·세무·급여·QuickBooks(Desktop·Online)를 쉬운 한국어와 영어로 풀어 쓰고, 자주 막히는 일을 덜어 주는 QBO 변환기 같은 무료 도구를 만듭니다.</p>
+      <figure class="aboutimg"><img src="/img/home/about-review.jpg" alt="노트북의 재무 리포트를 함께 살펴보는 두 사람 (Two people reviewing financial reports on a laptop)" width="1000" height="667" loading="lazy" decoding="async"></figure>
     </div>
     <div class="slip" id="contact">
       <h3 data-en="Contact">문의</h3>
@@ -334,6 +338,7 @@ var CONFIG = {
   ON_SITE:   true,
   email:     "payroll@taxnpaypro.com"
 };
+var CAT_IMG = { all: 1, accounting: 1, tax: 1, payroll: 1, quickbooks: 1, qbo: 1 };
 var FALLBACK = __FALLBACK__;
 var DATA = FALLBACK;
 var lang = "ko";
@@ -354,6 +359,7 @@ function render(){
   var all = [{ id: "all", name: { ko: "전체", en: "All" }, desc: { ko: "모든 주제의 최신 글", en: "Latest from every subject" } }];
   all.concat(cats).forEach(function(c){
     var b = el("button", "cat"); b.type = "button";
+    if (CAT_IMG[c.id]) { var ci = el("img", "ci"); ci.src = "/img/home/cat-" + c.id + ".jpg"; ci.alt = ""; ci.width = 720; ci.height = 405; ci.loading = "lazy"; ci.decoding = "async"; b.appendChild(ci); }
     var count = c.id === "all" ? posts.length : posts.filter(function(p){ return p.category === c.id; }).length;
     var cn = el("span", "cn"); cn.appendChild(el("span", null, tx(c.name))); cn.appendChild(el("small", null, String(count)));
     b.appendChild(cn); b.appendChild(el("span", "cd", tx(c.desc)));
