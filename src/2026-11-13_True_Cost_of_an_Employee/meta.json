@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-13",
+  "category": "payroll",
+  "slug": {
+    "ko": "true-cost-of-employee-korean-guide-2026",
+    "en": "true-cost-of-an-employee-2026-2027"
+  },
+  "title": {
+    "ko": "직원 한 명 뽑으면 실제로 얼마 들까? 시급 외 고용주 세금·보험·복리후생 계산법 (2026·2027)",
+    "en": "How Much Does an Employee Really Cost? Calculate Payroll Taxes, Insurance and Benefits Before You Hire (2026-2027)"
+  },
+  "excerpt": {
+    "ko": "시급 외에 고용주가 내는 급여세·FUTA·SUTA·산재보험·복리후생까지 더해 직원 1명의 1년 실제 비용을 계산하는 법입니다.",
+    "en": "Add employer payroll taxes, FUTA, SUTA, workers' comp and benefits to find the true yearly cost of one employee."
+  },
+  "downloads": {
+    "kit": "true-cost-of-employee-calculator",
+    "en": [
+      "True_Cost_of_Employee_Calculator_2026_EN.xlsx",
+      "True_Cost_of_Employee_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "True_Cost_of_Employee_Calculator_2026_EN_KR.xlsx",
+      "True_Cost_of_Employee_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}
