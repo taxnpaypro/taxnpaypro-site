@@ -6,6 +6,8 @@ Each post lives in src/<YYYY-MM-DD>_<Slug>/ with:
   Fig*.png                                  figures
   meta.json  {"date","category" (accounting|tax|payroll|quickbooks|qbo),
               "slug":{"ko","en"}, "title":{"ko","en"}, "excerpt":{"ko","en"}}
+             optional "seoTitle":{"ko","en"} = shorter <title> for search results (the H1 keeps "title"),
+             optional "updated": "YYYY-MM-DD" = dateModified in the Article JSON-LD
 Run:  python3 tools/build.py
       writes blog/<slug>.html, blog/img/, blog/index.html (blog list),
       index.html (homepage, from data/home_template.html) and site.json
@@ -40,8 +42,9 @@ def add_img_size(body, folder_dir):
 
 PAGE = '''<!doctype html>
 <html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>{title} · BIZLEX</title>
+<title>{seotitle} · BIZLEX</title>
 <meta name="description" content="{desc}">
+{seohead}
 <link rel="canonical" href="https://taxnpaypro.com/blog/{slug}.html">
 <link rel="alternate" hreflang="{lang}" href="https://taxnpaypro.com/blog/{slug}.html"><link rel="alternate" hreflang="{olang}" href="https://taxnpaypro.com/blog/{oslug}.html">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,7 +78,7 @@ main table{{display:block;max-width:100%;overflow-x:auto}} main pre,main p{{max-
 .kit li small{{color:var(--muted);font-size:13px;overflow-wrap:anywhere}}
 .kit .fine{{font-size:12.5px;color:var(--muted);margin:12px 0 0}}
 .back{{margin-top:40px;padding-top:20px;border-top:1px solid #dde3ea}}
-.back a{{color:#1F3A5F;font-weight:700;text-decoration:none}}
+.back a{{color:#1F3A5F;font-weight:700;text-decoration:none}} .back a.pv{{float:right;font-weight:400;font-size:14px;color:#5A6573}}
 a:focus-visible{{outline:2px solid var(--gold);outline-offset:3px}}
 </style></head><body>
 <header class="top"><div class="in">
@@ -87,10 +90,31 @@ a:focus-visible{{outline:2px solid var(--gold);outline-offset:3px}}
 <h1 class="t">{title}</h1>
 {body}
 <aside class="conv"><b>{convh}</b><span>{convt}</span><a href="/csv-to-qbo">{convb}</a></aside>
-<p class="back"><a href="/blog/">{backtxt}</a></p>
+<p class="back"><a href="/blog/">{backtxt}</a> <a class="pv" href="/privacy.html">{privtxt}</a></p>
 </main>
 </body></html>
 '''
+
+def seo_head(lang, title, desc, url, img, date, updated, cat):
+    """Open Graph / Twitter tags (link previews in KakaoTalk, texts, social) + Article and Breadcrumb JSON-LD."""
+    e = lambda x: html.escape(x, quote=True)
+    t = ['<meta property="og:type" content="article">', '<meta property="og:site_name" content="BIZLEX">',
+         '<meta property="og:locale" content="%s">' % ('ko_KR' if lang == 'ko' else 'en_US'),
+         '<meta property="og:title" content="%s">' % e(title), '<meta property="og:description" content="%s">' % e(desc),
+         '<meta property="og:url" content="%s">' % e(url), '<meta property="article:published_time" content="%s">' % date,
+         '<meta name="twitter:card" content="%s">' % ('summary_large_image' if img else 'summary')]
+    if img: t.append('<meta property="og:image" content="%s">' % e(img))
+    org = {'@type': 'Organization', 'name': 'BIZLEX, INC.', 'url': 'https://%s/' % DOMAIN}
+    art = {'@context': 'https://schema.org', '@type': 'Article', 'headline': title[:110], 'description': desc, 'inLanguage': lang,
+           'datePublished': date, 'dateModified': updated, 'author': org, 'publisher': org, 'mainEntityOfPage': url, 'articleSection': cat}
+    if img: art['image'] = img
+    crumbs = {'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
+        {'@type': 'ListItem', 'position': 1, 'name': 'BIZLEX', 'item': 'https://%s/' % DOMAIN},
+        {'@type': 'ListItem', 'position': 2, 'name': '블로그' if lang == 'ko' else 'Blog', 'item': 'https://%s/blog/' % DOMAIN},
+        {'@type': 'ListItem', 'position': 3, 'name': title[:110], 'item': url}]}
+    for j in (art, crumbs):
+        t.append('<script type="application/ld+json">%s</script>' % json.dumps(j, ensure_ascii=False).replace('</', '<\\/'))
+    return '\n'.join(t)
 
 def human_size(n):
     return '%d KB' % max(1, round(n / 1024)) if n < 1024 * 1024 else '%.1f MB' % (n / 1048576)
@@ -158,18 +182,25 @@ def main():
                 if '/' in src or not os.path.exists(os.path.join(d, src)): errors.append('%s: missing image %s' % (folder, src))
             body = re.sub(r'src="([^"/]+\.png)"', lambda x: 'src="img/%s/%s"' % (folder, x.group(1)), body)
             body = add_img_size(body, d)
+            # the page template already prints the title as the only <h1>; drop any extra <h1> in the body
+            body = re.sub(r'<h1\b[^>]*>.*?</h1>\s*', '', body, flags=re.S)
+            seotitle = (m.get('seoTitle') or {}).get(lang) or title
+            url = 'https://%s/blog/%s.html' % (DOMAIN, m['slug'][lang])
+            fig = re.search(r'src="(img/[^"]+\.png)"', body)
+            img = 'https://%s/blog/%s' % (DOMAIN, fig.group(1)) if fig else ''
+            seohead = seo_head(lang, title, m['excerpt'][lang], url, img, m['date'], m.get('updated', m['date']), CAT[m['category']][0 if lang == 'ko' else 1])
             o = 'en' if lang == 'ko' else 'ko'
             ktop, kbox = kit_boxes(m, lang, folder, errors, qb='QuickBooks' in body)
             if kbox:
                 # put the download box before the Sources heading so readers see it before the reference list
                 src_h = [x.start() for x in re.finditer(r'<h2\b[^>]*>\s*(Sources|출처)\s*</h2>', body)]
                 body = body[:src_h[-1]] + kbox + body[src_h[-1]:] if src_h else body + kbox
-            page = PAGE.format(lang=lang, title=html.escape(title), body=ktop + body, desc=html.escape(m['excerpt'][lang], quote=True), slug=m['slug'][lang], oslug=m['slug'][o],
+            page = PAGE.format(lang=lang, title=html.escape(title), seotitle=html.escape(seotitle), seohead=seohead, body=ktop + body, desc=html.escape(m['excerpt'][lang], quote=True), slug=m['slug'][lang], oslug=m['slug'][o],
                                convh='무료 은행 CSV → QBO 변환기' if lang == 'ko' else 'Free bank CSV to QBO converter',
                                convt='은행 CSV를 QuickBooks Desktop용 .qbo·.iif 파일로. 브라우저 안에서만 처리합니다.' if lang == 'ko' else 'Turn bank CSV files into QuickBooks Desktop .qbo or .iif files, right in your browser.',
                                convb='변환기 열기' if lang == 'ko' else 'Open the converter', date=m['date'], cat=CAT[m['category']][0 if lang == 'ko' else 1],
                                blog='블로그' if lang == 'ko' else 'Blog', other='%s.html' % m['slug'][o], olang=o,
-                               oname='English' if lang == 'ko' else '한국어', backtxt='← 블로그 글 목록' if lang == 'ko' else '← All articles')
+                               oname='English' if lang == 'ko' else '한국어', backtxt='← 블로그 글 목록' if lang == 'ko' else '← All articles', privtxt='개인정보처리방침' if lang == 'ko' else 'Privacy')
             open(os.path.join(B, m['slug'][lang] + '.html'), 'w', encoding='utf-8').write(page)
         imgdir = os.path.join(B, 'img', folder); os.makedirs(imgdir, exist_ok=True)
         for f in os.listdir(d):
@@ -192,9 +223,10 @@ def main():
                 ('<i class="k">%s</i>' % ('무료 키트' if lang == 'ko' else 'Free kit') if p.get('freeKit') else '') + html.escape(CATN[p['category']][lang])))
     tabs = lambda lang: ''.join('<button type="button" data-cat="%s">%s</button>' % (k, v) for k, v in [('all', '전체' if lang == 'ko' else 'All')] + [(c['id'], c['name'][lang]) for c in site['categories']])
     INDEX = '''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>BIZLEX Blog · Accounting, Tax, Payroll, QuickBooks Desktop</title>
-    <meta name="description" content="회계·세무·급여·QuickBooks Desktop을 한국어와 영어로 쉽게 설명하는 BIZLEX 블로그. Accounting, tax, payroll and QuickBooks Desktop articles in Korean and English.">
+    <title>BIZLEX Blog · Accounting, Tax, Payroll, QuickBooks</title>
+    <meta name="description" content="회계·세무·급여·QuickBooks(Desktop·Online)를 한국어와 영어로 쉽게 설명하는 BIZLEX 블로그. Accounting, tax, payroll and QuickBooks Desktop and Online articles in Korean and English.">
     <link rel="canonical" href="https://taxnpaypro.com/blog/">
+    <meta property="og:type" content="website"><meta property="og:site_name" content="BIZLEX"><meta property="og:url" content="https://taxnpaypro.com/blog/"><meta property="og:title" content="BIZLEX 블로그 · Blog"><meta property="og:description" content="회계·세무·급여·QuickBooks를 한국어와 영어로 쉽게 설명하는 BIZLEX 블로그. Accounting, tax, payroll and QuickBooks articles in Korean and English."><meta name="twitter:card" content="summary">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;800&family=Noto+Sans+KR:wght@400;700&display=swap">
     <style>
@@ -228,9 +260,9 @@ def main():
     <header class="top"><div class="in"><a class="logo" href="/" aria-label="BIZLEX, INC."><b>BIZ</b><i aria-hidden="true"></i><span>LEX</span></a>
     <div class="lang" role="group" aria-label="Language"><button type="button" id="lk" aria-pressed="true">한국어</button><button type="button" id="le" aria-pressed="false">English</button></div></div></header>
     <main class="wrap">
-    <section id="ko"><h1>BIZLEX 블로그</h1><p class="sub">회계·세무·급여·QuickBooks Desktop을 쉬운 한국어로.</p><div class="tabs">%s</div><div class="list">%s</div></section>
-    <section id="en" hidden><h1>BIZLEX Blog</h1><p class="sub">Accounting, tax, payroll and QuickBooks Desktop in plain English.</p><div class="tabs">%s</div><div class="list">%s</div></section>
-    <footer><p>© 2026 BIZLEX, INC. · taxnpaypro.com</p><p>QuickBooks is a registered trademark of Intuit Inc.; not affiliated with or endorsed by Intuit. Articles are general information, not tax, legal or accounting advice.</p></footer>
+    <section id="ko"><h1>BIZLEX 블로그</h1><p class="sub">회계·세무·급여·QuickBooks(Desktop·Online)를 쉬운 한국어로.</p><div class="tabs">%s</div><div class="list">%s</div></section>
+    <section id="en" hidden><h1>BIZLEX Blog</h1><p class="sub">Accounting, tax, payroll and QuickBooks Desktop and Online in plain English.</p><div class="tabs">%s</div><div class="list">%s</div></section>
+    <footer><p>© 2026 BIZLEX, INC. · taxnpaypro.com · <a href="/privacy.html" style="color:inherit">개인정보처리방침 · Privacy</a></p><p>QuickBooks is a registered trademark of Intuit Inc.; not affiliated with or endorsed by Intuit. Articles are general information, not tax, legal or accounting advice.</p></footer>
     </main>
     <script>
     (function(){
@@ -248,9 +280,13 @@ def main():
     home = open(os.path.join(R, 'data', 'home_template.html'), encoding='utf-8').read()
     assert home.count('__FALLBACK__') == 1
     fb = json.dumps(site, ensure_ascii=False).replace('</', '<\\/')
-    open(os.path.join(R, 'index.html'), 'w', encoding='utf-8').write(home.replace('__FALLBACK__', fb))
+    # latest posts as plain HTML links so crawlers see them without running the script (the script redraws this list)
+    assert home.count('__HOME_POSTS__') == 1
+    hp = ''.join('<a class="post" href="%s" target="_top"><span class="pd">%s</span><div><h3>%s</h3><p>%s</p></div><span class="pc">%s</span></a>' % (
+        html.escape(p['url']['ko']), p['date'], html.escape(p['title']['ko']), html.escape(p['excerpt']['ko']), html.escape(CATN[p['category']]['ko'])) for p in posts[:8])
+    open(os.path.join(R, 'index.html'), 'w', encoding='utf-8').write(home.replace('__FALLBACK__', fb).replace('__HOME_POSTS__', hp))
     # sitemap.xml + robots.txt for Google Search Console
-    urls = [('https://%s/' % DOMAIN, site['updated']), ('https://%s/csv-to-qbo' % DOMAIN, site['updated']), ('https://%s/blog/' % DOMAIN, site['updated'])]
+    urls = [('https://%s/' % DOMAIN, site['updated']), ('https://%s/csv-to-qbo' % DOMAIN, site['updated']), ('https://%s/blog/' % DOMAIN, site['updated']), ('https://%s/privacy.html' % DOMAIN, '2026-11-13')]
     for p in posts:
         for lang in ('ko', 'en'): urls.append((p['url'][lang], p['date']))
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(
@@ -261,7 +297,7 @@ def main():
     tok = (base.get('cfAnalyticsToken') or '').strip()
     if tok and not re.fullmatch(r'[0-9a-f]{32}', tok): print('ERRORS:\n - cfAnalyticsToken must be 32 hex characters'); sys.exit(1)
     snip = ("<!--cfwa--><script type=\"module\" src=\"https://static.cloudflareinsights.com/beacon.min.js\" data-cf-beacon='{\"token\": \"%s\"}'></script><!--/cfwa-->" % tok) if tok else ''
-    pages = [os.path.join(R, 'index.html'), os.path.join(R, 'csv-to-qbo.html')] + glob.glob(os.path.join(B, '*.html'))
+    pages = [os.path.join(R, 'index.html'), os.path.join(R, 'csv-to-qbo.html'), os.path.join(R, 'privacy.html')] + glob.glob(os.path.join(B, '*.html'))
     for f in pages:
         s = open(f, encoding='utf-8').read()
         s = re.sub(r'<!--cfwa-->.*?<!--/cfwa-->', '', s, flags=re.S)

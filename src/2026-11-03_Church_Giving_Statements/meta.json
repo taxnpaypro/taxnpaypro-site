@@ -12,5 +12,8 @@
   "excerpt": {
     "ko": "교회·비영리 연말 기부금 영수증에 꼭 들어갈 내용과 $250·$75 기준, 교인 번호 하나로 영수증을 뽑는 엑셀 수식을 정리했습니다.",
     "en": "What a giving statement must include, the $250 and $75 rules, and spreadsheet formulas to print one per donor."
+  },
+  "seoTitle": {
+    "en": "Church Year-End Giving Statements: IRS Rules"
   }
 }

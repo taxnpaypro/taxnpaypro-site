@@ -13,5 +13,8 @@
     "ko": "시작일 정하기, 계정과목 정리와 번호 체계, 은행·카드·대출·고정자산 기초 잔액 입력과 OBE 확인까지 예시로 정리했습니다.",
     "en": "Pick a start date, clean up and number your chart of accounts, and enter opening balances that tie to statements."
   },
-  "series_no": 1
+  "series_no": 1,
+  "seoTitle": {
+    "en": "QBO Opening Balances & Chart of Accounts Setup"
+  }
 }

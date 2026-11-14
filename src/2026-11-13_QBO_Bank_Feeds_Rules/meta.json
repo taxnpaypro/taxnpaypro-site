@@ -13,5 +13,9 @@
     "ko": "QBO 은행 거래를 Match·Categorize·Exclude 중 무엇으로 처리할지 고르는 기준과, Rule로 반복 거래를 자동 분류하는 방법을 정리합니다.",
     "en": "Connect bank feeds in QBO, choose Match, Categorize or Exclude for each line, and automate repeats with bank rules."
   },
-  "series_no": 5
+  "series_no": 5,
+  "seoTitle": {
+    "en": "QBO Bank Feeds: Match, Add and Bank Rules",
+    "ko": "QBO 은행 연결: Match·Add·Rule 정리"
+  }
 }

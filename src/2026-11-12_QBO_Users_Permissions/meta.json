@@ -13,5 +13,8 @@
     "ko": "QBO에 직원·회계사를 따로 초대하고 역할을 나눈 뒤, 2단계 인증과 Audit log로 장부를 지키는 방법을 단계별로 정리합니다.",
     "en": "Invite staff and your accountant to QBO with the right roles, then protect sign-ins with 2-step verification."
   },
-  "series_no": 4
+  "series_no": 4,
+  "seoTitle": {
+    "en": "QBO Users, Roles & 2-Step Verification Setup"
+  }
 }

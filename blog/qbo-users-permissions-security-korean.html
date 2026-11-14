@@ -2,6 +2,17 @@
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>QBO 직원·회계사 초대와 권한 설정: 비밀번호 공유 없이 2단계 인증으로 장부 지키는 법 · BIZLEX</title>
 <meta name="description" content="QBO에 직원·회계사를 따로 초대하고 역할을 나눈 뒤, 2단계 인증과 Audit log로 장부를 지키는 방법을 단계별로 정리합니다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="BIZLEX">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="QBO 직원·회계사 초대와 권한 설정: 비밀번호 공유 없이 2단계 인증으로 장부 지키는 법">
+<meta property="og:description" content="QBO에 직원·회계사를 따로 초대하고 역할을 나눈 뒤, 2단계 인증과 Audit log로 장부를 지키는 방법을 단계별로 정리합니다.">
+<meta property="og:url" content="https://taxnpaypro.com/blog/qbo-users-permissions-security-korean.html">
+<meta property="article:published_time" content="2026-11-12">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://taxnpaypro.com/blog/img/2026-11-12_QBO_Users_Permissions/Fig04_Security_Screen_Map_KR.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "QBO 직원·회계사 초대와 권한 설정: 비밀번호 공유 없이 2단계 인증으로 장부 지키는 법", "description": "QBO에 직원·회계사를 따로 초대하고 역할을 나눈 뒤, 2단계 인증과 Audit log로 장부를 지키는 방법을 단계별로 정리합니다.", "inLanguage": "ko", "datePublished": "2026-11-12", "dateModified": "2026-11-12", "author": {"@type": "Organization", "name": "BIZLEX, INC.", "url": "https://taxnpaypro.com/"}, "publisher": {"@type": "Organization", "name": "BIZLEX, INC.", "url": "https://taxnpaypro.com/"}, "mainEntityOfPage": "https://taxnpaypro.com/blog/qbo-users-permissions-security-korean.html", "articleSection": "QuickBooks Online", "image": "https://taxnpaypro.com/blog/img/2026-11-12_QBO_Users_Permissions/Fig04_Security_Screen_Map_KR.png"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BIZLEX", "item": "https://taxnpaypro.com/"}, {"@type": "ListItem", "position": 2, "name": "블로그", "item": "https://taxnpaypro.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "QBO 직원·회계사 초대와 권한 설정: 비밀번호 공유 없이 2단계 인증으로 장부 지키는 법", "item": "https://taxnpaypro.com/blog/qbo-users-permissions-security-korean.html"}]}</script>
 <link rel="canonical" href="https://taxnpaypro.com/blog/qbo-users-permissions-security-korean.html">
 <link rel="alternate" hreflang="ko" href="https://taxnpaypro.com/blog/qbo-users-permissions-security-korean.html"><link rel="alternate" hreflang="en" href="https://taxnpaypro.com/blog/qbo-users-permissions-security.html">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +46,7 @@ main table{display:block;max-width:100%;overflow-x:auto} main pre,main p{max-wid
 .kit li small{color:var(--muted);font-size:13px;overflow-wrap:anywhere}
 .kit .fine{font-size:12.5px;color:var(--muted);margin:12px 0 0}
 .back{margin-top:40px;padding-top:20px;border-top:1px solid #dde3ea}
-.back a{color:#1F3A5F;font-weight:700;text-decoration:none}
+.back a{color:#1F3A5F;font-weight:700;text-decoration:none} .back a.pv{float:right;font-weight:400;font-size:14px;color:#5A6573}
 a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 </style></head><body>
 <header class="top"><div class="in">
@@ -115,6 +126,6 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 <h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">출처</h2><ul style="padding-left:22px;margin:8px 0;"><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/manage-users/add-manage-users-quickbooks-online/L1welhiJZ_US_en_US" style="color:#1F4E99;">Add and manage users (Intuit, US)</a></li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/intuit-subscriptions/learn-usage-limits-quickbooks-online/L6THMltE4_US_en_US" style="color:#1F4E99;">Learn about usage limits in QuickBooks Online (Intuit, US)</a></li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/manage-users/add-and-manage-custom-roles-in-quickbooks-online-advanced/00/186731" style="color:#1F4E99;">Add and manage custom roles in QuickBooks Online Advanced (Intuit, US)</a></li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/pricing/" style="color:#1F4E99;">QuickBooks pricing — plan comparison (Intuit)</a></li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/account-management/managing-accountant-users-quickbooks-online/L2AcdYvHw_US_en_US" style="color:#1F4E99;">Invite accountant users to your QuickBooks Online company (Intuit, US)</a></li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/audit-log/use-audit-log-quickbooks-online/L2WoVnW6I_US_en_US" style="color:#1F4E99;">Use the audit log in QuickBooks Online (Intuit, US)</a></li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/audit-log/view-transaction-changes-audit-history/L7obVhic2_US_en_US" style="color:#1F4E99;">View transaction changes in the audit history (Intuit, US)</a></li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/account-management/update-intuit-accounts-security-settings/L3yHwTCTc_US_en_US" style="color:#1F4E99;">Update your Intuit account's security settings (Intuit, US)</a></li><li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://ttlc.intuit.com/turbotax-support/en-us/help-article/identity-verification/secure-intuit-account-prevent-lockout-extra/L91a2MpbQ_US_en_US" style="color:#1F4E99;">Secure your Intuit Account and prevent lockout with extra verification methods (Intuit)</a></li></ul>
 
 <aside class="conv"><b>무료 은행 CSV → QBO 변환기</b><span>은행 CSV를 QuickBooks Desktop용 .qbo·.iif 파일로. 브라우저 안에서만 처리합니다.</span><a href="/csv-to-qbo">변환기 열기</a></aside>
-<p class="back"><a href="/blog/">← 블로그 글 목록</a></p>
+<p class="back"><a href="/blog/">← 블로그 글 목록</a> <a class="pv" href="/privacy.html">개인정보처리방침</a></p>
 </main>
 <!--cfwa--><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "711a0a4eb51c474fb4648cdc53ddda69"}'></script><!--/cfwa--></body></html>

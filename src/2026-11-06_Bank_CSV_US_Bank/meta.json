@@ -12,5 +12,8 @@
  "excerpt": {
   "ko": "U.S. Bank에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.",
   "en": "Download the U.S. Bank CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile."
+ },
+ "seoTitle": {
+  "en": "Import U.S. Bank CSV into QuickBooks Desktop"
  }
 }

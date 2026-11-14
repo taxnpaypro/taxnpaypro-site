@@ -12,5 +12,9 @@
  "excerpt": {
   "ko": "Capital One에서 CSV 받기, 열 구성, 무료로 QBO 변환, QuickBooks Desktop 가져오기와 대사까지 4단계.",
   "en": "Download the Capital One CSV, convert it to .qbo for free, then import into QuickBooks Desktop and reconcile."
+ },
+ "seoTitle": {
+  "ko": "Capital One CSV → QuickBooks Desktop",
+  "en": "Capital One CSV to QuickBooks Desktop (Free)"
  }
 }
