@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-13",
+  "updated": "2026-11-14",
   "notice": {
     "ko": "",
     "en": ""
@@ -64,6 +64,69 @@
   ],
   "cfAnalyticsToken": "9671384662e04a52b70330808aeedc3e",
   "posts": [
+    {
+      "date": "2026-11-14",
+      "category": "tax",
+      "title": {
+        "ko": "사업 서류, 언제 버려도 될까? 세금·급여 서류 보관 기간과 폐기 날짜 계산법 (2026)",
+        "en": "How Long Should a Small Business Keep Tax and Payroll Records? Calculate the Exact Shred Date (2026)"
+      },
+      "excerpt": {
+        "ko": "영수증·은행 명세서·급여·I-9 서류의 3·4·6·7년 보관 규칙과 기간 시작일, 폐기 날짜를 엑셀로 계산하는 법.",
+        "en": "The 3, 4, 6 and 7-year rules for receipts, payroll and I-9 records, when the clock starts, and the exact shred date."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/how-long-to-keep-business-records-korean-2026.html",
+        "en": "https://taxnpaypro.com/blog/how-long-to-keep-business-records-2026.html"
+      },
+      "previewUrl": {
+        "ko": "blog/how-long-to-keep-business-records-korean-2026.html",
+        "en": "blog/how-long-to-keep-business-records-2026.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-14",
+      "category": "quickbooks",
+      "title": {
+        "ko": "QuickBooks에서 운임·관세를 재고 원가에 넣는 방법과 관세 환급 기록하기",
+        "en": "How to Add Freight, Duty and Tariffs to Inventory Cost in QuickBooks (and Record a Tariff Refund)"
+      },
+      "excerpt": {
+        "ko": "수입품의 운임·관세를 QuickBooks 품목 원가에 넣고, 2026년 관세 환급을 매출원가와 재고로 나눠 기록하는 법.",
+        "en": "Put freight, duty and tariffs into item cost in QuickBooks and record a 2026 tariff refund without overstating income."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/kr-landed-cost-tariff-refund-quickbooks.html",
+        "en": "https://taxnpaypro.com/blog/landed-cost-freight-duty-tariff-refund-quickbooks.html"
+      },
+      "previewUrl": {
+        "ko": "blog/kr-landed-cost-tariff-refund-quickbooks.html",
+        "en": "blog/landed-cost-freight-duty-tariff-refund-quickbooks.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-14",
+      "category": "qbo",
+      "title": {
+        "ko": "견적서(Estimate)에서 인보이스까지: 승인·착수금·단계별 청구로 수주 흐름 관리하는 법",
+        "en": "From Estimate to Invoice in QuickBooks Online: Track Approvals, Deposits and Progress Billing Without Retyping"
+      },
+      "excerpt": {
+        "ko": "QBO 견적서를 만들어 승인받고, 착수금과 단계별 청구(Progress Invoicing)를 거쳐 인보이스로 바꾸는 흐름을 정리합니다.",
+        "en": "Send QBO estimates, track approvals, take deposits and bill in stages with progress invoicing, linked to one estimate."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-estimates-to-invoices-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-estimates-to-invoices.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-estimates-to-invoices-korean.html",
+        "en": "blog/qbo-estimates-to-invoices.html"
+      },
+      "freeKit": false
+    },
     {
       "date": "2026-11-13",
       "category": "qbo",

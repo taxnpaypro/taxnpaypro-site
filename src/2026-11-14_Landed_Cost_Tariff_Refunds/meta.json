@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-14",
+  "category": "quickbooks",
+  "slug": {
+    "ko": "kr-landed-cost-tariff-refund-quickbooks",
+    "en": "landed-cost-freight-duty-tariff-refund-quickbooks"
+  },
+  "title": {
+    "ko": "QuickBooks에서 운임·관세를 재고 원가에 넣는 방법과 관세 환급 기록하기",
+    "en": "How to Add Freight, Duty and Tariffs to Inventory Cost in QuickBooks (and Record a Tariff Refund)"
+  },
+  "excerpt": {
+    "ko": "수입품의 운임·관세를 QuickBooks 품목 원가에 넣고, 2026년 관세 환급을 매출원가와 재고로 나눠 기록하는 법.",
+    "en": "Put freight, duty and tariffs into item cost in QuickBooks and record a 2026 tariff refund without overstating income."
+  },
+  "downloads": {
+    "kit": "landed-cost-tariff-refund-allocator",
+    "en": [
+      "Landed_Cost_Guide_2026_EN.pdf",
+      "Landed_Cost_Tariff_Refund_Allocator_2026_EN.xlsx"
+    ],
+    "ko": [
+      "Landed_Cost_Guide_2026_EN_KR.pdf",
+      "Landed_Cost_Tariff_Refund_Allocator_2026_EN_KR.xlsx"
+    ]
+  }
+}

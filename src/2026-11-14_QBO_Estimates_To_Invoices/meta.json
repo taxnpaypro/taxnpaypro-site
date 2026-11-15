@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-14",
+  "category": "qbo",
+  "slug": {
+    "ko": "qbo-estimates-to-invoices-korean",
+    "en": "qbo-estimates-to-invoices"
+  },
+  "title": {
+    "ko": "견적서(Estimate)에서 인보이스까지: 승인·착수금·단계별 청구로 수주 흐름 관리하는 법",
+    "en": "From Estimate to Invoice in QuickBooks Online: Track Approvals, Deposits and Progress Billing Without Retyping"
+  },
+  "excerpt": {
+    "ko": "QBO 견적서를 만들어 승인받고, 착수금과 단계별 청구(Progress Invoicing)를 거쳐 인보이스로 바꾸는 흐름을 정리합니다.",
+    "en": "Send QBO estimates, track approvals, take deposits and bill in stages with progress invoicing, linked to one estimate."
+  },
+  "series_no": 6
+}

@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* layout: navy masthead with the split BIZ|LEX mark → hero that spells out the name (BIZ = business, LEX = law) → blog by four subjects + latest posts → free QBO converter with how-to → about the name → contact */
+/* layout: navy masthead with the split BIZ|LEX mark → hero that spells out the name (BIZ = business, LEX = law) → blog by subject + latest posts → free QBO converter with how-to → about the name → contact */
 :root{
   --navy:#14202E; --gold:#D4A845; --gold-ink:#8A6512;
   --bg:#F5F6F4; --sheet:#FFFFFF; --ink:#14202E; --muted:#556170; --rule:#D9DDDF; --soft:#EEF0EE;
@@ -58,7 +58,8 @@ nav a:hover{color:var(--on-navy)}
 @media (max-width:760px){nav{order:3;width:100%;gap:2px 16px}}
 
 /* hero */
-.hero{background:var(--navy);color:var(--on-navy);padding-block:64px 72px;position:relative;overflow:hidden}
+.hero{background:linear-gradient(90deg,rgba(20,32,46,.97) 0%,rgba(20,32,46,.9) 48%,rgba(20,32,46,.74) 100%),url(/img/home/hero-desk.jpg) right center/cover no-repeat,var(--navy);color:var(--on-navy);padding-block:64px 72px;position:relative;overflow:hidden}
+@media (max-width:880px){.hero{background:linear-gradient(rgba(20,32,46,.92),rgba(20,32,46,.92)),url(/img/home/hero-desk.jpg) 70% center/cover no-repeat,var(--navy)}}
 .hero::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 31px,rgba(255,255,255,.035) 31px 32px);pointer-events:none}
 .hero .in{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center}
 @media (max-width:880px){.hero .in{grid-template-columns:minmax(0,1fr);gap:36px}.hero{padding-block:44px 52px}}
@@ -94,14 +95,15 @@ section.s{padding-block:72px}
 .sh p{margin:0;color:var(--muted);max-width:56ch}
 
 /* blog */
-.cats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:2px solid var(--ink)}
+.cats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--ink)}
 @media (max-width:980px){.cats{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:600px){.cats{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.cat{font:inherit;text-align:left;background:transparent;border:0;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);padding:18px 16px;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;gap:6px;min-height:44px}
+.cat{font:inherit;text-align:left;background:transparent;border:0;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);padding:34px 24px 32px;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;justify-content:flex-start;gap:10px;min-height:150px}
+@media (max-width:600px){.cat{padding:24px 16px 22px;min-height:120px}}
 .cat:last-child{border-right:0}
 .cat .cn{font-family:var(--display);font-weight:800;font-size:18px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
 .cat .cn small{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--muted)}
-.cat .cd{color:var(--muted);font-size:13.5px}
+.cat .cd{color:var(--muted);font-size:14px;line-height:1.55;word-break:keep-all}
 .cat:hover{background:var(--sheet)}
 .cat[aria-pressed="true"]{box-shadow:inset 0 -3px 0 var(--gold);background:var(--sheet)}
 .cat[aria-pressed="true"] .cn span{color:var(--gold-ink)}
@@ -163,6 +165,12 @@ a.post:hover h3{text-decoration:underline;text-decoration-thickness:1px;text-und
 @media (max-width:880px){.about .in{grid-template-columns:minmax(0,1fr);gap:32px}}
 .about h2{font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-.015em;line-height:1.2;margin-top:10px}
 .about p{color:var(--muted);max-width:60ch}
+.about{background:linear-gradient(90deg,rgba(20,32,46,.95) 0%,rgba(20,32,46,.86) 50%,rgba(20,32,46,.7) 100%),url(/img/home/hero-desk.jpg) right center/cover no-repeat,var(--navy);color:var(--on-navy)}
+@media (max-width:880px){.about{background:linear-gradient(rgba(20,32,46,.9),rgba(20,32,46,.9)),url(/img/home/hero-desk.jpg) 70% center/cover no-repeat,var(--navy)}}
+.about .lbl{color:var(--gold)}
+.about p{color:var(--on-navy-dim)}
+.about .eq b{color:var(--on-navy)}.about .eq span{color:var(--on-navy-dim)}.about .eq i{color:var(--gold)}
+.about .slip{background:rgba(20,32,46,.72);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(2px)}
 .eq{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin:22px 0 6px;font-family:Manrope,sans-serif;font-size:22px}
 .eq b{font-weight:800;letter-spacing:2px}
 .eq span{color:var(--muted);font-size:16px;font-family:var(--sans)}
@@ -230,7 +238,7 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;c
     <div class="cats" id="cats" role="group" aria-label="Blog subjects"></div>
     <div class="posts" id="posts">__HOME_POSTS__</div>
     <div class="empty" id="empty" hidden><b id="empty-t"></b><span id="empty-s"></span></div>
-    <div class="blogall" id="blogall"><a class="btn line" id="lnk-blog" href="/blog" target="_top" data-en="All articles">전체 글 보기</a></div>
+    <div class="blogall" id="blogall"><a class="btn line" id="lnk-blog" href="/blog/" target="_top" data-en="All articles">전체 글 보기</a></div>
   </div>
 </section>
 
@@ -351,7 +359,7 @@ function render(){
   n.textContent = nt; n.hidden = !nt;
   var cats = d.categories || [], posts = (d.posts || []).slice().sort(function(a, b){ return (b.date || "").localeCompare(a.date || ""); });
   var cw = document.getElementById("cats"); cw.textContent = "";
-  var all = [{ id: "all", name: { ko: "전체", en: "All" }, desc: { ko: "네 가지 주제의 최신 글", en: "Latest from all four subjects" } }];
+  var all = [{ id: "all", name: { ko: "전체", en: "All" }, desc: { ko: "모든 주제의 최신 글", en: "Latest from every subject" } }];
   all.concat(cats).forEach(function(c){
     var b = el("button", "cat"); b.type = "button";
     var count = c.id === "all" ? posts.length : posts.filter(function(p){ return p.category === c.id; }).length;

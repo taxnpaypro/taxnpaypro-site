@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-14",
+  "category": "tax",
+  "slug": {
+    "ko": "how-long-to-keep-business-records-korean-2026",
+    "en": "how-long-to-keep-business-records-2026"
+  },
+  "title": {
+    "ko": "사업 서류, 언제 버려도 될까? 세금·급여 서류 보관 기간과 폐기 날짜 계산법 (2026)",
+    "en": "How Long Should a Small Business Keep Tax and Payroll Records? Calculate the Exact Shred Date (2026)"
+  },
+  "excerpt": {
+    "ko": "영수증·은행 명세서·급여·I-9 서류의 3·4·6·7년 보관 규칙과 기간 시작일, 폐기 날짜를 엑셀로 계산하는 법.",
+    "en": "The 3, 4, 6 and 7-year rules for receipts, payroll and I-9 records, when the clock starts, and the exact shred date."
+  },
+  "downloads": {
+    "kit": "business-record-retention-planner",
+    "en": [
+      "Record_Retention_Guide_2026_EN.pdf",
+      "Record_Retention_Planner_2026_EN.xlsx"
+    ],
+    "ko": [
+      "Record_Retention_Guide_2026_EN_KR.pdf",
+      "Record_Retention_Planner_2026_EN_KR.xlsx"
+    ]
+  }
+}
