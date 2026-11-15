@@ -1,0 +1,117 @@
+<!-- Title: 2027 Minimum Wage Increase: How to Calculate What It Will Really Cost Your Small Business -->
+<p style="font-size:17px;line-height:1.7;">On January 1, 2027, the minimum wage goes up again in several states. California moves to $17.40 an hour, Washington to $17.73 and New Jersey to $16.48. If you run a cafe, restaurant, salon, dry cleaner or shop with hourly staff, the question is not just "what is the new rate?" It is "how much more will payroll cost me next year, and do I need to raise prices?"</p>
+<p style="font-size:17px;line-height:1.7;">Most owners guess. They multiply the raise by 40 hours and stop there. That misses overtime, the employer's payroll tax on the extra wages, tipped staff rules, salaried managers who fall below the new exempt salary line, and the senior employee who now earns almost the same as a new hire. This guide walks through a method you can do yourself in Excel or Google Sheets in about 30 minutes.</p>
+
+<h2 style="color:#1F3A5F;">Step 1: Find the rate that applies to your location</h2>
+<p style="font-size:17px;line-height:1.7;">Your rate is the <b>highest</b> of the federal, state and local (city or county) minimum wage for the place the work is done. The federal floor is still $7.25, so in most states the state or city rate controls. Here are 2027 rates confirmed on official state and federal sites as of November 15, 2026:</p>
+<table style="border-collapse:collapse;width:100%;font-size:15px;margin:12px 0;">
+<tr style="background:#1F3A5F;color:#fff;"><th style="padding:8px;text-align:left;">Area</th><th style="padding:8px;text-align:right;">2027 rate</th><th style="padding:8px;text-align:left;">Starts</th><th style="padding:8px;text-align:left;">Tipped staff</th></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #ddd;">Federal floor</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$7.25</td><td style="padding:7px;border-bottom:1px solid #ddd;">In effect</td><td style="padding:7px;border-bottom:1px solid #ddd;">$2.13 cash wage, $5.12 max tip credit</td></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #ddd;">California</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$17.40</td><td style="padding:7px;border-bottom:1px solid #ddd;">Jan 1, 2027</td><td style="padding:7px;border-bottom:1px solid #ddd;">No tip credit</td></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #ddd;">Washington</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$17.73</td><td style="padding:7px;border-bottom:1px solid #ddd;">Jan 1, 2027</td><td style="padding:7px;border-bottom:1px solid #ddd;">No tip credit</td></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #ddd;">New Jersey (most employers)</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$16.48</td><td style="padding:7px;border-bottom:1px solid #ddd;">Jan 1, 2027</td><td style="padding:7px;border-bottom:1px solid #ddd;">$6.61 cash wage, $9.87 max tip credit</td></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #ddd;">New Jersey (fewer than 6 employees or seasonal)</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$16.25</td><td style="padding:7px;border-bottom:1px solid #ddd;">Jan 1, 2027</td><td style="padding:7px;border-bottom:1px solid #ddd;">See state notice</td></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #ddd;">New York: NYC, Long Island, Westchester</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$17.00</td><td style="padding:7px;border-bottom:1px solid #ddd;">No change Jan 1</td><td style="padding:7px;border-bottom:1px solid #ddd;">See state wage order</td></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #ddd;">New York: rest of state</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$16.00</td><td style="padding:7px;border-bottom:1px solid #ddd;">No change Jan 1</td><td style="padding:7px;border-bottom:1px solid #ddd;">See state wage order</td></tr>
+</table>
+<p style="font-size:17px;line-height:1.7;">New York is a special case this year. The state says the minimum wage will not get an inflation increase on January 1, 2027. The governor has proposed raising it to $17.60 (NYC, Long Island, Westchester) and $16.55 (rest of state) on March 1, 2027, but only if the Legislature approves. Do not treat that as final.</p>
+<p style="font-size:17px;line-height:1.7;">Then check your city. Some cities set their own, higher rate (Washington's labor department names Seattle, SeaTac, Tukwila and several others). If your city rate is higher, use it.</p>
+
+<h2 style="color:#1F3A5F;">Step 2: List every hourly employee</h2>
+<p style="font-size:17px;line-height:1.7;">Make a sheet with one row per hourly employee and four columns: role (no SSNs or other personal data needed), current hourly rate, average hours per week, and whether they are a tipped employee (Y/N). Use average hours from recent payroll reports, including overtime weeks.</p>
+<figure style="margin:20px 0;"><img src="Fig01_Five_Steps_EN.png" alt="Flowchart of five steps to price a 2027 minimum wage raise: find your rate, list hourly staff, set each new rate, add overtime and tax, total it" style="width:100%;height:auto;"><figcaption style="font-size:14px;color:#666;">The five-step method in this guide.</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">Step 3: Set each employee's new rate</h2>
+<p style="font-size:17px;line-height:1.7;">The legal minimum only forces a raise for people below the new rate. But you also need a policy for staff who are just above it. If your $17.25 shift lead ends up earning a few cents more than a brand-new hire at $17.40, expect pushback. Many owners keep a small gap, for example $0.50, for anyone who was already above the old minimum. In a spreadsheet:</p>
+<ul style="font-size:17px;line-height:1.7;">
+<li>Gap target (only for staff who were above the old minimum): <code>=IF(B2&gt;OldMin, NewMin+Gap, 0)</code></li>
+<li>New rate: <code>=MAX(B2, NewMin, GapTarget)</code></li>
+<li>Raise per hour: <code>=NewRate-B2</code></li>
+</ul>
+<p style="font-size:17px;line-height:1.7;">Here B2 is the current rate, and OldMin, NewMin and Gap are cells where you typed those values.</p>
+
+<h2 style="color:#1F3A5F;">Step 4: Add overtime and employer payroll tax</h2>
+<p style="font-size:17px;line-height:1.7;">Under federal law, hours over 40 in a workweek are paid at 1.5 times the regular rate, so a $0.65 raise costs $0.975 for each overtime hour. Convert weekly hours into "paid hours":</p>
+<p style="font-size:17px;line-height:1.7;"><code>=MIN(C2,40)+1.5*MAX(C2-40,0)</code> &nbsp; (C2 = hours per week; 45 hours becomes 47.5 paid hours)</p>
+<p style="font-size:17px;line-height:1.7;">Then add the employer's share of payroll tax. For 2026, IRS Publication 15 lists Social Security at 6.2% and Medicare at 1.45% for the employer, 7.65% together. If you know your state unemployment and workers' comp rates, add them too.</p>
+<p style="font-size:17px;line-height:1.7;"><code>=Raise*PaidHours*52*(1+7.65%)</code> &nbsp; gives the extra yearly cost for that employee.</p>
+<p style="font-size:17px;line-height:1.7;">Some states, including California, also have daily overtime rules. If your staff regularly work long days, count those hours too.</p>
+
+<h2 style="color:#1F3A5F;">Step 5: Total it and compare with your sales</h2>
+<p style="font-size:17px;line-height:1.7;">Add up the yearly cost, divide by 12 for a monthly number, and divide by your yearly sales to see the price change that would cover it. Here is a full worked example for a California cafe.</p>
+<table style="border-collapse:collapse;width:100%;font-size:15px;margin:12px 0;">
+<tr style="background:#1F3A5F;color:#fff;"><th style="padding:8px;text-align:left;">Employee (example)</th><th style="padding:8px;text-align:right;">Now</th><th style="padding:8px;text-align:right;">Hrs/wk</th><th style="padding:8px;text-align:right;">New</th><th style="padding:8px;text-align:right;">Paid hrs</th><th style="padding:8px;text-align:right;">Extra wages/yr</th><th style="padding:8px;text-align:right;">With 7.65% tax</th></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #ddd;">Barista A</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$16.90</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">30</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$17.40</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">30.0</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$780.00</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$839.67</td></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #ddd;">Barista B</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$16.90</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">25</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$17.40</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">25.0</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$650.00</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$699.73</td></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #ddd;">Cook</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$18.00</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">40</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$18.00</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">40.0</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$0.00</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$0.00</td></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #ddd;">Shift lead</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$17.25</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">45</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$17.90</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">47.5</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$1,605.50</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$1,728.32</td></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #ddd;">Cashier</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$17.00</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">20</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$17.90</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">20.0</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$936.00</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$1,007.60</td></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #ddd;">Dishwasher</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$16.90</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">35</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$17.40</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">35.0</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$910.00</td><td style="padding:7px;border-bottom:1px solid #ddd;text-align:right;">$979.62</td></tr>
+<tr style="background:#D9F2D9;font-weight:700;"><td style="padding:7px;">Total</td><td></td><td></td><td></td><td></td><td style="padding:7px;text-align:right;">$4,881.50</td><td style="padding:7px;text-align:right;">$5,254.93</td></tr>
+</table>
+<p style="font-size:14px;color:#C00000;">Example values: an invented cafe with a $0.50 gap policy, old minimum $16.90, new minimum $17.40.</p>
+<p style="font-size:17px;line-height:1.7;">The raise costs about <b>$5,255 a year</b>, or <b>$438 a month</b>. With $600,000 in yearly sales, prices would need to rise about <b>0.88%</b> to cover it ($5,254.93 ÷ $600,000). Notice that the shift lead, who was not a minimum-wage worker at all, is the single biggest cost because of the gap policy and overtime.</p>
+<figure style="margin:20px 0;"><img src="Fig02_Before_After_EN.png" alt="Before and after table for an example California cafe showing each employee's old rate, new rate and extra yearly cost, totaling $5,254.93" style="width:100%;height:auto;"><figcaption style="font-size:14px;color:#666;">Before and after for the example cafe.</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">Special cases you should not skip</h2>
+<h3 style="color:#1F4E99;">Tipped employees</h3>
+<p style="font-size:17px;line-height:1.7;">Federal law lets employers pay a tipped employee (someone who regularly gets more than $30 a month in tips) a cash wage of $2.13 and count up to $5.12 of tips toward the minimum. States can be stricter. New Jersey's 2027 cash wage is $6.61 with a maximum tip credit of $9.87, which adds up to $16.48. California and Washington allow no tip credit at all, so tipped staff get the full minimum before tips. One more trap: under federal rules, overtime for a tipped employee is figured on the full minimum wage, not on the lower cash wage.</p>
+<figure style="margin:20px 0;"><img src="Fig04_Tipped_Decision_EN.png" alt="Decision tree: if your state allows a tip credit, raise the cash wage (New Jersey $6.05 to $6.61); if not, tipped staff get the full minimum (California $17.40, Washington $17.73)" style="width:100%;height:auto;"><figcaption style="font-size:14px;color:#666;">Which rate to raise for tipped staff.</figcaption></figure>
+<h3 style="color:#1F4E99;">Salaried managers (the exempt salary line)</h3>
+<p style="font-size:17px;line-height:1.7;">A salaried employee is only exempt from overtime if their salary meets a minimum level. The US Department of Labor currently enforces $684 a week ($35,568 a year). Several states tie their own, higher line to the minimum wage. California's 2027 line is $17.40 × 2 × 2,080 hours = <b>$72,384</b>. Washington's is $92,196 for employers with 51 or more employees and $82,976.40 for 50 or fewer. A California manager paid $70,000 is $2,384 short; you either raise the salary or start paying hourly with overtime.</p>
+<h3 style="color:#1F4E99;">Pay periods that cross January 1</h3>
+<p style="font-size:17px;line-height:1.7;">If a biweekly pay period runs from December 25 to January 7, hours worked on or after January 1 must be paid at the new rate. Split the period in your payroll system.</p>
+<h3 style="color:#1F4E99;">A raise that starts mid-year</h3>
+<p style="font-size:17px;line-height:1.7;">For a later start date, multiply the yearly cost by the share of the year left. A March 1, 2027 start covers 306 of 365 days, or 83.8%.</p>
+
+<h2 style="color:#1F3A5F;">Common mistakes</h2>
+<ul style="font-size:17px;line-height:1.7;">
+<li>Using the state rate when your city's rate is higher.</li>
+<li>Multiplying by 40 hours and ignoring overtime.</li>
+<li>Forgetting the 7.65% employer payroll tax on the extra wages.</li>
+<li>Paying late-December hours at the new rate, or January hours at the old rate.</li>
+<li>Leaving a salaried manager below the new exempt salary line.</li>
+<li>Budgeting a proposed increase, such as New York's March 2027 proposal, as if it were law.</li>
+<li>Raising only minimum-wage staff and squeezing experienced staff.</li>
+</ul>
+<figure style="margin:20px 0;"><img src="Fig03_Timeline_EN.png" alt="Timeline from mid-November to the first January payday: confirm rates, check salaried staff, enter new rates, new rates start January 1, check first paychecks" style="width:100%;height:auto;"><figcaption style="font-size:14px;color:#666;">A simple timeline to be ready by January 1.</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">FAQ</h2>
+<h3 style="color:#1F4E99;">Do I have to raise employees who already earn more than the new minimum?</h3>
+<p style="font-size:17px;line-height:1.7;">Not under minimum wage law, as long as their rate is at or above the new minimum. A gap raise is a business decision to avoid pay compression.</p>
+<h3 style="color:#1F4E99;">Does the employer payroll tax change the cost much?</h3>
+<p style="font-size:17px;line-height:1.7;">It adds 7.65% for Social Security and Medicare, plus any state unemployment and workers' comp you pay. In the example above it added $373.43.</p>
+<h3 style="color:#1F4E99;">My state is not in the table. What do I do?</h3>
+<p style="font-size:17px;line-height:1.7;">Search your state labor department's website for its 2027 minimum wage notice, then check your city or county. Use the highest rate that applies.</p>
+<h3 style="color:#1F4E99;">Can I count tips toward the minimum wage in California?</h3>
+<p style="font-size:17px;line-height:1.7;">No. California's labor department says an employer may not use tips as a credit toward the minimum wage.</p>
+
+<h2 style="color:#1F3A5F;">Checklist</h2>
+<ul style="font-size:17px;line-height:1.7;list-style:none;padding-left:0;">
+<li>☐ State and city 2027 rate confirmed on an official site</li>
+<li>☐ Every hourly employee listed with rate, hours and tipped Y/N</li>
+<li>☐ Gap policy decided</li>
+<li>☐ Overtime and 7.65% payroll tax included</li>
+<li>☐ Salaried managers checked against the exempt salary line</li>
+<li>☐ Payroll updated for hours worked from the start date</li>
+<li>☐ Prices and 2027 budget reviewed</li>
+<li>☐ First January paycheck checked</li>
+</ul>
+
+<p style="font-size:14px;color:#666;line-height:1.6;background:#F4F7FB;padding:12px;"><b>Disclaimer:</b> This article is for educational purposes only and is not tax, legal or payroll advice. Minimum wage, tip credit and exemption rules vary by state, city and industry and change often. Confirm the rules for your location with the official agency, and consult a qualified professional for your situation. All example businesses and numbers are invented.</p>
+
+<p style="font-size:17px;line-height:1.7;">You can download the ready-made <b>2027 Minimum Wage Raise Planner</b> for free in the <a href="#kit" style="color:#1F4E99;font-weight:700;">Free kit download</a> box below (Excel + PDF guide, no sign-up).</p>
+
+<h3 style="color:#1F4E99;">Sources (checked November 15, 2026)</h3>
+<ul style="font-size:14px;line-height:1.6;">
+<li><a href="https://www.dir.ca.gov/DIRNews/2026/2026-66.html">California DIR: minimum wage to increase to $17.40 on January 1, 2027</a></li>
+<li><a href="https://www.dir.ca.gov/dlse/faq_minimumwage.htm">California DLSE: Minimum Wage FAQ (tips and minimum wage)</a></li>
+<li><a href="https://www.lni.wa.gov/news-events/article/26-17">Washington L&amp;I: minimum wage rises to $17.73 in 2027</a></li>
+<li><a href="https://www.nj.gov/labor/lwdhome/press/2026/20260929_min_wage.shtml">New Jersey Department of Labor: 2027 minimum wage</a></li>
+<li><a href="https://www.governor.ny.gov/new-york-state-minimum-wage-2027">New York State: minimum wage for 2027</a></li>
+<li><a href="https://www.dol.gov/agencies/whd/fact-sheets/15-tipped-employees-flsa">US DOL Fact Sheet #15: Tipped employees under the FLSA</a></li>
+<li><a href="https://www.dol.gov/agencies/whd/fact-sheets/23-flsa-overtime-pay">US DOL Fact Sheet #23: Overtime pay requirements of the FLSA</a></li>
+<li><a href="https://www.dol.gov/agencies/whd/state/minimum-wage/tipped">US DOL: Minimum wages for tipped employees by state</a></li>
+<li><a href="https://www.dol.gov/agencies/whd/overtime/salary-levels">US DOL: Salary levels for the EAP exemption</a></li>
+<li><a href="https://www.irs.gov/publications/p15">IRS Publication 15 (2026), Employer's Tax Guide</a></li>
+</ul>

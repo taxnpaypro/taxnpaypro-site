@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-15",
+  "category": "qbo",
+  "slug": {
+    "ko": "qbo-invoices-payments-refunds-credits-korean",
+    "en": "qbo-invoices-payments-refunds-credits"
+  },
+  "title": {
+    "ko": "인보이스부터 입금까지: 부분 결제·할인·환불·크레딧, QBO에서 꼬이지 않게 처리하는 법",
+    "en": "Partial Payments, Discounts, Refunds and Credits in QuickBooks Online: Record Every Invoice Change Without Breaking A/R"
+  },
+  "excerpt": {
+    "ko": "QBO에서 부분 결제, 할인, Credit memo, 환불, 초과 입금, 대손을 어떤 거래로 기록해야 A/R이 맞는지 단계별로 정리합니다.",
+    "en": "Which QBO transaction to use for partial payments, discounts, credit memos, refunds, overpayments and bad debt."
+  },
+  "series_no": 7
+}

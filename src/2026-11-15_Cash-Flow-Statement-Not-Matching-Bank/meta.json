@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-15",
+  "category": "accounting",
+  "slug": {
+    "ko": "cash-flow-statement-not-matching-bank-ko",
+    "en": "cash-flow-statement-not-matching-bank"
+  },
+  "title": {
+    "ko": "현금흐름표 기말 현금이 은행 잔액과 안 맞을 때: 원인 찾기와 직접 맞추는 법",
+    "en": "Why Your Cash Flow Statement Doesn't Match the Bank (and How to Make It Tie)"
+  },
+  "excerpt": {
+    "ko": "QuickBooks 현금흐름표 기말 현금이 은행과 다를 때, 대차대조표 2개로 다시 만들어 차이 원인을 찾는 법.",
+    "en": "Why the QuickBooks cash flow statement doesn't tie to the bank, and how to rebuild it from two Balance Sheets."
+  },
+  "downloads": {
+    "kit": "cash-flow-statement-tie-out-kit",
+    "en": [
+      "Cash_Flow_Statement_TieOut_Kit_2026_EN.xlsx",
+      "Cash_Flow_TieOut_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Cash_Flow_Statement_TieOut_Kit_2026_EN_KR.xlsx",
+      "Cash_Flow_TieOut_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}
