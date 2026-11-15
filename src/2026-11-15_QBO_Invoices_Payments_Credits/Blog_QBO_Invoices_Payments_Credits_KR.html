@@ -1,0 +1,186 @@
+<!-- Title: 인보이스부터 입금까지: 부분 결제·할인·환불·크레딧, QBO에서 꼬이지 않게 처리하는 법 -->
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">인보이스를 보내는 것까지는 어렵지 않습니다. 문제는 그다음입니다. 고객이 절반만 보내 오고, 일부 품목을 깎아 달라고 하고, 이미 받은 돈 일부를 돌려줘야 하고, 어떤 고객은 금액보다 더 많이 보내기도 합니다. 이때마다 "입금"으로 그냥 기록하거나 인보이스 금액을 직접 고쳐 버리면, 외상매출금(Accounts Receivable, A/R) 잔액과 은행 잔액이 서로 맞지 않게 되고 월말 Reconcile에서 원인을 찾느라 시간이 걸립니다.</p>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">이 글은 QuickBooks Online(QBO)에서 <b>Invoice → Receive payment</b>의 기본 흐름을 정리한 뒤, 부분 결제, 할인, 크레딧(Credit memo·Delayed credit), 환불(Refund receipt), 초과 입금, 받지 못할 돈(Bad debt)을 각각 어떤 거래로 기록해야 하는지 단계별로 설명합니다. 시리즈 첫 글 <a href="quickbooks-online-basics-korean.html" style="color:#1F4E99;">QuickBooks Online 기초 가이드</a>에서 짧게 소개한 "판매 흐름"과 바로 앞 글 <a href="qbo-estimates-to-invoices-korean.html" style="color:#1F4E99;">견적서(Estimate)에서 인보이스까지</a>의 다음 단계에 해당합니다.</p>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:16px 0;background:#EAF3F5;border-left:5px solid #2A7F8F;padding:12px 16px;"><b>이런 분께 필요합니다</b> &nbsp; ☐ 고객이 인보이스 금액을 나눠서 보내는 분&nbsp; ☐ 할인을 줄 때 인보이스 금액을 손으로 고쳐 온 분&nbsp; ☐ 환불을 그냥 "지출"로 기록해 매출이 부풀려진 것 같은 분&nbsp; ☐ 고객 잔액이 마이너스(−)로 나와 이유를 모르는 분&nbsp; ☐ 몇 달째 안 들어오는 인보이스를 어떻게 정리할지 고민인 분</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">1. 기본 흐름: 인보이스는 "받을 돈", 입금 기록은 "받은 돈"</h2>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">Intuit 도움말에 따르면 인보이스를 기록하면 고객이 갚아야 할 금액이 생기고, 아직 받지 못한 인보이스는 대차대조표의 외상매출금(A/R)에 쌓입니다. 고객이 돈을 보내면 <b>Receive payment</b>로 해당 인보이스에 입금을 연결해야 A/R이 줄어듭니다. 인보이스를 만들어 놓고 입금은 은행 피드에서 "매출"로 따로 추가하면, 매출이 두 번 잡히고 인보이스는 계속 미수로 남습니다.</p>
+<figure style="margin:20px 0;"><img src="Fig01_Invoice_Payment_Flow_KR.png" alt="인보이스 작성, 발송, Receive payment, 은행 거래 확인으로 이어지는 흐름과 할인·크레딧·환불·못 받는 돈 네 가지 예외 상황을 정리한 흐름도" width="1200" style="max-width:100%;height:auto;border:1px solid #dde3ea;border-radius:8px;" /><figcaption style="font-size:13px;color:#666;margin:4px 0 18px;">그림 1. 인보이스에서 입금까지의 기본 흐름과 예외 상황 (이해를 돕기 위한 그림, 실제 화면 아님)</figcaption></figure>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">금액이 바뀌는 상황마다 쓰는 거래가 다릅니다. 아래 표를 먼저 보고 본문을 읽으면 이해가 빠릅니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;"><thead><tr><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">상황</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">사용하는 거래</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">장부 효과 (요약)</th></tr></thead><tbody>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">고객에게 청구</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;"><b>Invoice</b></td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">매출 ↑, A/R ↑</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">고객이 전액 또는 일부를 보냄</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;"><b>Receive payment</b></td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">A/R ↓, 입금 계정 ↑</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">인보이스 금액 자체를 깎아 줌</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">인보이스의 <b>Discount</b> 칸</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">청구 금액 ↓ (처음부터 할인 반영)</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">이미 보낸 인보이스의 잔액을 줄여 줌</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;"><b>Credit memo</b></td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">A/R ↓, 원래 인보이스는 그대로 남음</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">다음 청구 때 빼 주기로 약속</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;"><b>Delayed credit</b></td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">다음 인보이스에 적용될 때까지 매출 영향 없음</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">반품·취소된 품목의 돈을 돌려줌</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;"><b>Refund receipt</b></td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">선택한 은행 계정에서 환불 기록</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">이미 결제된 인보이스를 환불 (반품 없음)</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;"><b>Credit memo + Expense</b> → Receive payment로 연결</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">A/R과 은행 잔액이 함께 맞춰짐</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">끝내 받지 못할 돈</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;"><b>Bad debt</b> 처리 (Credit memo 방식)</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">손익계산서에 Bad debts 비용</td></tr>
+</tbody></table>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:16px 0;background:#FFF6E0;border-left:5px solid #D4A845;padding:12px 16px;"><b>팁</b> &nbsp; 위 표의 "장부 효과"는 Intuit 도움말 설명을 요약한 것입니다. 세금 신고에서 어떻게 다뤄지는지는 장부 방식(현금주의·발생주의)과 상황에 따라 다르므로 회계사와 확인하십시오.</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">2. 인보이스 만들기: 나중에 덜 고치려면</h2>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">인보이스를 정확히 만들어 두면 이후 입금·크레딧 처리가 훨씬 단순해집니다. 고객과 상품·서비스 목록이 미리 등록되어 있으면 좋습니다(목록 정리는 <a href="qbo-import-customers-vendors-products-korean.html" style="color:#1F4E99;">고객·거래처·상품 목록, 엑셀로 한 번에 가져오기</a> 참고).</p>
+<ol style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>+ Create</b>(화면에 따라 <b>+ New</b>)를 누르고 <b>Invoice</b>를 고릅니다. 또는 <b>Sales</b>(Sales &amp; Get Paid) → <b>Invoices</b> → <b>New invoice</b>로 들어갑니다. 메뉴 위치가 다르면 검색창에 "invoice"를 입력하십시오.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">고객을 선택합니다. 목록에 없으면 <b>+ Add new</b>로 추가합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>Invoice date</b>, <b>Terms</b>, <b>Due date</b>를 확인합니다. Terms의 "Net 30"은 30일 안에 지급하라는 뜻이며, 만기일 계산의 기준이 됩니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">줄마다 상품·서비스를 고르고 수량과 단가를 입력합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">할인이 있으면 인보이스 하단의 <b>Discount</b> 칸에 넣습니다(3장 참고). 판매세 대상 품목이 있으면 Sales tax가 표시됩니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">바로 보낼 때는 <b>Review and send</b>, 나중에 보낼 때는 <b>Save</b>를 누릅니다.</li>
+</ol>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:16px 0;background:#FFF6E0;border-left:5px solid #D4A845;padding:12px 16px;"><b>주의</b> &nbsp; Intuit 안내에 따르면 인보이스 기능은 QuickBooks Online Free와 Lite 요금제에서 제한됩니다. 요금제별 기능과 가격은 자주 바뀌므로 현재 구독 화면에서 확인하십시오.</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">3. 할인: 인보이스 금액을 손으로 고치지 마세요</h2>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">할인을 주려고 단가를 직접 낮추면, 나중에 "원래 가격이 얼마였고 얼마를 깎아 줬는지"를 알 수 없습니다. QBO에는 할인 칸이 따로 있으므로 먼저 켜 두는 것이 좋습니다.</p>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">할인 칸 켜기</h3>
+<ol style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>Settings ⚙</b> → <b>Account and settings</b>를 엽니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>Sales</b> 탭에서 <b>Sales form content</b> 옆의 <b>Edit</b>를 누릅니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>Discount</b>를 켜고 <b>Save</b> → <b>Done</b>을 누릅니다.</li>
+</ol>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">Intuit 안내에 따르면 인보이스 작성 중에 할인 칸을 끄면 계정 설정에서도 함께 꺼집니다.</p>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">할인 방식 비교</h3>
+<table style="border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;"><thead><tr><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">방식</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">입력 방법</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">이럴 때 적합</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">주의할 점</th></tr></thead><tbody>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">정률 할인 (%)</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">Discount 칸에서 % 선택 후 비율 입력</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">"전체 5% 할인" 같은 일괄 할인</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">판매세 계산 순서를 확인</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">정액 할인 ($)</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">Discount 칸에서 $ 선택 후 금액 입력</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">"이번 건 $100 할인"</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">—</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">할인 품목 (음수 줄)</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">할인용 상품·서비스를 만들고 단가를 음수로 입력</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">특정 프로모션 이름을 남기고 싶을 때</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">Intuit 안내상 이 방식은 정액만 가능하며 % 입력은 안 됨</td></tr>
+</tbody></table>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">판매세가 있는 업종은 할인을 세금 계산 전에 적용할지 확인해야 합니다. Intuit 안내에 따르면 할인 칸 옆의 양쪽 화살표 아이콘으로 세금 칸과 할인 칸의 순서를 바꿀 수 있고, 이렇게 하면 할인이 판매세 계산 전에 적용됩니다. 어떤 순서가 맞는지는 주(州)와 할인 성격에 따라 다를 수 있으므로 해당 주의 판매세 안내를 확인하십시오(판매세는 시리즈 13편에서 따로 다룹니다).</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">4. 입금 기록과 부분 결제</h2>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">Receive payment 단계</h3>
+<ol style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>+ Create</b> → <b>Receive payment</b>를 누릅니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>Customer</b>에서 고객을 고릅니다. 그래야 그 고객의 열린 인보이스가 <b>Outstanding Transactions</b>에 나타납니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>Payment date</b>에 실제 받은 날짜를 넣습니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>Payment method</b>를 고르고, 수표 번호 같은 참조 번호와 받은 금액을 입력합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>Deposit to</b>에서 이 돈을 기록할 계정을 고릅니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>Outstanding Transactions</b>에서 해당 인보이스를 체크합니다. <b>부분 결제라면 PAYMENT 칸에 실제로 받은 금액만 입력</b>합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>Save and close</b> 또는 <b>Save and new</b>를 누릅니다.</li>
+</ol>
+<figure style="margin:20px 0;"><img src="Fig04_Receive_Payment_Screen_Map_KR.png" alt="Receive payment 화면의 고객, 결제일, 결제 방법, Deposit to, Outstanding Transactions의 PAYMENT 칸, Credits 영역을 번호로 표시하고 각 칸의 역할을 설명한 그림" width="1200" style="max-width:100%;height:auto;border:1px solid #dde3ea;border-radius:8px;" /><figcaption style="font-size:13px;color:#666;margin:4px 0 18px;">그림 2. Receive payment 화면에서 확인할 칸 (이해를 돕기 위한 그림, 실제 QuickBooks 화면 아님)</figcaption></figure>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">부분 결제를 받으면 인보이스는 남은 잔액만큼 계속 열려 있습니다. 나머지를 받을 때 같은 방법으로 Receive payment를 한 번 더 기록하면 됩니다. 인보이스 금액을 받은 금액으로 고쳐서 "완납"처럼 만드는 것은 피하십시오. 매출이 줄어들고, 고객이 아직 갚을 돈이 있다는 기록도 사라집니다.</p>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:16px 0;background:#FFF6E0;border-left:5px solid #D4A845;padding:12px 16px;"><b>팁</b> &nbsp; Deposit to 계정은 실제 은행에 돈이 들어간 방식과 맞춰야 합니다. 여러 고객의 수표를 한 번에 묶어 입금하는 경우의 처리와 정리 방법은 <a href="undeposited-funds-cleanup-korean.html" style="color:#1F4E99;">Undeposited Funds 정리하기</a>에서 자세히 다룹니다. 이후 은행 피드에 입금이 뜨면 새로 Add하지 말고 기존 기록과 Match합니다(<a href="qbo-bank-feeds-match-add-rules-korean.html" style="color:#1F4E99;">QBO 은행 연결 완전 정리</a> 참고).</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">5. 크레딧: Credit memo와 Delayed credit의 차이</h2>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">고객에게 돈을 돌려주지는 않지만 받을 금액을 줄여 줘야 할 때 크레딧을 씁니다. Intuit 도움말은 두 가지를 다음과 같이 구분합니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;"><thead><tr><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">구분</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">Credit memo</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">Delayed credit</th></tr></thead><tbody>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">쓰는 때</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">지금 고객 잔액을 바로 줄일 때</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">나중 청구에서 빼 주기로 할 때</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">현재 잔액</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">바로 줄어듦</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">그대로 유지</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">적용 방법</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">인보이스에 전부 또는 일부 적용, Receive payment에서도 적용 가능</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">다음 인보이스 작성 시 줄 항목으로 추가</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">매출 리포트</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">적용하지 않아도 매출 리포트에 반영</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">인보이스에 적용되기 전까지 반영 안 됨</td></tr>
+</tbody></table>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">만드는 법</h3>
+<ol style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>+ Create</b> → <b>Credit memo</b> 또는 <b>Delayed credit</b>을 고릅니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">고객, 날짜, 상품·서비스와 금액을 입력합니다. 자주 쓴다면 크레딧 전용 서비스 항목을 하나 만들어 두면 편합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>Save and close</b>를 누릅니다.</li>
+</ol>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">"Automatically apply credits" 설정 확인</h3>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">Credit memo가 어디에 적용되는지는 <b>Settings ⚙ → Account and settings → Advanced</b> 탭의 <b>Automation</b> 섹션에 있는 <b>Automatically apply credits</b> 설정에 따라 달라집니다.</p>
+<ul style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>켜져 있으면</b>: 크레딧이 가장 오래된 미결 인보이스에 자동으로 적용되고, 남으면 그다음 오래된 인보이스로 넘어갑니다. 미결 인보이스가 없으면 Credit memo는 미적용 상태로 남고 고객 잔액은 마이너스(−)로 표시됩니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>꺼져 있으면</b>: Receive payment 화면에 <b>Credits</b> 영역이 나타나며, 어떤 인보이스에 언제 적용할지 직접 고릅니다. 적용하지 않으면 고객 잔액 리포트에 인보이스와 Credit memo가 둘 다 열린 상태로 보입니다.</li>
+</ul>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">자동 적용을 끈 상태에서 수동으로 적용하려면 Receive payment에서 고객을 고르고, 인보이스와 Credit memo를 함께 체크한 뒤 인보이스의 PAYMENT 칸에 크레딧 금액을 넣습니다. 이때 실제로 받은 돈이 없으므로 Amount received 등은 비워 둡니다(Intuit 안내 기준).</p>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:16px 0;background:#FFF6E0;border-left:5px solid #D4A845;padding:12px 16px;"><b>주의</b> &nbsp; Intuit 안내에 따르면 이전 기간의 인보이스에 Delayed credit을 넣으면 그 기간의 잔액이 바뀝니다. 이미 마감했거나 회계사에게 넘긴 기간이라면 날짜를 꼭 확인하십시오.</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">6. 환불: 반품이 있었는지부터 확인</h2>
+<figure style="margin:20px 0;"><img src="Fig02_Refund_Credit_Decision_KR.png" alt="돈을 실제로 돌려주는지, 반품이 있었는지, 지금 잔액을 줄이는지에 따라 Refund receipt, Credit memo와 Expense, Credit memo, Delayed credit 중 하나를 고르는 판단 나무" width="1200" style="max-width:100%;height:auto;border:1px solid #dde3ea;border-radius:8px;" /><figcaption style="font-size:13px;color:#666;margin:4px 0 18px;">그림 3. 환불·크레딧 거래 선택 판단 순서 (이해를 돕기 위한 그림)</figcaption></figure>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">A. 반품·취소된 상품이나 서비스의 환불: Refund receipt</h3>
+<ol style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>+ Create</b> → <b>Refund receipt</b>(화면에 따라 Give refund)를 고릅니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">고객과 <b>Payment method</b>(환불 방법)를 고릅니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>Refund From</b>에서 고객의 돈이 입금됐던 은행 계정을 고릅니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">반품된 상품·서비스와 수량, 단가를 입력합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>Save and close</b>를 누릅니다.</li>
+</ol>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">Intuit 안내는 품목 환불에 Credit memo를 따로 또 만들지 말라고 강조합니다. 같은 환불이 두 번 기록되기 때문입니다. 또 Refund receipt는 장부에 "기록"만 할 뿐이므로, 수표 발행이나 외부 결제 서비스(카드 단말기, 온라인 결제 업체 등)에서의 실제 환불은 따로 처리해야 합니다.</p>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">B. 반품 없이 이미 결제된 인보이스를 환불: Credit memo + Expense</h3>
+<ol style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">인보이스 목록에서 해당 인보이스를 찾아 <b>More actions</b> → <b>Create a credit memo</b>로 Credit memo를 만듭니다. 금액은 환불할 만큼만 남깁니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>+ Create</b> → <b>Expense</b>로 환불 지출을 기록합니다. Payee는 고객, Payment account는 돈이 나간 은행 계정, Category는 Intuit 안내대로 외상매출금(A/R) 계정을 고릅니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>+ Create</b> → <b>Receive payment</b>에서 같은 고객을 고르고 Credit memo와 Expense를 함께 체크합니다. 둘이 서로 상쇄되어 합계가 $0이 되면 저장합니다.</li>
+</ol>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">이렇게 하면 A/R과 은행 잔액이 함께 맞춰집니다. 환불이 은행 피드에 뜨면 새로 추가하지 말고 위 Expense와 Match합니다.</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">7. 초과 입금: 남은 돈은 크레딧이 됩니다</h2>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">고객이 인보이스보다 많이 보낸 경우, Receive payment에서 받은 금액 전체를 입력하고 인보이스에 잔액만큼 적용하면 남은 금액은 고객 크레딧으로 남습니다. Intuit 도움말은 이 경우 세 가지 선택지를 제시합니다: 다른 미결 인보이스에 적용, 고객에게 환불, 또는 팁으로 기록. 다른 인보이스가 열려 있다면 Receive payment에서 그 인보이스도 함께 선택해 남은 금액을 적용할 수 있습니다.</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">8. 받지 못할 돈: Bad debt 처리 전에 확인할 것</h2>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">몇 달째 연락이 없는 인보이스를 그냥 삭제하면 원래 매출 기록까지 사라집니다. Intuit 도움말은 다음 순서를 안내합니다.</p>
+<ol style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>Reports</b>에서 <b>Accounts Receivable Aging Detail</b>을 열어 정리할 인보이스를 확인합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">Chart of accounts에 Expenses 유형, Detail type "Bad debts"인 비용 계정을 만듭니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">Non-inventory 상품·서비스 "Bad debts"를 만들고 계정을 위 Bad debts 계정으로 연결합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">그 항목으로 Credit memo를 만들고, Receive payment에서 해당 인보이스에 적용합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">손익계산서의 Bad debts 항목에 금액이 나타나는지 확인합니다.</li>
+</ol>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:16px 0;background:#FFF6E0;border-left:5px solid #D4A845;padding:12px 16px;"><b>주의</b> &nbsp; Intuit 안내는 발생주의(accrual)로 장부를 쓰는 경우 이런 대손이 일정 조건에서 공제될 수 있다고 설명하면서, 처리 전에 회계사와 상의할 것을 권합니다. 현금주의 장부라면 애초에 매출로 신고되지 않은 금액일 수 있으므로 처리 방법이 달라질 수 있습니다. 반드시 회계사와 먼저 확인하십시오.</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">9. 따라 해 보기: 한 인보이스에 부분 결제·크레딧·초과 입금이 모두 생긴 경우</h2>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">가상의 케이터링 업체 "한빛 케이터링"이 고객 "Maple Office Group"에게 11월 1일 행사 케이터링을 청구했습니다. 판매세는 예시를 단순하게 하려고 생략했습니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;"><thead><tr><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">항목</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">수량</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">단가</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">금액 (예시 값 / Sample values)</th></tr></thead><tbody>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">점심 케이터링 (1인)</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">40</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">$55.00</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">$2,200.00</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">배달·세팅비</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">1</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">$200.00</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">$200.00</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">소계</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;"></td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;"></td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">$2,400.00</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">할인 5% (Discount 칸)</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;"></td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;"></td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">−$120.00</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;"><b>인보이스 #1045 합계</b> (Terms: Net 30)</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;"></td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;"></td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;"><b>$2,280.00</b></td></tr>
+</tbody></table>
+<ol style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>11/10</b> 고객이 수표로 $1,000을 보냈습니다. Receive payment에서 인보이스 #1045를 체크하고 PAYMENT 칸에 $1,000을 입력합니다. 잔액은 $1,280입니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>11/12</b> 음료 서비스 일부가 빠져 $80을 깎아 주기로 했습니다. 돈을 돌려주는 것이 아니므로 Credit memo $80을 만들어 인보이스에 적용합니다. 잔액은 $1,200입니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>11/28</b> 고객이 $1,250을 보냈습니다. Receive payment에서 받은 금액 $1,250을 입력하고 인보이스에 $1,200을 적용합니다. 인보이스는 완납되고, 남은 $50은 고객 크레딧으로 남습니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>마무리</b> 남은 $50은 다음 인보이스에 적용하거나 고객에게 환불합니다. 환불한다면 6장 B의 방법처럼 Receive payment로 연결해 A/R이 정확히 0이 되게 합니다.</li>
+</ol>
+<figure style="margin:20px 0;"><img src="Fig03_Balance_Before_After_KR.png" alt="인보이스 1045의 잔액이 2,280달러에서 부분 결제, 크레딧 적용, 초과 입금을 거쳐 0달러가 되고 고객 크레딧 50달러가 남는 과정을 보여 주는 표" width="1200" style="max-width:100%;height:auto;border:1px solid #dde3ea;border-radius:8px;" /><figcaption style="font-size:13px;color:#666;margin:4px 0 18px;">그림 4. 예시 인보이스의 잔액 변화 (예시 값 / Sample values)</figcaption></figure>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">검산: $2,280 − $1,000 − $80 − $1,200 = $0, 그리고 $1,250 − $1,200 = $50 크레딧입니다. 고객 잔액 리포트에서 이 고객의 잔액이 −$50으로 보이면 크레딧이 남아 있다는 뜻입니다.</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">10. 자주 하는 실수</h2>
+<ul style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>입금을 은행 피드에서 매출로 Add</b>: 인보이스 매출과 중복되고 인보이스는 미수로 남습니다. 열린 인보이스와 Match하거나 Receive payment로 기록하십시오.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>부분 결제 후 인보이스 금액을 수정</b>: 매출이 줄고 미수 기록이 사라집니다. PAYMENT 칸에 받은 금액만 넣으십시오.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>할인을 단가에 섞어 입력</b>: 할인 내역이 남지 않습니다. Discount 칸이나 할인 품목을 쓰십시오.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>품목 환불에 Refund receipt와 Credit memo를 둘 다 기록</b>: 환불이 두 번 잡힙니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>자동 적용 설정을 모른 채 Credit memo 작성</b>: 엉뚱한 오래된 인보이스에 적용될 수 있습니다. 설정을 먼저 확인하십시오.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>못 받는 인보이스를 삭제</b>: 원래 매출 기록이 사라집니다. 회계사와 상의해 Bad debt 방식으로 정리하십시오.</li>
+</ul>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">11. 자주 묻는 질문 (FAQ)</h2>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">Q1. 고객 한 명이 인보이스 세 장을 한 번에 결제했습니다. 어떻게 기록하나요?</h3>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">Receive payment에서 고객을 고르면 열린 인보이스가 모두 나타납니다. 해당 인보이스들을 체크하고 각 PAYMENT 칸 금액의 합계가 실제 받은 금액과 같은지 확인한 뒤 저장합니다. 이렇게 하면 은행 피드의 입금 한 건과 Match하기도 쉽습니다.</p>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">Q2. 고객 잔액이 마이너스(−)로 나옵니다. 오류인가요?</h3>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">대부분 미적용 크레딧이나 초과 입금이 남아 있다는 뜻입니다. 고객 화면에서 Credit memo나 미적용 입금을 찾아 다음 인보이스에 적용하거나 환불하십시오.</p>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">Q3. 카드 결제 수수료가 빠지고 입금됐습니다. 인보이스는 어떻게 처리하나요?</h3>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">인보이스 금액은 그대로 두고, 은행에 실제로 들어온 금액과의 차이는 수수료 비용으로 기록하는 것이 일반적입니다. Intuit 안내에 따르면 QuickBooks Payments로 받은 결제는 QuickBooks가 해당 계정에 기록해 주고, 외부 결제 업체로 받은 결제는 직접 기록해야 합니다. 구체적인 방법은 결제 업체와 사용 중인 연동 방식에 따라 다르므로 회계 담당자와 정해 두십시오.</p>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">Q4. Credit memo와 Refund receipt 중 무엇을 써야 할지 헷갈립니다.</h3>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">돈이 실제로 고객에게 나가면서 반품·취소된 품목이 있다면 Refund receipt, 돈은 나가지 않고 받을 금액만 줄여 주면 Credit memo입니다. 반품 없이 이미 결제된 인보이스를 환불하면 Credit memo와 Expense를 함께 씁니다(그림 3).</p>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">Q5. 지난달 인보이스에 크레딧을 적용해도 되나요?</h3>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">가능하지만 적용 날짜에 따라 이미 확인한 기간의 숫자가 바뀔 수 있습니다. 이미 마감했거나 세금 신고에 쓴 기간이라면 회계사와 먼저 상의하십시오.</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">12. 셀프 체크리스트</h2>
+<ul style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ Sales form content에서 Discount 칸을 켰다</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ Advanced 탭의 Automatically apply credits 설정을 확인했다</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 모든 입금을 Receive payment 또는 열린 인보이스와 Match해서 기록했다</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 부분 결제는 PAYMENT 칸에 받은 금액만 넣었다</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 품목 환불은 Refund receipt 한 번만 기록했다</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 외부 결제 업체 환불을 실제로 처리했다</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ A/R Aging 리포트에서 오래된 미수와 마이너스 잔액을 확인했다</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ Bad debt 처리 전 회계사와 상의했다</li>
+</ul>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">13. 함께 읽으면 좋은 글</h2>
+<ul style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="quickbooks-online-basics-korean.html" style="color:#1F4E99;">QuickBooks Online 기초 가이드: 처음 시작할 때 꼭 알아야 할 10가지</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="qbo-opening-balances-chart-of-accounts-setup-korean.html" style="color:#1F4E99;">QBO 처음 시작하기: 기초 잔액과 Chart of Accounts 세팅</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="qbo-chart-of-accounts-by-industry-korean.html" style="color:#1F4E99;">업종별 Chart of Accounts 예시</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="qbo-import-customers-vendors-products-korean.html" style="color:#1F4E99;">고객·거래처·상품 목록, 엑셀로 한 번에 가져오기</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="qbo-users-permissions-security-korean.html" style="color:#1F4E99;">직원·회계사 초대와 권한 설정</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="qbo-bank-feeds-match-add-rules-korean.html" style="color:#1F4E99;">QBO 은행 연결 완전 정리: Match·Add·Rule</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="qbo-estimates-to-invoices-korean.html" style="color:#1F4E99;">견적서(Estimate)에서 인보이스까지</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="undeposited-funds-cleanup-korean.html" style="color:#1F4E99;">Undeposited Funds 정리하기</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="duplicate-transactions-reconciliation-difference-korean.html" style="color:#1F4E99;">중복 거래와 Reconcile 차이 찾기</a></li>
+</ul>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;"><i>이 글은 일반적인 교육용 정보이며 세무·법률·재무 자문이 아닙니다. 개별 상황에 대한 판단은 자격을 갖춘 전문가와 상의하십시오. QuickBooks Online의 화면, 메뉴 이름, 요금제별 기능과 가격은 수시로 바뀌므로 실제 작업 전에 현재 화면과 Intuit 공식 안내를 확인하십시오. 예시의 업체와 고객은 모두 가상입니다.</i></p>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">QuickBooks is a registered trademark of Intuit Inc.; not affiliated with or endorsed by Intuit.</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">출처</h2>
+<ul style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/invoicing/create-invoices-quickbooks-online/L7gSzvCld_US_en_US" style="color:#1F4E99;">Intuit QuickBooks 도움말: Create invoices</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/invoicing/understand-invoices-quickbooks-online/L52ENtVfF_US_en_US" style="color:#1F4E99;">Intuit QuickBooks 도움말: Understand invoices in QuickBooks Online</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/invoicing/take-process-payments-quickbooks-online/L2vHwwVmh_US_en_US" style="color:#1F4E99;">Intuit QuickBooks 도움말: Receive and process payments</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/service-items/add-discount-invoice-sales-receipt-quickbooks/L3VyP6cwJ_US_en_US" style="color:#1F4E99;">Intuit QuickBooks 도움말: Add a discount to an invoice, estimate or sales receipt</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/customer-refunds-credits/create-apply-credit-memos-delayed-credits-online/L5kne9EiI_US_en_US" style="color:#1F4E99;">Intuit QuickBooks 도움말: Create and apply credit memos or delayed credits</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/customer-refunds-credits/refund-customer-item-service-quickbooks-online/L6aVbzEVi_US_en_US" style="color:#1F4E99;">Intuit QuickBooks 도움말: Refund your customer for an item or service</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/customer-refunds-credits/record-customer-refund-quickbooks-online/L5PbCkJk8_US_en_US" style="color:#1F4E99;">Intuit QuickBooks 도움말: Refund your customer for a paid invoice</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/customer-refunds-credits/handle-customer-credit-overpayment-quickbooks/L1Z4OZkKB_US_en_US" style="color:#1F4E99;">Intuit QuickBooks 도움말: Handle a customer credit or overpayment</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/customer-refunds-credits/write-bad-debt-quickbooks-online/L88pSKtr9_US_en_US" style="color:#1F4E99;">Intuit QuickBooks 도움말: How to write off bad debt in QuickBooks Online</a></li>
+</ul>

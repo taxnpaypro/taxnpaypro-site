@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-15",
+  "category": "payroll",
+  "slug": {
+    "ko": "minimum-wage-2027-payroll-cost-korean",
+    "en": "minimum-wage-2027-payroll-cost"
+  },
+  "title": {
+    "ko": "2027년 최저임금 인상, 우리 가게 인건비는 얼마나 늘까? 직접 계산하는 5단계",
+    "en": "2027 Minimum Wage Increase: How to Calculate What It Will Really Cost Your Small Business"
+  },
+  "excerpt": {
+    "ko": "2027년 1월 최저임금 인상분을 초과근무·급여세·팁 직원·월급제 기준까지 넣어 직원별로 직접 계산하는 5단계.",
+    "en": "A 5-step way to price your 2027 minimum wage raise, including overtime, payroll tax, tipped and salaried staff."
+  },
+  "downloads": {
+    "kit": "minimum-wage-raise-planner-2027",
+    "en": [
+      "Minimum_Wage_Raise_Planner_2027_EN.xlsx",
+      "Minimum_Wage_Raise_Guide_2027_EN.pdf"
+    ],
+    "ko": [
+      "Minimum_Wage_Raise_Planner_2027_EN_KR.xlsx",
+      "Minimum_Wage_Raise_Guide_2027_EN_KR.pdf"
+    ]
+  }
+}
