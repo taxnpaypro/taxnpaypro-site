@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-16",
+  "category": "accounting",
+  "slug": {
+    "ko": "record-tax-payments-owner-draw-or-expense-ko",
+    "en": "record-tax-payments-owner-draw-or-expense"
+  },
+  "title": {
+    "ko": "세금 납부, QuickBooks 어디에 기록할까? 대표 인출·부채·비용 구분법",
+    "en": "Where to Record Tax Payments in QuickBooks: Owner Draw, Liability or Expense?"
+  },
+  "excerpt": {
+    "ko": "대표 1040-ES, 941 급여세, 판매세, PTET, 가산세를 QuickBooks 어디에 기록할지 대표 인출·부채·비용으로 구분합니다.",
+    "en": "Owner 1040-ES, 941 deposits, sales tax, PTET and penalties: where each tax payment goes in QuickBooks."
+  },
+  "downloads": {
+    "kit": "tax-payment-recording-map-2026",
+    "en": [
+      "Tax_Payment_Recording_Guide_2026_EN.pdf",
+      "Tax_Payment_Recording_Map_2026_EN.xlsx"
+    ],
+    "ko": [
+      "Tax_Payment_Recording_Guide_2026_EN_KR.pdf",
+      "Tax_Payment_Recording_Map_2026_EN_KR.xlsx"
+    ]
+  }
+}

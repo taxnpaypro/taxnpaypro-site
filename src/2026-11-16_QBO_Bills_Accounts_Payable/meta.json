@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-16",
+  "category": "qbo",
+  "slug": {
+    "ko": "qbo-bills-accounts-payable-korean",
+    "en": "qbo-bills-accounts-payable"
+  },
+  "title": {
+    "ko": "외상 매입이 장부에서 꼬이는 이유: QBO Bill 입력·일괄 지급·Vendor credit·거래처별 관리 정리",
+    "en": "Why Accounts Payable Gets Messy in QuickBooks Online: Enter Bills, Pay Them in Batches, Apply Vendor Credits and Track What You Owe"
+  },
+  "excerpt": {
+    "ko": "QBO에서 Bill 입력, Pay bills 일괄·부분 지급, Vendor credit, 반복 Bill, A/P aging 보고서까지 외상 매입 관리 흐름을 단계별로 정리합니다.",
+    "en": "Enter bills, pay several at once, apply vendor credits, set up recurring bills and read A/P aging in QuickBooks Online."
+  },
+  "series_no": 8
+}

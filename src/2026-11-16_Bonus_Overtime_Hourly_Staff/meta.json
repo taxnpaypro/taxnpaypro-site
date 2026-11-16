@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-16",
+  "category": "payroll",
+  "slug": {
+    "ko": "bonus-overtime-regular-rate-calculation-korean",
+    "en": "bonus-overtime-regular-rate-calculation"
+  },
+  "title": {
+    "ko": "시급 직원에게 연말 보너스를 줬다면? 추가로 줘야 할 초과근무 수당 직접 계산하는 법",
+    "en": "Paying Year-End Bonuses to Hourly Staff? How to Calculate the Extra Overtime You May Owe"
+  },
+  "excerpt": {
+    "ko": "시급 직원 연말·개근 보너스가 통상임금에 들어가는지 판단하고, 추가로 줘야 할 초과근무 수당을 예시로 직접 계산합니다.",
+    "en": "When a bonus to hourly staff counts toward the regular rate and how to figure the extra overtime you owe."
+  },
+  "downloads": {
+    "kit": "bonus-overtime-calculator-2026",
+    "en": [
+      "Bonus_Overtime_Calculator_2026_EN.xlsx",
+      "Bonus_Overtime_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Bonus_Overtime_Calculator_2026_EN_KR.xlsx",
+      "Bonus_Overtime_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}
