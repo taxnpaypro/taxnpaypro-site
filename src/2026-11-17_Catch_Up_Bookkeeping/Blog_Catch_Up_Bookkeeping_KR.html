@@ -1,0 +1,82 @@
+<!-- Title: 장부가 몇 달 밀렸다면? 세금 마감 전에 따라잡는 순서와 시간 계산법 -->
+<p>가게가 바빴던 시즌, 직원 교체, 집안일… 이유는 달라도 정신을 차려 보면 봄 이후로 장부를 한 번도 못 열었다는 사장님이 많습니다. 은행 명세서는 쌓이고 영수증은 봉투째 있고, 1099·W-2·세금 신고 마감은 매주 가까워집니다.</p>
+<p>다행히 밀린 장부는 <b>크기를 잴 수 있는 일</b>입니다. 먼저 양을 재고 올바른 순서로 하면, 11월 지금 시점에 "마감 전에 끝낼 수 있는지"를 숫자로 알 수 있습니다. 엑셀이나 구글 시트에 그대로 입력할 수 있는 수식과 함께 방법을 정리했습니다.</p>
+<p style="background:#F5F8FC;border-left:4px solid #1F4E99;padding:12px 16px;margin:14px 0"><b>이런 분께:</b> 장부를 직접 하시거나, 세무 담당자에게 넘기기 전에 정리해 두려는 사장님·실장님 중 한 달 이상 밀린 분</p>
+
+<h2 style="color:#1F3A5F;margin-top:32px">1단계: 시작 전에 밀린 양부터 재세요</h2>
+<p>대부분 가장 오래된 명세서를 열고 바로 입력부터 시작합니다. 일하는 느낌은 나지만 정작 중요한 질문, <i>"마감 전에 끝나나?"</i>에는 답하지 못합니다. 숫자 4개로 먼저 답을 내세요.</p>
+<ol><li><b>아직 정리 안 된 첫 달</b> (예: 2026년 1월)</li>
+<li><b>사업용 은행·카드 계좌 수</b></li>
+<li><b>월 거래 건수</b> — 바쁜 달 명세서를 열어 모든 계좌의 줄 수를 합칩니다.</li>
+<li><b>실제로 낼 수 있는 주당 작업 시간</b></li></ol>
+<p>여기에 조정 가능한 가정 세 가지를 씁니다. 거래 1건 입력·분류에 약 <b>1.5분</b>, 계좌 하나·한 달 대사(잔액 맞추기)에 약 <b>20분</b>, 서류 모으기·최종 검토에 <b>4시간</b> 정도. 영수증을 일일이 찾아야 하면 분을 늘리세요.</p>
+
+<h2 style="color:#1F3A5F;margin-top:32px">2단계: 숫자를 시간과 완료일로 바꾸기</h2>
+<p>작은 시트에 입력값을 넣습니다. 아래 예에서는 B1~B10이 입력, 수식은 D열에 넣습니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:12px 0;font-size:15px"><thead><tr><th style="background:#1F3A5F;color:#fff;padding:8px;border:1px solid #C8D3E0;text-align:left">셀</th><th style="background:#1F3A5F;color:#fff;padding:8px;border:1px solid #C8D3E0;text-align:left">입력</th><th style="background:#1F3A5F;color:#fff;padding:8px;border:1px solid #C8D3E0;text-align:left">예시 (가상)</th></tr></thead><tbody><tr><td style="padding:8px;border:1px solid #C8D3E0">B1</td><td style="padding:8px;border:1px solid #C8D3E0">정리 안 된 첫 달</td><td style="padding:8px;border:1px solid #C8D3E0">2026-01-01</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">B2</td><td style="padding:8px;border:1px solid #C8D3E0">마칠 마지막 달</td><td style="padding:8px;border:1px solid #C8D3E0">2026-12-01</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">B3</td><td style="padding:8px;border:1px solid #C8D3E0">계좌 수</td><td style="padding:8px;border:1px solid #C8D3E0">3</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">B4</td><td style="padding:8px;border:1px solid #C8D3E0">월 거래 건수</td><td style="padding:8px;border:1px solid #C8D3E0">180</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">B5</td><td style="padding:8px;border:1px solid #C8D3E0">주당 시간</td><td style="padding:8px;border:1px solid #C8D3E0">6</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">B6</td><td style="padding:8px;border:1px solid #C8D3E0">건당 분</td><td style="padding:8px;border:1px solid #C8D3E0">1.5</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">B7</td><td style="padding:8px;border:1px solid #C8D3E0">계좌·월별 대사 분</td><td style="padding:8px;border:1px solid #C8D3E0">20</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">B8</td><td style="padding:8px;border:1px solid #C8D3E0">준비·검토 시간</td><td style="padding:8px;border:1px solid #C8D3E0">4</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">B9</td><td style="padding:8px;border:1px solid #C8D3E0">작업 시작일</td><td style="padding:8px;border:1px solid #C8D3E0">2026-11-23</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">B10</td><td style="padding:8px;border:1px solid #C8D3E0">목표일</td><td style="padding:8px;border:1px solid #C8D3E0">2027-03-15</td></tr></tbody></table>
+<p>이제 수식을 입력합니다.</p>
+<ul><li>따라잡을 개월 수: <code style="background:#F3F3F3;padding:2px 5px;border-radius:4px;font-family:Consolas,monospace;font-size:14px">=(YEAR(B2)-YEAR(B1))*12+MONTH(B2)-MONTH(B1)+1</code> → 12</li>
+<li>총 시간: <code style="background:#F3F3F3;padding:2px 5px;border-radius:4px;font-family:Consolas,monospace;font-size:14px">=D1*B4*B6/60 + D1*B3*B7/60 + B8</code> → 54 + 12 + 4 = 70</li>
+<li>필요 주 수: <code style="background:#F3F3F3;padding:2px 5px;border-radius:4px;font-family:Consolas,monospace;font-size:14px">=ROUNDUP(D2/B5,0)</code> → 12</li>
+<li>완료일: <code style="background:#F3F3F3;padding:2px 5px;border-radius:4px;font-family:Consolas,monospace;font-size:14px">=B9+D3*7</code> → 2027-02-15 (셀 서식을 날짜로)</li>
+<li>여유(+)·지연(−) 일수: <code style="background:#F3F3F3;padding:2px 5px;border-radius:4px;font-family:Consolas,monospace;font-size:14px">=B10-D4</code> → 28</li>
+<li>목표를 맞추려면 필요한 주당 시간: <code style="background:#F3F3F3;padding:2px 5px;border-radius:4px;font-family:Consolas,monospace;font-size:14px">=D2/((B10-B9)/7)</code> → 4.4</li></ul>
+<p>이 예시라면 3월 15일 목표보다 4주쯤 일찍 끝납니다. 결과가 마이너스라면 3월이 아니라 11월 지금, 시간을 늘릴지·목표를 옮길지·범위를 줄일지 결정할 수 있습니다.</p>
+<figure style="margin:20px 0;text-align:center"><img src="Fig03_Deadline_Timeline_KR.png" alt="2026년 11월부터 2027년 4월까지 연방 마감일과 예시 완료일 2027년 2월 15일 타임라인" width="1200" style="max-width:100%;height:auto;border:1px solid #E3E8EF;border-radius:8px"><figcaption style="font-size:13px;color:#666;margin-top:6px">그림 1. 2027년 연방 마감일과 예시 완료일 (예시 값)</figcaption></figure>
+
+<h2 style="color:#1F3A5F;margin-top:32px">3단계: 이 순서대로 하세요 (다시 하는 일이 없어집니다)</h2>
+<figure style="margin:20px 0;text-align:center"><img src="Fig01_Catch_Up_Order_KR.png" alt="명세서 모으기부터 기간 잠금까지 밀린 장부 따라잡기 10단계 순서도" width="1200" style="max-width:100%;height:auto;border:1px solid #E3E8EF;border-radius:8px"><figcaption style="font-size:13px;color:#666;margin-top:6px">그림 2. 밀린 장부 따라잡기 10단계</figcaption></figure>
+<ol><li><b>명세서 모두 모으기</b> — 모든 계좌·모든 달의 은행, 카드, 대출, 카드 정산(payout) 보고서</li>
+<li><b>시작 잔액 확인</b> — 첫 달은 마지막으로 맞춘 잔액, 또는 마지막 신고서의 대차대조표 잔액에서 시작해야 합니다.</li>
+<li><b>한 달씩 입력·가져오기</b> — 가장 오래된 달부터, 계좌 하나씩</li>
+<li><b>입금 분류</b> — 대출금, 내 다른 계좌에서 온 이체, 사장님이 넣은 돈, 환불은 매출이 아닙니다 (그림 3).</li>
+<li><b>경비는 늘 같은 방식으로</b> — 같은 거래처는 같은 계정</li>
+<li><b>내 계좌 간 이체 맞추기</b> — 카드 대금 결제 포함, 이중 계산 방지</li>
+<li><b>대출 상환금 원금·이자 나누기</b> — 대출 명세서 기준</li>
+<li><b>급여·판매세는 보고서로 기록</b> — 은행 순출금만 보지 마세요.</li>
+<li><b>계좌별·월별 대사</b> — 장부 기말 잔액 = 명세서 잔액</li>
+<li><b>월별 손익 검토 후 기간 잠금</b> — 회계 프로그램에서 마감</li></ol>
+<figure style="margin:20px 0;text-align:center"><img src="Fig04_Deposit_Decision_KR.png" alt="은행 입금을 매출·이체·대출·사장 입금·환불로 나누는 판단 흐름도" width="1200" style="max-width:100%;height:auto;border:1px solid #E3E8EF;border-radius:8px"><figcaption style="font-size:13px;color:#666;margin-top:6px">그림 3. 입금이 모두 소득은 아닙니다</figcaption></figure>
+
+<h2 style="color:#1F3A5F;margin-top:32px">4단계: 월별·계좌별로 진행 기록하기</h2>
+<p>세로에 달, 가로에 계좌를 둔 표를 만들고 칸마다 상태를 하나씩 적습니다: <b>Statement in(명세서 확보)</b>, <b>Entered(입력 완료)</b>, <b>Reconciled(대사 완료)</b>. 그 줄의 모든 계좌가 Reconciled여야 '끝난 달'입니다. 모든 칸에 상태를 적었다면 전체 진행률은 <code style="background:#F3F3F3;padding:2px 5px;border-radius:4px;font-family:Consolas,monospace;font-size:14px">=COUNTIF(B2:D13,"Reconciled")/COUNTA(B2:D13)</code> 로 볼 수 있습니다.</p>
+<figure style="margin:20px 0;text-align:center"><img src="Fig02_Before_After_KR.png" alt="정리 전 밀린 달 더미와 정리 후 계좌별·월별 진행표 비교" width="1200" style="max-width:100%;height:auto;border:1px solid #E3E8EF;border-radius:8px"><figcaption style="font-size:13px;color:#666;margin-top:6px">그림 4. 쌓인 달 더미에서 끝낼 수 있는 진행표로</figcaption></figure>
+<p>작업하면서 목록 두 개를 같이 쓰세요. <b>없는 서류</b>(무엇, 어느 달, 요청한 날짜)와 <b>확인 필요 거래</b>(날짜, 금액, 내용, 추정). 정체 모를 거래 하나 때문에 한 달 전체를 멈추지 말고, 적어 두고 다음으로 넘어가세요.</p>
+
+<h2 style="color:#1F3A5F;margin-top:32px">예시 3가지</h2>
+<table style="border-collapse:collapse;width:100%;margin:12px 0;font-size:15px"><thead><tr><th style="background:#1F3A5F;color:#fff;padding:8px;border:1px solid #C8D3E0;text-align:left"></th><th style="background:#1F3A5F;color:#fff;padding:8px;border:1px solid #C8D3E0;text-align:left">A · 1인 서비스업</th><th style="background:#1F3A5F;color:#fff;padding:8px;border:1px solid #C8D3E0;text-align:left">B · 바쁜 식당</th><th style="background:#1F3A5F;color:#fff;padding:8px;border:1px solid #C8D3E0;text-align:left">C · 온라인 쇼핑몰</th></tr></thead><tbody><tr><td style="padding:8px;border:1px solid #C8D3E0">밀린 시점</td><td style="padding:8px;border:1px solid #C8D3E0">2026년 9월 (4개월)</td><td style="padding:8px;border:1px solid #C8D3E0">2026년 1월 (12개월)</td><td style="padding:8px;border:1px solid #C8D3E0">2025년 7월 (18개월)</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">계좌 수 / 월 거래</td><td style="padding:8px;border:1px solid #C8D3E0">2 / 60</td><td style="padding:8px;border:1px solid #C8D3E0">4 / 450</td><td style="padding:8px;border:1px solid #C8D3E0">3 / 220</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">주당 시간</td><td style="padding:8px;border:1px solid #C8D3E0">3</td><td style="padding:8px;border:1px solid #C8D3E0">8</td><td style="padding:8px;border:1px solid #C8D3E0">5</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">총 시간</td><td style="padding:8px;border:1px solid #C8D3E0">12.7</td><td style="padding:8px;border:1px solid #C8D3E0">155</td><td style="padding:8px;border:1px solid #C8D3E0">121</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">완료일 (11/23 시작)</td><td style="padding:8px;border:1px solid #C8D3E0">2026-12-28</td><td style="padding:8px;border:1px solid #C8D3E0">2027-04-12</td><td style="padding:8px;border:1px solid #C8D3E0">2027-05-17</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">목표</td><td style="padding:8px;border:1px solid #C8D3E0">2027-02-01</td><td style="padding:8px;border:1px solid #C8D3E0">2027-03-15</td><td style="padding:8px;border:1px solid #C8D3E0">2027-04-15</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">결과</td><td style="padding:8px;border:1px solid #C8D3E0">35일 여유</td><td style="padding:8px;border:1px solid #C8D3E0">28일 지연 → 주 9.7시간 필요</td><td style="padding:8px;border:1px solid #C8D3E0">32일 지연 → 주 5.9시간 필요</td></tr></tbody></table>
+<p><i>모든 값은 가상 예시입니다.</i> 식당이 가장 흔한 '깜짝' 사례입니다. 월 450건이면 1년에 5,400건입니다. 11월에 155시간이라는 숫자를 보면 3월 마감을 맞출 방법이 보입니다. 온라인 쇼핑몰은 2025년도 밀려 있으니 2025년부터 끝내야 합니다. 그 마감은 이미 지났기 때문입니다.</p>
+
+<h2 style="color:#1F3A5F;margin-top:32px">2026년 장부 관련 연방 마감일</h2>
+<table style="border-collapse:collapse;width:100%;margin:12px 0;font-size:15px"><thead><tr><th style="background:#1F3A5F;color:#fff;padding:8px;border:1px solid #C8D3E0;text-align:left">날짜</th><th style="background:#1F3A5F;color:#fff;padding:8px;border:1px solid #C8D3E0;text-align:left">마감 내용</th></tr></thead><tbody><tr><td style="padding:8px;border:1px solid #C8D3E0">2027-01-15 (금)</td><td style="padding:8px;border:1px solid #C8D3E0">2026년 4분기 예정세 납부 (Form 1040-ES)</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">2027-02-01 (월)</td><td style="padding:8px;border:1px solid #C8D3E0">W-2·Form 1099-NEC 발급·제출 (1월 31일이 일요일)</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">2027-03-15 (월)</td><td style="padding:8px;border:1px solid #C8D3E0">파트너십(Form 1065)·S코퍼레이션(Form 1120-S) 신고</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">2027-04-15 (목)</td><td style="padding:8px;border:1px solid #C8D3E0">개인(Form 1040)·C코퍼레이션(Form 1120) 신고</td></tr><tr><td style="padding:8px;border:1px solid #C8D3E0">2027-09-15 / 10-15</td><td style="padding:8px;border:1px solid #C8D3E0">연장한 사업체 / 개인 신고</td></tr></tbody></table>
+<p>연장은 신고 기한만 늘려 주며, 낼 세금의 납부 기한은 그대로입니다. 2026년 지급분부터 Form 1099-NEC/1099-MISC 보고 기준이 대부분 $2,000으로 올라, 1월 초까지 외주 지급 합계가 필요합니다. 주(州) 마감일은 다를 수 있습니다.</p>
+
+<h2 style="color:#1F3A5F;margin-top:32px">자주 하는 실수</h2>
+<ul><li><b>최근 달부터 시작</b> — 오류가 이미 끝냈다고 생각한 달까지 이어집니다.</li>
+<li><b>모든 입금을 매출로 처리</b> — 이체·대출·사장 입금이 소득을 부풀리고 세금도 늘어납니다.</li>
+<li><b>대출 상환금 전체를 비용으로</b> — 보통 이자만 비용입니다.</li>
+<li><b>급여를 은행 순출금으로만 기록</b> — 총급여와 고용주 세금이 빠집니다.</li>
+<li><b>시작 잔액을 맞추려고 이미 신고한 연도를 수정</b> — 차이 원인을 찾고, 올해에 어떻게 조정할지 세무 담당자에게 확인하세요.</li>
+<li><b>명세서 없이 '끝난 달'로 표시</b> — 잔액을 증명할 수 없습니다.</li></ul>
+
+<h2 style="color:#1F3A5F;margin-top:32px">자주 묻는 질문</h2>
+<h3>밀린 장부를 정리하는 데 얼마나 걸리나요?</h3>
+<p>위 수식으로 계산하세요. 대략 거래 1건당 1.5분, 계좌·월마다 20분입니다. 월 180건·계좌 3개인 사업체라면 1년치에 약 70시간입니다.</p>
+<h3>오래된 달부터 하나요, 최근 달부터 하나요?</h3>
+<p>오래된 달부터입니다. 한 달의 기말 잔액이 다음 달의 시작 잔액이기 때문입니다.</p>
+<h3>은행 명세서가 없으면요?</h3>
+<p>온라인 뱅킹에서 받거나 은행에 다시 보내 달라고 요청하세요. 그동안 거래 내역으로 입력은 하되, 명세서를 받기 전에는 대사 완료로 표시하지 마세요.</p>
+<h3>그냥 연장 신청하면 되지 않나요?</h3>
+<p>연장은 신고 날짜만 늦춰 줍니다. 낼 세금은 원래 날짜까지 내야 하므로 이익을 어느 정도 추정할 수 있는 장부가 여전히 필요합니다.</p>
+
+<h2 style="color:#1F3A5F;margin-top:32px">체크리스트</h2>
+<ul><li>☐ 사업용 계좌 모두 적기 (끝 4자리만)</li><li>☐ 대상 기간 명세서 모두 받기</li><li>☐ 총 시간·완료일·필요 주당 시간 계산</li><li>☐ 달력에 매주 작업 시간 막아 두기</li><li>☐ 오래된 달부터, 계좌 하나씩</li><li>☐ 모든 계좌·월 대사 완료</li><li>☐ 없는 서류·확인 필요 거래 목록 비우기</li><li>☐ 월별 손익 검토 후 기간 잠금</li></ul>
+
+<p style="font-size:13px;color:#666">이 글은 교육용 정보이며 세무·법률·회계 자문이 아닙니다. 시간 계산은 계획용 추정치이며 결과를 보장하지 않습니다. 규정과 날짜는 바뀔 수 있으니 IRS와 주 정부 안내를 확인하세요.</p>
+<p>위 과정을 그대로 해 주는 <b>밀린 장부 따라잡기 플래너 2026</b>은 아래 <a href="#kit" style="color:#1F4E99;font-weight:700;">무료 키트 다운로드</a>에서 가입 없이 무료로 받으실 수 있습니다(엑셀 + PDF 가이드).</p>
+<h3>출처</h3>
+<ul style="font-size:13px"><li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/how-long-should-i-keep-records">IRS: How long should I keep records?</a></li>
+<li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/what-kind-of-records-should-i-keep">IRS: What kind of records should I keep</a></li>
+<li><a href="https://www.irs.gov/publications/p583">IRS Publication 583 (Starting a Business and Keeping Records)</a></li>
+<li><a href="https://www.irs.gov/publications/p509">IRS Publication 509 (Tax Calendars)</a></li>
+<li><a href="https://www.irs.gov/pub/irs-pdf/i1099mec.pdf">IRS Form 1099-MISC·1099-NEC 작성 안내</a></li></ul>

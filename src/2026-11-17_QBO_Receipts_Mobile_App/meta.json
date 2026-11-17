@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-17",
+  "category": "qbo",
+  "slug": {
+    "ko": "qbo-receipts-mobile-app-korean",
+    "en": "qbo-receipts-mobile-app"
+  },
+  "title": {
+    "ko": "영수증 상자를 없애는 법: QBO 모바일 앱으로 영수증 찍어 거래에 바로 연결하기",
+    "en": "Still Keeping a Shoebox of Receipts? Snap, Upload and Match Receipts to Transactions in QuickBooks Online"
+  },
+  "excerpt": {
+    "ko": "QBO Receipts로 영수증을 촬영·업로드·이메일 전달하고, 은행 거래에 Match하거나 새 지출로 기록하는 법과 IRS 보관 기준을 정리합니다.",
+    "en": "Snap, upload or email receipts into QBO, match them to bank transactions, and keep records the way the IRS expects."
+  },
+  "series_no": 9
+}

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-16",
+  "updated": "2026-11-17",
   "notice": {
     "ko": "",
     "en": ""
@@ -64,6 +64,69 @@
   ],
   "cfAnalyticsToken": "9671384662e04a52b70330808aeedc3e",
   "posts": [
+    {
+      "date": "2026-11-17",
+      "category": "accounting",
+      "title": {
+        "ko": "장부가 몇 달 밀렸다면? 세금 마감 전에 따라잡는 순서와 시간 계산법",
+        "en": "Behind on Your Bookkeeping? How to Catch Up Before Tax Season (Step-by-Step Plan With Formulas)"
+      },
+      "excerpt": {
+        "ko": "밀린 장부의 양을 재고 엑셀 수식으로 완료일을 계산한 뒤, 2027년 마감 전에 10단계 순서로 따라잡는 법.",
+        "en": "Measure the backlog, get a finish date with Excel formulas, and catch up in the right order before 2027 deadlines."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/catch-up-bookkeeping-before-tax-season-korean.html",
+        "en": "https://taxnpaypro.com/blog/catch-up-bookkeeping-before-tax-season.html"
+      },
+      "previewUrl": {
+        "ko": "blog/catch-up-bookkeeping-before-tax-season-korean.html",
+        "en": "blog/catch-up-bookkeeping-before-tax-season.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-17",
+      "category": "accounting",
+      "title": {
+        "ko": "QuickBooks에서 여러 회사 재무제표 합치는 법 (Desktop·Online, 관계사 거래 제거까지)",
+        "en": "How to Combine Financial Statements for Multiple Companies in QuickBooks (Desktop and Online)"
+      },
+      "excerpt": {
+        "ko": "회사가 여러 개일 때 QuickBooks 보고서를 엑셀로 합치고, 관계사 임대료·대여금을 빼고, 균형을 점검하는 법.",
+        "en": "Combine the P&L and balance sheet of related companies from QuickBooks, remove intercompany items and check it balances."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/quickbooks-combine-multiple-companies-korean.html",
+        "en": "https://taxnpaypro.com/blog/combine-financial-statements-multiple-companies-quickbooks.html"
+      },
+      "previewUrl": {
+        "ko": "blog/quickbooks-combine-multiple-companies-korean.html",
+        "en": "blog/combine-financial-statements-multiple-companies-quickbooks.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-17",
+      "category": "qbo",
+      "title": {
+        "ko": "영수증 상자를 없애는 법: QBO 모바일 앱으로 영수증 찍어 거래에 바로 연결하기",
+        "en": "Still Keeping a Shoebox of Receipts? Snap, Upload and Match Receipts to Transactions in QuickBooks Online"
+      },
+      "excerpt": {
+        "ko": "QBO Receipts로 영수증을 촬영·업로드·이메일 전달하고, 은행 거래에 Match하거나 새 지출로 기록하는 법과 IRS 보관 기준을 정리합니다.",
+        "en": "Snap, upload or email receipts into QBO, match them to bank transactions, and keep records the way the IRS expects."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-receipts-mobile-app-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-receipts-mobile-app.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-receipts-mobile-app-korean.html",
+        "en": "blog/qbo-receipts-mobile-app.html"
+      },
+      "freeKit": false
+    },
     {
       "date": "2026-11-16",
       "category": "payroll",

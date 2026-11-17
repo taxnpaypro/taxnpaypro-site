@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-17",
+  "category": "accounting",
+  "slug": {
+    "ko": "catch-up-bookkeeping-before-tax-season-korean",
+    "en": "catch-up-bookkeeping-before-tax-season"
+  },
+  "title": {
+    "ko": "장부가 몇 달 밀렸다면? 세금 마감 전에 따라잡는 순서와 시간 계산법",
+    "en": "Behind on Your Bookkeeping? How to Catch Up Before Tax Season (Step-by-Step Plan With Formulas)"
+  },
+  "excerpt": {
+    "ko": "밀린 장부의 양을 재고 엑셀 수식으로 완료일을 계산한 뒤, 2027년 마감 전에 10단계 순서로 따라잡는 법.",
+    "en": "Measure the backlog, get a finish date with Excel formulas, and catch up in the right order before 2027 deadlines."
+  },
+  "downloads": {
+    "kit": "catch-up-bookkeeping-planner-2026",
+    "en": ["Catch_Up_Bookkeeping_Planner_2026_EN.xlsx", "Catch_Up_Bookkeeping_Guide_2026_EN.pdf"],
+    "ko": ["Catch_Up_Bookkeeping_Planner_2026_EN_KR.xlsx", "Catch_Up_Bookkeeping_Guide_2026_EN_KR.pdf"]
+  }
+}
