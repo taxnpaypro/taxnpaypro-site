@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-17",
+  "category": "accounting",
+  "slug": {
+    "ko": "quickbooks-combine-multiple-companies-korean",
+    "en": "combine-financial-statements-multiple-companies-quickbooks"
+  },
+  "title": {
+    "ko": "QuickBooks에서 여러 회사 재무제표 합치는 법 (Desktop·Online, 관계사 거래 제거까지)",
+    "en": "How to Combine Financial Statements for Multiple Companies in QuickBooks (Desktop and Online)"
+  },
+  "excerpt": {
+    "ko": "회사가 여러 개일 때 QuickBooks 보고서를 엑셀로 합치고, 관계사 임대료·대여금을 빼고, 균형을 점검하는 법.",
+    "en": "Combine the P&L and balance sheet of related companies from QuickBooks, remove intercompany items and check it balances."
+  },
+  "downloads": {
+    "kit": "multi-company-combined-financials",
+    "en": ["Multi_Company_Combined_Financials_2026_EN.xlsx", "Combined_Financials_Guide_Checklist_2026_EN.pdf"],
+    "ko": ["Multi_Company_Combined_Financials_2026_EN_KR.xlsx", "Combined_Financials_Guide_Checklist_2026_EN_KR.pdf"]
+  }
+}

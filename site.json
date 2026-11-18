@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-15",
+  "updated": "2026-11-17",
   "notice": {
     "ko": "",
     "en": ""
@@ -64,6 +64,132 @@
   ],
   "cfAnalyticsToken": "9671384662e04a52b70330808aeedc3e",
   "posts": [
+    {
+      "date": "2026-11-17",
+      "category": "accounting",
+      "title": {
+        "ko": "장부가 몇 달 밀렸다면? 세금 마감 전에 따라잡는 순서와 시간 계산법",
+        "en": "Behind on Your Bookkeeping? How to Catch Up Before Tax Season (Step-by-Step Plan With Formulas)"
+      },
+      "excerpt": {
+        "ko": "밀린 장부의 양을 재고 엑셀 수식으로 완료일을 계산한 뒤, 2027년 마감 전에 10단계 순서로 따라잡는 법.",
+        "en": "Measure the backlog, get a finish date with Excel formulas, and catch up in the right order before 2027 deadlines."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/catch-up-bookkeeping-before-tax-season-korean.html",
+        "en": "https://taxnpaypro.com/blog/catch-up-bookkeeping-before-tax-season.html"
+      },
+      "previewUrl": {
+        "ko": "blog/catch-up-bookkeeping-before-tax-season-korean.html",
+        "en": "blog/catch-up-bookkeeping-before-tax-season.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-17",
+      "category": "accounting",
+      "title": {
+        "ko": "QuickBooks에서 여러 회사 재무제표 합치는 법 (Desktop·Online, 관계사 거래 제거까지)",
+        "en": "How to Combine Financial Statements for Multiple Companies in QuickBooks (Desktop and Online)"
+      },
+      "excerpt": {
+        "ko": "회사가 여러 개일 때 QuickBooks 보고서를 엑셀로 합치고, 관계사 임대료·대여금을 빼고, 균형을 점검하는 법.",
+        "en": "Combine the P&L and balance sheet of related companies from QuickBooks, remove intercompany items and check it balances."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/quickbooks-combine-multiple-companies-korean.html",
+        "en": "https://taxnpaypro.com/blog/combine-financial-statements-multiple-companies-quickbooks.html"
+      },
+      "previewUrl": {
+        "ko": "blog/quickbooks-combine-multiple-companies-korean.html",
+        "en": "blog/combine-financial-statements-multiple-companies-quickbooks.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-17",
+      "category": "qbo",
+      "title": {
+        "ko": "영수증 상자를 없애는 법: QBO 모바일 앱으로 영수증 찍어 거래에 바로 연결하기",
+        "en": "Still Keeping a Shoebox of Receipts? Snap, Upload and Match Receipts to Transactions in QuickBooks Online"
+      },
+      "excerpt": {
+        "ko": "QBO Receipts로 영수증을 촬영·업로드·이메일 전달하고, 은행 거래에 Match하거나 새 지출로 기록하는 법과 IRS 보관 기준을 정리합니다.",
+        "en": "Snap, upload or email receipts into QBO, match them to bank transactions, and keep records the way the IRS expects."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-receipts-mobile-app-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-receipts-mobile-app.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-receipts-mobile-app-korean.html",
+        "en": "blog/qbo-receipts-mobile-app.html"
+      },
+      "freeKit": false
+    },
+    {
+      "date": "2026-11-16",
+      "category": "payroll",
+      "title": {
+        "ko": "시급 직원에게 연말 보너스를 줬다면? 추가로 줘야 할 초과근무 수당 직접 계산하는 법",
+        "en": "Paying Year-End Bonuses to Hourly Staff? How to Calculate the Extra Overtime You May Owe"
+      },
+      "excerpt": {
+        "ko": "시급 직원 연말·개근 보너스가 통상임금에 들어가는지 판단하고, 추가로 줘야 할 초과근무 수당을 예시로 직접 계산합니다.",
+        "en": "When a bonus to hourly staff counts toward the regular rate and how to figure the extra overtime you owe."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/bonus-overtime-regular-rate-calculation-korean.html",
+        "en": "https://taxnpaypro.com/blog/bonus-overtime-regular-rate-calculation.html"
+      },
+      "previewUrl": {
+        "ko": "blog/bonus-overtime-regular-rate-calculation-korean.html",
+        "en": "blog/bonus-overtime-regular-rate-calculation.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-16",
+      "category": "qbo",
+      "title": {
+        "ko": "외상 매입이 장부에서 꼬이는 이유: QBO Bill 입력·일괄 지급·Vendor credit·거래처별 관리 정리",
+        "en": "Why Accounts Payable Gets Messy in QuickBooks Online: Enter Bills, Pay Them in Batches, Apply Vendor Credits and Track What You Owe"
+      },
+      "excerpt": {
+        "ko": "QBO에서 Bill 입력, Pay bills 일괄·부분 지급, Vendor credit, 반복 Bill, A/P aging 보고서까지 외상 매입 관리 흐름을 단계별로 정리합니다.",
+        "en": "Enter bills, pay several at once, apply vendor credits, set up recurring bills and read A/P aging in QuickBooks Online."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-bills-accounts-payable-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-bills-accounts-payable.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-bills-accounts-payable-korean.html",
+        "en": "blog/qbo-bills-accounts-payable.html"
+      },
+      "freeKit": false
+    },
+    {
+      "date": "2026-11-16",
+      "category": "accounting",
+      "title": {
+        "ko": "세금 납부, QuickBooks 어디에 기록할까? 대표 인출·부채·비용 구분법",
+        "en": "Where to Record Tax Payments in QuickBooks: Owner Draw, Liability or Expense?"
+      },
+      "excerpt": {
+        "ko": "대표 1040-ES, 941 급여세, 판매세, PTET, 가산세를 QuickBooks 어디에 기록할지 대표 인출·부채·비용으로 구분합니다.",
+        "en": "Owner 1040-ES, 941 deposits, sales tax, PTET and penalties: where each tax payment goes in QuickBooks."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/record-tax-payments-owner-draw-or-expense-ko.html",
+        "en": "https://taxnpaypro.com/blog/record-tax-payments-owner-draw-or-expense.html"
+      },
+      "previewUrl": {
+        "ko": "blog/record-tax-payments-owner-draw-or-expense-ko.html",
+        "en": "blog/record-tax-payments-owner-draw-or-expense.html"
+      },
+      "freeKit": true
+    },
     {
       "date": "2026-11-15",
       "category": "accounting",
