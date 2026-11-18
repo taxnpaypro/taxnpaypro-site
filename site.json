@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-17",
+  "updated": "2026-11-18",
   "notice": {
     "ko": "",
     "en": ""
@@ -64,6 +64,69 @@
   ],
   "cfAnalyticsToken": "9671384662e04a52b70330808aeedc3e",
   "posts": [
+    {
+      "date": "2026-11-18",
+      "category": "tax",
+      "title": {
+        "ko": "2026년 도박 손실 공제: 새 90% 규칙 계산법 (엑셀 공식과 예시 3가지)",
+        "en": "Gambling Losses in 2026: How the New 90% Rule Works (With Formulas and 3 Examples)"
+      },
+      "excerpt": {
+        "ko": "2026년부터 도박 손실은 90%까지만, 상금 한도 안에서 공제됩니다. 계산 공식과 예시 3가지, W-2G 기본을 정리했습니다.",
+        "en": "From 2026 only 90% of gambling losses are deductible, capped at winnings. Formulas, 3 examples and W-2G basics."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/gambling-losses-90-rule-2026-korean.html",
+        "en": "https://taxnpaypro.com/blog/gambling-losses-90-percent-rule-2026.html"
+      },
+      "previewUrl": {
+        "ko": "blog/gambling-losses-90-rule-2026-korean.html",
+        "en": "blog/gambling-losses-90-percent-rule-2026.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-18",
+      "category": "qbo",
+      "title": {
+        "ko": "카드 대금이 비용으로 두 번 잡히고 있다면: QBO 신용카드·대출 기록법 (카드 대금 납부, 원금·이자 나누기)",
+        "en": "Is Your Credit Card Payment Counted as an Expense Twice? How to Record Credit Cards and Loans in QuickBooks Online"
+      },
+      "excerpt": {
+        "ko": "QBO에서 카드 사용·환불·대금 납부와 대출 수령·상환을 부채 계정으로 기록하고, 상환액을 원금과 이자로 나누는 법을 정리합니다.",
+        "en": "Record card purchases, refunds and payments, plus loan proceeds and payments split into principal and interest, in QBO."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-credit-cards-loans-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-credit-cards-loans.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-credit-cards-loans-korean.html",
+        "en": "blog/qbo-credit-cards-loans.html"
+      },
+      "freeKit": false
+    },
+    {
+      "date": "2026-11-18",
+      "category": "accounting",
+      "title": {
+        "ko": "부동산 클로징 정산서, QuickBooks에 어떻게 넣을까? 매입·재융자 분개 따라 하기",
+        "en": "How to Record a Real Estate Closing Statement in QuickBooks (Purchase or Refinance)"
+      },
+      "excerpt": {
+        "ko": "부동산 매입·재융자 클로징 정산서를 토지·건물, 대출 비용, 에스크로까지 나눠 균형 맞는 분개 하나로 기록하는 법.",
+        "en": "Turn a closing statement into one balanced entry: land/building split, loan costs, escrow and prorations."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/record-real-estate-closing-statement-quickbooks-kr.html",
+        "en": "https://taxnpaypro.com/blog/record-real-estate-closing-statement-quickbooks.html"
+      },
+      "previewUrl": {
+        "ko": "blog/record-real-estate-closing-statement-quickbooks-kr.html",
+        "en": "blog/record-real-estate-closing-statement-quickbooks.html"
+      },
+      "freeKit": true
+    },
     {
       "date": "2026-11-17",
       "category": "accounting",

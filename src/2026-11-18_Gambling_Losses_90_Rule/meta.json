@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-18",
+  "category": "tax",
+  "slug": {
+    "ko": "gambling-losses-90-rule-2026-korean",
+    "en": "gambling-losses-90-percent-rule-2026"
+  },
+  "title": {
+    "ko": "2026년 도박 손실 공제: 새 90% 규칙 계산법 (엑셀 공식과 예시 3가지)",
+    "en": "Gambling Losses in 2026: How the New 90% Rule Works (With Formulas and 3 Examples)"
+  },
+  "excerpt": {
+    "ko": "2026년부터 도박 손실은 90%까지만, 상금 한도 안에서 공제됩니다. 계산 공식과 예시 3가지, W-2G 기본을 정리했습니다.",
+    "en": "From 2026 only 90% of gambling losses are deductible, capped at winnings. Formulas, 3 examples and W-2G basics."
+  },
+  "downloads": {
+    "kit": "gambling-winnings-losses-log-2026",
+    "en": [
+      "Gambling_Tax_Guide_2026_EN.pdf",
+      "Gambling_Winnings_Losses_Log_2026_EN.xlsx"
+    ],
+    "ko": [
+      "Gambling_Tax_Guide_2026_EN_KR.pdf",
+      "Gambling_Winnings_Losses_Log_2026_EN_KR.xlsx"
+    ]
+  }
+}

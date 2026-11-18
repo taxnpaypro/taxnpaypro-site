@@ -1,0 +1,138 @@
+<!-- Title: 부동산 클로징 정산서, QuickBooks에 어떻게 넣을까? 매입·재융자 분개 따라 하기 -->
+<p style="font-size:17px;line-height:1.8;">가게 건물이나 임대용 부동산을 샀거나 재융자를 하고 나면, 타이틀 회사에서 두세 장짜리 클로징 정산서(Settlement Statement, Closing Disclosure)를 보내 줍니다. 이걸 장부에 넣을 때 송금한 금액을 통째로 '건물' 계정 하나에 넣는 경우가 많은데, 이렇게 하면 재무상태표, 감가상각, 이자, 대출 잔액이 몇 년 동안 계속 틀어집니다.</p>
+<p style="font-size:17px;line-height:1.8;">이 글에서는 QuickBooks 데스크톱이나 온라인에서 간단한 스프레드시트만으로 직접 따라 할 수 있는 방법을 설명합니다. 대출을 받아 산 경우, 현금으로 산 경우, 현금 인출 재융자까지 다룹니다. 글에 나오는 숫자는 모두 가상의 예시입니다.</p>
+
+<h2 style="color:#1F3A5F;">정산서가 어려운 이유</h2>
+<p style="font-size:17px;line-height:1.8;">정산서 한 장에는 성격이 완전히 다른 금액이 섞여 있습니다. 부동산 가격, 부동산 원가에 들어가는 비용, 대출을 받기 위한 비용, 미리 낸 보험료와 에스크로, 그리고 매도인과 날짜로 나눈 재산세·임대료·HOA 관리비입니다. 각각 장부에서 가는 곳이 다릅니다.</p>
+<ul style="font-size:17px;line-height:1.8;">
+<li><b>부동산 원가</b>(토지 + 건물): 가격에 소유자 타이틀 보험, 등기비, 양도세, 법무비, 측량비 같은 정산 비용을 더합니다(IRS Publication 551).</li>
+<li><b>대출 비용</b>: 포인트, 대출 수수료, 대출기관이 요구한 감정비·신용조회비는 부동산 원가가 아닙니다(IRS Pub 551). 임대 부동산 대출의 포인트는 보통 대출 기간에 걸쳐 나눠 공제합니다(IRS Pub 527).</li>
+<li><b>선납 항목</b>: 보험료와 에스크로 적립금은 쓰일 때까지 자산입니다.</li>
+<li><b>일할 정산</b>: 날짜로 나눈 재산세·임대료·HOA는 비용이나 수입 계정으로 갑니다.</li>
+<li><b>재무상태표 항목</b>: 새 대출, 미리 낸 계약금(earnest money), 넘겨받은 임차인 보증금.</li>
+</ul>
+<p style="font-size:17px;line-height:1.8;">토지는 감가상각하지 않으므로(IRS Pub 527) 토지와 건물을 어떻게 나누느냐가 앞으로의 감가상각 금액에도 영향을 줍니다.</p>
+
+<figure style="margin:24px 0;"><img src="Fig01_Process_KR.png" alt="4단계: 내 쪽 칸만 옮기기, 줄마다 분류, 토지·건물 나누기, 분개 입력과 송금액 정리" style="width:100%;height:auto;"><figcaption style="font-size:14px;color:#555;">그림 1. 이 글에서 쓰는 4단계 방법</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">1단계: 정산서의 내 쪽 칸만 시트에 옮기기</h2>
+<p style="font-size:17px;line-height:1.8;">엑셀이나 구글 시트를 열고 <b>설명</b>, <b>내가 낼 돈(Charge)</b>, <b>내가 받을 돈(Credit)</b>, <b>분류</b> 네 칸을 만듭니다. 매수인(차입자) 칸만 옮기고 매도인 칸은 무시합니다. 마지막의 "Cash due from/to borrower" 합계 줄은 입력하지 마세요. 그 숫자는 나중에 맞춰 볼 기준입니다.</p>
+<ul style="font-size:16px;line-height:1.8;">
+<li>낼 돈 합계: <b>=SUM(B2:B40)</b></li>
+<li>받을 돈 합계: <b>=SUM(C2:C40)</b></li>
+<li>내가 낼 금액: <b>=SUM(B2:B40)-SUM(C2:C40)</b> (음수면 재융자처럼 내가 받는 돈)</li>
+</ul>
+<p style="font-size:17px;line-height:1.8;">이 금액이 은행 명세서의 송금액과 같아야 합니다. 다르면 빠진 줄, 칸을 잘못 넣은 줄, 실수로 입력한 합계 줄이 있는지 보세요.</p>
+
+<h2 style="color:#1F3A5F;">2단계: 줄마다 분류 붙이기</h2>
+<p style="font-size:17px;line-height:1.8;">분류 이름을 짧게 정해 두면 수식으로 쉽게 더할 수 있습니다. 자주 나오는 문구는 아래 표와 같습니다.</p>
+<table style="border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;">
+<tr><th style="background:#1F4E99;color:#fff;padding:8px;text-align:left;">정산서 문구</th><th style="background:#1F4E99;color:#fff;padding:8px;text-align:left;">분류</th><th style="background:#1F4E99;color:#fff;padding:8px;text-align:left;">들어갈 곳</th></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Contract sales price (계약 가격)</td><td style="border:1px solid #ccc;padding:7px;">매입 가격</td><td style="border:1px solid #ccc;padding:7px;">토지 + 건물</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">소유자 타이틀 보험, 등기비, 양도세, 변호사비, 측량비</td><td style="border:1px solid #ccc;padding:7px;">부동산 원가 가산</td><td style="border:1px solid #ccc;padding:7px;">토지 + 건물</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">매도인 체납 세금을 대신 냄</td><td style="border:1px solid #ccc;padding:7px;">부동산 원가 가산</td><td style="border:1px solid #ccc;padding:7px;">토지 + 건물 (Pub 551)</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Seller credit / 수리비 크레딧</td><td style="border:1px solid #ccc;padding:7px;">매도인 크레딧</td><td style="border:1px solid #ccc;padding:7px;">부동산 원가에서 차감</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">포인트, 대출 수수료, 대출용 감정비·신용조회비, 대출자 타이틀 보험</td><td style="border:1px solid #ccc;padding:7px;">대출 비용</td><td style="border:1px solid #ccc;padding:7px;">Loan Costs (기타 자산)</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Prepaid interest (일할 선납 이자)</td><td style="border:1px solid #ccc;padding:7px;">이자</td><td style="border:1px solid #ccc;padding:7px;">이자 비용</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">화재·재산 보험료</td><td style="border:1px solid #ccc;padding:7px;">선납 보험료</td><td style="border:1px solid #ccc;padding:7px;">Prepaid Insurance</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Initial escrow deposit (에스크로 적립)</td><td style="border:1px solid #ccc;padding:7px;">대출 에스크로 적립</td><td style="border:1px solid #ccc;padding:7px;">Escrow Deposits (자산)</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">매도인이 미리 낸 재산세 / 매도인 몫 미납 재산세</td><td style="border:1px solid #ccc;padding:7px;">재산세 일할 정산</td><td style="border:1px solid #ccc;padding:7px;">재산세 비용</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">임대료 일할 정산 / 넘겨받은 보증금</td><td style="border:1px solid #ccc;padding:7px;">임대료 정산 / 임차인 보증금</td><td style="border:1px solid #ccc;padding:7px;">임대 수입 / 보증금 부채</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">대출 금액 / 계약금 / 기존 대출 상환</td><td style="border:1px solid #ccc;padding:7px;">신규 대출 / 계약금 / 기존 대출 상환</td><td style="border:1px solid #ccc;padding:7px;">대출 부채 / 계약금 자산 / 기존 대출 부채</td></tr>
+</table>
+<p style="font-size:17px;line-height:1.8;">재산세는 헷갈리기 쉽습니다. 매도인이 이미 낸 세금 중 내 기간 몫을 매도인에게 돌려주면 보통 내 세금 비용이지 원가가 아닙니다. 반대로 매도인이 내야 할 세금을 내가 대신 내고 돌려받지 않으면 원가(basis)에 들어갑니다(IRS Pub 551). 홈 워런티, 인스펙션, HOA 자본 분담금처럼 애매한 줄은 'Closing Items to Review(검토 항목)' 계정에 두었다가 세무 담당자와 정하면 됩니다.</p>
+
+<figure style="margin:24px 0;"><img src="Fig03_Which_Category_KR.png" alt="분류 결정 흐름: 가격과 타이틀 비용은 부동산 원가, 대출기관 요구 비용은 대출 비용, 보험과 에스크로는 선납 자산, 날짜로 나눈 금액은 일할 정산" style="width:100%;height:auto;"><figcaption style="font-size:14px;color:#555;">그림 2. 줄마다 분류를 정하는 간단한 흐름</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">3단계: 분류별로 더하고 토지·건물 나누기</h2>
+<p style="font-size:17px;line-height:1.8;">D열에 분류를 적었다면, 분류마다 수식 하나로 순액(낼 돈 − 받을 돈)이 나옵니다.</p>
+<ul style="font-size:16px;line-height:1.8;">
+<li><b>=SUMIFS(B:B,D:D,"대출 비용")-SUMIFS(C:C,D:D,"대출 비용")</b></li>
+<li>부동산 원가: '매입 가격' + '부동산 원가 가산' + '매도인 크레딧'에 같은 수식을 씁니다.</li>
+<li>토지 비율: <b>=토지평가액/(토지평가액+건물평가액)</b> — 재산세 고지서의 Land와 Improvement 금액을 씁니다. 시가가 불분명하면 재산세 평가액 비율을 쓸 수 있습니다(IRS Pub 527).</li>
+<li>토지: <b>=ROUND(부동산원가*토지비율,2)</b>, 건물: <b>=부동산원가-토지</b> (둘의 합이 1센트까지 맞도록).</li>
+</ul>
+<p style="font-size:17px;line-height:1.8;">예를 들어 $450,000짜리 듀플렉스를 $337,500 대출로 사고, 원가 가산 비용 $5,170, 매도인 수리 크레딧 $2,500, 재산세 평가액이 토지 $96,000·건물 $304,000이라면 분개는 이렇게 됩니다.</p>
+<table style="border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;">
+<tr><th style="background:#1F4E99;color:#fff;padding:8px;text-align:left;">계정 (예시)</th><th style="background:#1F4E99;color:#fff;padding:8px;text-align:right;">차변</th><th style="background:#1F4E99;color:#fff;padding:8px;text-align:right;">대변</th></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">토지 (24%)</td><td style="border:1px solid #ccc;padding:7px;text-align:right;">108,640.80</td><td style="border:1px solid #ccc;padding:7px;"></td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">건물</td><td style="border:1px solid #ccc;padding:7px;text-align:right;">344,029.20</td><td style="border:1px solid #ccc;padding:7px;"></td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">대출 비용</td><td style="border:1px solid #ccc;padding:7px;text-align:right;">5,170.00</td><td style="border:1px solid #ccc;padding:7px;"></td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">이자 비용</td><td style="border:1px solid #ccc;padding:7px;text-align:right;">936.16</td><td style="border:1px solid #ccc;padding:7px;"></td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">재산세 비용</td><td style="border:1px solid #ccc;padding:7px;text-align:right;">1,284.00</td><td style="border:1px solid #ccc;padding:7px;"></td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">선납 보험료</td><td style="border:1px solid #ccc;padding:7px;text-align:right;">2,160.00</td><td style="border:1px solid #ccc;padding:7px;"></td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">에스크로 적립금</td><td style="border:1px solid #ccc;padding:7px;text-align:right;">1,710.00</td><td style="border:1px solid #ccc;padding:7px;"></td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">임대 수입 (일할 임대료)</td><td style="border:1px solid #ccc;padding:7px;"></td><td style="border:1px solid #ccc;padding:7px;text-align:right;">1,150.00</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">임차인 보증금</td><td style="border:1px solid #ccc;padding:7px;"></td><td style="border:1px solid #ccc;padding:7px;text-align:right;">3,000.00</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">주택담보대출</td><td style="border:1px solid #ccc;padding:7px;"></td><td style="border:1px solid #ccc;padding:7px;text-align:right;">337,500.00</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">계약금</td><td style="border:1px solid #ccc;padding:7px;"></td><td style="border:1px solid #ccc;padding:7px;text-align:right;">10,000.00</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Closing Clearing (송금액)</td><td style="border:1px solid #ccc;padding:7px;"></td><td style="border:1px solid #ccc;padding:7px;text-align:right;">112,280.16</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;"><b>합계</b></td><td style="border:1px solid #ccc;padding:7px;text-align:right;"><b>463,930.16</b></td><td style="border:1px solid #ccc;padding:7px;text-align:right;"><b>463,930.16</b></td></tr>
+</table>
+
+<figure style="margin:24px 0;"><img src="Fig02_Before_After_KR.png" alt="전: 송금액 전체를 건물에 넣음. 후: 토지, 건물, 대출 비용, 선납 항목, 대출, 보증금으로 나눈 균형 분개" style="width:100%;height:auto;"><figcaption style="font-size:14px;color:#555;">그림 3. 같은 송금액의 전후 비교</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">4단계: 분개 하나로 입력하고 송금액 정리하기</h2>
+<p style="font-size:17px;line-height:1.8;">먼저 필요한 계정을 만듭니다. 토지·건물은 고정자산, 대출 비용·에스크로·선납 보험료·계약금·<b>Closing Clearing</b>은 기타 자산, 대출은 장기 부채, 임차인 보증금은 유동 부채입니다.</p>
+<h3 style="color:#1F4E99;">QuickBooks 데스크톱</h3>
+<ol style="font-size:17px;line-height:1.8;">
+<li>Lists &gt; Chart of Accounts &gt; Account &gt; New에서 없는 계정을 추가합니다.</li>
+<li>Company &gt; Make General Journal Entries. 날짜는 클로징 날짜, 번호는 CLOSE-2026-01처럼 붙입니다.</li>
+<li>표의 줄을 하나씩 입력하고 차변과 대변이 같은지 확인한 뒤 Save &amp; Close.</li>
+<li>송금 자체(Write Checks, Make Deposits 또는 Bank Feeds)는 Closing Clearing 계정으로 기록합니다.</li>
+</ol>
+<h3 style="color:#1F4E99;">QuickBooks 온라인</h3>
+<p style="font-size:17px;line-height:1.8;">온라인을 처음 쓰시는 분은 메뉴 위치가 데스크톱과 다르니 아래 순서대로 따라 하세요(2026년 8월 업데이트된 Intuit 도움말 기준).</p>
+<ol style="font-size:17px;line-height:1.8;">
+<li>왼쪽 메뉴 All apps(모든 앱) &gt; Accounting(회계) &gt; Chart of accounts(계정과목표) &gt; New. 토지·건물은 Account type을 <b>Fixed Assets</b>로, 나머지는 <b>Other Assets</b>나 알맞은 자산·부채 유형으로 고릅니다.</li>
+<li>화면 위쪽 <b>+ Create</b>를 누르고 <b>Journal entry</b>를 고릅니다. Journal date를 클로징 날짜로 바꿉니다.</li>
+<li>줄마다 Account를 고르고 금액을 Debits 또는 Credits에 넣습니다. 합계가 같은지 확인하고 Save and close.</li>
+<li>All apps &gt; Accounting &gt; Bank transactions에서 은행에서 내려받은 송금 거래를 찾아 분류(Category)를 Closing Clearing으로 바꾸고 Add(또는 Post)를 누릅니다.</li>
+</ol>
+<p style="font-size:17px;line-height:1.8;">왜 정리 계정을 쓸까요? 송금액은 은행 피드로도 들어옵니다. 분개에서 은행 계정을 바로 쓰고 은행 피드 거래까지 추가하면 현금이 두 번 잡힙니다. 정리 계정을 쓰면 분개는 Closing Clearing 대변, 은행 거래는 Closing Clearing 차변이 되어 잔액이 $0.00으로 끝납니다. 재무상태표로 확인하세요.</p>
+<p style="font-size:17px;line-height:1.8;"><b>재융자일 때:</b> 부동산 원가는 없습니다. 새 대출은 대변, 기존 대출 원금은 기존 대출 계정 차변, 상환 이자는 이자, 대출 수수료는 대출 비용, 내가 받은 현금은 Closing Clearing 차변입니다. 예: 새 대출 $360,000으로 원금 $330,812.20을 갚고 비용을 빼면 $22,649.55를 받게 됩니다.</p>
+
+<h2 style="color:#1F3A5F;">자주 하는 실수</h2>
+<ul style="font-size:17px;line-height:1.8;">
+<li>송금액 전체를 '건물'에 넣어서 대출이 장부에 없음</li>
+<li>포인트와 대출 수수료를 건물 원가에 포함</li>
+<li>몇 주 전에 낸 계약금을 잊음 — 계약금 자산에서 정리해야 하고, 비용으로 넣었다면 먼저 자산으로 옮겨야 함</li>
+<li>토지까지 감가상각하거나 토지·건물을 아예 나누지 않음</li>
+<li>일할 임대료와 보증금을 빠뜨려서 첫 임대료가 수입으로 부풀려짐</li>
+<li>'Cash due' 합계 줄을 한 줄로 입력해 금액이 두 배가 됨</li>
+</ul>
+
+<h2 style="color:#1F3A5F;">자주 묻는 질문</h2>
+<h3 style="color:#1F4E99;">소유자 타이틀 보험은 비용인가요?</h3>
+<p style="font-size:17px;line-height:1.8;">아닙니다. IRS Pub 551은 소유자 타이틀 보험을 부동산 원가(basis)에 포함하는 정산 비용으로 듭니다. 대출자용 타이틀 보험은 대출 비용입니다.</p>
+<h3 style="color:#1F4E99;">토지·건물 비율을 계약서 금액으로 정해도 되나요?</h3>
+<p style="font-size:17px;line-height:1.8;">비율은 시가(FMV)를 따라야 하고, 시가가 불분명하면 재산세 평가액 비율을 쓸 수 있습니다(IRS Pub 527). 감정평가서가 있으면 근거가 될 수 있으니 세무 담당자와 상의하세요.</p>
+<h3 style="color:#1F4E99;">대출 비용은 어떻게 나누나요?</h3>
+<p style="font-size:17px;line-height:1.8;">장부에서는 대출 비용을 대출 개월 수로 나눠 매월 분개하는 방법이 간단합니다(예: $5,170 ÷ 360 = 월 $14.36, 차변 상각비 / 대변 대출 비용). 포인트는 별도 규정이 있어 세금 신고에서는 다른 방법을 쓸 수 있습니다.</p>
+<h3 style="color:#1F4E99;">송금액과 정산서가 안 맞아요.</h3>
+<p style="font-size:17px;line-height:1.8;">빠진 줄, 칸이 바뀐 금액, 매도인 칸에서 옮긴 줄, 두 계좌에서 나눠 보낸 송금이 있는지 보세요. 은행 줄이 여러 개여도 모두 Closing Clearing으로 분류하면 잔액은 $0.00이 됩니다.</p>
+
+<h2 style="color:#1F3A5F;">체크리스트</h2>
+<ul style="font-size:17px;line-height:1.8;list-style:none;padding-left:4px;">
+<li>☐ 정산서의 내 쪽 칸만 옮겼고 합계 줄은 입력하지 않음</li>
+<li>☐ 내가 낼 금액 = 은행 명세서 송금액</li>
+<li>☐ 토지·건물을 재산세 평가액(또는 시가) 비율로 나눔</li>
+<li>☐ 대출 비용·선납 보험료·에스크로를 부동산 원가와 분리</li>
+<li>☐ 분개 날짜 = 클로징 날짜, 차변 = 대변</li>
+<li>☐ 계약금과 Closing Clearing 잔액이 모두 $0.00</li>
+<li>☐ 세무 담당자에게 건물 원가와 사용 개시일 전달</li>
+<li>☐ 정산서 PDF를 분개와 함께 보관</li>
+</ul>
+
+<p style="font-size:17px;line-height:1.8;">위 과정을 그대로 해 주는 <b>부동산 클로징 정산서 → 분개 만들기 2026</b>은 아래 <a href="#kit" style="color:#1F4E99;font-weight:700;">무료 키트 다운로드</a>에서 가입 없이 무료로 받으실 수 있습니다(엑셀 + PDF 가이드).</p>
+
+<p style="font-size:14px;line-height:1.7;color:#555;"><b>안내:</b> 이 글은 교육용 정보이며 세무·법률·회계 자문이 아닙니다. 상황에 따라 처리가 달라질 수 있으니 세무 담당자와 확인하세요. 숫자는 모두 가상의 예시입니다. QuickBooks는 Intuit Inc.의 등록 상표이며, 이 글은 Intuit과 제휴·보증 관계가 없습니다(QuickBooks is a registered trademark of Intuit Inc.; not affiliated with or endorsed by Intuit.).</p>
+
+<h3 style="color:#1F4E99;">출처</h3>
+<ul style="font-size:14px;line-height:1.6;">
+<li><a href="https://www.irs.gov/pub/irs-pdf/p551.pdf" style="color:#1F4E99;">IRS Publication 551 (2025년 12월 개정), Basis of Assets</a></li>
+<li><a href="https://www.irs.gov/publications/p527" style="color:#1F4E99;">IRS Publication 527 (2025), Residential Rental Property</a></li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/accounting-bookkeeping/create-journal-entry-quickbooks-online/L6Bzy9mT9_US_en_US" style="color:#1F4E99;">Intuit: QuickBooks Online 분개 만들기</a></li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/business-assets/set-asset-account-quickbooks-online/L0dQgTiSF_US_en_US" style="color:#1F4E99;">Intuit: QuickBooks Online 자산 계정 만들기</a></li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/banking/categorize-match-online-bank-transactions-online/L1bTafTz3_US_en_US" style="color:#1F4E99;">Intuit: QuickBooks Online 은행 거래 분류</a></li>
+</ul>
