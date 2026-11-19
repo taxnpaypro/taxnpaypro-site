@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-19",
+  "category": "tax",
+  "slug": {
+    "ko": "1031-exchange-deadlines-korean-guide",
+    "en": "1031-exchange-deadlines-45-180-day-rule"
+  },
+  "title": {
+    "ko": "1031 교환 마감일 계산법: 45일·180일 날짜 찾기와 2026년 연말 매도의 '신고 마감일 함정'",
+    "en": "1031 Exchange Deadlines: How to Find Your 45-Day and 180-Day Dates (and the Tax Return Trap for Late-2026 Sales)"
+  },
+  "excerpt": {
+    "ko": "1031 교환 45일·180일 마감일을 직접 계산하고, 연말 매도 시 신고 마감일 때문에 기간이 줄어드는 함정과 과세 부트를 정리합니다.",
+    "en": "Find your 1031 exchange 45-day and 180-day dates, avoid the tax return due-date trap, and estimate taxable boot."
+  },
+  "downloads": {
+    "kit": "1031-exchange-deadline-calculator-2026",
+    "en": [
+      "1031_Exchange_Deadline_Calculator_2026_EN.xlsx",
+      "1031_Exchange_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "1031_Exchange_Deadline_Calculator_2026_EN_KR.xlsx",
+      "1031_Exchange_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}

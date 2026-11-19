@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-19",
+  "category": "qbo",
+  "slug": {
+    "ko": "qbo-fix-mistakes-void-delete-undo-korean",
+    "en": "qbo-fix-mistakes-void-delete-undo"
+  },
+  "title": {
+    "ko": "잘못 입력한 거래, 지워도 될까? QBO에서 Void·Delete·Undo로 안전하게 고치고 Audit log로 확인하는 법",
+    "en": "Made a Mistake in QuickBooks Online? When to Edit, Void, Delete or Undo a Transaction (and How to Check the Audit Log)"
+  },
+  "excerpt": {
+    "ko": "잘못된 거래를 Edit·Void·Delete·Undo·역분개 중 무엇으로 고칠지, Audit log와 Close the books로 확인·보호하는 법을 정리합니다.",
+    "en": "Edit, void, delete, undo or reverse? How to fix wrong QBO transactions safely and trace every change in the audit log."
+  },
+  "series_no": 11
+}

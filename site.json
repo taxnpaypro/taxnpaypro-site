@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-18",
+  "updated": "2026-11-19",
   "notice": {
     "ko": "",
     "en": ""
@@ -64,6 +64,69 @@
   ],
   "cfAnalyticsToken": "9671384662e04a52b70330808aeedc3e",
   "posts": [
+    {
+      "date": "2026-11-19",
+      "category": "tax",
+      "title": {
+        "ko": "1031 교환 마감일 계산법: 45일·180일 날짜 찾기와 2026년 연말 매도의 '신고 마감일 함정'",
+        "en": "1031 Exchange Deadlines: How to Find Your 45-Day and 180-Day Dates (and the Tax Return Trap for Late-2026 Sales)"
+      },
+      "excerpt": {
+        "ko": "1031 교환 45일·180일 마감일을 직접 계산하고, 연말 매도 시 신고 마감일 때문에 기간이 줄어드는 함정과 과세 부트를 정리합니다.",
+        "en": "Find your 1031 exchange 45-day and 180-day dates, avoid the tax return due-date trap, and estimate taxable boot."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/1031-exchange-deadlines-korean-guide.html",
+        "en": "https://taxnpaypro.com/blog/1031-exchange-deadlines-45-180-day-rule.html"
+      },
+      "previewUrl": {
+        "ko": "blog/1031-exchange-deadlines-korean-guide.html",
+        "en": "blog/1031-exchange-deadlines-45-180-day-rule.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-19",
+      "category": "qbo",
+      "title": {
+        "ko": "잘못 입력한 거래, 지워도 될까? QBO에서 Void·Delete·Undo로 안전하게 고치고 Audit log로 확인하는 법",
+        "en": "Made a Mistake in QuickBooks Online? When to Edit, Void, Delete or Undo a Transaction (and How to Check the Audit Log)"
+      },
+      "excerpt": {
+        "ko": "잘못된 거래를 Edit·Void·Delete·Undo·역분개 중 무엇으로 고칠지, Audit log와 Close the books로 확인·보호하는 법을 정리합니다.",
+        "en": "Edit, void, delete, undo or reverse? How to fix wrong QBO transactions safely and trace every change in the audit log."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-fix-mistakes-void-delete-undo-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-fix-mistakes-void-delete-undo.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-fix-mistakes-void-delete-undo-korean.html",
+        "en": "blog/qbo-fix-mistakes-void-delete-undo.html"
+      },
+      "freeKit": false
+    },
+    {
+      "date": "2026-11-19",
+      "category": "tax",
+      "title": {
+        "ko": "퀵북스 순이익과 S코퍼레이션 신고서가 다를 때: 시산표로 Schedule M-1·M-2·L 맞추는 법",
+        "en": "QuickBooks Net Income Doesn't Match Your S-Corp Return? Build Schedules M-1, M-2 and L From Your Trial Balance"
+      },
+      "excerpt": {
+        "ko": "퀵북스 순이익과 1120-S 소득이 다를 때, 시산표 두 개로 Schedule M-1, M-2(AAA), L을 맞추는 방법을 예시로 설명합니다.",
+        "en": "QuickBooks net income doesn't match your 1120-S? Build Schedules M-1, M-2 (AAA) and L from two trial balances."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/s-corp-schedule-m1-m2-quickbooks-korean.html",
+        "en": "https://taxnpaypro.com/blog/s-corp-schedule-m1-m2-from-quickbooks-trial-balance.html"
+      },
+      "previewUrl": {
+        "ko": "blog/s-corp-schedule-m1-m2-quickbooks-korean.html",
+        "en": "blog/s-corp-schedule-m1-m2-from-quickbooks-trial-balance.html"
+      },
+      "freeKit": true
+    },
     {
       "date": "2026-11-18",
       "category": "tax",

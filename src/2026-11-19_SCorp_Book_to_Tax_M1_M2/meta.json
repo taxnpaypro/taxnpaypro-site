@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-19",
+  "category": "tax",
+  "slug": {
+    "ko": "s-corp-schedule-m1-m2-quickbooks-korean",
+    "en": "s-corp-schedule-m1-m2-from-quickbooks-trial-balance"
+  },
+  "title": {
+    "ko": "퀵북스 순이익과 S코퍼레이션 신고서가 다를 때: 시산표로 Schedule M-1·M-2·L 맞추는 법",
+    "en": "QuickBooks Net Income Doesn't Match Your S-Corp Return? Build Schedules M-1, M-2 and L From Your Trial Balance"
+  },
+  "excerpt": {
+    "ko": "퀵북스 순이익과 1120-S 소득이 다를 때, 시산표 두 개로 Schedule M-1, M-2(AAA), L을 맞추는 방법을 예시로 설명합니다.",
+    "en": "QuickBooks net income doesn't match your 1120-S? Build Schedules M-1, M-2 (AAA) and L from two trial balances."
+  },
+  "downloads": {
+    "kit": "s-corp-book-to-tax-bridge-2026",
+    "en": [
+      "S_Corp_Book_to_Tax_Bridge_2026_EN.xlsx",
+      "S_Corp_Book_to_Tax_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "S_Corp_Book_to_Tax_Bridge_2026_EN_KR.xlsx",
+      "S_Corp_Book_to_Tax_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}
