@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-19",
+  "updated": "2026-11-20",
   "notice": {
     "ko": "",
     "en": ""
@@ -64,6 +64,69 @@
   ],
   "cfAnalyticsToken": "9671384662e04a52b70330808aeedc3e",
   "posts": [
+    {
+      "date": "2026-11-20",
+      "category": "accounting",
+      "title": {
+        "ko": "편의점 복권 매출·당첨금·커미션, QuickBooks에 제대로 기록하는 법 (Desktop·Online)",
+        "en": "How to Record Lottery Sales, Prize Payouts and Commissions in QuickBooks (Desktop and Online)"
+      },
+      "excerpt": {
+        "ko": "복권 매출·당첨금·주간 EFT·커미션을 QuickBooks에 부채 계정으로 기록하고 월말 잔액을 맞추는 단계별 방법입니다.",
+        "en": "Record store lottery sales, prize payouts, the weekly EFT and commission in QuickBooks, then prove the balance monthly."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/korean-lottery-sales-quickbooks-guide.html",
+        "en": "https://taxnpaypro.com/blog/record-lottery-sales-commission-quickbooks.html"
+      },
+      "previewUrl": {
+        "ko": "blog/korean-lottery-sales-quickbooks-guide.html",
+        "en": "blog/record-lottery-sales-commission-quickbooks.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-20",
+      "category": "qbo",
+      "title": {
+        "ko": "사장님이 가져간 돈은 비용일까? QBO에서 Owner's draw와 개인 카드로 낸 사업 비용 바르게 기록하는 법",
+        "en": "Is the Money You Take Out a Business Expense? How to Record Owner's Draws and Business Costs Paid Personally in QuickBooks Online"
+      },
+      "excerpt": {
+        "ko": "사장님이 가져간 돈은 Owner's draw로, 개인 카드로 낸 사업 비용은 Owner investments로 기록하는 법과 돌려받는 처리까지 정리합니다.",
+        "en": "Record owner's draws, personal buys on business cards, and costs paid personally in QBO without distorting your P&L."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-owner-draw-personal-expenses-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-owner-draw-personal-expenses.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-owner-draw-personal-expenses-korean.html",
+        "en": "blog/qbo-owner-draw-personal-expenses.html"
+      },
+      "freeKit": false
+    },
+    {
+      "date": "2026-11-20",
+      "category": "tax",
+      "title": {
+        "ko": "2026년에 개업하셨나요? 개업 전 쓴 창업비용 공제하는 법 ($5,000 규칙과 180개월 상각)",
+        "en": "Opened a Business in 2026? How to Deduct Your Start-Up Costs (the $5,000 Rule and the 180-Month Schedule)"
+      },
+      "excerpt": {
+        "ko": "개업 전 비용 중 창업비용을 가려내고 $5,000/$50,000 규칙과 180개월 상각표, Form 4562 작성 순서를 예시로 정리합니다.",
+        "en": "Which pre-opening costs count, how the $5,000/$50,000 rule works, and how to build the 180-month schedule."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/startup-cost-deduction-2026-korean.html",
+        "en": "https://taxnpaypro.com/blog/startup-cost-deduction-2026.html"
+      },
+      "previewUrl": {
+        "ko": "blog/startup-cost-deduction-2026-korean.html",
+        "en": "blog/startup-cost-deduction-2026.html"
+      },
+      "freeKit": true
+    },
     {
       "date": "2026-11-19",
       "category": "tax",
