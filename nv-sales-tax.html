@@ -12,7 +12,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Free Nevada Sales Tax Calculator (POS only)", "url": "https://taxnpaypro.com/nv-sales-tax", "applicationCategory": "FinanceApplication", "operatingSystem": "Any (web browser)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Back out Nevada sales tax from POS sales by county rate, match bank deposits, and get NV return amounts and QuickBooks journal entries in your browser. Nothing is uploaded.", "publisher": {"@type": "Organization", "name": "BIZLEX, INC.", "url": "https://taxnpaypro.com/"}}</script>
 <meta name="description" content="Free Nevada sales tax calculator for restaurants that sell through their own POS: daily sales, bank deposit match, NV return amounts and QuickBooks journal entries. Runs in your browser.">
 <style>
-:root{--navy:#1F3864;--bar:#2F4F8F;--blue:#2E5597;--ink:#262626;--mute:#6b7280;--line:#D0D5DD;
+:root{--navy:#14202E;--bar:#22303F;--blue:#2E5597;--ink:#262626;--mute:#6b7280;--line:#D0D5DD;
 --in:#FFF6DD;--auto:#F3F5F8;--ok:#E2F0D9;--okt:#1E5631;--bad:#F8D7DA;--badt:#8a1c24;--bg:#f7f8fb}
 *{box-sizing:border-box}
 body{margin:0;font-family:Calibri,"Segoe UI",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);background:var(--bg);font-size:15px}
@@ -78,11 +78,25 @@ body.ko .k{color:inherit;font-size:inherit;font-weight:inherit;display:inline}
 .lang button{font:inherit;font-size:14px;border:0;background:transparent;color:#c9d6f0;padding:5px 14px;border-radius:999px;cursor:pointer;min-height:32px}
 .lang button.on{background:#D4A845;color:#14202E;font-weight:700}
 @media print{.lang{display:none}}
+
+/* BIZLEX logo (same as homepage) */
+header .brand{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+.logo .biz{font-family:Manrope,sans-serif;font-weight:800;font-size:24px;letter-spacing:3px;line-height:1}
+.logo .bar{width:4px;height:30px;background:#D4A845}
+.logo .lex{display:flex;flex-direction:column;gap:3px}
+.logo .lex b{font-family:Manrope,sans-serif;font-weight:400;font-size:24px;letter-spacing:3px;line-height:1}
+.logo .lex i{font-style:normal;font-family:Manrope,sans-serif;font-weight:800;font-size:8px;letter-spacing:5px;color:#D4A845}
+header .brand h1{border-left:1px solid rgba(255,255,255,.18);padding-left:22px}
+@media(max-width:700px){header .brand h1{border-left:0;padding-left:0}}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;800&display=swap">
 </head>
 <body class="en">
 <header>
-  <div><h1><span class="e">NV Sales Tax Calculator <span style="font-weight:400">(POS only)</span></span><span class="k">네바다 Sales Tax 계산기 <span style="font-weight:400">(POS 전용)</span></span></h1></div>
+  <div class="brand"><a class="logo" href="/" aria-label="BIZLEX, INC. home"><span class="biz">BIZ</span><span class="bar" aria-hidden="true"></span><span class="lex"><b>LEX</b><i>INC.</i></span></a>
+  <h1><span class="e">NV Sales Tax Calculator <span style="font-weight:400">(POS only)</span></span><span class="k">네바다 Sales Tax 계산기 <span style="font-weight:400">(POS 전용)</span></span></h1></div>
   <div class="hr"><div class="lang" id="lang" role="group" aria-label="Language"><button type="button" data-l="ko">한국어</button><button type="button" data-l="en">English</button></div>
   <a href="/">← taxnpaypro.com</a></div>
 </header>
