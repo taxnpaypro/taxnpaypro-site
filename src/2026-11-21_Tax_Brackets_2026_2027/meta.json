@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-21",
+  "category": "tax",
+  "slug": {
+    "ko": "tax-brackets-2026-2027-korean",
+    "en": "tax-brackets-2026-2027-calculate-federal-tax"
+  },
+  "title": {
+    "ko": "내 연방 소득세, 세율 구간별로 직접 계산하는 법 (2026·2027년): 한계세율과 실효세율 쉽게 구분하기",
+    "en": "How to Calculate Your Federal Income Tax by Bracket (2026 and 2027): Marginal vs. Effective Rate, Step by Step"
+  },
+  "excerpt": {
+    "ko": "2026·2027년 세율표로 연방 소득세를 구간별로 계산하고 한계세율·실효세율, 연말 소득 시기 효과를 확인하는 법을 정리합니다.",
+    "en": "Calculate federal tax by bracket for 2026 and 2027, see marginal vs. effective rate, and test year-end timing."
+  },
+  "downloads": {
+    "kit": "tax-bracket-calculator-2026-2027",
+    "en": [
+      "Tax_Bracket_Calculator_2026_2027_EN.xlsx",
+      "Tax_Bracket_Guide_2026_2027_EN.pdf"
+    ],
+    "ko": [
+      "Tax_Bracket_Calculator_2026_2027_EN_KR.xlsx",
+      "Tax_Bracket_Guide_2026_2027_EN_KR.pdf"
+    ]
+  }
+}

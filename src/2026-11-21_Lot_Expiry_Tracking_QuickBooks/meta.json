@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-21",
+  "category": "quickbooks",
+  "slug": {
+    "ko": "quickbooks-lot-expiry-tracking-korean",
+    "en": "track-lot-numbers-expiration-dates-quickbooks"
+  },
+  "title": {
+    "ko": "QuickBooks에서 로트 번호·유통기한 관리가 안 될 때: 엑셀로 하는 FEFO 재고 관리법",
+    "en": "How to Track Lot Numbers and Expiration Dates When QuickBooks Can't (a FEFO Method for Small Businesses)"
+  },
+  "excerpt": {
+    "ko": "QuickBooks에 없는 로트 번호·유통기한 칸을 엑셀 FEFO 관리표로 대신하고 월말 수량 대조와 폐기 입력까지 정리합니다.",
+    "en": "QuickBooks has no lot or expiry column. Keep a FEFO lot log in Excel, match quantities monthly and record write-offs."
+  },
+  "downloads": {
+    "kit": "lot-expiry-tracker-fefo-2026",
+    "en": [
+      "Lot_Expiry_Tracker_2026_EN.xlsx",
+      "Lot_Expiry_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Lot_Expiry_Tracker_2026_EN_KR.xlsx",
+      "Lot_Expiry_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}
