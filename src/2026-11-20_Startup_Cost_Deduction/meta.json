@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-20",
+  "category": "tax",
+  "slug": {
+    "ko": "startup-cost-deduction-2026-korean",
+    "en": "startup-cost-deduction-2026"
+  },
+  "title": {
+    "ko": "2026년에 개업하셨나요? 개업 전 쓴 창업비용 공제하는 법 ($5,000 규칙과 180개월 상각)",
+    "en": "Opened a Business in 2026? How to Deduct Your Start-Up Costs (the $5,000 Rule and the 180-Month Schedule)"
+  },
+  "excerpt": {
+    "ko": "개업 전 비용 중 창업비용을 가려내고 $5,000/$50,000 규칙과 180개월 상각표, Form 4562 작성 순서를 예시로 정리합니다.",
+    "en": "Which pre-opening costs count, how the $5,000/$50,000 rule works, and how to build the 180-month schedule."
+  },
+  "downloads": {
+    "kit": "startup-cost-deduction-calculator-2026",
+    "en": [
+      "Startup_Cost_Deduction_Calculator_2026_EN.xlsx",
+      "Startup_Cost_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Startup_Cost_Deduction_Calculator_2026_EN_KR.xlsx",
+      "Startup_Cost_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}

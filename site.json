@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-17",
+  "updated": "2026-11-20",
   "notice": {
     "ko": "",
     "en": ""
@@ -64,6 +64,195 @@
   ],
   "cfAnalyticsToken": "9671384662e04a52b70330808aeedc3e",
   "posts": [
+    {
+      "date": "2026-11-20",
+      "category": "accounting",
+      "title": {
+        "ko": "편의점 복권 매출·당첨금·커미션, QuickBooks에 제대로 기록하는 법 (Desktop·Online)",
+        "en": "How to Record Lottery Sales, Prize Payouts and Commissions in QuickBooks (Desktop and Online)"
+      },
+      "excerpt": {
+        "ko": "복권 매출·당첨금·주간 EFT·커미션을 QuickBooks에 부채 계정으로 기록하고 월말 잔액을 맞추는 단계별 방법입니다.",
+        "en": "Record store lottery sales, prize payouts, the weekly EFT and commission in QuickBooks, then prove the balance monthly."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/korean-lottery-sales-quickbooks-guide.html",
+        "en": "https://taxnpaypro.com/blog/record-lottery-sales-commission-quickbooks.html"
+      },
+      "previewUrl": {
+        "ko": "blog/korean-lottery-sales-quickbooks-guide.html",
+        "en": "blog/record-lottery-sales-commission-quickbooks.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-20",
+      "category": "qbo",
+      "title": {
+        "ko": "사장님이 가져간 돈은 비용일까? QBO에서 Owner's draw와 개인 카드로 낸 사업 비용 바르게 기록하는 법",
+        "en": "Is the Money You Take Out a Business Expense? How to Record Owner's Draws and Business Costs Paid Personally in QuickBooks Online"
+      },
+      "excerpt": {
+        "ko": "사장님이 가져간 돈은 Owner's draw로, 개인 카드로 낸 사업 비용은 Owner investments로 기록하는 법과 돌려받는 처리까지 정리합니다.",
+        "en": "Record owner's draws, personal buys on business cards, and costs paid personally in QBO without distorting your P&L."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-owner-draw-personal-expenses-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-owner-draw-personal-expenses.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-owner-draw-personal-expenses-korean.html",
+        "en": "blog/qbo-owner-draw-personal-expenses.html"
+      },
+      "freeKit": false
+    },
+    {
+      "date": "2026-11-20",
+      "category": "tax",
+      "title": {
+        "ko": "2026년에 개업하셨나요? 개업 전 쓴 창업비용 공제하는 법 ($5,000 규칙과 180개월 상각)",
+        "en": "Opened a Business in 2026? How to Deduct Your Start-Up Costs (the $5,000 Rule and the 180-Month Schedule)"
+      },
+      "excerpt": {
+        "ko": "개업 전 비용 중 창업비용을 가려내고 $5,000/$50,000 규칙과 180개월 상각표, Form 4562 작성 순서를 예시로 정리합니다.",
+        "en": "Which pre-opening costs count, how the $5,000/$50,000 rule works, and how to build the 180-month schedule."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/startup-cost-deduction-2026-korean.html",
+        "en": "https://taxnpaypro.com/blog/startup-cost-deduction-2026.html"
+      },
+      "previewUrl": {
+        "ko": "blog/startup-cost-deduction-2026-korean.html",
+        "en": "blog/startup-cost-deduction-2026.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-19",
+      "category": "tax",
+      "title": {
+        "ko": "1031 교환 마감일 계산법: 45일·180일 날짜 찾기와 2026년 연말 매도의 '신고 마감일 함정'",
+        "en": "1031 Exchange Deadlines: How to Find Your 45-Day and 180-Day Dates (and the Tax Return Trap for Late-2026 Sales)"
+      },
+      "excerpt": {
+        "ko": "1031 교환 45일·180일 마감일을 직접 계산하고, 연말 매도 시 신고 마감일 때문에 기간이 줄어드는 함정과 과세 부트를 정리합니다.",
+        "en": "Find your 1031 exchange 45-day and 180-day dates, avoid the tax return due-date trap, and estimate taxable boot."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/1031-exchange-deadlines-korean-guide.html",
+        "en": "https://taxnpaypro.com/blog/1031-exchange-deadlines-45-180-day-rule.html"
+      },
+      "previewUrl": {
+        "ko": "blog/1031-exchange-deadlines-korean-guide.html",
+        "en": "blog/1031-exchange-deadlines-45-180-day-rule.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-19",
+      "category": "qbo",
+      "title": {
+        "ko": "잘못 입력한 거래, 지워도 될까? QBO에서 Void·Delete·Undo로 안전하게 고치고 Audit log로 확인하는 법",
+        "en": "Made a Mistake in QuickBooks Online? When to Edit, Void, Delete or Undo a Transaction (and How to Check the Audit Log)"
+      },
+      "excerpt": {
+        "ko": "잘못된 거래를 Edit·Void·Delete·Undo·역분개 중 무엇으로 고칠지, Audit log와 Close the books로 확인·보호하는 법을 정리합니다.",
+        "en": "Edit, void, delete, undo or reverse? How to fix wrong QBO transactions safely and trace every change in the audit log."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-fix-mistakes-void-delete-undo-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-fix-mistakes-void-delete-undo.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-fix-mistakes-void-delete-undo-korean.html",
+        "en": "blog/qbo-fix-mistakes-void-delete-undo.html"
+      },
+      "freeKit": false
+    },
+    {
+      "date": "2026-11-19",
+      "category": "tax",
+      "title": {
+        "ko": "퀵북스 순이익과 S코퍼레이션 신고서가 다를 때: 시산표로 Schedule M-1·M-2·L 맞추는 법",
+        "en": "QuickBooks Net Income Doesn't Match Your S-Corp Return? Build Schedules M-1, M-2 and L From Your Trial Balance"
+      },
+      "excerpt": {
+        "ko": "퀵북스 순이익과 1120-S 소득이 다를 때, 시산표 두 개로 Schedule M-1, M-2(AAA), L을 맞추는 방법을 예시로 설명합니다.",
+        "en": "QuickBooks net income doesn't match your 1120-S? Build Schedules M-1, M-2 (AAA) and L from two trial balances."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/s-corp-schedule-m1-m2-quickbooks-korean.html",
+        "en": "https://taxnpaypro.com/blog/s-corp-schedule-m1-m2-from-quickbooks-trial-balance.html"
+      },
+      "previewUrl": {
+        "ko": "blog/s-corp-schedule-m1-m2-quickbooks-korean.html",
+        "en": "blog/s-corp-schedule-m1-m2-from-quickbooks-trial-balance.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-18",
+      "category": "tax",
+      "title": {
+        "ko": "2026년 도박 손실 공제: 새 90% 규칙 계산법 (엑셀 공식과 예시 3가지)",
+        "en": "Gambling Losses in 2026: How the New 90% Rule Works (With Formulas and 3 Examples)"
+      },
+      "excerpt": {
+        "ko": "2026년부터 도박 손실은 90%까지만, 상금 한도 안에서 공제됩니다. 계산 공식과 예시 3가지, W-2G 기본을 정리했습니다.",
+        "en": "From 2026 only 90% of gambling losses are deductible, capped at winnings. Formulas, 3 examples and W-2G basics."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/gambling-losses-90-rule-2026-korean.html",
+        "en": "https://taxnpaypro.com/blog/gambling-losses-90-percent-rule-2026.html"
+      },
+      "previewUrl": {
+        "ko": "blog/gambling-losses-90-rule-2026-korean.html",
+        "en": "blog/gambling-losses-90-percent-rule-2026.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-18",
+      "category": "qbo",
+      "title": {
+        "ko": "카드 대금이 비용으로 두 번 잡히고 있다면: QBO 신용카드·대출 기록법 (카드 대금 납부, 원금·이자 나누기)",
+        "en": "Is Your Credit Card Payment Counted as an Expense Twice? How to Record Credit Cards and Loans in QuickBooks Online"
+      },
+      "excerpt": {
+        "ko": "QBO에서 카드 사용·환불·대금 납부와 대출 수령·상환을 부채 계정으로 기록하고, 상환액을 원금과 이자로 나누는 법을 정리합니다.",
+        "en": "Record card purchases, refunds and payments, plus loan proceeds and payments split into principal and interest, in QBO."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-credit-cards-loans-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-credit-cards-loans.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-credit-cards-loans-korean.html",
+        "en": "blog/qbo-credit-cards-loans.html"
+      },
+      "freeKit": false
+    },
+    {
+      "date": "2026-11-18",
+      "category": "accounting",
+      "title": {
+        "ko": "부동산 클로징 정산서, QuickBooks에 어떻게 넣을까? 매입·재융자 분개 따라 하기",
+        "en": "How to Record a Real Estate Closing Statement in QuickBooks (Purchase or Refinance)"
+      },
+      "excerpt": {
+        "ko": "부동산 매입·재융자 클로징 정산서를 토지·건물, 대출 비용, 에스크로까지 나눠 균형 맞는 분개 하나로 기록하는 법.",
+        "en": "Turn a closing statement into one balanced entry: land/building split, loan costs, escrow and prorations."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/record-real-estate-closing-statement-quickbooks-kr.html",
+        "en": "https://taxnpaypro.com/blog/record-real-estate-closing-statement-quickbooks.html"
+      },
+      "previewUrl": {
+        "ko": "blog/record-real-estate-closing-statement-quickbooks-kr.html",
+        "en": "blog/record-real-estate-closing-statement-quickbooks.html"
+      },
+      "freeKit": true
+    },
     {
       "date": "2026-11-17",
       "category": "accounting",

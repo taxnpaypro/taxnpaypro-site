@@ -1,0 +1,138 @@
+<!-- Title: How to Record a Real Estate Closing Statement in QuickBooks (Purchase or Refinance) -->
+<p style="font-size:17px;line-height:1.7;">You bought a building or a rental property, or you refinanced one, and the title company sent a two- or three-page closing statement. Now you have to get it into your books. Most people post the wire amount to a "Building" account and move on, and that one shortcut can leave your balance sheet, depreciation, interest and loan balance wrong for years.</p>
+<p style="font-size:17px;line-height:1.7;">This guide shows a method you can follow by hand in QuickBooks Desktop or QuickBooks Online with a simple spreadsheet. It covers a purchase with a loan, a cash purchase and a cash-out refinance. All numbers in this post are made-up examples.</p>
+
+<h2 style="color:#1F3A5F;">Why the closing statement is hard to post</h2>
+<p style="font-size:17px;line-height:1.7;">A closing statement (a settlement statement, Closing Disclosure or ALTA statement) puts very different things on one page: the price, costs that become part of the property, costs of getting the loan, insurance and escrow paid in advance, and splits of taxes, rent and HOA dues between you and the seller. Each kind goes to a different place in your books:</p>
+<ul style="font-size:17px;line-height:1.7;">
+<li><b>Property cost</b> (land + building): the price plus settlement costs such as owner's title insurance, recording fees, transfer taxes, legal fees and surveys (IRS Publication 551).</li>
+<li><b>Loan costs</b>: points, origination fees, lender-required appraisals and credit reports are not part of the property cost (IRS Pub 551). Points on a rental property loan are generally deducted over the term of the loan (IRS Pub 527).</li>
+<li><b>Prepaid items</b>: insurance premiums and escrow reserves are assets until they are used.</li>
+<li><b>Prorations</b>: taxes, rent and HOA dues split by days go to expense or income accounts.</li>
+<li><b>Balance sheet items</b>: the new loan, earnest money you paid earlier, tenant security deposits you now owe.</li>
+</ul>
+<p style="font-size:17px;line-height:1.7;">Land is never depreciated (IRS Pub 527), so the split between land and building also matters for every future depreciation deduction.</p>
+
+<figure style="margin:24px 0;"><img src="Fig01_Process_EN.png" alt="Four steps: copy your side of the closing statement, tag each line, split land and building, post the entry and clear the wire" style="width:100%;height:auto;"><figcaption style="font-size:14px;color:#555;">Figure 1. The four-step method used in this guide.</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">Step 1: Copy your side of the statement into a sheet</h2>
+<p style="font-size:17px;line-height:1.7;">Open a blank Excel or Google Sheets file with four columns: <b>Description</b>, <b>Charge to you</b>, <b>Credit to you</b> and <b>Category</b>. Copy only the buyer/borrower columns. Skip the seller's columns, and do not type the final "Cash due from/to borrower" line: that is the total you will check against.</p>
+<p style="font-size:17px;line-height:1.7;">Add the totals and the cash due:</p>
+<ul style="font-size:16px;line-height:1.7;">
+<li>Total charges: <b>=SUM(B2:B40)</b></li>
+<li>Total credits: <b>=SUM(C2:C40)</b></li>
+<li>Cash due from you: <b>=SUM(B2:B40)-SUM(C2:C40)</b> (a negative result means cash you receive, as in a cash-out refinance)</li>
+</ul>
+<p style="font-size:17px;line-height:1.7;">Compare the cash due with the wire on your bank statement. If they differ, you have a missing line, a line in the wrong column, or you typed the total line.</p>
+
+<h2 style="color:#1F3A5F;">Step 2: Give every line a category</h2>
+<p style="font-size:17px;line-height:1.7;">Use one short list of categories so that formulas can add them up. The table below shows the most common wording.</p>
+<table style="border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;">
+<tr><th style="background:#1F4E99;color:#fff;padding:8px;text-align:left;">Wording on the statement</th><th style="background:#1F4E99;color:#fff;padding:8px;text-align:left;">Category</th><th style="background:#1F4E99;color:#fff;padding:8px;text-align:left;">Where it goes</th></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Contract sales price</td><td style="border:1px solid #ccc;padding:7px;">Purchase price</td><td style="border:1px solid #ccc;padding:7px;">Land + Building</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Owner's title insurance, deed recording, transfer tax, attorney, survey</td><td style="border:1px solid #ccc;padding:7px;">Cost added to property</td><td style="border:1px solid #ccc;padding:7px;">Land + Building</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Seller's back taxes you agreed to pay</td><td style="border:1px solid #ccc;padding:7px;">Cost added to property</td><td style="border:1px solid #ccc;padding:7px;">Land + Building (Pub 551)</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Seller credit / repair credit</td><td style="border:1px solid #ccc;padding:7px;">Seller credit</td><td style="border:1px solid #ccc;padding:7px;">Lowers property cost</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Points, origination fee, lender appraisal, credit report, lender's title policy</td><td style="border:1px solid #ccc;padding:7px;">Loan cost</td><td style="border:1px solid #ccc;padding:7px;">Loan Costs (other asset)</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Prepaid / per-diem interest</td><td style="border:1px solid #ccc;padding:7px;">Interest</td><td style="border:1px solid #ccc;padding:7px;">Interest Expense</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Hazard insurance premium</td><td style="border:1px solid #ccc;padding:7px;">Insurance prepaid</td><td style="border:1px solid #ccc;padding:7px;">Prepaid Insurance</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Initial escrow deposit / reserves</td><td style="border:1px solid #ccc;padding:7px;">Lender escrow deposit</td><td style="border:1px solid #ccc;padding:7px;">Escrow Deposits (asset)</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">County taxes the seller paid ahead / seller's share of unpaid taxes</td><td style="border:1px solid #ccc;padding:7px;">Property tax proration</td><td style="border:1px solid #ccc;padding:7px;">Property Tax Expense</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Rent proration / security deposits transferred</td><td style="border:1px solid #ccc;padding:7px;">Prorated rent / Tenant deposits</td><td style="border:1px solid #ccc;padding:7px;">Rental Income / Tenant Security Deposits (liability)</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Loan amount / earnest money / payoff of old loan</td><td style="border:1px solid #ccc;padding:7px;">New loan / Earnest money / Old loan payoff</td><td style="border:1px solid #ccc;padding:7px;">Mortgage Payable / Earnest Money Deposit / old Mortgage Payable</td></tr>
+</table>
+<p style="font-size:17px;line-height:1.7;">About taxes: if you reimburse the seller for taxes the seller already paid for your part of the year, that amount is usually your deductible tax, not property cost. If you pay taxes the seller owed and the seller does not reimburse you, they become part of your basis (IRS Pub 551). Anything you are not sure about (a home warranty, an inspection, an HOA capital fee) can go to a "Closing Items to Review" account until your tax preparer decides.</p>
+
+<figure style="margin:24px 0;"><img src="Fig03_Which_Category_EN.png" alt="Decision tree: price and title fees go to property cost, lender-required fees to loan cost, insurance and escrow to prepaid assets, day splits to prorations" style="width:100%;height:auto;"><figcaption style="font-size:14px;color:#555;">Figure 2. A quick decision tree for each line.</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">Step 3: Total each category and split land and building</h2>
+<p style="font-size:17px;line-height:1.7;">With the category in column D, one formula per category gives the net amount (charges minus credits):</p>
+<ul style="font-size:16px;line-height:1.7;">
+<li><b>=SUMIFS(B:B,D:D,"Loan cost")-SUMIFS(C:C,D:D,"Loan cost")</b></li>
+<li>Property cost: the same formula for "Purchase price" + "Cost added to property" + "Seller credit".</li>
+<li>Land share: <b>=LandAssessed/(LandAssessed+BuildingAssessed)</b>, using the land and improvement values on your property tax bill. IRS Pub 527 allows the assessed-value ratio when fair market value is uncertain.</li>
+<li>Land: <b>=ROUND(PropertyCost*LandShare,2)</b>; Building: <b>=PropertyCost-Land</b> (so the two always add up to the cent).</li>
+</ul>
+<p style="font-size:17px;line-height:1.7;">Here is the result for an example duplex bought for $450,000 with a $337,500 loan, $5,170 of costs added to property, a $2,500 seller repair credit and assessed values of $96,000 (land) and $304,000 (building):</p>
+<table style="border-collapse:collapse;width:100%;font-size:15px;margin:16px 0;">
+<tr><th style="background:#1F4E99;color:#fff;padding:8px;text-align:left;">Account (EXAMPLE)</th><th style="background:#1F4E99;color:#fff;padding:8px;text-align:right;">Debit</th><th style="background:#1F4E99;color:#fff;padding:8px;text-align:right;">Credit</th></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Land (24%)</td><td style="border:1px solid #ccc;padding:7px;text-align:right;">108,640.80</td><td style="border:1px solid #ccc;padding:7px;"></td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Building</td><td style="border:1px solid #ccc;padding:7px;text-align:right;">344,029.20</td><td style="border:1px solid #ccc;padding:7px;"></td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Loan Costs</td><td style="border:1px solid #ccc;padding:7px;text-align:right;">5,170.00</td><td style="border:1px solid #ccc;padding:7px;"></td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Interest Expense</td><td style="border:1px solid #ccc;padding:7px;text-align:right;">936.16</td><td style="border:1px solid #ccc;padding:7px;"></td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Property Tax Expense</td><td style="border:1px solid #ccc;padding:7px;text-align:right;">1,284.00</td><td style="border:1px solid #ccc;padding:7px;"></td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Prepaid Insurance</td><td style="border:1px solid #ccc;padding:7px;text-align:right;">2,160.00</td><td style="border:1px solid #ccc;padding:7px;"></td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Escrow Deposits (Lender)</td><td style="border:1px solid #ccc;padding:7px;text-align:right;">1,710.00</td><td style="border:1px solid #ccc;padding:7px;"></td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Rental Income (prorated rent)</td><td style="border:1px solid #ccc;padding:7px;"></td><td style="border:1px solid #ccc;padding:7px;text-align:right;">1,150.00</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Tenant Security Deposits</td><td style="border:1px solid #ccc;padding:7px;"></td><td style="border:1px solid #ccc;padding:7px;text-align:right;">3,000.00</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Mortgage Payable</td><td style="border:1px solid #ccc;padding:7px;"></td><td style="border:1px solid #ccc;padding:7px;text-align:right;">337,500.00</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Earnest Money Deposit</td><td style="border:1px solid #ccc;padding:7px;"></td><td style="border:1px solid #ccc;padding:7px;text-align:right;">10,000.00</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;">Closing Clearing (the wire)</td><td style="border:1px solid #ccc;padding:7px;"></td><td style="border:1px solid #ccc;padding:7px;text-align:right;">112,280.16</td></tr>
+<tr><td style="border:1px solid #ccc;padding:7px;"><b>Totals</b></td><td style="border:1px solid #ccc;padding:7px;text-align:right;"><b>463,930.16</b></td><td style="border:1px solid #ccc;padding:7px;text-align:right;"><b>463,930.16</b></td></tr>
+</table>
+
+<figure style="margin:24px 0;"><img src="Fig02_Before_After_EN.png" alt="Before: the whole wire posted to Building. After: land, building, loan costs, prepaid items, loan and deposits split into a balanced entry" style="width:100%;height:auto;"><figcaption style="font-size:14px;color:#555;">Figure 3. Before and after for the same example wire.</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">Step 4: Post one journal entry and clear the wire</h2>
+<p style="font-size:17px;line-height:1.7;">Create the accounts you need first (Land and Building as fixed assets; Loan Costs, Escrow Deposits, Prepaid Insurance, Earnest Money Deposit and a <b>Closing Clearing</b> account as other assets; Mortgage Payable as a long-term liability; Tenant Security Deposits as a current liability).</p>
+<h3 style="color:#1F4E99;">QuickBooks Desktop</h3>
+<ol style="font-size:17px;line-height:1.7;">
+<li>Lists &gt; Chart of Accounts &gt; Account &gt; New to add missing accounts.</li>
+<li>Company &gt; Make General Journal Entries. Date = closing date; give it an entry number such as CLOSE-2026-01.</li>
+<li>Type each line from your table. Debits must equal credits. Save &amp; Close.</li>
+<li>Record the wire itself (Write Checks, Make Deposits or Bank Feeds) to the Closing Clearing account.</li>
+</ol>
+<h3 style="color:#1F4E99;">QuickBooks Online</h3>
+<ol style="font-size:17px;line-height:1.7;">
+<li>All apps &gt; Accounting &gt; Chart of accounts &gt; New. For Land and Building choose the account type <b>Fixed Assets</b>; for the others choose <b>Other Assets</b> or the matching current asset or liability type.</li>
+<li>Select <b>+ Create</b>, then <b>Journal entry</b>. Set the journal date to the closing date.</li>
+<li>Enter each account on its own line with the amount in Debits or Credits, check that the totals are equal, then Save and close.</li>
+<li>Go to All apps &gt; Accounting &gt; Bank transactions, find the downloaded wire, set its category to Closing Clearing, and select Add (or Post).</li>
+</ol>
+<p style="font-size:17px;line-height:1.7;">Why the clearing account? The wire also arrives through the bank feed. If the journal entry hit the bank account directly and you also added the downloaded wire, the cash would be counted twice. With the clearing account, the journal entry credits Closing Clearing, the bank line debits it, and its balance ends at $0.00. Run a Balance Sheet to confirm.</p>
+<p style="font-size:17px;line-height:1.7;"><b>Refinance:</b> there is no property cost. The new loan is a credit, the old loan principal is a debit to the old Mortgage Payable, payoff interest is interest, lender fees are loan costs, and cash you receive is a debit to Closing Clearing. Example: a $360,000 new loan paying off $330,812.20 of principal gives $22,649.55 cash to you after costs.</p>
+
+<h2 style="color:#1F3A5F;">Common mistakes</h2>
+<ul style="font-size:17px;line-height:1.7;">
+<li>Posting the whole wire to "Building", leaving the loan off the balance sheet.</li>
+<li>Putting points and lender fees into the building cost.</li>
+<li>Forgetting the earnest money: it was paid weeks earlier and must be cleared out of its deposit account (or moved there first if it was booked as an expense).</li>
+<li>Depreciating land, or skipping the land/building split.</li>
+<li>Recording prorated rent and tenant deposits as nothing, so the first rent check looks like extra income.</li>
+<li>Typing the "cash due" total as a line, which doubles everything.</li>
+</ul>
+
+<h2 style="color:#1F3A5F;">FAQ</h2>
+<h3 style="color:#1F4E99;">Is the owner's title insurance an expense?</h3>
+<p style="font-size:17px;line-height:1.7;">No. IRS Pub 551 lists owner's title insurance as a settlement cost you include in the property's basis. The lender's title policy is a loan cost.</p>
+<h3 style="color:#1F4E99;">Can I use the purchase contract to split land and building?</h3>
+<p style="font-size:17px;line-height:1.7;">The split should follow fair market value. If that is uncertain, IRS Pub 527 lets you use the assessed values for real estate tax purposes. An appraisal can also support the split; ask your tax preparer.</p>
+<h3 style="color:#1F4E99;">How do I spread the loan costs?</h3>
+<p style="font-size:17px;line-height:1.7;">A simple bookkeeping approach is a monthly entry: loan costs divided by the number of months in the loan (example: $5,170 ÷ 360 = $14.36 per month), debit Amortization Expense and credit Loan Costs. Points follow special rules, so your tax preparer may use a different method for the tax return.</p>
+<h3 style="color:#1F4E99;">What if my wire does not match the statement?</h3>
+<p style="font-size:17px;line-height:1.7;">Check for a missing line, an amount in the wrong column, a line copied from the seller's side, or funds sent from two accounts. Each bank line can be categorized to Closing Clearing; the account should still end at $0.00.</p>
+
+<h2 style="color:#1F3A5F;">Checklist</h2>
+<ul style="font-size:17px;line-height:1.7;list-style:none;padding-left:4px;">
+<li>☐ Only your side of the statement was copied; the total line was not typed.</li>
+<li>☐ Cash due equals the wire on your bank statement.</li>
+<li>☐ Land and building were split by the assessed-value (or FMV) ratio.</li>
+<li>☐ Loan costs, prepaid insurance and escrow are separate from property cost.</li>
+<li>☐ The journal entry is dated on the closing date and debits equal credits.</li>
+<li>☐ Earnest Money Deposit and Closing Clearing are both $0.00.</li>
+<li>☐ Your tax preparer has the building cost and the date the property was placed in service.</li>
+<li>☐ The closing statement PDF is saved with the entry.</li>
+</ul>
+
+<p style="font-size:17px;line-height:1.7;">You can download the ready-made <b>Closing Statement Journal Entry Builder 2026</b> for free in the <a href="#kit" style="color:#1F4E99;font-weight:700;">Free kit download</a> box below (Excel + PDF guide, no sign-up).</p>
+
+<p style="font-size:14px;line-height:1.6;color:#555;"><b>Disclaimer:</b> This post is educational information, not tax, legal or accounting advice. Rules depend on your facts; confirm the treatment of your property with your tax preparer. All numbers are made-up examples. QuickBooks is a registered trademark of Intuit Inc.; not affiliated with or endorsed by Intuit.</p>
+
+<h3 style="color:#1F4E99;">Sources</h3>
+<ul style="font-size:14px;line-height:1.6;">
+<li><a href="https://www.irs.gov/pub/irs-pdf/p551.pdf" style="color:#1F4E99;">IRS Publication 551 (Rev. December 2025), Basis of Assets</a></li>
+<li><a href="https://www.irs.gov/publications/p527" style="color:#1F4E99;">IRS Publication 527 (2025), Residential Rental Property</a></li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/accounting-bookkeeping/create-journal-entry-quickbooks-online/L6Bzy9mT9_US_en_US" style="color:#1F4E99;">Intuit: Create journal entries in QuickBooks Online</a></li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/business-assets/set-asset-account-quickbooks-online/L0dQgTiSF_US_en_US" style="color:#1F4E99;">Intuit: Set up an asset account in QuickBooks Online</a></li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/banking/categorize-match-online-bank-transactions-online/L1bTafTz3_US_en_US" style="color:#1F4E99;">Intuit: Categorize online bank transactions in QuickBooks Online</a></li>
+</ul>

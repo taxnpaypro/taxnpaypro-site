@@ -1,0 +1,87 @@
+<!-- Title: How to Record Lottery Sales, Prize Payouts and Commissions in QuickBooks (Desktop and Online) -->
+<p>If your store sells state lottery tickets, a big part of the cash in your register is not yours. You collect it for the state lottery, pay small prizes out of the drawer, and once a week the lottery sweeps the net amount from your bank by EFT. Your real income is the commission and the occasional selling bonus.</p>
+<p>The problem shows up in the books. Many convenience stores, liquor stores, gas stations and delis ring lottery into sales, then book the weekly EFT as "cost of goods sold". Sales look much larger than they are, margins look strange, and nobody can reconcile the lottery accounts. Questions about this come up again and again in the QuickBooks Community, usually with only partial answers. This post gives you a complete method you can set up today in QuickBooks Desktop or QuickBooks Online, plus the Excel formulas to check the state's math yourself.</p>
+
+<h2>The idea: lottery money sits in a liability account</h2>
+<p>Treat lottery like money you hold for someone else. Ticket sales increase what you owe the state. Prizes you pay reduce it. The EFT pays it down. The commission the state keeps back for you is the only part that becomes income.</p>
+<figure style='margin:18px 0;text-align:center;'><img src="Fig01_Money_Flow_EN.png" alt='Flowchart: register lottery cash goes into Lottery Due to State, the weekly EFT pays it down and only the commission goes to income' style='max-width:100%;height:auto;border:1px solid #dddddd;' width='1200'><figcaption style='font-size:13px;color:#555555;margin-top:6px;'>Figure 1. How lottery money moves through your books.</figcaption></figure>
+<figure style='margin:18px 0;text-align:center;'><img src="Fig02_Before_After_EN.png" alt='Before and after example table comparing lottery recorded as sales and cost of goods versus lottery recorded in a liability with only commission as income' style='max-width:100%;height:auto;border:1px solid #dddddd;' width='1200'><figcaption style='font-size:13px;color:#555555;margin-top:6px;'>Figure 2. Same week, two ways (example values). Only the right side shows the store's real income.</figcaption></figure>
+
+<h2>Step 1: Set up four accounts and two items (one time)</h2>
+<ul>
+<li><b>Lottery Due to State</b> – Other Current Liability</li>
+<li><b>Lottery Commission Income</b> – Income (or Other Income)</li>
+<li><b>Lottery Fees</b> – Expense (terminal, service or NSF fees)</li>
+<li><b>Lottery Over/Short</b> – Expense (small differences you cannot explain)</li>
+</ul>
+<h3>QuickBooks Desktop</h3>
+<ol>
+<li>Lists &gt; Chart of Accounts &gt; Account &gt; New, and create the four accounts.</li>
+<li>Lists &gt; Item List &gt; Item &gt; New. Choose <b>Other Charge</b>, name it <b>Lottery Sales</b>, and set Account to <b>Lottery Due to State</b>. Check your state's rules on whether it is taxable for sales tax.</li>
+<li>Create a second Other Charge item, <b>Lottery Prizes Paid</b>, also pointing to Lottery Due to State. You will enter it as a negative amount.</li>
+</ol>
+<h3>QuickBooks Online</h3>
+<ol>
+<li>Open the <b>Chart of accounts</b> (Intuit's current menu path is All apps &gt; Accounting &gt; Chart of accounts), select <b>New</b>, and for the liability choose Account Type <b>Other Current Liabilities</b>. Pick the closest Detail Type the list offers.</li>
+<li>Open <b>Products &amp; services</b> (All apps &gt; Sales &amp; Get Paid &gt; Products &amp; services), select <b>New</b> &gt; <b>Service</b>, name it <b>Lottery Sales</b>, and set the <b>Income account</b> drop-down to <b>Lottery Due to State</b>. This is the same method Intuit's own help article uses for retainers and deposits: an item that sends money to a liability instead of income.</li>
+<li>Create <b>Lottery Prizes Paid</b> the same way.</li>
+</ol>
+<p>Menu names in QuickBooks Online change from time to time. If a path looks different, search for "Chart of accounts", "Products and services" or "Journal entry" in the app; the accounting stays the same.</p>
+
+<h2>Step 2: Record lottery every day</h2>
+<p>From the lottery terminal report, write down four numbers: online (draw) sales, instant ticket sales, online prizes paid and instant prizes paid. On your daily sales receipt (or daily summary), add a <b>Lottery Sales</b> line for total sales and a <b>Lottery Prizes Paid</b> line as a negative amount. The day's deposit now matches the drawer, and nothing from lottery lands in income.</p>
+<p>Keep the same four numbers in a sheet. To put each day into its statement week (example: weeks end on Saturday), type this in Excel or Google Sheets, with the date in A2:</p>
+<p style="background:#F2F7FC;border-left:4px solid #2E75B6;padding:12px 14px;margin:14px 0;"><code>=A2+MOD(7-WEEKDAY(A2),7)</code><br>WEEKDAY returns 1 for Sunday and 7 for Saturday. Change the 7 to the weekday number your state's statement week ends on.</p>
+
+<h2>Step 3: Check the weekly statement before you post anything</h2>
+<p>Your lottery's weekly statement nets everything together. Rebuild its math in one row so you can see that the EFT is right:</p>
+<p style="background:#F2F7FC;border-left:4px solid #2E75B6;padding:12px 14px;margin:14px 0;"><code>Expected EFT = Online sales + Instant settled − Online prizes − Instant prizes − Commission − Bonus + Fees</code><br>In a sheet with those values in B2:H2: <code>=B2+C2-D2-E2-F2-G2+H2</code>, then <code>=ROUND(I2-J2,2)</code> for the difference against the actual EFT in I2.</p>
+<table style='border-collapse:collapse;width:100%;margin:12px 0;font-size:15px;'><thead><tr><th style='background:#1F4E79;color:#ffffff;text-align:left;padding:8px;border:1px solid #1F4E79;'>Example week ending 11/14/2026</th><th style='background:#1F4E79;color:#ffffff;text-align:left;padding:8px;border:1px solid #1F4E79;'>Amount</th></tr></thead><tbody><tr><td style='padding:8px;border:1px solid #cccccc;'>Online (draw) sales</td><td style='padding:8px;border:1px solid #cccccc;text-align:right;white-space:nowrap;'>3,985.00</td></tr><tr><td style='padding:8px;border:1px solid #cccccc;'>+ Instant ticket packs settled</td><td style='padding:8px;border:1px solid #cccccc;text-align:right;white-space:nowrap;'>2,100.00</td></tr><tr><td style='padding:8px;border:1px solid #cccccc;'>− Prizes cashed (870.00 online + 1,340.00 instant)</td><td style='padding:8px;border:1px solid #cccccc;text-align:right;white-space:nowrap;'>(2,210.00)</td></tr><tr><td style='padding:8px;border:1px solid #cccccc;'>− Sales commission (304.25) and cashing bonus (22.10)</td><td style='padding:8px;border:1px solid #cccccc;text-align:right;white-space:nowrap;'>(326.35)</td></tr><tr><td style='padding:8px;border:1px solid #cccccc;'>+ Terminal fee</td><td style='padding:8px;border:1px solid #cccccc;text-align:right;white-space:nowrap;'>15.00</td></tr><tr><td style='padding:8px;border:1px solid #cccccc;'><b>= EFT the state sweeps from your bank</b></td><td style='padding:8px;border:1px solid #cccccc;text-align:right;white-space:nowrap;'><b>3,563.65</b></td></tr></tbody></table>
+<p style="font-size:13px;color:#C00000;font-weight:bold;">Example values only. Statement layouts, commission rates and weeks differ by state.</p>
+<p>Then compare the state's online sales and prizes with your daily totals for the same week (a SUMIFS on the week-ending column works well). In the example, the store's log shows 20.00 less online sales than the state and 40.00 more prizes paid. That points to a missed day and a prize paid on a ticket the state did not credit.</p>
+
+<h2>Step 4: Post the weekly entries</h2>
+<table style='border-collapse:collapse;width:100%;margin:12px 0;font-size:15px;'><thead><tr><th style='background:#1F4E79;color:#ffffff;text-align:left;padding:8px;border:1px solid #1F4E79;'>#</th><th style='background:#1F4E79;color:#ffffff;text-align:left;padding:8px;border:1px solid #1F4E79;'>Where in QuickBooks</th><th style='background:#1F4E79;color:#ffffff;text-align:left;padding:8px;border:1px solid #1F4E79;'>Debit</th><th style='background:#1F4E79;color:#ffffff;text-align:left;padding:8px;border:1px solid #1F4E79;'>Credit</th><th style='background:#1F4E79;color:#ffffff;text-align:left;padding:8px;border:1px solid #1F4E79;'>Example</th></tr></thead><tbody><tr><td style='padding:8px;border:1px solid #cccccc;'>1</td><td style='padding:8px;border:1px solid #cccccc;'>Bank feed: the EFT withdrawal</td><td style='padding:8px;border:1px solid #cccccc;'>Lottery Due to State</td><td style='padding:8px;border:1px solid #cccccc;'>Bank</td><td style='padding:8px;border:1px solid #cccccc;text-align:right;white-space:nowrap;'>3,563.65</td></tr><tr><td style='padding:8px;border:1px solid #cccccc;'>2</td><td style='padding:8px;border:1px solid #cccccc;'>Journal entry: commission + bonus</td><td style='padding:8px;border:1px solid #cccccc;'>Lottery Due to State</td><td style='padding:8px;border:1px solid #cccccc;'>Lottery Commission Income</td><td style='padding:8px;border:1px solid #cccccc;text-align:right;white-space:nowrap;'>326.35</td></tr><tr><td style='padding:8px;border:1px solid #cccccc;'>3</td><td style='padding:8px;border:1px solid #cccccc;'>Journal entry: fees (if any)</td><td style='padding:8px;border:1px solid #cccccc;'>Lottery Fees</td><td style='padding:8px;border:1px solid #cccccc;'>Lottery Due to State</td><td style='padding:8px;border:1px solid #cccccc;text-align:right;white-space:nowrap;'>15.00</td></tr></tbody></table>
+<ul>
+<li><b>Desktop:</b> in Bank Feeds, add the EFT line with the account Lottery Due to State; use Company &gt; Make General Journal Entries for 2 and 3.</li>
+<li><b>Online:</b> in Bank transactions, on the For review tab, categorize the EFT withdrawal to Lottery Due to State. For 2 and 3 use + New &gt; Journal entry, fill Account, Debits, Credits and Memo, then Save and close.</li>
+</ul>
+<figure style='margin:18px 0;text-align:center;'><img src="Fig03_Weekly_Timeline_EN.png" alt='Timeline of a lottery week: daily logging, the statement, the EFT sweep, posting entries and the month-end check' style='max-width:100%;height:auto;border:1px solid #dddddd;' width='1200'><figcaption style='font-size:13px;color:#555555;margin-top:6px;'>Figure 3. One lottery week from register to books. Statement and sweep days vary by state.</figcaption></figure>
+
+<h2>Step 5: Prove the balance at month-end</h2>
+<p>After those entries, Lottery Due to State should hold only what has not been billed yet: sales and prizes since the last statement, plus instant tickets sold from packs that have not settled, minus unsold tickets in packs you already paid for.</p>
+<table style='border-collapse:collapse;width:100%;margin:12px 0;font-size:15px;'><thead><tr><th style='background:#1F4E79;color:#ffffff;text-align:left;padding:8px;border:1px solid #1F4E79;'>Expected balance on 11/20/2026</th><th style='background:#1F4E79;color:#ffffff;text-align:left;padding:8px;border:1px solid #1F4E79;'>Amount</th></tr></thead><tbody><tr><td style='padding:8px;border:1px solid #cccccc;'>+ Online sales after the last statement (11/15–11/20)</td><td style='padding:8px;border:1px solid #cccccc;text-align:right;white-space:nowrap;'>3,420.00</td></tr><tr><td style='padding:8px;border:1px solid #cccccc;'>− Prizes paid after the last statement</td><td style='padding:8px;border:1px solid #cccccc;text-align:right;white-space:nowrap;'>(1,665.00)</td></tr><tr><td style='padding:8px;border:1px solid #cccccc;'>+ Instant packs not yet billed: value of tickets sold</td><td style='padding:8px;border:1px solid #cccccc;text-align:right;white-space:nowrap;'>1,013.00</td></tr><tr><td style='padding:8px;border:1px solid #cccccc;'>− Billed packs: tickets still on the shelf</td><td style='padding:8px;border:1px solid #cccccc;text-align:right;white-space:nowrap;'>(44.00)</td></tr><tr><td style='padding:8px;border:1px solid #cccccc;'><b>= Expected Lottery Due to State</b></td><td style='padding:8px;border:1px solid #cccccc;text-align:right;white-space:nowrap;'><b>2,724.00</b></td></tr><tr><td style='padding:8px;border:1px solid #cccccc;'>QuickBooks Balance Sheet shows</td><td style='padding:8px;border:1px solid #cccccc;text-align:right;white-space:nowrap;'>2,699.00</td></tr><tr><td style='padding:8px;border:1px solid #cccccc;'><b>Difference (books show 25.00 less owed)</b></td><td style='padding:8px;border:1px solid #cccccc;text-align:right;white-space:nowrap;'><b>(25.00)</b></td></tr></tbody></table>
+<p style="font-size:13px;color:#C00000;font-weight:bold;">Example values only.</p>
+<p>Find the cause first. Only what is left after that goes to Lottery Over/Short (short: debit Lottery Over/Short, credit Lottery Due to State; over: the reverse).</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Lottery sales coded to income and the EFT coded to cost of goods sold, which overstates both.</li>
+<li>Adding the EFT in the bank feed as a new expense and then recording it again.</li>
+<li>Leaving prizes paid out of the daily entry, so deposits never match.</li>
+<li>Recording the commission twice: once inside the EFT and once as a deposit.</li>
+<li>Paying a prize above your state's retailer limit. Example: the California Lottery says prizes of $599 and under can be claimed at any retailer; larger prizes are claimed with the lottery.</li>
+<li>Never checking the liability balance, so a small weekly error grows all year.</li>
+</ul>
+
+<h2>FAQ</h2>
+<h3>Is lottery commission taxable income?</h3>
+<p>The commission and selling bonuses are paid to your business for selling tickets, so they belong in income. The ticket sales and prizes are the lottery's money. Ask your tax preparer how they should appear on your return.</p>
+<h3>Do lottery sales go on my sales tax return?</h3>
+<p>Rules differ by state. Ask your state tax agency or your tax preparer before you include or exclude lottery from gross sales.</p>
+<h3>What if I use a separate bank account for lottery?</h3>
+<p>Use the same accounts. Moving money between your own bank accounts is a transfer, not lottery activity.</p>
+<h3>What about the week that crosses December 31?</h3>
+<p>Leave it in Lottery Due to State at year-end. Run the balance check on 12/31 and count unsold instant tickets that day.</p>
+
+<h2>Checklist</h2>
+<ul>
+<li>Four accounts and two items created, names kept the same.</li>
+<li>Daily: four lottery numbers logged; sales receipt uses Lottery Sales (+) and Lottery Prizes Paid (−).</li>
+<li>Weekly: statement math rebuilt, EFT difference 0.00, store log compared.</li>
+<li>Weekly: EFT categorized to Lottery Due to State; commission and fee entries posted.</li>
+<li>Month-end: balance proven; over/short entry only for what is left.</li>
+</ul>
+<p>You can download the ready-made <b>Lottery Sales &amp; Commission Recording Kit 2026</b> for free in the <a href="#kit" style="color:#1F4E99;font-weight:700;">Free kit download</a> box below (Excel + PDF guide, no sign-up).</p>
+<p style="font-size:13px;color:#555555;">This post is educational and is not tax, legal or accounting advice. Your state lottery's contract, statements and rules control; ask a qualified professional about your own situation. All numbers are examples. QuickBooks is a registered trademark of Intuit Inc.; not affiliated with or endorsed by Intuit.</p>
+<h3>Sources (accessed November 2026)</h3><ul><li><a href='https://quickbooks.intuit.com/learn-support/en-us/help-article/service-items/record-retainer-deposit/L6B5RsY6l_US_en_US' style='color:#1F4E79;'>Intuit QuickBooks help: Record a retainer or deposit (service item with a liability income account)</a></li><li><a href='https://quickbooks.intuit.com/learn-support/en-global/help-article/accounting-bookkeeping/create-journal-entry-quickbooks-online/L6Bzy9mT9_ROW_en' style='color:#1F4E79;'>Intuit QuickBooks help: Create journal entries in QuickBooks Online</a></li><li><a href='https://quickbooks.intuit.com/learn-support/en-us/help-article/bank-transactions/match-transactions-quickbooks-online/L0MF3Fn6y_US_en_US' style='color:#1F4E79;'>Intuit QuickBooks help: Match transactions in QuickBooks Online</a></li><li><a href='https://www.calottery.com/claim-a-prize' style='color:#1F4E79;'>California Lottery: Claim a Prize (retailer limit $599 and under)</a></li><li><a href='https://quickbooks.intuit.com/learn-support/en-us/taxes/lottery-best-practices/01/1324953' style='color:#1F4E79;'>QuickBooks Community: Lottery best practices</a></li><li><a href='https://quickbooks.intuit.com/learn-support/en-us/other-questions/lottery-sales-winner-payouts/00/1528586' style='color:#1F4E79;'>QuickBooks Community: Lottery sales & winner payouts</a></li><li><a href='https://quickbooks.intuit.com/learn-support/en-us/talk-about-your-business/proper-way-to-record-lotto-sales-commission-and-payouts/00/241549' style='color:#1F4E79;'>QuickBooks Community: Proper way to record lotto sales, commission and payouts</a></li></ul>

@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-20",
+  "category": "accounting",
+  "slug": {
+    "ko": "korean-lottery-sales-quickbooks-guide",
+    "en": "record-lottery-sales-commission-quickbooks"
+  },
+  "title": {
+    "ko": "편의점 복권 매출·당첨금·커미션, QuickBooks에 제대로 기록하는 법 (Desktop·Online)",
+    "en": "How to Record Lottery Sales, Prize Payouts and Commissions in QuickBooks (Desktop and Online)"
+  },
+  "excerpt": {
+    "ko": "복권 매출·당첨금·주간 EFT·커미션을 QuickBooks에 부채 계정으로 기록하고 월말 잔액을 맞추는 단계별 방법입니다.",
+    "en": "Record store lottery sales, prize payouts, the weekly EFT and commission in QuickBooks, then prove the balance monthly."
+  },
+  "downloads": {
+    "kit": "lottery-sales-commission-kit-2026",
+    "en": [
+      "Lottery_Settlement_Kit_2026_EN.xlsx",
+      "Lottery_Settlement_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Lottery_Settlement_Kit_2026_EN_KR.xlsx",
+      "Lottery_Settlement_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}

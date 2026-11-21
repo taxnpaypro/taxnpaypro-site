@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-18",
+  "category": "accounting",
+  "slug": {
+    "ko": "record-real-estate-closing-statement-quickbooks-kr",
+    "en": "record-real-estate-closing-statement-quickbooks"
+  },
+  "title": {
+    "ko": "부동산 클로징 정산서, QuickBooks에 어떻게 넣을까? 매입·재융자 분개 따라 하기",
+    "en": "How to Record a Real Estate Closing Statement in QuickBooks (Purchase or Refinance)"
+  },
+  "excerpt": {
+    "ko": "부동산 매입·재융자 클로징 정산서를 토지·건물, 대출 비용, 에스크로까지 나눠 균형 맞는 분개 하나로 기록하는 법.",
+    "en": "Turn a closing statement into one balanced entry: land/building split, loan costs, escrow and prorations."
+  },
+  "downloads": {
+    "kit": "closing-statement-je-builder-2026",
+    "en": [
+      "Closing_Statement_Guide_Checklist_2026_EN.pdf",
+      "Closing_Statement_JE_Builder_2026_EN.xlsx"
+    ],
+    "ko": [
+      "Closing_Statement_Guide_Checklist_2026_EN_KR.pdf",
+      "Closing_Statement_JE_Builder_2026_EN_KR.xlsx"
+    ]
+  }
+}
