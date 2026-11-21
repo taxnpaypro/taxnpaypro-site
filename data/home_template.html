@@ -199,6 +199,7 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;c
     <nav aria-label="Main">
       <a href="#blog" data-en="Blog">블로그</a>
       <a href="#tool" data-en="QBO converter">QBO 변환기</a>
+      <a href="#nvtax" data-en="NV sales tax">NV 판매세 계산기</a>
       <a href="#about" data-en="About">소개</a>
       <a href="#contact" data-en="Contact">문의</a>
     </nav>
@@ -297,6 +298,25 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;c
         <details><summary data-en="Does it work for credit cards and QFX files?">신용카드와 QFX 파일도 되나요?</summary><p data-en="Yes. Choose Credit Card as the account type. QFX, OFX and QBO files that failed to import can be rebuilt with their original IDs.">네. 계좌 종류에서 Credit Card를 고르세요. 가져오기에 실패한 QFX·OFX·QBO 파일도 원래 거래 ID를 유지한 채 다시 만듭니다.</p></details>
         <details><summary data-en="Do I need this for QuickBooks Online?">QuickBooks Online에도 필요한가요?</summary><p data-en="No. QuickBooks Online accepts CSV uploads directly. This tool is for QuickBooks Desktop.">아닙니다. QuickBooks Online은 CSV를 바로 올릴 수 있습니다. 이 도구는 QuickBooks Desktop용입니다.</p></details>
         <details><summary data-en="Is it free?">무료인가요?</summary><p data-en="Yes, free to use. Always back up your company file before importing.">네, 무료입니다. 가져오기 전에는 꼭 회사 파일을 백업하세요.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s g" id="nvtax">
+  <div class="in">
+    <div>
+      <span class="tag" data-en="Free tool">무료 도구</span>
+      <h2 data-en="Nevada sales tax calculator <em>for POS sales</em>">네바다 Sales Tax 계산기 <em>(POS 전용)</em></h2>
+      <p class="lead" data-en="Enter or paste daily cash, credit and credit tips from your POS, paste the month's bank deposits, and get the NV Sales and Use Tax return amounts and the QuickBooks journal entries. All 17 Nevada county rates are built in.">POS의 일별 현금·카드·카드 팁을 입력하거나 붙여넣고, 그 달 은행 입금을 붙여넣으면 NV Sales and Use Tax 신고 금액과 QuickBooks 분개가 나옵니다. 네바다 17개 카운티 세율이 들어 있습니다.</p>
+      <ul class="checks">
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l6 2.5V8c0 3.3-2.6 6.2-6 7-3.4-.8-6-3.7-6-7V3.5L8 1z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span data-en="Nothing is uploaded. Runs in your browser">파일이 전송되지 않음. 브라우저 안에서만 처리</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Flags POS days that don't match the bank">은행 입금과 다른 POS 날짜를 빨간색으로 표시</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Tip and sales tax journal entries with a QuickBooks book check">팁·Sales Tax 분개와 QuickBooks 장부 대조</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="English or Korean screen">영어·한글 화면 선택</span></li>
+      </ul>
+      <div class="cta">
+        <a class="btn gold" id="lnk-nvtax" href="/nv-sales-tax" data-en="Open the calculator">계산기 열기</a>
       </div>
     </div>
   </div>

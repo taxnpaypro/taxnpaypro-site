@@ -286,7 +286,7 @@ def main():
         html.escape(p['url']['ko']), p['date'], html.escape(p['title']['ko']), html.escape(p['excerpt']['ko']), html.escape(CATN[p['category']]['ko'])) for p in posts[:8])
     open(os.path.join(R, 'index.html'), 'w', encoding='utf-8').write(home.replace('__FALLBACK__', fb).replace('__HOME_POSTS__', hp))
     # sitemap.xml + robots.txt for Google Search Console
-    urls = [('https://%s/' % DOMAIN, site['updated']), ('https://%s/csv-to-qbo' % DOMAIN, site['updated']), ('https://%s/blog/' % DOMAIN, site['updated']), ('https://%s/privacy.html' % DOMAIN, '2026-11-13')]
+    urls = [('https://%s/' % DOMAIN, site['updated']), ('https://%s/csv-to-qbo' % DOMAIN, site['updated']), ('https://%s/nv-sales-tax' % DOMAIN, site['updated']), ('https://%s/blog/' % DOMAIN, site['updated']), ('https://%s/privacy.html' % DOMAIN, '2026-11-13')]
     for p in posts:
         for lang in ('ko', 'en'): urls.append((p['url'][lang], p['date']))
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(
@@ -297,7 +297,7 @@ def main():
     tok = (base.get('cfAnalyticsToken') or '').strip()
     if tok and not re.fullmatch(r'[0-9a-f]{32}', tok): print('ERRORS:\n - cfAnalyticsToken must be 32 hex characters'); sys.exit(1)
     snip = ("<!--cfwa--><script type=\"module\" src=\"https://static.cloudflareinsights.com/beacon.min.js\" data-cf-beacon='{\"token\": \"%s\"}'></script><!--/cfwa-->" % tok) if tok else ''
-    pages = [os.path.join(R, 'index.html'), os.path.join(R, 'csv-to-qbo.html'), os.path.join(R, 'privacy.html')] + glob.glob(os.path.join(B, '*.html'))
+    pages = [os.path.join(R, 'index.html'), os.path.join(R, 'csv-to-qbo.html'), os.path.join(R, 'nv-sales-tax.html'), os.path.join(R, 'privacy.html')] + glob.glob(os.path.join(B, '*.html'))
     for f in pages:
         s = open(f, encoding='utf-8').read()
         s = re.sub(r'<!--cfwa-->.*?<!--/cfwa-->', '', s, flags=re.S)

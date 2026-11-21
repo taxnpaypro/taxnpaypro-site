@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Nevada Sales Tax Calculator for POS Sales · NV 판매세 계산기</title>
+<meta name="description" content="Free Nevada sales tax calculator for POS sales: enter daily cash, credit and tips, match bank deposits, get the NV return amounts (all 17 county rates) and QuickBooks journal entries. Runs in your browser. 네바다 Sales Tax 무료 계산기.">
+<link rel="canonical" href="https://taxnpaypro.com/nv-sales-tax">
+<meta property="og:type" content="website"><meta property="og:url" content="https://taxnpaypro.com/nv-sales-tax">
+<meta property="og:title" content="Free Nevada Sales Tax Calculator (POS only)">
+<meta property="og:description" content="Daily POS sales → bank deposit match → NV Sales and Use Tax return amounts and QuickBooks journal entries. Free, nothing uploaded.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Free Nevada Sales Tax Calculator (POS only)", "url": "https://taxnpaypro.com/nv-sales-tax", "applicationCategory": "FinanceApplication", "operatingSystem": "Any (web browser)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Back out Nevada sales tax from POS sales by county rate, match bank deposits, and get NV return amounts and QuickBooks journal entries in your browser. Nothing is uploaded.", "publisher": {"@type": "Organization", "name": "BIZLEX, INC.", "url": "https://taxnpaypro.com/"}}</script>
+<meta name="description" content="Free Nevada sales tax calculator for restaurants that sell through their own POS: daily sales, bank deposit match, NV return amounts and QuickBooks journal entries. Runs in your browser.">
+<style>
+:root{--navy:#1F3864;--bar:#2F4F8F;--blue:#2E5597;--ink:#262626;--mute:#6b7280;--line:#D0D5DD;
+--in:#FFF6DD;--auto:#F3F5F8;--ok:#E2F0D9;--okt:#1E5631;--bad:#F8D7DA;--badt:#8a1c24;--bg:#f7f8fb}
+*{box-sizing:border-box}
+body{margin:0;font-family:Calibri,"Segoe UI",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);background:var(--bg);font-size:15px}
+header{background:var(--navy);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+header h1{margin:0;font-size:20px}
+header .ko{color:#c9d6f0;font-size:15px;font-weight:600}
+header a{color:#c9d6f0;font-size:13px}
+main{max-width:1180px;margin:0 auto;padding:16px}
+.steps{background:var(--bar);color:#fff;border-radius:8px;padding:10px 14px;font-weight:600;font-size:14px}
+.steps small{display:block;font-weight:400;color:#d9e2f3;margin-top:3px}
+nav.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 10px}
+nav.tabs button{border:1px solid var(--line);background:#fff;padding:8px 14px;border-radius:8px;cursor:pointer;font-size:14px;color:var(--navy);font-weight:600}
+nav.tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+nav.tabs button .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-left:6px;background:#bbb;vertical-align:middle}
+nav.tabs button .dot.ok{background:#3c9a4a}nav.tabs button .dot.bad{background:#c0392b}
+section{display:none;background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px}
+section.on{display:block}
+h2{margin:0 0 2px;color:var(--navy);font-size:18px}
+h2+.ko{color:var(--blue);font-size:14px;margin-bottom:12px;font-weight:600}
+h3{color:var(--navy);font-size:15px;margin:18px 0 6px}
+.k{color:var(--mute);font-size:12px;font-weight:400}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+label.f{display:flex;flex-direction:column;gap:4px;font-weight:600;font-size:14px}
+input,select,textarea{font:inherit;padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:var(--in);color:var(--navy)}
+input[readonly]{background:var(--auto);color:var(--ink)}
+textarea{width:100%;min-height:90px;border:2px dashed var(--blue);background:#fff;font-family:Consolas,monospace;font-size:13px}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th{background:var(--navy);color:#fff;font-weight:600;padding:7px 8px;text-align:center;font-size:13px;white-space:nowrap}
+th .k{display:block;color:#c9d6f0;font-size:11px}
+td{border-bottom:1px solid #e8ebf0;padding:4px 6px;white-space:nowrap}
+td.d{text-align:center}td.n{text-align:right;font-variant-numeric:tabular-nums}td.c{text-align:center}
+td input{width:100%;text-align:right;padding:5px 7px}
+td select{width:100%}
+tr.sum td{font-weight:700;border-top:2px solid var(--navy);background:#fafbfd}
+tr.bad td{background:var(--bad)}
+.pill{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700}
+.pill.ok{background:var(--ok);color:var(--okt)}.pill.bad{background:var(--bad);color:var(--badt)}.pill.mid{background:#e9eef7;color:var(--navy)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:8px 0 4px}
+.card{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff}
+.card .t{font-size:13px;color:var(--mute)}.card .v{font-size:22px;font-weight:700;color:var(--navy);margin-top:2px}
+.card.res{background:var(--ok)}.card.res .v{color:var(--okt)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:820px){.two{grid-template-columns:1fr}}
+.kv td:first-child{font-weight:600}.kv td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.kv{min-width:0}
+.res td:last-child{background:var(--ok);color:var(--okt);font-weight:700}
+.btn{border:0;background:var(--navy);color:#fff;padding:8px 14px;border-radius:6px;cursor:pointer;font:inherit;font-weight:600}
+.btn.l{background:#fff;color:var(--navy);border:1px solid var(--navy)}
+.btn.warn{background:#c0392b!important;color:#fff!important;border-color:#c0392b!important}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.note{font-size:13px;color:var(--mute);margin:6px 0}
+footer{max-width:1180px;margin:0 auto 30px;padding:0 16px;font-size:12px;color:var(--mute)}
+@media print{nav.tabs,.row,header a,textarea{display:none}section{display:block!important;page-break-inside:avoid}}
+
+/* language toggle */
+body.en .k{display:none!important}
+body.ko .e{display:none!important}
+body.ko .k{color:inherit;font-size:inherit;font-weight:inherit;display:inline}
+.sub{color:var(--blue);font-size:14px;margin:0 0 12px;font-weight:600}
+.hr{display:flex;align-items:center;gap:14px}
+.lang{display:flex;border:1px solid #c9d6f0;border-radius:8px;overflow:hidden}
+.lang button{background:transparent;color:#c9d6f0;border:0;padding:6px 14px;font-size:14px;font-weight:600;cursor:pointer}
+.lang button.on{background:#fff;color:var(--navy)}
+@media print{.lang{display:none}}
+</style>
+</head>
+<body class="en">
+<header>
+  <div><h1><span class="e">NV Sales Tax Calculator <span style="font-weight:400">(POS only)</span></span><span class="k">네바다 Sales Tax 계산기 <span style="font-weight:400">(POS 전용)</span></span></h1></div>
+  <div class="hr"><div class="lang" id="lang"><button data-l="en">English</button><button data-l="ko">한글</button></div>
+  <a href="/">← taxnpaypro.com</a></div>
+</header>
+<main>
+<div class="steps"><span class="e">① Settings → ② POS daily sales → ③ Paste bank deposits → ④ Check results &amp; JE</span><span class="k">① 설정 → ② POS 일별 매출 입력 → ③ 은행 입금 붙여넣기 → ④ 결과·분개 확인</span>
+<small><span class="e">All calculations run in your browser; nothing is uploaded.</span><span class="k">모든 계산은 브라우저 안에서만 처리되며 서버로 전송되지 않습니다.</span></small></div>
+
+<nav class="tabs" id="tabs">
+  <button data-t="set" class="on"><span class="e">1. Settings</span><span class="k">1. 설정</span></button>
+  <button data-t="pos"><span class="e">2. POS</span><span class="k">2. POS 매출</span><span class="dot" id="dotPos"></span></button>
+  <button data-t="rec"><span class="e">3. Bank Recon</span><span class="k">3. 은행 대조</span><span class="dot" id="dotRec"></span></button>
+  <button data-t="ret"><span class="e">4. NV Return</span><span class="k">4. 신고 금액</span></button>
+  <button data-t="je"><span class="e">5. JE &amp; Book check</span><span class="k">5. 분개·장부 대조</span></button>
+</nav>
+
+<!-- 1. SETTINGS -->
+<section id="set" class="on">
+  <h2><span class="e">Settings</span><span class="k">설정</span></h2>
+  <div class="grid">
+    <label class="f"><span class="e">Client</span><span class="k">클라이언트</span><input id="client"></label>
+    <label class="f"><span class="e">Month</span><span class="k">신고 월</span><input id="month" type="month"></label>
+    <label class="f"><span class="e">County</span><span class="k">카운티</span><select id="county"></select></label>
+    <label class="f"><span class="e">Sales tax rate (auto by county)</span><span class="k">세율 (카운티별 자동)</span><input id="rate" readonly></label>
+    <label class="f"><span class="e">Collection allowance % (0.25% if filed and paid on time)</span><span class="k">징수 수수료 % (기한 내 신고·납부 시 0.25%)</span><input id="coll" type="number" step="0.01" value="0.25"></label>
+    <label class="f"><span class="e">Other exempt sales (0 if none)</span><span class="k">기타 면세 매출 (없으면 0)</span><input id="exempt" type="number" step="0.01" value="0"></label>
+  </div>
+  <h3><span class="e">Checks</span><span class="k">확인</span></h3>
+  <div class="cards" id="checkCards"></div>
+  <div class="cards">
+    <div class="card res"><div class="t"><span class="e">Sales tax to file</span><span class="k">신고할 Sales Tax</span></div><div class="v" id="cTax">0.00</div></div>
+    <div class="card res"><div class="t"><span class="e">Amount due</span><span class="k">납부 금액</span></div><div class="v" id="cDue">0.00</div></div>
+  </div>
+  <div class="row"><button class="btn l" id="btnReset"><span class="e">Clear all</span><span class="k">모두 지우기</span></button>
+  <button class="btn l" id="btnPrint"><span class="e">Print / PDF</span><span class="k">인쇄 / PDF</span></button>
+  <button class="btn l" id="btnCsv"><span class="e">Download CSV</span><span class="k">CSV 저장</span></button></div>
+  <p class="note" id="printMsg" style="display:none;color:#9c2b2b"></p>
+  <p class="note"><span class="e">County rates per Nevada Department of Taxation rate sheets. Check tax.nv.gov when rates change.</span><span class="k">세율은 네바다 세무국 기준이며, 세율이 바뀌면 tax.nv.gov에서 확인하세요.</span></p>
+</section>
+
+<!-- 2. POS -->
+<section id="pos">
+  <h2><span class="e">POS daily sales (Merchant)</span><span class="k">POS 일별 매출 (Merchant)</span></h2>
+  <div class="steps" style="background:#eef2fa;color:var(--navy)"><span class="e">How to paste</span><span class="k">붙여넣는 방법</span>
+  <small style="color:#374151"><span class="e">① In Excel, select Date, Cash, Credit, Credit Tip for the month (header row optional) and copy (Ctrl+C).<br>
+  ② Click the box below and paste (Ctrl+V). Amounts go into the matching dates automatically.<br>
+  Without a Date column, rows fill from day 1 in order. You can also type or paste straight into the cells below.</span><span class="k">① 엑셀에서 날짜·Cash·Credit·Credit Tip 열을 선택해 복사(Ctrl+C)합니다. 제목 줄은 있어도 되고 없어도 됩니다.<br>
+  ② 아래 상자를 클릭하고 붙여넣기(Ctrl+V)하면 날짜에 맞춰 자동으로 들어갑니다.<br>
+  날짜 열이 없으면 1일부터 순서대로 채웁니다. 아래 표 칸에 직접 입력하거나 붙여넣어도 됩니다.</span></small></div>
+  <textarea id="posPaste"></textarea>
+  <div class="row"><span id="posMsg" class="pill mid" style="display:none"></span><button class="btn l" id="btnPosParse"><span class="e">Add text in box</span><span class="k">상자 내용 추가</span></button>
+  <button class="btn l" id="btnClearPos"><span class="e">Clear POS</span><span class="k">POS 모두 지우기</span></button></div>
+  <div class="tw"><table id="posT"><thead><tr>
+    <th><span class="e">Date</span><span class="k">날짜</span></th><th><span class="e">Cash</span><span class="k">현금</span></th><th><span class="e">Credit</span><span class="k">카드</span></th>
+    <th><span class="e">Credit Tip</span><span class="k">카드 팁</span></th><th><span class="e">Bank Deposit</span><span class="k">입금액 (카드+팁)</span></th><th><span class="e">Bank match</span><span class="k">은행 입금 대조</span></th><th></th>
+  </tr></thead><tbody></tbody></table></div>
+</section>
+
+<!-- 3. RECON -->
+<section id="rec">
+  <h2><span class="e">Bank deposit recon</span><span class="k">은행 입금 대조</span></h2>
+  <div class="steps" style="background:#eef2fa;color:var(--navy)"><span class="e">How to paste</span><span class="k">붙여넣는 방법</span>
+  <small style="color:#374151"><span class="e">① In Excel or QuickBooks, select the deposit rows (with or without the header row) and copy (Ctrl+C).<br>
+  ② Click the box below and paste (Ctrl+V). Rows are added automatically.<br>
+  Works with QuickBooks reports (Type, Date, Num, Name, Memo, Debit, Credit), bank CSV (Date, Description, Amount), or Date, Memo, Credit, Debit.</span><span class="k">① 엑셀이나 QuickBooks에서 입금 줄을 선택해 복사(Ctrl+C)합니다. 제목 줄은 있어도 되고 없어도 됩니다.<br>
+  ② 아래 상자를 클릭하고 붙여넣기(Ctrl+V)하면 줄이 자동으로 추가됩니다.<br>
+  QuickBooks 리포트, 은행 CSV, 날짜·메모·입금·출금 형식을 모두 읽습니다.</span></small></div>
+  <textarea id="paste"></textarea>
+  <div class="row"><span id="pasteMsg" class="pill mid" style="display:none"></span><button class="btn l" id="btnParse"><span class="e">Add text in box</span><span class="k">상자 내용 추가</span></button><button class="btn l" id="btnAddRow"><span class="e">+ Empty row</span><span class="k">+ 빈 줄</span></button>
+  <button class="btn l" id="btnBlankEx"><span class="e">Blank types → Exclude</span><span class="k">빈 구분 → Exclude</span></button>
+  <button class="btn l" id="btnClearRec"><span class="e">Clear rows</span><span class="k">줄 모두 지우기</span></button></div>
+  <p class="note"><span class="e">Credit = money in, Debit = money out (tip checks). Type is guessed; change it if wrong. Journal entries are set to Exclude.</span><span class="k">Credit은 입금, Debit은 출금(팁 지급 체크)입니다. 구분은 자동 추정되니 틀리면 바꾸세요. 분개(Journal)는 Exclude로 설정됩니다.</span></p>
+  <div class="tw"><table id="recT"><thead><tr>
+    <th><span class="e">Date</span><span class="k">날짜</span></th><th><span class="e">Memo</span><span class="k">메모</span></th><th><span class="e">Credit (in)</span><span class="k">입금</span></th>
+    <th><span class="e">Debit (out)</span><span class="k">출금</span></th><th><span class="e">Type</span><span class="k">구분</span></th><th><span class="e">Match</span><span class="k">POS 대조</span></th><th></th>
+  </tr></thead><tbody></tbody></table></div>
+  <h3><span class="e">By type</span><span class="k">구분별 대조</span></h3>
+  <div class="tw"><table id="typeT" style="min-width:420px"><thead><tr><th><span class="e">Type</span><span class="k">구분</span></th><th><span class="e">Bank</span><span class="k">은행</span></th><th><span class="e">Expected</span><span class="k">예상</span></th><th><span class="e">Diff</span><span class="k">차이</span></th></tr></thead><tbody></tbody></table></div>
+  <table class="kv" style="margin-top:10px;max-width:520px"><tbody id="recSum"></tbody></table>
+</section>
+
+<!-- 4. RETURN -->
+<section id="ret">
+  <h2><span class="e">NV Sales Tax return amounts</span><span class="k">NV Sales Tax 신고 금액</span></h2>
+  <div class="two">
+    <div><h3><span class="e">Summary</span><span class="k">매출 요약</span></h3><table class="kv"><tbody id="sumT"></tbody></table></div>
+    <div><h3><span class="e">NV Sales and Use Tax Return</span><span class="k">신고서 입력 순서</span></h3><table class="kv res"><tbody id="formT"></tbody></table>
+    <div class="grid" style="margin-top:10px">
+      <label class="f"><span class="e">Penalty</span><span class="k">가산세</span><input id="pen" type="number" step="0.01" value="0"></label>
+      <label class="f"><span class="e">Interest</span><span class="k">이자</span><input id="int" type="number" step="0.01" value="0"></label>
+      <label class="f"><span class="e">Original paid (amended return)</span><span class="k">수정신고 시 기납부액</span><input id="orig" type="number" step="0.01" value="0"></label>
+    </div></div>
+  </div>
+</section>
+
+<!-- 5. JE -->
+<section id="je">
+  <h2><span class="e">Month-end journal entries (QuickBooks)</span><span class="k">월말 분개 (QuickBooks)</span></h2>
+  <p class="sub"><span class="e">Entry no. and account names can be edited.</span><span class="k">번호와 계정 이름은 수정할 수 있습니다.</span></p>
+  <div class="row"><label class="f" style="flex-direction:row;align-items:center"><span class="e">First entry no.</span><span class="k">시작 번호</span>&nbsp;<input id="jeNo" value="AJE1001" style="width:120px"></label></div>
+  <div class="tw"><table id="jeT"><thead><tr><th><span class="e">Entry No.</span><span class="k">번호</span></th><th><span class="e">Date</span><span class="k">날짜</span></th><th><span class="e">Account</span><span class="k">계정</span></th><th><span class="e">Debit</span><span class="k">차변</span></th><th><span class="e">Credit</span><span class="k">대변</span></th><th><span class="e">Memo</span><span class="k">메모</span></th><th><span class="e">Name</span><span class="k">거래처</span></th></tr></thead><tbody></tbody></table></div>
+  <p class="note"><span class="e">Tip JE = POS credit tip − tips paid (bank) − cash not deposited → Credit Tip Payable. Sales Tax JE = tax filed − collection allowance → Sales Tax Payable.</span><span class="k">팁 JE = POS 카드 팁 − 팁 지급 − 입금 안 된 현금 → Credit Tip Payable. Sales Tax JE = 신고 세금 − 징수 수수료 → Sales Tax Payable.</span></p>
+  <h3><span class="e">QuickBooks book check</span><span class="k">QuickBooks 장부 대조</span></h3>
+  <p class="sub"><span class="e">Enter the QuickBooks activity for the month.</span><span class="k">해당 월 QuickBooks 금액을 입력하세요.</span></p>
+  <div class="tw"><table id="bkT"><thead><tr><th><span class="e">Account / timing</span><span class="k">계정 / 시점</span></th><th><span class="e">Kit expected</span><span class="k">예상</span></th><th><span class="e">QB book amount</span><span class="k">QB 장부 금액</span></th><th><span class="e">Diff</span><span class="k">차이</span></th></tr></thead><tbody></tbody></table></div>
+</section>
+</main>
+<footer><span class="e">For bookkeeping support only; not tax or legal advice. Verify amounts before filing with the Nevada Department of Taxation.</span><span class="k">세무·법률 자문이 아니며, 신고 전에 금액을 확인하세요.</span> © taxnpaypro.com</footer>
+
+<script>
+"use strict";
+const RATES={"CARSON CITY":7.6,"CHURCHILL":7.6,"CLARK":8.375,"DOUGLAS":7.1,"ELKO":7.1,"ESMERALDA":6.85,"EUREKA":6.85,"HUMBOLDT":6.85,"LANDER":7.1,"LINCOLN":7.1,"LYON":7.1,"MINERAL":6.85,"NYE":7.6,"PERSHING":7.1,"STOREY":7.6,"WASHOE":8.265,"WHITE PINE":7.725};
+const TYPES=["Merchant","Cash","Tip Paid","Exclude"];
+const $=id=>document.getElementById(id);
+const num=v=>{if(v===null||v===undefined)return 0;const s=String(v).replace(/[$,\s]/g,"");if(/^\(.*\)$/.test(s))return -parseFloat(s.slice(1,-1))||0;return parseFloat(s)||0};
+const r2=x=>Math.round((x+Number.EPSILON)*100)/100;
+const fmt=x=>{const a=Math.abs(x)<0.005?0:x;if(a===0)return "-";const s=Math.abs(a).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});return a<0?"("+s+")":s};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+let S={client:"",month:"",county:"WASHOE",coll:0.25,exempt:0,pen:0,int:0,orig:0,jeNo:"AJE1001",pos:{},rec:[],qb:{}};
+
+/* ---------- pure calculation (also used by tests) ---------- */
+function daysIn(month){if(!month)return[];const[y,m]=month.split("-").map(Number);const n=new Date(y,m,0).getDate();return Array.from({length:n},(_,i)=>`${month}-${String(i+1).padStart(2,"0")}`)}
+
+// POS paste: "Date, Cash, Credit, Credit Tip" (header optional) or just 3 number columns starting on day 1
+function cleanAmt(v){v=String(v??"").trim();if(!v||/^[-–—]$/.test(v))return"";const neg=/^\(.*\)$/.test(v)||/^-/.test(v);
+  const d=v.replace(/[^0-9.]/g,"");if(!d||isNaN(+d))return null;return String(neg?-(+d):+d)}
+function parsePos(txt,month){
+  const lines=String(txt||"").replace(/\r/g,"").split("\n").filter(l=>l.trim());
+  const days=daysIn(month);const out={};let col=null,seq=0,n=0,skipped=0,other=0;
+  const split=l=>l.includes("\t")?l.split("\t"):(/,/.test(l)&&!/\d,\d{3}/.test(l)?l.split(","):l.trim().split(/\s{2,}|\s+(?=[-$(\d])/));
+  for(const line of lines){
+    const c=split(line).map(x=>x.trim());
+    const low=c.map(x=>x.toLowerCase());
+    if(low.some(x=>/cash|credit|tip|현금|카드|팁/.test(x))&&!low.some(x=>isDate(x))&&c.filter(x=>cleanAmt(x)).length===0){
+      col={date:low.findIndex(x=>/date|날짜|day/.test(x)),tip:low.findIndex(x=>/tip|팁/.test(x)),
+        cash:low.findIndex(x=>/cash|현금/.test(x)&&!/tip|팁/.test(x)),credit:low.findIndex(x=>/credit|card|카드/.test(x)&&!/tip|팁/.test(x))};continue}
+    if(low.some(x=>/^(total|sum|합계|grand total)/.test(x))){continue}
+    let di=col&&col.date>=0?col.date:c.findIndex(x=>isDate(x));
+    let key="";
+    if(di>=0&&isDate(c[di])){const d=normDate(c[di]);const[mm,dd,yy]=d.split("/");key=`${yy}-${mm}-${dd}`;
+      if(!days.includes(key)){other++;continue}}
+    else if(di<0){key=days[seq++];if(!key){skipped++;continue}}
+    else{skipped++;continue}
+    let vals;
+    if(col&&(col.cash>=0||col.credit>=0||col.tip>=0))vals={cash:col.cash>=0?c[col.cash]:"",credit:col.credit>=0?c[col.credit]:"",tip:col.tip>=0?c[col.tip]:""};
+    else{const nums=c.filter((x,i)=>i!==di);vals={cash:nums[0]??"",credit:nums[1]??"",tip:nums[2]??""}}
+    const r={};let bad=false;for(const k of["cash","credit","tip"]){const a=cleanAmt(vals[k]);if(a===null)bad=true;else r[k]=a}
+    if(bad){skipped++;continue}
+    out[key]=r;n++}
+  return{rows:out,n,skipped,other}}
+function compute(S){
+  const rate=(RATES[S.county]||0)/100, coll=num(S.coll)/100;
+  const days=daysIn(S.month);
+  const rows=days.map(d=>{const p=S.pos[d]||{};const cash=num(p.cash),credit=num(p.credit),tip=num(p.tip);return{d,cash,credit,tip,dep:r2(credit+tip)}});
+  const merch=S.rec.filter(x=>x.type==="Merchant"&&num(x.cr)!==0).map(x=>r2(num(x.cr)));
+  const has=a=>merch.some(m=>Math.abs(m-a)<0.005);
+  rows.forEach((r,i)=>{
+    if(r.dep===0){r.match="";return}
+    const nx=k=>rows[i+k]?rows[i+k].dep:0, pv=k=>rows[i-k]?rows[i-k].dep:0;
+    if(has(r.dep))r.match="OK";
+    else if(has(r.dep+nx(1))||has(pv(1)+r.dep)||has(r.dep+nx(1)+nx(2))||has(pv(1)+r.dep+nx(1))||has(pv(2)+pv(1)+r.dep))r.match="OK (combined)";
+    else r.match="No match";
+  });
+  const sums=[1,2,3].flatMap(k=>rows.map((_,i)=>rows.slice(i,i+k).reduce((a,b)=>a+b.dep,0))).map(r2);
+  const recRows=S.rec.map(x=>{const cr=num(x.cr);let m="";if(x.type==="Merchant"&&cr!==0)m=sums.some(s=>Math.abs(s-cr)<0.005)?"OK":"No match";return{...x,m}});
+  const tot=k=>r2(rows.reduce((a,b)=>a+b[k],0));
+  const cash=tot("cash"),credit=tot("credit"),tip=tot("tip"),dep=tot("dep");
+  const bank=t=>r2(S.rec.filter(x=>x.type===t).reduce((a,x)=>a+(t==="Tip Paid"?num(x.db):num(x.cr)),0));
+  const bM=bank("Merchant"),bC=bank("Cash"),bT=bank("Tip Paid");
+  const types=[["Merchant",bM,dep],["Cash",bC,cash],["Tip Paid",bT,tip]].map(([t,b,e])=>({t,b,e,d:r2(b-e)}));
+  const untyped=S.rec.filter(x=>!x.type&&(num(x.cr)||num(x.db))).length;
+  const tipJE=r2((tip-bT)-(cash-bC));
+  const deposits=r2(S.rec.filter(x=>x.type!=="Exclude").reduce((a,x)=>a+num(x.cr),0));
+  const taxable=r2(cash+credit), exempt=r2(num(S.exempt));
+  const taxRaw=taxable/(1+rate)*rate, tax=r2(taxRaw);
+  const netTaxable=r2(taxable-taxRaw), totalNet=r2(netTaxable+exempt);
+  const allow=r2(tax*coll);
+  const due=r2(tax-allow+num(S.pen)+num(S.int)-num(S.orig));
+  const overall=r2(deposits-bT-tipJE-taxable);
+  const noMatch=rows.filter(r=>r.match==="No match").length;
+  const checks=[
+    {en:"Bank deposits match by type",ko:"은행 입금 구분별 일치",ok:Math.abs(types[0].d)<0.005&&untyped===0},
+    {en:"Bank total = total sales",ko:"은행 전체 = 매출 합계",ok:Math.abs(overall)<0.005},
+    {en:"POS daily = bank deposits",ko:"POS 일별 = 은행 입금",ok:noMatch===0}];
+  const salesBefore=r2(deposits-bT);
+  return{rate,rows,recRows,cash,credit,tip,dep,types,untyped,tipJE,deposits,taxable,exempt,tax,netTaxable,totalNet,allow,due,overall,noMatch,checks,salesBefore,salesAfter:r2(salesBefore-tipJE)};
+}
+
+/* ---------- UI ---------- */
+function load(){try{const v=localStorage.getItem("nvst-pos");if(v)S=Object.assign(S,JSON.parse(v))}catch(e){}}
+function save(){try{localStorage.setItem("nvst-pos",JSON.stringify(S))}catch(e){}}
+let LANG="en";
+const H=(en,ko)=>`<span class="e">${en}</span><span class="k">${ko}</span>`;
+const T=(en,ko)=>LANG==="ko"?ko:en;
+const MT={"No match":"불일치","OK (combined)":"OK (합산)"};
+const mt=x=>MT[x]?H(x,MT[x]):x;
+function setLang(l){LANG=l==="ko"?"ko":"en";if(typeof document==="undefined")return;
+  document.body.classList.toggle("ko",LANG==="ko");document.body.classList.toggle("en",LANG!=="ko");document.documentElement.lang=LANG;
+  document.querySelectorAll("#lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===LANG));
+  $("client").placeholder=T("Business name","상호");$("paste").placeholder=T("Click here and press Ctrl+V","여기를 클릭하고 Ctrl+V");$("posPaste").placeholder=T("Click here and press Ctrl+V (Date, Cash, Credit, Credit Tip)","여기를 클릭하고 Ctrl+V (날짜, Cash, Credit, Credit Tip)");
+  document.title=T("NV Sales Tax Calculator (POS only)","네바다 Sales Tax 계산기 (POS 전용)");
+  try{localStorage.setItem("nvst-lang",LANG)}catch(e){}}
+const MON={jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+function normDate(x){
+  x=String(x||"").trim().replace(/\s+\d{1,2}:\d{2}(:\d{2})?(\s*[AP]M)?$/i,"");
+  let m;
+  if((m=x.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{2,4})$/))){let y=+m[3];if(y<100)y+=2000;return`${String(m[1]).padStart(2,"0")}/${String(m[2]).padStart(2,"0")}/${y}`}
+  if((m=x.match(/^(\d{4})[\/\-.](\d{1,2})[\/\-.](\d{1,2})/)))return`${m[2].padStart(2,"0")}/${m[3].padStart(2,"0")}/${m[1]}`;
+  if((m=x.match(/^([A-Za-z]{3})[a-z]*\.?\s+(\d{1,2}),?\s+(\d{4})$/))&&MON[m[1].toLowerCase()])return`${String(MON[m[1].toLowerCase()]).padStart(2,"0")}/${m[2].padStart(2,"0")}/${m[3]}`;
+  if((m=x.match(/^(\d{1,2})[\s\-]([A-Za-z]{3})[a-z]*[\s\-,]+(\d{2,4})$/))&&MON[m[2].toLowerCase()]){let y=+m[3];if(y<100)y+=2000;return`${String(MON[m[2].toLowerCase()]).padStart(2,"0")}/${m[1].padStart(2,"0")}/${y}`}
+  if(/^\d{5}(\.\d+)?$/.test(x)){const n=+x;if(n>36000&&n<60000){const d=new Date(Date.UTC(1899,11,30)+Math.floor(n)*864e5);return`${String(d.getUTCMonth()+1).padStart(2,"0")}/${String(d.getUTCDate()).padStart(2,"0")}/${d.getUTCFullYear()}`}}
+  return""}
+const isDate=x=>normDate(x)!=="";
+const NUM_RE=/^\s*-?\(?-?\$?\s*(\d{1,3}(,\d{3})+|\d+)(\.\d{1,2})?\)?\s*$/;
+const MONEYISH=/[.,$()]|^-/;
+function splitLine(line){
+  if(line.includes("\t"))return line.split("\t");
+  if(/,/.test(line)&&!/\s{2,}/.test(line)){const out=[];let cur="",q=false;for(const ch of line){if(ch==='"'){q=!q}else if(ch===","&&!q){out.push(cur);cur=""}else cur+=ch}out.push(cur);
+    if(out.length>=3&&(isDate(out[0])||/date/i.test(out[0])||out.some(x=>isDate(x.trim()))))return out}
+  if(/\s{2,}/.test(line.trim()))return line.split(/\s{2,}/);
+  // typed by hand with single spaces: "10/6/26 merchant 5000" or "10/31/26 tip check 0 652"
+  const t=line.trim().split(/\s+/);
+  for(const k of [3,2,1]){const d=t.slice(0,k).join(" ");if(t.length>k&&isDate(d)){
+    const rest=t.slice(k);const amts=[];while(rest.length&&NUM_RE.test(rest[rest.length-1])&&amts.length<2)amts.unshift(rest.pop());
+    if(!amts.length)break;
+    let cr=amts[0],db=amts[1]||"";const memo=rest.join(" ");
+    if(amts.length===1&&/tip|check|payment|withdraw|팁|출금/i.test(memo)&&num(cr)>0){db=cr;cr=""}
+    return[d,memo,cr,db]}}
+  return[line]}
+function guessType(typeText,memo,cr,db){
+  const t=(typeText||"").toLowerCase();
+  if(/journal/.test(t))return"Exclude";
+  if(num(db)>0)return"Tip Paid";
+  if(/cash|현금/i.test(memo))return"Cash";
+  if(num(cr)>0)return"Merchant";return""}
+function parsePaste(txt){
+  const lines=txt.replace(/\r/g,"").split("\n").filter(l=>l.trim());
+  let map=null;const out=[];const raw=[];
+  for(const line of lines){
+    const c=splitLine(line).map(x=>(x||"").trim());
+    const low=c.map(x=>x.toLowerCase());
+    if(!map&&low.some(x=>/date/.test(x))&&low.some(x=>/credit|debit|amount|deposit|withdraw|payment/.test(x))&&!c.some(isDate)){
+      const f=re=>low.findIndex(x=>re.test(x));
+      map={date:f(/date/),memo:f(/memo|description|detail/),name:f(/^name$|payee/),type:f(/^type$|transaction type/),
+           cr:f(/credit|deposit|money in/),db:f(/debit|withdraw|payment|money out/),amt:f(/amount/)};
+      continue}
+    if(map){
+      const date=normDate(c[map.date]);if(!date)continue;
+      const memo=[c[map.name],c[map.memo]].filter(Boolean).join(" ").trim(),typeText=c[map.type]||"";
+      let cr=map.cr>=0?num(c[map.cr]):0,db=map.db>=0?num(c[map.db]):0;
+      if(map.amt>=0&&!cr&&!db){const v=num(c[map.amt]);if(v>=0)cr=v;else db=-v}
+      if(cr<0){db+=-cr;cr=0}if(db<0){cr+=-db;db=0}
+      if(cr||db)out.push({date,memo,typeText,cr,db});continue}
+    const di=c.findIndex(isDate);if(di<0)continue;
+    raw.push({c,di});
+  }
+  if(raw.length){
+    // numeric columns after the date; prefer ones that look like money (decimals, commas, $)
+    const numCols=[...new Set(raw.flatMap(o=>o.c.map((x,i)=>i>o.di&&x&&NUM_RE.test(x)?i:-1).filter(i=>i>=0)))].sort((p,q)=>p-q);
+    const money=numCols.filter(i=>raw.some(o=>o.c[i]&&NUM_RE.test(o.c[i])&&MONEYISH.test(o.c[i])));
+    let cols=money.length?numCols.filter(i=>i>=Math.min(...money)):numCols;
+    if(cols.length>2)cols=cols.slice(-2).length===2&&!money.length?cols.slice(-2):cols.slice(0,2);
+    const qbStyle=raw.some(o=>o.di>0);
+    let crCol=-1,dbCol=-1;
+    if(cols.length>=2){[crCol,dbCol]=qbStyle?[cols[1],cols[0]]:[cols[0],cols[1]]}
+    for(const {c,di} of raw){
+      const typeText=c.slice(0,di).filter(Boolean).join(" ");
+      const texts=c.slice(di+1).filter((x,k)=>x&&!cols.includes(di+1+k)&&!NUM_RE.test(x)&&x.length>1&&x!=="√"&&x!=="Ö");
+      const memo=texts.sort((p,q)=>q.length-p.length)[0]||"";
+      let cr=0,db=0;
+      if(crCol>=0){cr=num(c[crCol]);db=num(c[dbCol])}
+      else if(cols.length===1){const v=num(c[cols[0]]);if(!v)continue;
+        if(v<0)db=-v;else if(/check|payment|withdraw|expense|bill|tip|팁|출금/i.test(typeText+" "+memo))db=v;else cr=v}
+      else continue;
+      if(cr<0){db+=-cr;cr=0}if(db<0){cr+=-db;db=0}
+      if(cr||db)out.push({date:normDate(c[di]),memo,typeText,cr,db});
+    }
+  }
+  return out.map(o=>({date:o.date,memo:o.memo.slice(0,80),cr:o.cr?String(r2(o.cr)):"",db:o.db?String(r2(o.db)):"",type:guessType(o.typeText,o.memo,o.cr,o.db)}));
+}
+function refineTypes(S,rows){
+  // Merchant guess that matches no POS day (or 2-3 day sum): cash deposit if it equals a run of daily cash, otherwise leave blank to choose
+  const R=compute(Object.assign({},S,{rec:[]}));
+  const sums=[1,2,3].flatMap(k=>R.rows.map((_,i)=>R.rows.slice(i,i+k).reduce((a,b)=>a+b.dep,0))).map(r2);
+  const cashRuns=[R.cash];for(let k=1;k<=31;k++)R.rows.forEach((_,i)=>cashRuns.push(r2(R.rows.slice(i,i+k).reduce((a,b)=>a+b.cash,0))));
+  return rows.map(x=>{if(x.type==="Merchant"&&!/merchant|merch|card|카드/i.test(x.memo)){const cr=num(x.cr);
+    if(!sums.some(s=>Math.abs(s-cr)<0.005)){
+      if(cashRuns.some(s=>s>0&&Math.abs(s-cr)<0.005))return{...x,type:"Cash"};
+      return{...x,type:""}}}
+    return x})}
+function fmtDate(d){const[y,m,dd]=d.split("-");return`${m}/${dd}/${y.slice(2)}`}
+
+function renderPos(R){
+  const tb=$("posT").tBodies[0];const days=daysIn(S.month);
+  if(tb.dataset.month!==S.month){tb.innerHTML=days.map(d=>{const p=S.pos[d]||{};return`<tr data-d="${d}"><td class="d">${fmtDate(d)}</td>`+
+    ["cash","credit","tip"].map(k=>`<td><input inputmode="decimal" data-k="${k}" value="${esc(p[k]??"")}"></td>`).join("")+`<td class="n dep"></td><td class="c mt"></td><td><button class="btn l pdel" title="clear this day" style="padding:3px 9px">×</button></td></tr>`}).join("")+
+    `<tr class="sum"><td class="d">SUM</td><td class="n" id="sCash"></td><td class="n" id="sCredit"></td><td class="n" id="sTip"></td><td class="n" id="sDep"></td><td class="c" id="sNo"></td><td></td></tr>`;tb.dataset.month=S.month}
+  R.rows.forEach(r=>{const tr=tb.querySelector(`tr[data-d="${r.d}"]`);if(!tr)return;tr.querySelector(".dep").textContent=fmt(r.dep);
+    const m=tr.querySelector(".mt");m.innerHTML=r.match?`<span class="pill ${r.match==="No match"?"bad":r.match==="OK"?"ok":"mid"}">${mt(r.match)}</span>`:"";tr.classList.toggle("bad",r.match==="No match")});
+  if($("sCash")){$("sCash").textContent=fmt(R.cash);$("sCredit").textContent=fmt(R.credit);$("sTip").textContent=fmt(R.tip);$("sDep").textContent=fmt(R.dep);$("sNo").innerHTML=R.noMatch?R.noMatch+" "+H("No match","불일치"):"0"}
+}
+function renderRec(R){
+  const tb=$("recT").tBodies[0];
+  if(tb.rows.length!==S.rec.length){tb.innerHTML=S.rec.map((x,i)=>`<tr data-i="${i}"><td><input data-k="date" value="${esc(x.date)}" style="text-align:center;width:110px"></td>`+
+    `<td><input data-k="memo" value="${esc(x.memo)}" style="text-align:left;min-width:200px"></td>`+
+    `<td><input data-k="cr" inputmode="decimal" value="${esc(x.cr)}"></td><td><input data-k="db" inputmode="decimal" value="${esc(x.db)}"></td>`+
+    `<td><select data-k="type"><option value=""></option>${TYPES.map(t=>`<option${x.type===t?" selected":""}>${t}</option>`).join("")}</select></td><td class="c mt"></td>`+
+    `<td><button class="btn l del" title="delete" style="padding:3px 9px">×</button></td></tr>`).join("")}
+  R.recRows.forEach((x,i)=>{const tr=tb.rows[i];if(!tr)return;tr.querySelector(".mt").innerHTML=x.m?`<span class="pill ${x.m==="OK"?"ok":"bad"}">${mt(x.m)}</span>`:"";tr.classList.toggle("bad",x.m==="No match"||(!x.type&&(num(x.cr)||num(x.db))))});
+  $("typeT").tBodies[0].innerHTML=R.types.map(t=>`<tr${Math.abs(t.d)>=0.005&&t.t==="Merchant"?' class="bad"':""}><td class="c">${t.t}</td><td class="n">${fmt(t.b)}</td><td class="n">${fmt(t.e)}</td><td class="n">${fmt(t.d)}</td></tr>`).join("");
+  $("recSum").innerHTML=[[H("Rows without type","구분 안 된 줄"),String(R.untyped)],
+    [H("Tip JE (Credit Tip Payable)","팁 JE (Credit Tip Payable)"),fmt(R.tipJE)],
+    [H("Overall check: deposits − tips − tip JE − sales","전체 확인: 입금 − 팁 지급 − 팁 JE − 매출"),fmt(R.overall)]].map(([a,b])=>`<tr><td>${a}</td><td>${b}</td></tr>`).join("");
+}
+function renderRet(R){
+  const L=[["Monthly Credit Total","카드 매출 합계",R.credit],["Monthly Cash Total","현금 매출 합계",R.cash],["Monthly Total (tax incl.)","과세 매출 (세금 포함)",R.taxable],
+    ["Exempt sales (other)","기타 면세 매출",R.exempt],["Monthly Grand Total","총 매출",R.taxable+R.exempt],[(R.rate*100).toFixed(3)+"% Tax","세금 역산 "+(R.rate*100).toFixed(3)+"%",R.tax],
+    ["Net Income for Sales Tax","과세 매출 (Net)",R.netTaxable],["Net Income for Exempt","면세 매출",R.exempt],["Total Net Income","총 매출 (Net)",R.totalNet],["Credit Tip Total","카드 팁 합계",R.tip]];
+  $("sumT").innerHTML=L.map(([a,k,v])=>`<tr><td>${H(a,k)}</td><td>${fmt(v)}</td></tr>`).join("");
+  const F=[["County","카운티",S.county],["Total Sales","총 매출",fmt(R.totalNet)],["Exempt Sales","면세 매출",fmt(R.exempt)],["Taxable Sales","과세 매출",fmt(R.netTaxable)],["Sales Rate","세율",R.rate.toFixed(5)],
+    ["Sales Tax","세금",fmt(R.tax)],["Over-Collected Sales Tax","초과 징수 세금","-"],["Use Tax","사용세","-"],["Sales and Use Tax Due","납부할 세금",fmt(R.tax)],["Collection Allowance","징수 수수료",fmt(R.allow)],
+    ["Penalty","가산세",fmt(num(S.pen))],["Interest","이자",fmt(num(S.int))],["Original Paid","기납부액",fmt(num(S.orig))],["Amount Due","납부 금액",fmt(R.due)]];
+  $("formT").innerHTML=F.map(([a,k,b])=>`<tr><td>${H(a,k+' <small style="color:var(--mute)">'+a+'</small>')}</td><td>${b}</td></tr>`).join("");
+}
+function nextNo(base,k){const m=String(base).match(/^(.*?)(\d+)$/);return m?m[1]+String(Number(m[2])+k).padStart(m[2].length,"0"):base+"-"+(k+1)}
+function jeLines(R){
+  const end=S.month?(()=>{const[y,m]=S.month.split("-").map(Number);const d=new Date(y,m,0);return`${String(m).padStart(2,"0")}/${String(d.getDate()).padStart(2,"0")}/${y}`})():"";
+  const t=R.tipJE;
+  return[[nextNo(S.jeNo,0),end,"Sales",Math.max(t,0),Math.max(-t,0),"Tip",""],["",end,"Credit Tip Payable",Math.max(-t,0),Math.max(t,0),"Tip",""],
+    [nextNo(S.jeNo,1),end,"Taxes:Sales Tax",R.tax,0,"",""],["",end,"Other Income",0,R.allow,"Collection Allowance",""],["",end,"Sales Tax Payable",0,r2(R.tax-R.allow),"","NEVADA DEPARTMENT OF TAXATION"]]}
+function renderJE(R){
+  const J=jeLines(R);const dr=r2(J.reduce((a,x)=>a+x[3],0)),cr=r2(J.reduce((a,x)=>a+x[4],0));
+  $("jeT").tBodies[0].innerHTML=J.map(x=>`<tr><td class="c"><b>${esc(x[0])}</b></td><td class="d">${x[1]}</td><td class="c">${x[2]}</td><td class="n">${fmt(x[3])}</td><td class="n">${fmt(x[4])}</td><td class="c">${x[5]}</td><td class="c">${x[6]}</td></tr>`).join("")+
+    `<tr class="sum"><td></td><td></td><td class="c">${H("Total","합계")}</td><td class="n">${fmt(dr)}</td><td class="n">${fmt(cr)}</td><td class="c" colspan="2"><span class="pill ${Math.abs(dr-cr)<0.005?"ok":"bad"}">${Math.abs(dr-cr)<0.005?"OK":H("Check","확인")}</span></td></tr>`;
+  const B=[["salesBefore","Sales (before JE)","Sales (JE 전): 은행 입금에서 팁 지급 차감",R.salesBefore],["salesAfter","Sales (after JE)","Sales (JE 후): 과세 매출",R.salesAfter],
+    ["taxAcct","Taxes:Sales Tax (after JE)","Taxes:Sales Tax (JE 후)",R.tax],["net","Sales - Sales Tax","세금 뺀 실제 매출 (Sales - Sales Tax)",r2(R.salesAfter-R.tax)],
+    ["ctp","Credit Tip Payable","팁 JE (Credit Tip Payable)",R.tipJE],["oi","Other Income (Collection Allowance)","징수 수수료 (Other Income)",R.allow],["stp","Sales Tax Payable","납부할 세금 (Sales Tax Payable)",r2(R.tax-R.allow)]];
+  const INFO=["net","ctp","oi","stp"];
+  $("bkT").tBodies[0].innerHTML=B.map(([k,a,ko,v])=>INFO.includes(k)
+    ?`<tr class="info"><td>${H(a,ko)}</td><td class="n">${fmt(v)}</td><td class="c" style="color:var(--mute);font-size:13px">${H("Info only","참고용")}</td><td></td></tr>`
+    :`<tr data-k="${k}" data-v="${v}"><td>${H(a,ko)}</td><td class="n">${fmt(v)}</td><td><input data-qb="${k}" inputmode="decimal" value="${esc(S.qb[k]??"")}"></td><td class="n diff"></td></tr>`).join("");
+  updDiffs();
+}
+function updDiffs(){
+  document.querySelectorAll("#bkT tbody tr[data-k]").forEach(tr=>{const k=tr.dataset.k,v=+tr.dataset.v,q=S.qb[k];const cell=tr.querySelector(".diff");
+    if(q===undefined||String(q).trim()===""){cell.innerHTML="";tr.classList.remove("bad");return}
+    const d=r2(num(q)-v),ok=Math.abs(d)<0.005;
+    cell.innerHTML=ok?'<span class="pill ok">0.00 OK</span>':`<span class="pill bad">${fmt(d)}</span>`;tr.classList.toggle("bad",!ok)})}
+let lastBk="";
+function render(){
+  const R=compute(S);
+  $("rate").value=(R.rate*100).toFixed(3)+"%";
+  renderPos(R);renderRec(R);renderRet(R);
+  const sig=JSON.stringify([S.month,S.jeNo,R.tax,R.tipJE,R.allow,R.salesBefore]);
+  if(sig!==lastBk||!document.activeElement||!document.activeElement.dataset.qb){renderJE(R);lastBk=sig}
+  $("checkCards").innerHTML=R.checks.map(c=>`<div class="card"><div class="t">${H(c.en,c.ko)}</div><div class="v"><span class="pill ${c.ok?"ok":"bad"}">${c.ok?"OK":H("Check","확인")}</span></div></div>`).join("");
+  $("cTax").textContent=fmt(R.tax);$("cDue").textContent=fmt(R.due);
+  $("dotPos").className="dot "+(R.noMatch?"bad":(R.dep?"ok":""));$("dotRec").className="dot "+(R.checks[0].ok&&R.checks[1].ok?(S.rec.length?"ok":""):"bad");
+  save();return R}
+
+
+function printFallback(){
+  // print() is blocked (e.g. inside a preview frame): save a print-ready copy that opens the print dialog by itself
+  const doc=document.documentElement.cloneNode(true);
+  const live=document.querySelectorAll("input,select,textarea"),copy=doc.querySelectorAll("input,select,textarea");
+  live.forEach((el,i)=>{const c=copy[i];if(el.tagName==="SELECT"){[...c.options].forEach((o,j)=>{if(j===el.selectedIndex)o.setAttribute("selected","");else o.removeAttribute("selected")})}
+    else if(el.tagName==="TEXTAREA"){c.textContent=el.value}else{c.setAttribute("value",el.value)}});
+  doc.querySelectorAll("script").forEach(x=>x.remove());
+  doc.querySelectorAll("section").forEach(x=>x.style.display="block");
+  doc.querySelectorAll("nav.tabs,.row,#printMsg").forEach(x=>x.remove());
+  const html="<!DOCTYPE html>\n"+doc.outerHTML.replace("</body>","<script>window.onload=()=>setTimeout(()=>window.print(),300)<\/script></body>");
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([html],{type:"text/html"}));
+  a.download=`NV_Sales_Tax_${(S.client||"client").replace(/\W+/g,"_")}_${S.month}_print.html`;document.body.appendChild(a);a.click();a.remove();
+  const m=$("printMsg");m.style.display="block";
+  m.textContent=T("Printing is blocked in this preview window. A print-ready file was downloaded: open it and the print dialog appears (choose Save as PDF for a PDF). On the website this button prints directly.","이 미리보기 화면에서는 인쇄가 막혀 있어 인쇄용 파일을 저장했습니다. 그 파일을 열면 인쇄 창이 바로 뜹니다 (PDF는 'PDF로 저장' 선택). 홈페이지에서는 이 버튼으로 바로 인쇄됩니다.");
+}
+function confirm2(btn,msg,fn){
+  if(btn.dataset.arm==="1"){btn.dataset.arm="";btn.innerHTML=btn.dataset.label;btn.classList.remove("warn");fn();return}
+  btn.dataset.label=btn.dataset.label||btn.innerHTML;btn.dataset.arm="1";btn.innerHTML=msg;btn.classList.add("warn");
+  setTimeout(()=>{if(btn.dataset.arm==="1"){btn.dataset.arm="";btn.innerHTML=btn.dataset.label;btn.classList.remove("warn")}},4000)}
+function init(){
+  load();
+  let l0="";try{l0=localStorage.getItem("nvst-lang")||localStorage.getItem("bizlex-lang")||""}catch(e){}
+  const q=new URLSearchParams(location.search).get("lang");if(q)l0=q;
+  setLang(l0||((navigator.language||"").toLowerCase().startsWith("ko")?"ko":"en"));
+  $("lang").addEventListener("click",e=>{const b=e.target.closest("button");if(b)setLang(b.dataset.l)});
+  const sel=$("county");sel.innerHTML=Object.keys(RATES).map(c=>`<option>${c}</option>`).join("");
+  if(!S.month){const d=new Date();d.setDate(1);d.setMonth(d.getMonth()-1);S.month=d.toISOString().slice(0,7)}
+  ["client","month","county","coll","exempt","pen","int","orig","jeNo"].forEach(k=>{const el=$(k);el.value=S[k];el.addEventListener("input",()=>{S[k]=el.value;render()})});
+  $("tabs").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;document.querySelectorAll("nav.tabs button").forEach(x=>x.classList.toggle("on",x===b));
+    document.querySelectorAll("main section").forEach(s=>s.classList.toggle("on",s.id===b.dataset.t))});
+  const posT=$("posT");
+  posT.addEventListener("input",e=>{const i=e.target;if(!i.dataset.k)return;const d=i.closest("tr").dataset.d;(S.pos[d]=S.pos[d]||{})[i.dataset.k]=i.value;render()});
+  posT.addEventListener("click",e=>{if(!e.target.classList.contains("pdel"))return;const tr=e.target.closest("tr");delete S.pos[tr.dataset.d];tr.querySelectorAll("input").forEach(i=>i.value="");render()});
+  posT.addEventListener("paste",e=>{const i=e.target;if(!i.dataset||!i.dataset.k)return;const txt=(e.clipboardData||window.clipboardData).getData("text");
+    if(!/[\t\n]/.test(txt))return;e.preventDefault();const lines=txt.replace(/\r/g,"").split("\n").filter(x=>x.length);const keys=["cash","credit","tip"];
+    let tr=i.closest("tr");const k0=keys.indexOf(i.dataset.k);
+    lines.forEach(line=>{if(!tr||!tr.dataset.d)return;const cells=line.split("\t");cells.forEach((v,j)=>{const k=keys[k0+j];if(!k)return;(S.pos[tr.dataset.d]=S.pos[tr.dataset.d]||{})[k]=v.trim();const inp=tr.querySelector(`input[data-k="${k}"]`);if(inp)inp.value=v.trim()});tr=tr.nextElementSibling});render()});
+  const addPos=txt=>{const P=parsePos(txt,S.month);Object.entries(P.rows).forEach(([d,r])=>{S.pos[d]=Object.assign(S.pos[d]||{},r)});
+    $("posPaste").value="";$("posT").tBodies[0].dataset.month="";render();
+    const m=$("posMsg");m.style.display="inline-block";m.className="pill "+(P.n&&!P.skipped&&!P.other?"ok":P.n?"mid":"bad");
+    m.textContent=P.n?T(`${P.n} days filled`,`${P.n}일 입력됨`)+(P.other?T(`. ${P.other} rows are not in the selected month (check Month in Settings)`,`. ${P.other}줄은 선택한 월이 아니라 건너뜀 (설정에서 월 확인)`):"")+(P.skipped?T(`. ${P.skipped} rows skipped`,`. ${P.skipped}줄 건너뜀`):"")
+      :T("No rows found. Copy Date, Cash, Credit, Credit Tip columns from Excel.","입력할 줄을 찾지 못했습니다. 엑셀에서 날짜·Cash·Credit·Credit Tip 열을 복사하세요.")};
+  $("posPaste").addEventListener("paste",e=>{const t=(e.clipboardData||window.clipboardData).getData("text");if(!t)return;e.preventDefault();addPos(t)});
+  $("posPaste").addEventListener("input",()=>{const v=$("posPaste").value;$("posMsg").style.display="none";if(/\t/.test(v)&&/\n/.test(v.trim()))addPos(v)});
+  $("btnPosParse").onclick=()=>{const v=$("posPaste").value;if(!v.trim()){const m=$("posMsg");m.style.display="inline-block";m.className="pill mid";
+      m.textContent=T("The box is empty. Copy rows in Excel, click the dashed box, then press Ctrl+V.","상자가 비어 있습니다. 엑셀에서 복사 → 점선 상자 클릭 → Ctrl+V");return}addPos(v)};
+  $("btnClearPos").onclick=e=>confirm2(e.currentTarget,H("Click again to clear all POS amounts","한 번 더 누르면 POS 모두 삭제"),()=>{S.pos={};$("posT").tBodies[0].dataset.month="";$("posMsg").style.display="none";render()});
+  const recT=$("recT");
+  recT.addEventListener("input",e=>{const el=e.target;if(!el.dataset.k)return;const i=+el.closest("tr").dataset.i;S.rec[i][el.dataset.k]=el.value;render()});
+  recT.addEventListener("change",e=>{const el=e.target;if(el.tagName==="SELECT"){const i=+el.closest("tr").dataset.i;S.rec[i].type=el.value;render()}});
+  recT.addEventListener("click",e=>{if(!e.target.classList.contains("del"))return;const i=+e.target.closest("tr").dataset.i;S.rec.splice(i,1);$("recT").tBodies[0].innerHTML="";render()});
+  const addRec=txt=>{const rows=refineTypes(S,parsePaste(txt));S.rec=S.rec.concat(rows);$("paste").value="";$("recT").tBodies[0].innerHTML="";render();
+    const m=$("pasteMsg");m.style.display="inline-block";m.className="pill "+(rows.length&&!rows.some(r=>!r.type)?"ok":"bad");
+    const blank=rows.filter(r=>!r.type).length;
+    m.textContent=rows.length?T(`${rows.length} rows added`,`${rows.length}줄 추가됨`)+(blank?T(`. ${blank} need a type (pick Exclude if not POS sales)`,`. ${blank}줄은 구분을 골라주세요 (POS 매출이 아니면 Exclude)`):""):(T("No rows found. Each row needs a date and an amount. First line received: ","날짜와 금액이 있는 줄을 찾지 못했습니다. 받은 첫 줄: ")+JSON.stringify(txt.split(/\r?\n/).find(l=>l.trim())||"").slice(0,120));};
+  $("paste").addEventListener("paste",e=>{const t=(e.clipboardData||window.clipboardData).getData("text");if(!t)return;e.preventDefault();addRec(t)});
+  $("btnParse").onclick=()=>{const v=$("paste").value;if(!v.trim()){const m=$("pasteMsg");m.style.display="inline-block";m.className="pill mid";
+      m.textContent=T("The box is empty. Copy rows in Excel, click the dashed box, then press Ctrl+V; rows are added by themselves.","상자가 비어 있습니다. 엑셀에서 복사 → 점선 상자 클릭 → Ctrl+V 하면 자동으로 추가됩니다.");return}addRec(v)};
+  // fallback: some browsers/apps insert text without a usable paste event
+  $("paste").addEventListener("input",()=>{const v=$("paste").value;$("pasteMsg").style.display="none";if(/\t/.test(v)&&/\n/.test(v.trim()))addRec(v)});
+  $("btnBlankEx").onclick=()=>{S.rec.forEach(x=>{if(!x.type)x.type="Exclude"});$("recT").tBodies[0].innerHTML="";render()};
+  $("btnClearRec").onclick=e=>confirm2(e.currentTarget,H("Click again to delete all bank rows","한 번 더 누르면 삭제"),()=>{S.rec=[];$("recT").tBodies[0].innerHTML="";$("pasteMsg").style.display="none";render()});
+  recT.addEventListener("paste",e=>{const t=(e.clipboardData||window.clipboardData).getData("text");if(!/[\t\n]/.test(t))return;e.preventDefault();addRec(t)});
+  $("btnAddRow").onclick=()=>{S.rec.push({date:"",memo:"",cr:"",db:"",type:""});$("recT").tBodies[0].innerHTML="";render()};
+  $("bkT").addEventListener("input",e=>{const k=e.target.dataset.qb;if(!k)return;S.qb[k]=e.target.value;updDiffs();save()});
+  $("btnReset").onclick=e=>confirm2(e.currentTarget,H("Click again to clear everything","한 번 더 누르면 모두 삭제"),()=>{S.pos={};S.rec=[];S.qb={};S.client="";$("client").value="";$("posT").tBodies[0].dataset.month="";$("recT").tBodies[0].innerHTML="";render()});
+  $("btnPrint").onclick=()=>{const t0=Date.now();let err=false;try{window.print()}catch(e){err=true}
+    if(err||Date.now()-t0<250)printFallback()};
+  $("btnCsv").onclick=()=>{const R=compute(S);const L=[["Client",S.client],["Month",S.month],["County",S.county],["Rate",(R.rate*100).toFixed(3)+"%"],[],["Date","Cash","Credit","Credit Tip","Bank Deposit","Bank match"],
+      ...R.rows.map(r=>[r.d,r.cash,r.credit,r.tip,r.dep,r.match]),[],["Total Sales",R.totalNet],["Exempt Sales",R.exempt],["Taxable Sales",R.netTaxable],["Sales Tax",R.tax],["Collection Allowance",R.allow],["Amount Due",R.due],[],
+      ["Entry No.","Date","Account","Debit","Credit","Memo","Name"],...jeLines(R)];
+    const csv=L.map(r=>r.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\n");
+    const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["﻿"+csv],{type:"text/csv"}));a.download=`NV_Sales_Tax_${(S.client||"client").replace(/\W+/g,"_")}_${S.month}.csv`;a.click()};
+  render();
+}
+if(typeof window!=="undefined"&&typeof document!=="undefined")document.addEventListener("DOMContentLoaded",init);
+if(typeof module!=="undefined")module.exports={compute,parsePaste,parsePos,refineTypes,RATES};
+</script>
+<!--cfwa--><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "9671384662e04a52b70330808aeedc3e"}'></script><!--/cfwa--></body>
+</html>
