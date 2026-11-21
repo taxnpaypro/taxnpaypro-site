@@ -74,16 +74,16 @@ body.ko .e{display:none!important}
 body.ko .k{color:inherit;font-size:inherit;font-weight:inherit;display:inline}
 .sub{color:var(--blue);font-size:14px;margin:0 0 12px;font-weight:600}
 .hr{display:flex;align-items:center;gap:14px}
-.lang{display:flex;border:1px solid #c9d6f0;border-radius:8px;overflow:hidden}
-.lang button{background:transparent;color:#c9d6f0;border:0;padding:6px 14px;font-size:14px;font-weight:600;cursor:pointer}
-.lang button.on{background:#fff;color:var(--navy)}
+.lang{display:inline-flex;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:3px}
+.lang button{font:inherit;font-size:14px;border:0;background:transparent;color:#c9d6f0;padding:5px 14px;border-radius:999px;cursor:pointer;min-height:32px}
+.lang button.on{background:#D4A845;color:#14202E;font-weight:700}
 @media print{.lang{display:none}}
 </style>
 </head>
 <body class="en">
 <header>
   <div><h1><span class="e">NV Sales Tax Calculator <span style="font-weight:400">(POS only)</span></span><span class="k">네바다 Sales Tax 계산기 <span style="font-weight:400">(POS 전용)</span></span></h1></div>
-  <div class="hr"><div class="lang" id="lang"><button data-l="en">English</button><button data-l="ko">한글</button></div>
+  <div class="hr"><div class="lang" id="lang" role="group" aria-label="Language"><button type="button" data-l="ko">한국어</button><button type="button" data-l="en">English</button></div>
   <a href="/">← taxnpaypro.com</a></div>
 </header>
 <main>
@@ -281,7 +281,7 @@ const MT={"No match":"불일치","OK (combined)":"OK (합산)"};
 const mt=x=>MT[x]?H(x,MT[x]):x;
 function setLang(l){LANG=l==="ko"?"ko":"en";if(typeof document==="undefined")return;
   document.body.classList.toggle("ko",LANG==="ko");document.body.classList.toggle("en",LANG!=="ko");document.documentElement.lang=LANG;
-  document.querySelectorAll("#lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===LANG));
+  document.querySelectorAll("#lang button").forEach(b=>{b.classList.toggle("on",b.dataset.l===LANG);b.setAttribute("aria-pressed",b.dataset.l===LANG)});
   $("client").placeholder=T("Business name","상호");$("paste").placeholder=T("Click here and press Ctrl+V","여기를 클릭하고 Ctrl+V");$("posPaste").placeholder=T("Click here and press Ctrl+V (Date, Cash, Credit, Credit Tip)","여기를 클릭하고 Ctrl+V (날짜, Cash, Credit, Credit Tip)");
   document.title=T("NV Sales Tax Calculator (POS only)","네바다 Sales Tax 계산기 (POS 전용)");
   try{localStorage.setItem("nvst-lang",LANG)}catch(e){}}
