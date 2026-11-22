@@ -1,0 +1,111 @@
+<!-- Title: Why Your Health Insurance Payable Account Won't Zero Out in QuickBooks (and How to Fix It) -->
+<p style="font-size:17px;line-height:1.7;">You withhold part of each employee's health insurance premium in payroll. Once a month you pay the insurer's invoice. In theory the liability account for those deductions should hover near zero. In practice, many small business owners open the Balance Sheet in December and find <b>Health Insurance Payable</b> (or "Payroll Liabilities: Health Insurance") sitting at thousands of dollars, or negative, with no idea which month went wrong.</p>
+<p style="font-size:17px;line-height:1.7;">This question comes up again and again in QuickBooks user forums, for QuickBooks Desktop and QuickBooks Online alike, and the usual replies only say "it depends on how you recorded the payment." This guide gives you a method you can follow yourself: a month-by-month tie-out you can build in Excel or Google Sheets, a way to tell normal timing from real errors, and one correcting entry. It matters now because year-end is when payroll reports, W-2s and your tax preparer will all look at these balances.</p>
+<p style="font-size:15px;line-height:1.6;background:#FFF7E6;border-left:4px solid #B45309;padding:10px 14px;"><i>This article is general bookkeeping information, not tax, legal or payroll advice; confirm your own situation with a licensed professional.</i></p>
+
+<h2 style="color:#1F3A5F;">How the account is supposed to work</h2>
+<p style="font-size:17px;line-height:1.7;">Two things touch the liability. Each payroll <b>credits</b> it with the employee deductions. Each payment to the insurer should <b>debit</b> it, but only for the employee part of the invoice. The employer part of the invoice is your health insurance expense.</p>
+<figure style="margin:20px 0;"><img src="Fig01_Money_Flow_EN.png" alt="Flowchart: payroll deductions go to Health Insurance Payable, the employee part of the insurer payment clears it, and only the employer part goes to Health Insurance Expense" style="width:100%;max-width:1200px;height:auto;border:1px solid #dde3ea;"><figcaption style="font-size:14px;color:#555;">Figure 1. Where the money should go (example values).</figcaption></figure>
+<p style="font-size:17px;line-height:1.7;">When the account does not clear, it is usually because of one of these:</p>
+<ul style="font-size:17px;line-height:1.7;">
+<li><b>The whole insurer payment was posted to expense.</b> The liability grows every month by the deductions, and expense is overstated by the same amount.</li>
+<li><b>The whole payment was posted to the liability.</b> The liability goes negative by the employer share.</li>
+<li><b>Biweekly or weekly payroll.</b> Some months have three paychecks, so deductions and invoices do not line up month by month.</li>
+<li><b>Enrollment changes.</b> A new hire is billed before deductions start, or a former employee stays on the invoice and is credited later.</li>
+<li><b>Payment timing.</b> An invoice is paid late, partly, twice, or in advance.</li>
+<li><b>QuickBooks Desktop only:</b> the insurer was paid with Write Checks instead of Pay Liabilities, so the payroll liability reports never clear.</li></ul>
+
+<h2 style="color:#1F3A5F;">Step 1: Pick a tie-out date and gather three reports</h2>
+<ol style="font-size:17px;line-height:1.7;">
+<li><b>Balance Sheet</b> as of a month-end date (for example October 31). Write down the health insurance liability exactly as shown, including a minus sign if there is one.</li>
+<li><b>Payroll deductions by pay date</b> from your payroll report or payroll provider: total employee health deductions for each month from January to the tie-out date.</li>
+<li><b>Insurer invoices and payments</b>: each month's invoice total, the employee share on it (many group invoices list it, or you can total each employee's share), and every payment you made and which invoice it covered.</li></ol>
+
+<h2 style="color:#1F3A5F;">Step 2: Build the month table</h2>
+<p style="font-size:17px;line-height:1.7;">Put one row per month in a spreadsheet. Row 1 holds headers and the data starts in row 2. Use these columns:</p>
+<table style="border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 6px;">
+<tr style="background:#1F3A5F;color:#fff;"><th style="padding:8px;text-align:left;">Column</th><th style="padding:8px;text-align:left;">What goes in it</th><th style="padding:8px;text-align:left;">Formula (row 2)</th></tr>
+<tr><td style="border:1px solid #c9d2db;padding:6px;">A Month</td><td style="border:1px solid #c9d2db;padding:6px;">Jan, Feb …</td><td style="border:1px solid #c9d2db;padding:6px;">typed</td></tr>
+<tr><td style="border:1px solid #c9d2db;padding:6px;">B Invoice total</td><td style="border:1px solid #c9d2db;padding:6px;">from the insurer invoice</td><td style="border:1px solid #c9d2db;padding:6px;">typed</td></tr>
+<tr><td style="border:1px solid #c9d2db;padding:6px;">C Employee share</td><td style="border:1px solid #c9d2db;padding:6px;">employee part of that invoice</td><td style="border:1px solid #c9d2db;padding:6px;">typed</td></tr>
+<tr><td style="border:1px solid #c9d2db;padding:6px;">D Deductions</td><td style="border:1px solid #c9d2db;padding:6px;">withheld in payroll that month</td><td style="border:1px solid #c9d2db;padding:6px;">typed</td></tr>
+<tr><td style="border:1px solid #c9d2db;padding:6px;">E Paid</td><td style="border:1px solid #c9d2db;padding:6px;">paid for that invoice</td><td style="border:1px solid #c9d2db;padding:6px;">typed</td></tr>
+<tr><td style="border:1px solid #c9d2db;padding:6px;">F Employee share paid</td><td style="border:1px solid #c9d2db;padding:6px;">employee part of the payment</td><td style="border:1px solid #c9d2db;padding:6px;"><code>=IF(B2=0,0,ROUND(C2*E2/B2,2))</code></td></tr>
+<tr><td style="border:1px solid #c9d2db;padding:6px;">G Correct balance</td><td style="border:1px solid #c9d2db;padding:6px;">running liability</td><td style="border:1px solid #c9d2db;padding:6px;"><code>=N(G1)+D2-F2</code> (copy down)</td></tr></table>
+<p style="font-size:14px;color:#555;margin-top:0;">Table 1. The month table. In row 2, <code>N(G1)</code> treats the header as zero; if you know the correct balance on January 1, add it there.</p>
+<p style="font-size:17px;line-height:1.7;">The last value in column G is the <b>correct balance</b> on your tie-out date. The <b>amount to fix</b> is the QuickBooks balance minus the correct balance. Here is a worked example for a company with four covered employees, biweekly payroll starting January 9, 2026, and a $4,500 monthly invoice of which $1,220 is the employee share:</p>
+<table style="border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 6px;">
+<tr style="background:#1F3A5F;color:#fff;"><th style="padding:8px;text-align:left;">Month (example)</th><th style="padding:8px;text-align:right;">Employee share billed</th><th style="padding:8px;text-align:right;">Deductions</th><th style="padding:8px;text-align:right;">Share paid</th><th style="padding:8px;text-align:right;">Correct balance</th></tr>
+<tr><td style="border:1px solid #c9d2db;padding:6px;">Jan (2 paychecks)</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">$1,220.00</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">$1,126.16</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">$1,220.00</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">-$93.84</td></tr>
+<tr><td style="border:1px solid #c9d2db;padding:6px;">Apr (2 paychecks)</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">$1,220.00</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">$1,126.16</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">$1,220.00</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">-$375.36</td></tr>
+<tr><td style="border:1px solid #c9d2db;padding:6px;">May (3 paychecks)</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">$1,220.00</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">$1,689.24</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">$1,220.00</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">$93.88</td></tr>
+<tr><td style="border:1px solid #c9d2db;padding:6px;">Oct (3 paychecks)</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">$1,220.00</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">$1,689.24</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">$1,220.00</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;"><b>$187.76</b></td></tr>
+<tr style="background:#F2F7FB;"><td style="border:1px solid #c9d2db;padding:6px;"><b>Jan–Oct total</b></td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">$12,200.00</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">$12,387.76</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;">$12,200.00</td><td style="border:1px solid #c9d2db;padding:6px;text-align:right;"><b>$187.76</b></td></tr></table>
+<p style="font-size:14px;color:#555;margin-top:0;">Table 2. Selected months from the example (example values). Deduction per payroll = each employee's monthly share × 12 ÷ 26, rounded to cents: $60.00 + $180.00 + $263.08 + $60.00 = $563.08.</p>
+<p style="font-size:17px;line-height:1.7;">In this example QuickBooks showed $12,387.76 on October 31 because every insurer payment went fully to expense. The correct balance is $187.76, so $12,200.00 has to come out of the liability.</p>
+
+<h2 style="color:#1F3A5F;">Step 3: Separate timing from real errors</h2>
+<p style="font-size:17px;line-height:1.7;">Not every balance is a mistake. Add two quick checks to your sheet:</p>
+<ul style="font-size:17px;line-height:1.7;">
+<li><b>Deductions minus share billed</b> (<code>=SUM(D:D)-SUM(C:C)</code>). With biweekly payroll this swings with 3-paycheck months and should come back close to zero by year-end. A gap that keeps growing, or that matches one person's share, points to a missed or wrong deduction.</li>
+<li><b>Billed share not yet paid</b> (<code>=SUM(C:C)-SUM(F:F)</code>). If you pay each invoice the following month, this is normal at month-end.</li></ul>
+<p style="font-size:17px;line-height:1.7;">To see your 3-paycheck months, list your paydays in a column (for example, column P) and count them per month with <code>=COUNTIFS(P:P,"&gt;="&amp;DATE(2026,5,1),P:P,"&lt;="&amp;EOMONTH(DATE(2026,5,1),0))</code>. With paydays every other Friday from January 9, 2026, May and October each have three paydays and the year has 26.</p>
+<figure style="margin:20px 0;"><img src="Fig03_Paycheck_Timeline_EN.png" alt="Bar chart of the month-end correct balance for biweekly payroll in 2026, negative in two-paycheck months and positive in May and October, ending near zero in December" style="width:100%;max-width:1200px;height:auto;border:1px solid #dde3ea;"><figcaption style="font-size:14px;color:#555;">Figure 2. Biweekly timing in 2026 (example values). The balance evens out by December.</figcaption></figure>
+<p style="font-size:17px;line-height:1.7;">If a calendar year happens to have an extra payday for your schedule, per-paycheck deductions set for the usual number of paydays will collect more than the annual employee share. Ask your payroll provider how they handle that year.</p>
+
+<h2 style="color:#1F3A5F;">Step 4: Post one correcting entry</h2>
+<p style="font-size:17px;line-height:1.7;">When QuickBooks shows more than the correct balance (the usual case), the entry generally is: <b>debit</b> Health Insurance Payable and <b>credit</b> Health Insurance Expense for the amount to fix. When QuickBooks shows less, reverse the two lines.</p>
+<ul style="font-size:17px;line-height:1.7;">
+<li><b>QuickBooks Desktop:</b> Company &gt; Make General Journal Entries.</li>
+<li><b>QuickBooks Online:</b> + Create &gt; Journal entry.</li></ul>
+<p style="font-size:17px;line-height:1.7;">Date the entry in an open period. If part of the difference belongs to a year whose tax return is already filed, talk to your CPA before you post anything; do not change closed or filed periods just to make the numbers match.</p>
+<figure style="margin:20px 0;"><img src="Fig02_Before_After_EN.png" alt="Before and after table: Health Insurance Payable drops from 12,387.76 to 187.76 and expense from 45,000 to 32,800 after one journal entry, example values" style="width:100%;max-width:1200px;height:auto;border:1px solid #dde3ea;"><figcaption style="font-size:14px;color:#555;">Figure 3. Balances before and after the correcting entry (example values).</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">Step 5: Split every future payment</h2>
+<p style="font-size:17px;line-height:1.7;">Split each insurer payment the same way: employee share to the liability, employer share to expense. In the example, each $4,500 payment becomes $1,220 to Health Insurance Payable and $3,280 to Health Insurance Expense. A spreadsheet formula for the liability line is <code>=ROUND(Paid*EmployeeShare/InvoiceTotal,2)</code>.</p>
+<ul style="font-size:17px;line-height:1.7;">
+<li><b>QuickBooks Desktop payroll:</b> pay the insurer through Employees &gt; Payroll Taxes &amp; Liabilities &gt; Pay Scheduled Liability, or Employees &gt; Payroll Center &gt; Pay Liabilities &gt; Create Custom Payments. Intuit has a help article on correcting liability payments made in Write Checks instead of Pay Liabilities.</li>
+<li><b>QuickBooks Online payroll:</b> Intuit's help says payroll does not create the check for non-tax liabilities such as health insurance premiums. Create it with + Create &gt; Check and pick the liability account in Category; add a second Category line for the employer share.</li>
+<li><b>Outside payroll service:</b> the same split applies; the payroll journal entry credits the liability for the deductions.</li></ul>
+
+<h2 style="color:#1F3A5F;">Common mistakes</h2>
+<ul style="font-size:17px;line-height:1.7;">
+<li>Using deductions by period-end date instead of pay date, which moves paychecks between months.</li>
+<li>Entering a payment under the month it was paid rather than the invoice month it covered.</li>
+<li>"Fixing" each month with a separate entry instead of one entry at the tie-out date.</li>
+<li>Treating a real deduction gap (a new hire billed before deductions began) as a bookkeeping error. That is a payroll question; confirm next steps with your payroll provider, including your state's wage rules, before recovering any missed deductions.</li>
+<li>Mixing dental, vision and medical in one liability account when they are billed on different invoices. Tie out each account separately.</li></ul>
+
+<h2 style="color:#1F3A5F;">FAQ</h2>
+<h3 style="color:#0F766E;">Should the liability ever be exactly zero?</h3>
+<p style="font-size:17px;line-height:1.7;">Not necessarily. With monthly payroll and invoices paid in the same month, it often is. With biweekly payroll or invoices paid the following month, a small balance at month-end can be normal timing.</p>
+<h3 style="color:#0F766E;">Are employee premium deductions pre-tax?</h3>
+<p style="font-size:17px;line-height:1.7;">It depends on your plan. IRS Publication 15-B (2026) explains that a cafeteria plan lets participants receive qualified benefits on a pre-tax basis, and that employers can generally exclude the value of accident or health benefits they provide from employees' wages, with an exception for 2% shareholder-employees of S corporations. Check your plan documents and payroll setup with your benefits or payroll provider. The tie-out method above is the same either way.</p>
+<h3 style="color:#0F766E;">What if my employer pays the full premium?</h3>
+<p style="font-size:17px;line-height:1.7;">Then there are no deductions, the employee share is zero, the whole payment is expense, and the liability should stay at zero.</p>
+<h3 style="color:#0F766E;">I am an S corporation owner on the plan. Does this cover me?</h3>
+<p style="font-size:17px;line-height:1.7;">IRS Publication 15-B treats 2% shareholder-employees of S corporations differently for these benefits, so keep those premiums separate and confirm the handling with your CPA.</p>
+
+<h2 style="color:#1F3A5F;">Checklist</h2>
+<ul style="font-size:17px;line-height:1.7;list-style:none;padding-left:0;">
+<li>☐ Balance Sheet liability on a month-end date, typed exactly as shown</li>
+<li>☐ Invoice total and employee share for every month to that date</li>
+<li>☐ Deductions by pay date from the payroll report</li>
+<li>☐ Every insurer payment listed under the invoice month it covered</li>
+<li>☐ Timing vs real gap reviewed; real gaps sent to your payroll provider</li>
+<li>☐ One correcting entry dated in an open period; filed years discussed with your CPA</li>
+<li>☐ Future payments split into liability and expense lines</li></ul>
+
+<p style="font-size:17px;line-height:1.7;">You can download the ready-made <b>Health Insurance Premium Tie-Out 2026</b> for free in the <a href="#kit" style="color:#1F4E99;font-weight:700;">Free kit download</a> box below (Excel + PDF guide, no sign-up).</p>
+
+<p style="font-size:14px;line-height:1.6;color:#444;background:#F5F7FA;padding:12px 14px;border-radius:6px;"><b>Disclaimer:</b> This article is for general educational purposes only and is not tax, legal, payroll or accounting advice. It does not create a client relationship, and it does not promise any particular result. Rules, plan terms and software menus change; your situation may differ, so confirm your own case with a licensed professional before acting. All amounts are examples. QuickBooks is a registered trademark of Intuit Inc.; not affiliated with or endorsed by Intuit.</p>
+
+<h3 style="color:#1F3A5F;">Sources</h3>
+<ul style="font-size:14px;line-height:1.6;">
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/insurance-medical-benefits/set-payroll-item-insurance/L22HEIwnU_US_en_US">Intuit: Set up and manage payroll items for your insurance benefit plan</a> — 확인일 2026-11-22</li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/payroll-additions-deductions/set-voluntary-deductions-online-payroll/L2Kl3md0R_US_en_US">Intuit: Set up, change, or delete employee-paid payroll deductions</a> — 확인일 2026-11-22</li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/liability-schedules/set-pay-scheduled-custom-unscheduled-liabilities/L0hYor6qT_US_en_US">Intuit: Pay your non-tax liabilities in payroll</a> — 확인일 2026-11-22</li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/liability-accounts/correct-liability-payments-made-write-checks-pay/L3cSzx2D5_US_en_US">Intuit: Correct liability payments made in Write Checks instead of Pay Liabilities</a> — 확인일 2026-11-22</li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/accounting-bookkeeping/create-journal-entry-quickbooks-online/L6Bzy9mT9_US_en_US">Intuit: Create journal entries in QuickBooks Online and Intuit Enterprise Suite</a> — 확인일 2026-11-22</li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/journal-entries/create-journal-entry-quickbooks-desktop-windows/L3UuQaxmb_US_en_US">Intuit: Create a journal entry in QuickBooks Desktop for Windows or Mac</a> — 확인일 2026-11-22</li>
+<li><a href="https://www.irs.gov/publications/p15b">IRS Publication 15-B (2026), Employer's Tax Guide to Fringe Benefits</a> — 확인일 2026-11-22</li></ul>

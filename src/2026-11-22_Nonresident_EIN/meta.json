@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-22",
+  "category": "tax",
+  "slug": {
+    "ko": "ein-for-nonresident-llc-owners-korean",
+    "en": "ein-for-nonresident-llc-owners"
+  },
+  "title": {
+    "ko": "비거주자 EIN 신청법: SSN·ITIN 없이 Form SS-4로 받는 방법과 걸리는 기간, CP575·147C",
+    "en": "EIN for Nonresident LLC Owners: How to Get One Without an SSN or ITIN, How Long It Takes, CP575 and 147C"
+  },
+  "excerpt": {
+    "ko": "SSN·ITIN이 없는 한국 거주자가 Form SS-4로 EIN을 받는 방법, 걸리는 기간, CP575·147C를 정리합니다.",
+    "en": "How non-US LLC owners get an EIN with Form SS-4 without an SSN or ITIN, timing, and CP575 vs. 147C letters."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-22",
+  "category": "accounting",
+  "slug": {
+    "ko": "health-insurance-payable-quickbooks-korean",
+    "en": "health-insurance-payable-quickbooks-tie-out"
+  },
+  "title": {
+    "ko": "QuickBooks 건강보험 부채 계정이 0이 안 될 때: 급여 공제와 보험료 납부 맞추는 법",
+    "en": "Why Your Health Insurance Payable Account Won't Zero Out in QuickBooks (and How to Fix It)"
+  },
+  "excerpt": {
+    "ko": "급여에서 공제한 건강보험료와 보험사 납부액을 맞춰 QuickBooks 부채 계정을 0으로 정리하는 법입니다.",
+    "en": "Tie payroll health insurance deductions to insurer payments so the QuickBooks liability account zeroes out."
+  },
+  "downloads": {
+    "kit": "health-insurance-premium-tie-out-2026",
+    "en": [
+      "Health_Insurance_Premium_Tie_Out_2026_EN.xlsx",
+      "Health_Insurance_Premium_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Health_Insurance_Premium_Tie_Out_2026_EN_KR.xlsx",
+      "Health_Insurance_Premium_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}

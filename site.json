@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21",
+  "updated": "2026-11-22",
   "notice": {
     "ko": "",
     "en": ""
@@ -64,6 +64,90 @@
   ],
   "cfAnalyticsToken": "9671384662e04a52b70330808aeedc3e",
   "posts": [
+    {
+      "date": "2026-11-22",
+      "category": "tax",
+      "title": {
+        "ko": "2026년 근로장려세제(EITC), 자영업자도 직접 계산해 보는 방법",
+        "en": "How to Estimate Your 2026 Earned Income Tax Credit (Even If You Are Self-Employed)"
+      },
+      "excerpt": {
+        "ko": "IRS 공식 수치로 2026년 EITC 자격과 예상 금액을 자영업자도 직접 계산하는 방법을 정리합니다.",
+        "en": "Estimate your 2026 EITC with official IRS figures: eligibility, income limits and self-employment income."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/eitc-2026-calculation-guide-korean.html",
+        "en": "https://taxnpaypro.com/blog/how-to-estimate-eitc-2026.html"
+      },
+      "previewUrl": {
+        "ko": "blog/eitc-2026-calculation-guide-korean.html",
+        "en": "blog/how-to-estimate-eitc-2026.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-22",
+      "category": "accounting",
+      "title": {
+        "ko": "QuickBooks 건강보험 부채 계정이 0이 안 될 때: 급여 공제와 보험료 납부 맞추는 법",
+        "en": "Why Your Health Insurance Payable Account Won't Zero Out in QuickBooks (and How to Fix It)"
+      },
+      "excerpt": {
+        "ko": "급여에서 공제한 건강보험료와 보험사 납부액을 맞춰 QuickBooks 부채 계정을 0으로 정리하는 법입니다.",
+        "en": "Tie payroll health insurance deductions to insurer payments so the QuickBooks liability account zeroes out."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/health-insurance-payable-quickbooks-korean.html",
+        "en": "https://taxnpaypro.com/blog/health-insurance-payable-quickbooks-tie-out.html"
+      },
+      "previewUrl": {
+        "ko": "blog/health-insurance-payable-quickbooks-korean.html",
+        "en": "blog/health-insurance-payable-quickbooks-tie-out.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-22",
+      "category": "tax",
+      "title": {
+        "ko": "비거주자 EIN 신청법: SSN·ITIN 없이 Form SS-4로 받는 방법과 걸리는 기간, CP575·147C",
+        "en": "EIN for Nonresident LLC Owners: How to Get One Without an SSN or ITIN, How Long It Takes, CP575 and 147C"
+      },
+      "excerpt": {
+        "ko": "SSN·ITIN이 없는 한국 거주자가 Form SS-4로 EIN을 받는 방법, 걸리는 기간, CP575·147C를 정리합니다.",
+        "en": "How non-US LLC owners get an EIN with Form SS-4 without an SSN or ITIN, timing, and CP575 vs. 147C letters."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/ein-for-nonresident-llc-owners-korean.html",
+        "en": "https://taxnpaypro.com/blog/ein-for-nonresident-llc-owners.html"
+      },
+      "previewUrl": {
+        "ko": "blog/ein-for-nonresident-llc-owners-korean.html",
+        "en": "blog/ein-for-nonresident-llc-owners.html"
+      },
+      "freeKit": false
+    },
+    {
+      "date": "2026-11-22",
+      "category": "qbo",
+      "title": {
+        "ko": "급여 출금을 '급여 비용' 한 줄로 넣고 있다면: QBO 직원 급여 기록법 (QBO Payroll·외부 급여 서비스, 네바다·캘리포니아·텍사스 비교)",
+        "en": "Booking Payroll as One Bank Withdrawal? How to Record Payroll in QuickBooks Online (QBO Payroll vs. Outside Providers, Nevada, California and Texas Compared)"
+      },
+      "excerpt": {
+        "ko": "QBO Payroll과 외부 급여 서비스별 급여 기록법, 네바다·캘리포니아·텍사스 급여세 비교를 정리합니다.",
+        "en": "How to record payroll in QBO with QBO Payroll or an outside provider, plus NV, CA and TX payroll taxes compared."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-payroll-recording-nv-ca-tx-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-payroll-recording-nv-ca-tx.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-payroll-recording-nv-ca-tx-korean.html",
+        "en": "blog/qbo-payroll-recording-nv-ca-tx.html"
+      },
+      "freeKit": false
+    },
     {
       "date": "2026-11-21",
       "category": "quickbooks",
