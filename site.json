@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20",
+  "updated": "2026-11-21",
   "notice": {
     "ko": "",
     "en": ""
@@ -64,6 +64,90 @@
   ],
   "cfAnalyticsToken": "9671384662e04a52b70330808aeedc3e",
   "posts": [
+    {
+      "date": "2026-11-21",
+      "category": "quickbooks",
+      "title": {
+        "ko": "QuickBooks에서 로트 번호·유통기한 관리가 안 될 때: 엑셀로 하는 FEFO 재고 관리법",
+        "en": "How to Track Lot Numbers and Expiration Dates When QuickBooks Can't (a FEFO Method for Small Businesses)"
+      },
+      "excerpt": {
+        "ko": "QuickBooks에 없는 로트 번호·유통기한 칸을 엑셀 FEFO 관리표로 대신하고 월말 수량 대조와 폐기 입력까지 정리합니다.",
+        "en": "QuickBooks has no lot or expiry column. Keep a FEFO lot log in Excel, match quantities monthly and record write-offs."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/quickbooks-lot-expiry-tracking-korean.html",
+        "en": "https://taxnpaypro.com/blog/track-lot-numbers-expiration-dates-quickbooks.html"
+      },
+      "previewUrl": {
+        "ko": "blog/quickbooks-lot-expiry-tracking-korean.html",
+        "en": "blog/track-lot-numbers-expiration-dates-quickbooks.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-21",
+      "category": "tax",
+      "title": {
+        "ko": "비거주자 미국 법인 은행 계좌 개설: 온라인 핀테크 vs 지점 방문, 필요 서류와 거절되는 이유",
+        "en": "Opening a US Business Bank Account as a Non-US Resident: Online Fintech vs Branch Visit, Documents, and Why Applications Get Rejected"
+      },
+      "excerpt": {
+        "ko": "한국 거주자가 미국 LLC·법인 계좌를 열 때 필요한 서류, 온라인 핀테크와 지점 방문 비교, 자주 거절되는 이유를 정리합니다.",
+        "en": "Documents, EIN, online fintech vs. branch visits, and common rejection reasons for non-US founders opening a US account."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/us-business-bank-account-for-nonresidents-korean.html",
+        "en": "https://taxnpaypro.com/blog/us-business-bank-account-for-nonresidents.html"
+      },
+      "previewUrl": {
+        "ko": "blog/us-business-bank-account-for-nonresidents-korean.html",
+        "en": "blog/us-business-bank-account-for-nonresidents.html"
+      },
+      "freeKit": false
+    },
+    {
+      "date": "2026-11-21",
+      "category": "qbo",
+      "title": {
+        "ko": "받은 판매세가 매출로 잡히고 있다면: QBO 판매세 설정과 신고 준비, 네바다·캘리포니아·텍사스 비교",
+        "en": "Is Sales Tax Showing Up as Income in Your Books? QuickBooks Online Sales Tax Setup and Filing Prep for Nevada, California and Texas"
+      },
+      "excerpt": {
+        "ko": "QBO 판매세를 세팅하고 신고 전 숫자를 확인해 납부까지 기록하는 법, 네바다·캘리포니아·텍사스 세율·기한 비교를 정리합니다.",
+        "en": "Set up QBO sales tax, check numbers before filing, record payments, and compare NV, CA and TX rates and due dates."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-sales-tax-nevada-california-texas-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-sales-tax-nevada-california-texas.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-sales-tax-nevada-california-texas-korean.html",
+        "en": "blog/qbo-sales-tax-nevada-california-texas.html"
+      },
+      "freeKit": false
+    },
+    {
+      "date": "2026-11-21",
+      "category": "tax",
+      "title": {
+        "ko": "내 연방 소득세, 세율 구간별로 직접 계산하는 법 (2026·2027년): 한계세율과 실효세율 쉽게 구분하기",
+        "en": "How to Calculate Your Federal Income Tax by Bracket (2026 and 2027): Marginal vs. Effective Rate, Step by Step"
+      },
+      "excerpt": {
+        "ko": "2026·2027년 세율표로 연방 소득세를 구간별로 계산하고 한계세율·실효세율, 연말 소득 시기 효과를 확인하는 법을 정리합니다.",
+        "en": "Calculate federal tax by bracket for 2026 and 2027, see marginal vs. effective rate, and test year-end timing."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/tax-brackets-2026-2027-korean.html",
+        "en": "https://taxnpaypro.com/blog/tax-brackets-2026-2027-calculate-federal-tax.html"
+      },
+      "previewUrl": {
+        "ko": "blog/tax-brackets-2026-2027-korean.html",
+        "en": "blog/tax-brackets-2026-2027-calculate-federal-tax.html"
+      },
+      "freeKit": true
+    },
     {
       "date": "2026-11-20",
       "category": "accounting",

@@ -1,0 +1,110 @@
+<!-- Title: How to Track Lot Numbers and Expiration Dates When QuickBooks Can't (a FEFO Method for Small Businesses) -->
+<p style="font-size:17px;line-height:1.7;">If you sell food, cosmetics, supplements or anything else with a “best by” date, you have probably searched for a way to record lot numbers and expiration dates in QuickBooks. The same question keeps coming back in the QuickBooks Community, and the answer is usually the same: QuickBooks Online has no lot or expiry column on invoice lines, and QuickBooks Desktop only has it in Enterprise with Advanced Inventory. This post shows a method any small business can set up in Excel or Google Sheets today, so you always know which lot to sell first, what has expired, and how to keep your books in agreement.</p>
+
+<p style="font-size:17px;line-height:1.7;"><i>This article is general educational information, not tax, legal, accounting or food-safety advice.</i></p>
+<h2 style="color:#1F3A5F;">Who has this problem, and why it matters</h2>
+<p style="font-size:17px;line-height:1.7;">Wholesalers, grocery and specialty food stores, beauty shops and online sellers often receive the same item in several lots. When lot codes live only in invoice memos, three things go wrong. Older stock expires on the shelf while newer stock is sold. Expired or damaged units are thrown away but never removed from the books, so inventory on the balance sheet is too high. And if a supplier issues a recall, nobody can say quickly which customers received the affected lot.</p>
+
+<h2 style="color:#1F3A5F;">What QuickBooks does and does not do</h2>
+<table style="border-collapse:collapse;width:100%;font-size:15px;margin:10px 0;">
+<tr><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Product</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Lot and expiry tracking</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Common workaround</th></tr>
+<tr><td style="border:1px solid #c9d3df;padding:8px;">Desktop Enterprise with Advanced Inventory</td><td style="border:1px solid #c9d3df;padding:8px;">Lot or serial numbers; expiration dates on Platinum and Diamond (2023 and 2024 versions)</td><td style="border:1px solid #c9d3df;padding:8px;">Built-in reports such as Inventory Expiration Status</td></tr>
+<tr><td style="border:1px solid #c9d3df;padding:8px;">Desktop Pro and Premier</td><td style="border:1px solid #c9d3df;padding:8px;">None</td><td style="border:1px solid #c9d3df;padding:8px;">Memo or description text</td></tr>
+<tr><td style="border:1px solid #c9d3df;padding:8px;">QuickBooks Online Plus and Advanced</td><td style="border:1px solid #c9d3df;padding:8px;">No per-line lot or expiry column</td><td style="border:1px solid #c9d3df;padding:8px;">Custom fields (one value for the whole transaction), line descriptions, add-on apps</td></tr>
+</table>
+<p style="font-size:17px;line-height:1.7;">A custom field in QuickBooks Online applies to the whole invoice, not to each product line, so an invoice that ships three lots cannot be tracked cleanly. Also keep in mind that QuickBooks values inventory with its own cost method (FIFO or moving average in Online, average cost in Desktop Pro and Premier). Picking the earliest-expiring lot first (FEFO, “first expired, first out”) is a warehouse habit; it does not change how QuickBooks values your stock. That is why the method below compares <b>quantities</b> with QuickBooks, not dollars.</p>
+
+<figure style="margin:20px 0;"><img src="Fig01_FEFO_Flow_EN.png" alt="Five-step FEFO flow: receive, sort by expiry, pick and sell, subtract from the lot, month-end match with QuickBooks" style="max-width:100%;height:auto;"><figcaption style="font-size:14px;color:#555;">Figure 1. The FEFO routine in five steps.</figcaption></figure>
+
+<h2 style="color:#1F3A5F;">Step-by-step: build a lot log in Excel or Google Sheets</h2>
+<h3 style="color:#1F3A5F;">Step 1. Create a “Lots” sheet (one row per lot)</h3>
+<p style="font-size:17px;line-height:1.7;">Columns: A Date received, B SKU, C Lot code, D Expiry date, E Qty received, F Unit cost. Then add these formulas in row 2 and copy them down:</p>
+<ul style="font-size:17px;line-height:1.7;">
+<li>G Qty left: <code>=E2-SUMIFS(Sales!D:D,Sales!B:B,B2,Sales!C:C,C2)</code></li>
+<li>H Days left: <code>=IF(D2="","",D2-TODAY())</code></li>
+<li>I Status: <code>=IF(G2&lt;=0,"Used up",IF(D2="","No expiry",IF(H2&lt;0,"EXPIRED",IF(H2&lt;=30,"SELL FIRST","OK"))))</code></li>
+<li>J Sell order: <code>=IF(OR(G2&lt;=0,D2=""),"",COUNTIFS(B:B,B2,D:D,"&lt;"&amp;D2,G:G,"&gt;0")+1)</code></li>
+</ul>
+<p style="font-size:17px;line-height:1.7;">Change 30 to the warning window that fits your products. Sell order 1 is the lot to pick first for that SKU.</p>
+<p style="font-size:14px;color:#B00020;font-weight:bold;margin-bottom:0;">Example values (invented)</p>
+<table style="border-collapse:collapse;width:100%;font-size:15px;margin:6px 0 14px;">
+<tr><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">SKU</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Lot</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Expiry</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Received</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Qty left</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Days left*</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Status</th></tr>
+<tr><td style="border:1px solid #c9d3df;padding:8px;">KIM-1KG</td><td style="border:1px solid #c9d3df;padding:8px;">KM0901</td><td style="border:1px solid #c9d3df;padding:8px;">2026-11-15</td><td style="border:1px solid #c9d3df;padding:8px;">60</td><td style="border:1px solid #c9d3df;padding:8px;">4</td><td style="border:1px solid #c9d3df;padding:8px;">-5</td><td style="border:1px solid #c9d3df;padding:8px;background:#F8C9C9;"><b>EXPIRED</b></td></tr>
+<tr><td style="border:1px solid #c9d3df;padding:8px;">KIM-1KG</td><td style="border:1px solid #c9d3df;padding:8px;">KM1020</td><td style="border:1px solid #c9d3df;padding:8px;">2026-12-05</td><td style="border:1px solid #c9d3df;padding:8px;">80</td><td style="border:1px solid #c9d3df;padding:8px;">58</td><td style="border:1px solid #c9d3df;padding:8px;">15</td><td style="border:1px solid #c9d3df;padding:8px;background:#FFD9A8;"><b>SELL FIRST</b></td></tr>
+<tr><td style="border:1px solid #c9d3df;padding:8px;">KIM-1KG</td><td style="border:1px solid #c9d3df;padding:8px;">KM1110</td><td style="border:1px solid #c9d3df;padding:8px;">2027-01-08</td><td style="border:1px solid #c9d3df;padding:8px;">80</td><td style="border:1px solid #c9d3df;padding:8px;">80</td><td style="border:1px solid #c9d3df;padding:8px;">49</td><td style="border:1px solid #c9d3df;padding:8px;background:#DFF2DF;">OK</td></tr>
+</table>
+<p style="font-size:14px;color:#555;">*Days left as of an example report date of 2026-11-20. KM1020: 80 received − 25 sold + 3 returned by a customer = 58.</p>
+
+<h3 style="color:#1F3A5F;">Step 2. Create a “Sales” sheet (one row per lot per invoice line)</h3>
+<p style="font-size:17px;line-height:1.7;">Columns: A Date, B SKU, C Lot code, D Qty, E Type (Sale, Return, Expired, Damaged, Sample), F Customer, G Invoice number. Enter a customer return as a <b>negative</b> quantity so it goes back into the same lot. In QuickBooks, also type the lot code at the start of the invoice line description (for example “KM1020 · Napa kimchi 1kg”), so the code appears on the customer's copy and can be found later.</p>
+<p style="font-size:17px;line-height:1.7;">Two quick checks catch most errors: a lot code that does not exist in the Lots sheet (<code>=IF(COUNTIFS(Lots!B:B,B2,Lots!C:C,C2)=0,"Lot not found","")</code>) and any lot whose Qty left drops below zero, which means a sale was charged to the wrong lot.</p>
+
+<figure style="margin:20px 0;"><img src="Fig02_Before_After_EN.png" alt="Before and after example: lot codes scattered in invoice memos versus one row per lot with expiry and status" style="max-width:100%;height:auto;"><figcaption style="font-size:14px;color:#555;">Figure 2. The same stock, before and after a lot log (example values).</figcaption></figure>
+
+<h3 style="color:#1F3A5F;">Step 3. Make a daily sell-first list</h3>
+<p style="font-size:17px;line-height:1.7;">Filter the Lots sheet to Qty left &gt; 0 and sort by Expiry date, oldest first. Anything marked EXPIRED is pulled from the shelf; anything marked SELL FIRST goes to the front or gets a discount. To see the dollars at stake, add: <code>=SUMPRODUCT(((I2:I500="EXPIRED")+(I2:I500="SELL FIRST"))*(G2:G500&gt;0),G2:G500,F2:F500)</code>.</p>
+
+<h3 style="color:#1F3A5F;">Step 4. Match quantities with QuickBooks at month-end</h3>
+<p style="font-size:17px;line-height:1.7;">Run the Inventory Valuation Summary as of the last day of the month. In QuickBooks Desktop it is under Reports → Inventory. In QuickBooks Online, go to Reports and search for “Inventory Valuation Summary”. For each SKU, compare the QuickBooks quantity on hand with <code>=SUMIFS(Lots!G:G,Lots!B:B,"KIM-1KG")</code>.</p>
+<p style="font-size:14px;color:#B00020;font-weight:bold;margin-bottom:0;">Example values (invented)</p>
+<table style="border-collapse:collapse;width:100%;font-size:15px;margin:6px 0 14px;">
+<tr><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">SKU</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">QuickBooks qty</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Lot qty left</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Difference</th><th style="background:#1F3A5F;color:#fff;padding:8px;text-align:left;">Likely reason</th></tr>
+<tr><td style="border:1px solid #c9d3df;padding:8px;">KIM-1KG</td><td style="border:1px solid #c9d3df;padding:8px;">148</td><td style="border:1px solid #c9d3df;padding:8px;">142</td><td style="border:1px solid #c9d3df;padding:8px;">6</td><td style="border:1px solid #c9d3df;padding:8px;">6 expired units thrown away, not yet adjusted in QuickBooks</td></tr>
+<tr><td style="border:1px solid #c9d3df;padding:8px;">RMN-5PK</td><td style="border:1px solid #c9d3df;padding:8px;">300</td><td style="border:1px solid #c9d3df;padding:8px;">296</td><td style="border:1px solid #c9d3df;padding:8px;">4</td><td style="border:1px solid #c9d3df;padding:8px;">4 damaged units not yet adjusted</td></tr>
+<tr><td style="border:1px solid #c9d3df;padding:8px;">GCJ-500</td><td style="border:1px solid #c9d3df;padding:8px;">180</td><td style="border:1px solid #c9d3df;padding:8px;">180</td><td style="border:1px solid #c9d3df;padding:8px;">0</td><td style="border:1px solid #c9d3df;padding:8px;">Matches</td></tr>
+</table>
+<p style="font-size:17px;line-height:1.7;">If QuickBooks is higher, a write-off is usually missing in QuickBooks. If QuickBooks is lower, a receipt is usually missing from your lot log.</p>
+
+<h3 style="color:#1F3A5F;">Step 5. Record the write-off in QuickBooks</h3>
+<p style="font-size:17px;line-height:1.7;"><b>QuickBooks Online (Plus or Advanced):</b> select <b>+ Create → Inventory qty adjustment</b> (or Inventory → Adjustments → Create adjustment). Choose Adjustment type <b>Quantity only</b>, enter the Adjustment date, pick the Inventory adjustment account (an expense account such as Inventory Shrinkage), choose the product and enter the <b>Change in quantity</b>, for example −6. Write the lot codes in the Memo, then Save and close.</p>
+<p style="font-size:17px;line-height:1.7;"><b>QuickBooks Desktop:</b> Vendors → Inventory Activities → <b>Adjust Quantity/Value on Hand</b>, Adjustment Type: Quantity. Choose the adjustment account, enter the new quantity or the quantity difference, and put the lot codes in the memo.</p>
+<p style="font-size:17px;line-height:1.7;">Run the comparison again. Every SKU should now show a difference of 0. How an inventory write-off is treated on your tax return is a question for your tax professional.</p>
+
+<figure style="margin:20px 0;"><img src="Fig03_Month_End_Timeline_EN.png" alt="Month-end timeline: log lots daily, pull expired stock, run the inventory report, enter the quantity adjustment, confirm every item matches" style="max-width:100%;height:auto;"><figcaption style="font-size:14px;color:#555;">Figure 3. A simple month-end routine (example dates).</figcaption></figure>
+
+<h3 style="color:#1F3A5F;">Step 6. Practice a recall lookup</h3>
+<p style="font-size:17px;line-height:1.7;">Filter the Sales sheet by one lot code. The Customer and Invoice columns are your contact list, and you can open each invoice in QuickBooks by its number. For food businesses: FDA's Food Traceability Rule page (current as of November 4, 2026) says FDA proposed moving the compliance date to July 20, 2028, and that Congress directed FDA not to enforce the rule before that date. Covered foods need specific traceability records; a spreadsheet like this helps you organize lot codes but is not by itself a compliance system.</p>
+
+<h2 style="color:#1F3A5F;">Common mistakes</h2>
+<ul style="font-size:17px;line-height:1.7;">
+<li>Entering the same lot on two rows. Sales then get subtracted twice. Keep one row per SKU + lot.</li>
+<li>Typing a customer return as a positive “Sale”. Use a negative quantity with type Return.</li>
+<li>Comparing dollars instead of quantities with QuickBooks. QuickBooks uses its own cost method, so dollars will rarely match exactly.</li>
+<li>Throwing away expired stock without an inventory quantity adjustment, which leaves inventory overstated.</li>
+<li>Back-dating adjustments into a month that is already closed. Date them in the current open period unless your accountant says otherwise.</li>
+</ul>
+
+<h2 style="color:#1F3A5F;">FAQ</h2>
+<h3 style="color:#1F3A5F;">Can I use a custom field for lot numbers in QuickBooks Online?</h3>
+<p style="font-size:17px;line-height:1.7;">You can, but a transaction custom field holds one value for the whole invoice. It works only if every invoice ships a single lot. Putting the lot code in the line description is more practical, with the spreadsheet as the master list.</p>
+<h3 style="color:#1F3A5F;">Is FEFO the same as FIFO?</h3>
+<p style="font-size:17px;line-height:1.7;">No. FIFO is a cost method for valuing inventory. FEFO is a picking rule: sell the lot that expires first, even if it arrived later.</p>
+<h3 style="color:#1F3A5F;">How often should I compare with QuickBooks?</h3>
+<p style="font-size:17px;line-height:1.7;">Monthly at minimum, and before any physical count or year-end close. Weekly is better for short-dated products such as fresh food.</p>
+<h3 style="color:#1F3A5F;">Should I upgrade to QuickBooks Desktop Enterprise for lot tracking?</h3>
+<p style="font-size:17px;line-height:1.7;">It depends on your volume, budget and how long you plan to stay on Desktop. Many small businesses find a disciplined spreadsheet or an inventory add-on enough. Compare current pricing and support dates on Intuit's site before deciding.</p>
+
+<h2 style="color:#1F3A5F;">Checklist</h2>
+<ul style="font-size:17px;line-height:1.7;list-style:none;padding-left:0;">
+<li>☐ Every receipt has a row in Lots with lot code and expiry date.</li>
+<li>☐ Every invoice line has a lot code in the Sales sheet and in the QuickBooks line description.</li>
+<li>☐ No lot shows a negative quantity; no “Lot not found”.</li>
+<li>☐ Expired and damaged stock is physically pulled.</li>
+<li>☐ Write-offs are entered in QuickBooks with lot codes in the memo.</li>
+<li>☐ Lot totals match the Inventory Valuation Summary quantity for every SKU.</li>
+</ul>
+
+<p style="font-size:17px;line-height:1.7;">You can download the ready-made <b>Lot &amp; Expiration Date Tracker (FEFO) 2026</b> for free in the <a href="#kit" style="color:#1F4E99;font-weight:700;">Free kit download</a> box below (Excel + PDF guide, no sign-up).</p>
+
+<p style="font-size:14px;color:#555;line-height:1.6;border-top:1px solid #ddd;padding-top:10px;"><b>Disclaimer:</b> This article is for education only and is not tax, legal, accounting or food-safety advice. Rules and software menus change; confirm with a qualified professional and with current official sources. QuickBooks is a registered trademark of Intuit Inc.; not affiliated with or endorsed by Intuit. All example names and numbers are invented.</p>
+
+<h3 style="color:#1F3A5F;">Sources (checked November 2026)</h3>
+<ul style="font-size:14px;line-height:1.6;">
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/product-preferences/use-serial-lot-numbers/L7pICcele_US_en_US">Intuit: Use serial or lot numbers and expiration dates in QuickBooks Desktop Enterprise</a></li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/inventory-quantity/adjust-inventory-quantity-hand-quickbooks-online/L6O3QhOEZ_US_en_US">Intuit: Adjust inventory quantity on hand in QuickBooks Online</a></li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/inventory-management/fifo-used-inventory-cost-accounting/L1x3hkunE_US_en_US">Intuit: Inventory valuation methods for cost accounting (FIFO or moving average)</a></li>
+<li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/customize-forms/add-custom-fields-sales-forms-purchase-orders/L6saJYHdg_US_en_US">Intuit: Add custom fields to sales forms and purchase orders in QuickBooks Online</a></li>
+<li><a href="https://quickbooks.intuit.com/community/transactions-28/lot-no-expiry-date-and-discount-374850">QuickBooks Community: Lot no, expiry date and discount (July 2026)</a></li>
+<li><a href="https://quickbooks.intuit.com/community/reports-and-accounting-5/qbo-needs-to-add-an-expiration-date-feature-for-inventory-anyone-else-agree-57964">QuickBooks Community: QBO needs an expiration date feature for inventory (2024)</a></li>
+<li><a href="https://www.fda.gov/food/food-safety-modernization-act-fsma/fsma-final-rule-requirements-additional-traceability-records-certain-foods">FDA: FSMA Final Rule on Requirements for Additional Traceability Records for Certain Foods</a></li>
+</ul>
