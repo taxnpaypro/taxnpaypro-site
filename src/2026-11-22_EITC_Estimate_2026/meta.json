@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-22",
+  "category": "tax",
+  "slug": {
+    "ko": "eitc-2026-calculation-guide-korean",
+    "en": "how-to-estimate-eitc-2026"
+  },
+  "title": {
+    "ko": "2026년 근로장려세제(EITC), 자영업자도 직접 계산해 보는 방법",
+    "en": "How to Estimate Your 2026 Earned Income Tax Credit (Even If You Are Self-Employed)"
+  },
+  "excerpt": {
+    "ko": "IRS 공식 수치로 2026년 EITC 자격과 예상 금액을 자영업자도 직접 계산하는 방법을 정리합니다.",
+    "en": "Estimate your 2026 EITC with official IRS figures: eligibility, income limits and self-employment income."
+  },
+  "downloads": {
+    "kit": "eitc-estimator-2026-2027",
+    "en": [
+      "EITC_Estimator_2026_2027_EN.xlsx",
+      "EITC_Guide_2026_2027_EN.pdf"
+    ],
+    "ko": [
+      "EITC_Estimator_2026_2027_EN_KR.xlsx",
+      "EITC_Guide_2026_2027_EN_KR.pdf"
+    ]
+  }
+}
