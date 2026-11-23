@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-23",
+  "category": "tax",
+  "slug": {
+    "ko": "haeoe-chuljang-hanggongryo-gongje-gyesan",
+    "en": "business-trip-abroad-personal-days-airfare-deduction"
+  },
+  "title": {
+    "ko": "해외 출장 중 개인 일정이 있었다면? 항공료 공제 가능 금액 계산법 (7일·25% 규칙)",
+    "en": "Business Trip Abroad With Personal Days: How Much of the Airfare Can You Deduct?"
+  },
+  "excerpt": {
+    "ko": "해외 출장에 개인 일정이 섞였을 때 IRS 7일·25% 규칙으로 항공료 공제액을 업무일 비율로 계산하는 법을 정리합니다.",
+    "en": "Mixed business and personal days abroad? Use the IRS one-week and 25% tests to work out how much airfare you can deduct."
+  },
+  "downloads": {
+    "kit": "foreign-trip-allocator-2026",
+    "en": [
+      "Foreign_Trip_Allocator_2026_EN.xlsx",
+      "Foreign_Trip_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Foreign_Trip_Allocator_2026_EN_KR.xlsx",
+      "Foreign_Trip_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}

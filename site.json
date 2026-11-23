@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22",
+  "updated": "2026-11-23",
   "notice": {
     "ko": "",
     "en": ""
@@ -64,6 +64,69 @@
   ],
   "cfAnalyticsToken": "9671384662e04a52b70330808aeedc3e",
   "posts": [
+    {
+      "date": "2026-11-23",
+      "category": "tax",
+      "title": {
+        "ko": "해외 출장 중 개인 일정이 있었다면? 항공료 공제 가능 금액 계산법 (7일·25% 규칙)",
+        "en": "Business Trip Abroad With Personal Days: How Much of the Airfare Can You Deduct?"
+      },
+      "excerpt": {
+        "ko": "해외 출장에 개인 일정이 섞였을 때 IRS 7일·25% 규칙으로 항공료 공제액을 업무일 비율로 계산하는 법을 정리합니다.",
+        "en": "Mixed business and personal days abroad? Use the IRS one-week and 25% tests to work out how much airfare you can deduct."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/haeoe-chuljang-hanggongryo-gongje-gyesan.html",
+        "en": "https://taxnpaypro.com/blog/business-trip-abroad-personal-days-airfare-deduction.html"
+      },
+      "previewUrl": {
+        "ko": "blog/haeoe-chuljang-hanggongryo-gongje-gyesan.html",
+        "en": "blog/business-trip-abroad-personal-days-airfare-deduction.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-23",
+      "category": "tax",
+      "title": {
+        "ko": "1인 외국인 소유 LLC의 Form 5472 + 가결산 Form 1120: 소득이 없어도 내야 할 수 있는 신고와 벌금",
+        "en": "Form 5472 for a Foreign-Owned Single-Member LLC: The Pro Forma 1120 You May Owe Even With No Income"
+      },
+      "excerpt": {
+        "ko": "매출이 없어도 신고 대상일 수 있는 Form 5472와 가결산 1120의 작성 항목, 기한·연장, 제출 방법, 벌금을 정리합니다.",
+        "en": "A foreign-owned single-member LLC may owe Form 5472 even with no income: what to file, when, where, and the penalty."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/form-5472-foreign-owned-llc-korean.html",
+        "en": "https://taxnpaypro.com/blog/form-5472-foreign-owned-llc.html"
+      },
+      "previewUrl": {
+        "ko": "blog/form-5472-foreign-owned-llc-korean.html",
+        "en": "blog/form-5472-foreign-owned-llc.html"
+      },
+      "freeKit": false
+    },
+    {
+      "date": "2026-11-23",
+      "category": "qbo",
+      "title": {
+        "ko": "한국 거래처 대금, 달러 금액만 적고 있다면: QBO 다중 통화(Multicurrency) 설정과 환율 차이 기록법",
+        "en": "Paying Korean Vendors in Won but Booking Only Dollars? Multicurrency Setup and Exchange Differences in QuickBooks Online"
+      },
+      "excerpt": {
+        "ko": "원화 청구서와 한국 송금을 QBO 다중 통화로 기록하는 법, 환차손익과 월말 재평가, FBAR 확인 사항을 정리합니다.",
+        "en": "How to record KRW bills and Korea wires with QBO Multicurrency, exchange gains and losses, revaluation, and FBAR basics."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-multicurrency-korea-transfers-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-multicurrency-korea-transfers.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-multicurrency-korea-transfers-korean.html",
+        "en": "blog/qbo-multicurrency-korea-transfers.html"
+      },
+      "freeKit": false
+    },
     {
       "date": "2026-11-22",
       "category": "tax",
