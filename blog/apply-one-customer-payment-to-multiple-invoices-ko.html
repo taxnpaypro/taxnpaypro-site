@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>입금 한 번에 인보이스 여러 장: QuickBooks에서 일괄 입금을 정확히 배분하는 방법 · BIZLEX</title>
+<meta name="description" content="메모 없는 일괄 입금이 어느 인보이스 대금인지 찾아 QuickBooks Desktop·Online에 정확히 적용하는 법입니다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="BIZLEX">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="입금 한 번에 인보이스 여러 장: QuickBooks에서 일괄 입금을 정확히 배분하는 방법">
+<meta property="og:description" content="메모 없는 일괄 입금이 어느 인보이스 대금인지 찾아 QuickBooks Desktop·Online에 정확히 적용하는 법입니다.">
+<meta property="og:url" content="https://taxnpaypro.com/blog/apply-one-customer-payment-to-multiple-invoices-ko.html">
+<meta property="article:published_time" content="2026-11-24">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://taxnpaypro.com/blog/img/2026-11-24_Lump_Sum_Payment_Invoices/Fig02_Before_After_KR.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "입금 한 번에 인보이스 여러 장: QuickBooks에서 일괄 입금을 정확히 배분하는 방법", "description": "메모 없는 일괄 입금이 어느 인보이스 대금인지 찾아 QuickBooks Desktop·Online에 정확히 적용하는 법입니다.", "inLanguage": "ko", "datePublished": "2026-11-24", "dateModified": "2026-11-24", "author": {"@type": "Organization", "name": "BIZLEX, INC.", "url": "https://taxnpaypro.com/"}, "publisher": {"@type": "Organization", "name": "BIZLEX, INC.", "url": "https://taxnpaypro.com/"}, "mainEntityOfPage": "https://taxnpaypro.com/blog/apply-one-customer-payment-to-multiple-invoices-ko.html", "articleSection": "QuickBooks Desktop", "image": "https://taxnpaypro.com/blog/img/2026-11-24_Lump_Sum_Payment_Invoices/Fig02_Before_After_KR.png"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BIZLEX", "item": "https://taxnpaypro.com/"}, {"@type": "ListItem", "position": 2, "name": "블로그", "item": "https://taxnpaypro.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "입금 한 번에 인보이스 여러 장: QuickBooks에서 일괄 입금을 정확히 배분하는 방법", "item": "https://taxnpaypro.com/blog/apply-one-customer-payment-to-multiple-invoices-ko.html"}]}</script>
+<link rel="canonical" href="https://taxnpaypro.com/blog/apply-one-customer-payment-to-multiple-invoices-ko.html">
+<link rel="alternate" hreflang="ko" href="https://taxnpaypro.com/blog/apply-one-customer-payment-to-multiple-invoices-ko.html"><link rel="alternate" hreflang="en" href="https://taxnpaypro.com/blog/apply-one-customer-payment-to-multiple-invoices.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;800&family=Noto+Sans+KR:wght@400;700&display=swap">
+<style>
+:root{color-scheme:light;--navy:#14202E;--gold:#D4A845;--bg:#FFFFFF;--ink:#222;--muted:#5A6573}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:"Noto Sans KR","Manrope","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;word-break:keep-all;overflow-wrap:anywhere}
+.top{background:var(--navy);padding-block:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top .in{max-width:820px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:Manrope,sans-serif}
+.logo b{font-weight:800;font-size:22px;letter-spacing:3px} .logo i{width:4px;height:26px;background:var(--gold)} .logo span{font-weight:400;font-size:22px;letter-spacing:3px}
+.nav{display:flex;gap:16px;align-items:center}
+.nav a{color:#C9D3DE;text-decoration:none;font-size:14px;min-height:36px;display:inline-flex;align-items:center}
+.nav a:hover{color:#fff}
+.nav a.lang{border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:4px 14px;color:#fff}
+main{max-width:820px;margin:0 auto;padding-block:36px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.meta{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px}
+h1.t{font-family:Manrope,"Noto Sans KR",sans-serif;font-weight:800;font-size:clamp(28px,4.4vw,40px);line-height:1.25;color:#1F3A5F;margin:0 0 18px;text-wrap:balance}
+main img{max-width:100%;height:auto}
+main table{display:block;max-width:100%;overflow-x:auto} main pre,main p{max-width:100%}
+.conv{margin-top:36px;padding:16px 18px;border:1px solid #dde3ea;border-left:5px solid var(--gold);border-radius:8px;background:#FBF8F0;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+.conv b{color:#1F3A5F} .conv span{color:var(--muted);flex:1 1 260px} .conv a{color:#fff;background:var(--navy);padding:8px 14px;border-radius:6px;text-decoration:none;font-weight:700;min-height:40px;display:inline-flex;align-items:center}
+.kittop{margin:0 0 22px} .kittop a{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border-radius:6px;background:#FBF8F0;border:1px solid var(--gold);color:#1F3A5F;font-weight:700;text-decoration:none}
+.kit{margin-top:40px;padding:20px 20px 14px;border:2px solid var(--navy);border-radius:10px;background:#F7F9FB;scroll-margin-top:16px}
+.kit h2{margin:0 0 6px;font-size:22px;color:#1F3A5F} .kit>p{margin:0 0 12px;color:var(--muted)}
+.kit ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.kit li{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;padding:10px 12px;background:#fff;border:1px solid #dde3ea;border-radius:8px}
+.kit li a{color:#fff;background:var(--navy);padding:8px 14px;border-radius:6px;text-decoration:none;font-weight:700;min-height:40px;display:inline-flex;align-items:center}
+.kit li small{color:var(--muted);font-size:13px;overflow-wrap:anywhere}
+.kit .fine{font-size:12.5px;color:var(--muted);margin:12px 0 0}
+.back{margin-top:40px;padding-top:20px;border-top:1px solid #dde3ea}
+.back a{color:#1F3A5F;font-weight:700;text-decoration:none} .back a.pv{float:right;font-weight:400;font-size:14px;color:#5A6573}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style></head><body>
+<header class="top"><div class="in">
+<a class="logo" href="/" aria-label="BIZLEX, INC."><b>BIZ</b><i aria-hidden="true"></i><span>LEX</span></a>
+<nav class="nav"><a href="/blog/">블로그</a><a class="lang" href="apply-one-customer-payment-to-multiple-invoices.html" lang="en">English</a></nav>
+</div></header>
+<main>
+<p class="meta">2026-11-24 · QuickBooks Desktop</p>
+<h1 class="t">입금 한 번에 인보이스 여러 장: QuickBooks에서 일괄 입금을 정확히 배분하는 방법</h1>
+<p class="kittop"><a href="#kit">↓ 이 글의 무료 Excel·PDF 키트 받기</a></p><p style="font-size:16px;line-height:1.7;margin:0 0 12px;">거래처가 4,552.00달러짜리 수표 한 장을 보내면서 아무 메모도 없습니다. 열려 있는 인보이스는 10장. 어느 인보이스를 갚은 걸까요? 잘못 짐작해서 입력하면 미수금 명세(A/R aging)에 엉뚱한 인보이스가 연체로 남고, 다음 달 거래명세서를 받은 고객은 헷갈리고, 실제로는 다른 인보이스 대금인 돈이 '크레딧'으로 떠 있게 됩니다. 도매, 공사, 에이전시처럼 같은 고객에게 한 달에도 여러 번 청구하는 사업장에서 자주 생기는 일입니다.</p>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;">이 글에서는 엑셀이나 구글 시트로 직접 따라 할 수 있는 방법과, QuickBooks Desktop과 QuickBooks Online의 실제 입력 화면 순서를 정리했습니다.</p>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;"><em>이 글은 일반적인 교육용 정보이며 세무·법률·회계 자문이 아닙니다. 본인 사례는 공인 전문가와 확인하세요.</em></p>
+
+<h2 style="color:#1F3A5F;font-size:24px;margin:28px 0 10px;">일괄 입금이 꼬이는 이유</h2>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;">QuickBooks는 입금이 어느 인보이스에 해당하는지 정해야 합니다. Intuit 도움말에 따르면 QuickBooks Desktop에서 <b>Automatically apply payments</b> 설정이 켜져 있으면 입금은 <b>가장 오래된 미결 인보이스</b>부터 적용됩니다. 합리적인 기본값이지만, 고객은 보통 자기 쪽에서 승인한 인보이스를 갚지 가장 오래된 것부터 갚지는 않습니다. 이견이 있는 인보이스는 일부러 빼기도 하고, 최근 인보이스를 먼저 내기도 합니다.</p>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;">해결 원칙은 간단합니다. Receive Payment 화면을 열기 <b>전에</b> 어느 인보이스인지 먼저 정하고, QuickBooks를 그 결정에 맞추는 것입니다.</p>
+<figure style="margin:18px 0;"><img src="img/2026-11-24_Lump_Sum_Payment_Invoices/Fig02_Before_After_KR.png" alt="같은 4,552.00 수표를 오래된 순으로 배분한 경우와 합계가 맞는 인보이스 조합에 배분한 경우를 비교한 표" width="1200" height="600" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:8px;"><figcaption style="font-size:13px;color:#6b7280;margin-top:6px;">그림 1. 같은 수표, 두 가지 배분 결과. 예시 값(가상).</figcaption></figure>
+
+<h2 style="color:#1F3A5F;font-size:24px;margin:28px 0 10px;">1단계 – 자료 모으기</h2>
+<ul style="font-size:16px;line-height:1.7;margin:0 0 12px 22px;"><li>입금액, 날짜, 참조번호(수표 번호, ACH 추적번호, 송금 참조번호).</li>
+<li>고객이 보낸 지급 명세: 수표 스텁, 이메일, 거래처 포털 출력물, 입금 메모.</li>
+<li>해당 고객의 미결 인보이스: 미결 인보이스 또는 A/R aging detail 리포트를 뽑아 엑셀로 내보내기.</li></ul>
+
+<h2 style="color:#1F3A5F;font-size:24px;margin:28px 0 10px;">2단계 – 배분 방법 고르기</h2>
+<figure style="margin:18px 0;"><img src="img/2026-11-24_Lump_Sum_Payment_Invoices/Fig01_Method_Decision_KR.png" alt="결정 흐름도: 고객 목록이 있으면 목록대로, 없으면 금액이 인보이스 조합과 같은지 확인, 조합 1개면 적용, 여러 개면 고객 확인, 없으면 오래된 순 또는 고객 확인" width="1200" height="593" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:8px;"><figcaption style="font-size:13px;color:#6b7280;margin-top:6px;">그림 2. 어떤 방법을 쓸지 고르는 흐름.</figcaption></figure>
+<table style="border-collapse:collapse;width:100%;margin:10px 0 6px;font-size:15px;"><tr><th style="background:#1F3A5F;color:#ffffff;padding:8px;text-align:left;border:1px solid #1F3A5F;">상황</th><th style="background:#1F3A5F;color:#ffffff;padding:8px;text-align:left;border:1px solid #1F3A5F;">방법</th><th style="background:#1F3A5F;color:#ffffff;padding:8px;text-align:left;border:1px solid #1F3A5F;">적용 방법</th></tr>
+<tr><td style="padding:7px 8px;border:1px solid #d1d5db;">고객이 인보이스 목록을 보냄</td><td style="padding:7px 8px;border:1px solid #d1d5db;">고객 명세(Remittance)</td><td style="padding:7px 8px;border:1px solid #d1d5db;">목록의 금액대로, 각 인보이스 미결 잔액 한도 안에서 배분. 남는 금액은 고객 크레딧.</td></tr>
+<tr><td style="padding:7px 8px;border:1px solid #d1d5db;">목록은 없지만 인보이스 몇 장의 합계처럼 보임</td><td style="padding:7px 8px;border:1px solid #d1d5db;">맞는 조합 찾기</td><td style="padding:7px 8px;border:1px solid #d1d5db;">입금액과 정확히 같은 인보이스 묶음을 찾기(3-2단계).</td></tr>
+<tr><td style="padding:7px 8px;border:1px solid #d1d5db;">목록도 없고 맞는 조합도 없음</td><td style="padding:7px 8px;border:1px solid #d1d5db;">오래된 순 또는 고객 확인</td><td style="padding:7px 8px;border:1px solid #d1d5db;">만기일 순으로 배분, 마지막 인보이스는 일부 입금. 먼저 고객에게 묻는 곳도 많습니다.</td></tr>
+</table>
+<p style="font-size:13px;color:#b45309;margin:0 0 14px;">표 1. 배분 방법 고르기.</p>
+
+<h2 style="color:#1F3A5F;font-size:24px;margin:28px 0 10px;">3단계 – 스프레드시트로 금액 계산</h2>
+<h3 style="color:#1F4E99;font-size:19px;margin:20px 0 8px;">3-1. 오래된 순(누적 합계)</h3>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;">미결 인보이스를 만기일 순으로 2행부터 넣고, C열에 미결 잔액, F1 셀에 입금액을 넣습니다. D2에 다음 수식을 입력합니다.</p>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;"><code style="background:#F3F4F6;padding:2px 5px;border-radius:4px;font-family:Consolas,monospace;font-size:14px;">=MAX(0, MIN(C2, $F$1 - SUM(D$1:D1)))</code></p>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;">아래로 복사하면 각 행이 남은 입금액을 자기 잔액만큼 가져갑니다. 1행은 제목이라 <code style="background:#F3F4F6;padding:2px 5px;border-radius:4px;font-family:Consolas,monospace;font-size:14px;">SUM(D$1:D1)</code>은 0에서 시작합니다. 남은 잔액은 E2에 <code style="background:#F3F4F6;padding:2px 5px;border-radius:4px;font-family:Consolas,monospace;font-size:14px;">=C2-D2</code>, 남는 크레딧은 <code style="background:#F3F4F6;padding:2px 5px;border-radius:4px;font-family:Consolas,monospace;font-size:14px;">=MAX(0, F1-SUM(D:D))</code>입니다.</p>
+<h3 style="color:#1F4E99;font-size:19px;margin:20px 0 8px;">3-2. 입금액과 합계가 같은 인보이스 조합 찾기</h3>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;">인보이스가 n장이면 가능한 조합은 2<sup>n</sup> − 1개입니다(10장 = 1,023개, 12장 = 4,095개). 스프레드시트로 전부 검사할 수 있습니다.</p>
+<ol style="font-size:16px;line-height:1.7;margin:0 0 12px 22px;"><li>새 시트 1행(B1, C1, D1 …)에 인보이스 잔액을, 그 아래 2행에 1, 2, 4, 8 …(2의 거듭제곱)을 넣습니다.</li>
+<li>A4부터 아래로 조합 번호 1, 2, 3 … 2<sup>n</sup> − 1까지 입력합니다.</li>
+<li>B4에 <code style="background:#F3F4F6;padding:2px 5px;border-radius:4px;font-family:Consolas,monospace;font-size:14px;">=MOD(INT($A4/B$2),2)</code>를 넣고 오른쪽·아래로 복사합니다. 1이면 그 인보이스가 조합에 들어간다는 뜻입니다.</li>
+<li>마지막 인보이스 다음 열에 조합 합계 <code style="background:#F3F4F6;padding:2px 5px;border-radius:4px;font-family:Consolas,monospace;font-size:14px;">=SUMPRODUCT(B4:K4,$B$1:$K$1)</code>을 넣습니다(K는 마지막 인보이스 열로 바꾸세요).</li>
+<li>합계 열을 입금액으로 필터링하면 남는 행이 합계가 정확히 맞는 조합입니다.</li></ol>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;">딱 한 행만 남으면 그 조합일 가능성이 높지만 고객 자료와 한 번 더 비교하세요. 두 행 이상 남으면 금액만으로는 알 수 없으니 어느 인보이스를 낸 것인지 고객에게 확인해야 합니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:10px 0 6px;font-size:15px;"><tr><th style="background:#1F3A5F;color:#ffffff;padding:8px;text-align:left;border:1px solid #1F3A5F;">인보이스</th><th style="background:#1F3A5F;color:#ffffff;padding:8px;text-align:left;border:1px solid #1F3A5F;">만기일</th><th style="background:#1F3A5F;color:#ffffff;padding:8px;text-align:left;border:1px solid #1F3A5F;">미결 잔액</th></tr>
+<tr><td style="padding:7px 8px;border:1px solid #d1d5db;">INV-1041</td><td style="padding:7px 8px;border:1px solid #d1d5db;">2026-09-13</td><td style="padding:7px 8px;border:1px solid #d1d5db;text-align:right;">1,250.00</td></tr><tr><td style="padding:7px 8px;border:1px solid #d1d5db;">INV-1047</td><td style="padding:7px 8px;border:1px solid #d1d5db;">2026-09-28</td><td style="padding:7px 8px;border:1px solid #d1d5db;text-align:right;">386.40</td></tr><tr><td style="padding:7px 8px;border:1px solid #d1d5db;">INV-1052</td><td style="padding:7px 8px;border:1px solid #d1d5db;">2026-10-10</td><td style="padding:7px 8px;border:1px solid #d1d5db;text-align:right;">2,140.75</td></tr><tr><td style="padding:7px 8px;border:1px solid #d1d5db;">INV-1058</td><td style="padding:7px 8px;border:1px solid #d1d5db;">2026-10-24</td><td style="padding:7px 8px;border:1px solid #d1d5db;text-align:right;">915.00</td></tr><tr><td style="padding:7px 8px;border:1px solid #d1d5db;">INV-1063</td><td style="padding:7px 8px;border:1px solid #d1d5db;">2026-11-02</td><td style="padding:7px 8px;border:1px solid #d1d5db;text-align:right;">1,478.20</td></tr><tr><td style="padding:7px 8px;border:1px solid #d1d5db;">INV-1066</td><td style="padding:7px 8px;border:1px solid #d1d5db;">2026-11-14</td><td style="padding:7px 8px;border:1px solid #d1d5db;text-align:right;">642.35</td></tr>
+<tr><td style="padding:7px 8px;border:1px solid #d1d5db;">INV-1071 … INV-1082</td><td style="padding:7px 8px;border:1px solid #d1d5db;">2026년 11–12월</td><td style="padding:7px 8px;border:1px solid #d1d5db;">인보이스 4장 더</td></tr>
+</table>
+<p style="font-size:13px;color:#b45309;margin:0 0 14px;">표 2. 예시 미결 인보이스(가상 값, 10장, 합계 11,507.35).</p>
+<table style="border-collapse:collapse;width:100%;margin:10px 0 6px;font-size:15px;"><tr><th style="background:#1F3A5F;color:#ffffff;padding:8px;text-align:left;border:1px solid #1F3A5F;">입금</th><th style="background:#1F3A5F;color:#ffffff;padding:8px;text-align:left;border:1px solid #1F3A5F;">방법</th><th style="background:#1F3A5F;color:#ffffff;padding:8px;text-align:left;border:1px solid #1F3A5F;">결과</th></tr>
+<tr><td style="padding:7px 8px;border:1px solid #d1d5db;">수표 4,552.00, 메모 없음</td><td style="padding:7px 8px;border:1px solid #d1d5db;">맞는 조합 찾기</td><td style="padding:7px 8px;border:1px solid #d1d5db;">1,023개 중 1개 일치: INV-1041, 1052, 1066, 1075 완납</td></tr>
+<tr><td style="padding:7px 8px;border:1px solid #d1d5db;">ACH 5,000.00, 내역 없음</td><td style="padding:7px 8px;border:1px solid #d1d5db;">오래된 순</td><td style="padding:7px 8px;border:1px solid #d1d5db;">1041·1047·1052·1058 완납, INV-1063에 307.85 (잔액 1,170.35)</td></tr>
+<tr><td style="padding:7px 8px;border:1px solid #d1d5db;">송금 4,900.00, 목록 합계 4,854.35</td><td style="padding:7px 8px;border:1px solid #d1d5db;">고객 명세</td><td style="padding:7px 8px;border:1px solid #d1d5db;">목록 금액대로 배분, 45.65는 고객 크레딧, INV-1078은 25.00 부족</td></tr>
+</table>
+<p style="font-size:13px;color:#b45309;margin:0 0 14px;">표 3. 같은 고객의 입금 3건과 방법별 결과(예시 값).</p>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;">'대충 맞으면 된다'는 허용 오차는 조심하세요. 고객이 뗀 송금 수수료를 잡으려고 오차를 주면 맞는 조합이 늘어납니다. 예시에서 4,527.00에 오차 30.00을 주면 조합 12개가 해당됩니다. 특별한 이유가 없으면 오차는 0으로 두고, 덜 들어온 금액은 수수료나 할인으로 처리하기 전에 이유부터 확인하세요.</p>
+
+<h2 style="color:#1F3A5F;font-size:24px;margin:28px 0 10px;">4단계 – QuickBooks Desktop 입력</h2>
+<ol style="font-size:16px;line-height:1.7;margin:0 0 12px 22px;"><li><b>Customers &gt; Receive Payments</b>를 엽니다.</li>
+<li><b>Received From</b>에서 고객을 고르고 입금액·날짜·결제 방법·참조번호를 입력합니다.</li>
+<li>미결 인보이스 목록에서 QuickBooks가 미리 체크한 것은 풀고, 정해 둔 인보이스만 체크합니다.</li>
+<li>각 인보이스 줄에 계산한 금액을 입력합니다. <b>Discounts and Credits</b>는 적용하기로 한 경우에만 씁니다.</li>
+<li><b>Save &amp; Close</b>. 남는 금액은 다음 인보이스용 크레딧으로 둘지 환불할지 고객과 상의해 정합니다.</li></ol>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;">QuickBooks가 인보이스를 자동으로 고르지 않게 하려면 <b>Edit &gt; Preferences &gt; Payments &gt; Company Preferences</b>의 Receive Payments 항목에서 <b>Automatically apply payments</b> 체크를 해제합니다. 이미 잘못된 인보이스에 적용됐다면, Intuit 도움말은 인보이스를 열고 <b>Transaction History</b>로 입금 거래를 연 다음 잘못된 인보이스 체크를 풀고 맞는 인보이스를 체크하는 방법을 안내합니다.</p>
+
+<h2 style="color:#1F3A5F;font-size:24px;margin:28px 0 10px;">5단계 – QuickBooks Online 입력</h2>
+<ol style="font-size:16px;line-height:1.7;margin:0 0 12px 22px;"><li><b>+ Create</b> → <b>Receive payment</b>를 선택합니다(버전에 따라 메뉴 이름이 다를 수 있음).</li>
+<li><b>Customer</b>를 고르고 <b>Amount received</b>에 입금액을 입력합니다.</li>
+<li><b>Outstanding Transactions</b>에서 정해 둔 인보이스만 체크합니다.</li>
+<li>각 <b>PAYMENT</b> 칸에 금액을 입력합니다. Intuit 설명대로 남는 금액은 크레딧(amount to credit)으로 표시됩니다.</li>
+<li><b>Record and close</b>(버튼 이름은 다를 수 있음)를 누릅니다. 입금 위치에 따라 은행 입금을 기록하거나 <b>Bank transactions</b> 화면에서 매칭합니다.</li></ol>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;">관련 설정은 <b>Settings &gt; Account and settings &gt; Advanced &gt; Automation &gt; Automatically apply credits</b>에 있습니다. Intuit에 따르면 이 설정이 켜져 있으면 크레딧이 가장 오래된 미결 인보이스부터 적용되므로, 크레딧이 엉뚱한 인보이스에 붙는다면 확인해 보세요.</p>
+<figure style="margin:18px 0;"><img src="img/2026-11-24_Lump_Sum_Payment_Invoices/Fig03_Five_Steps_KR.png" alt="5단계: 입금과 미결 인보이스 모으기, 배분 방법 고르기, 인보이스별 금액 계산, QuickBooks 입력, 은행 입금 매칭과 기록" width="1200" height="338" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:8px;"><figcaption style="font-size:13px;color:#6b7280;margin-top:6px;">그림 3. 일괄 입금 처리 5단계.</figcaption></figure>
+
+<h2 style="color:#1F3A5F;font-size:24px;margin:28px 0 10px;">6단계 – 은행 입금 매칭과 기록</h2>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;">QuickBooks Online에서 은행 피드가 이미 입금을 인보이스 한 장에 매칭해 게시했다면, Intuit 설명대로 <b>Posted</b> 탭에서 Undo로 취소할 수 있습니다. 그다음 맞는 인보이스 전체에 입금을 기록하고 다시 매칭하세요. QuickBooks Desktop 은행 피드 화면은 방식이 다릅니다. 입금일·고객·참조번호·금액·갚은 인보이스·남는 금액·입력 여부·매칭 여부를 적는 간단한 기록부를 두면 덜 들어오거나 더 들어온 금액을 놓치지 않습니다.</p>
+
+<h2 style="color:#1F3A5F;font-size:24px;margin:28px 0 10px;">자주 하는 실수</h2>
+<ul style="font-size:16px;line-height:1.7;margin:0 0 12px 22px;"><li>QuickBooks가 미리 체크한 인보이스를 확인 없이 그대로 저장.</li>
+<li>은행 피드에서 입금을 바로 매출로 분류해 인보이스는 미결로 남고 매출은 부풀려짐.</li>
+<li>덜 들어온 금액을 이유 확인 없이 상각.</li>
+<li>더 들어온 금액을 매출로 처리(실제로는 고객 크레딧이나 선수금인 경우).</li>
+<li>이미 마감·신고된 기간의 입금을 수정. 먼저 회계사와 상의하세요.</li></ul>
+
+<h2 style="color:#1F3A5F;font-size:24px;margin:28px 0 10px;">자주 묻는 질문</h2>
+<h3 style="color:#1F4E99;font-size:19px;margin:20px 0 8px;">입금 한 건을 고객 두 명에게 나눌 수 있나요?</h3>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;">일반적으로 Receive Payment 한 건은 고객 한 명에게 속합니다. 본사가 여러 지점(각각 별도 고객이나 Job으로 등록된 경우) 대금을 한 번에 낸 경우, 고객별로 입금을 따로 기록하고 하나의 입금(deposit)으로 묶는 방식을 많이 씁니다. 회사 파일 구조를 먼저 확인하세요.</p>
+<h3 style="color:#1F4E99;font-size:19px;margin:20px 0 8px;">맞는 조합이 하나도 없으면요?</h3>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;">고객이 뗀 수수료, 조기 결제 할인, 고객 쪽에서 먼저 적용한 크레딧, 다른 고객의 인보이스인지 살펴보세요. 그래도 설명이 안 되면 오래된 순으로 배분하거나 크레딧으로 두고 고객에게 문의하세요.</p>
+<h3 style="color:#1F4E99;font-size:19px;margin:20px 0 8px;">오래된 순 배분은 틀린 방법인가요?</h3>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;">아닙니다. 고객이 내역을 주지 않았을 때 흔히 쓰는 기본 방법입니다. 실제로 고객이 낸 인보이스와 다를 때만 문제가 됩니다.</p>
+<h3 style="color:#1F4E99;font-size:19px;margin:20px 0 8px;">스프레드시트로 인보이스 몇 장까지 검사할 수 있나요?</h3>
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;">인보이스가 한 장 늘 때마다 조합 수가 두 배가 되므로, 일반 수식으로는 12–15장 정도가 현실적인 한계입니다. 금액상 가능성이 있는 인보이스부터 넣으세요.</p>
+
+<h2 style="color:#1F3A5F;font-size:24px;margin:28px 0 10px;">체크리스트</h2>
+<ul style="font-size:16px;line-height:1.7;margin:0 0 12px 22px;"><li>☐ 입금액·참조번호 기록</li>
+<li>☐ 고객 미결 인보이스 내보내기</li>
+<li>☐ 방법 선택(고객 목록, 맞는 조합, 오래된 순)</li>
+<li>☐ 맞는 조합이 여러 개면 고객 확인</li>
+<li>☐ QuickBooks에서 정한 인보이스만 체크, 금액 입력</li>
+<li>☐ 배분 합계 + 크레딧 = 입금액</li>
+<li>☐ 은행 피드 매칭, 기록부 작성</li></ul>
+
+<p style="font-size:16px;line-height:1.7;margin:0 0 12px;">위 과정을 그대로 해 주는 <b>고객 일괄 입금 배분기 2026</b>은 아래 <a href="#kit" style="color:#1F4E99;font-weight:700;">무료 키트 다운로드</a>에서 가입 없이 무료로 받으실 수 있습니다(엑셀 + PDF 가이드).</p>
+<p style="background:#FFF7E6;border:1px solid #F3C77A;border-radius:8px;padding:12px 16px;margin:14px 0;font-size:15px;line-height:1.6;"><b>면책 안내.</b> 이 글은 고객 입금 기록에 관한 일반적인 교육용 정보이며 세무·법률·회계 자문이 아니고 어떤 결과도 보장하지 않습니다. 사업마다 처리 방법이 다를 수 있으므로 본인 사례는 공인 전문가와 확인하세요. QuickBooks 메뉴 이름은 바뀔 수 있으며, 2026-11-24 기준 Intuit 도움말과 대조했습니다. QuickBooks는 Intuit Inc.의 등록 상표이며, 이 글은 Intuit와 무관하고 승인받지 않았습니다.</p>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">QuickBooks is a registered trademark of Intuit Inc.; not affiliated with or endorsed by Intuit.</p>
+<section class="kit" id="kit"><h2>무료 키트 다운로드</h2><p>글에서 설명한 내용을 그대로 따라 할 수 있는 도구입니다. 가입 없이 바로 받으세요.</p><ul><li><a href="/downloads/customer-payment-allocator-2026/Customer_Payment_Allocator_2026_EN_KR.xlsx" download>Excel 계산 도구 (.xlsx)</a><small>Customer_Payment_Allocator_2026_EN_KR.xlsx · 437 KB</small></li><li><a href="/downloads/customer-payment-allocator-2026/Customer_Payment_Allocator_Guide_2026_EN_KR.pdf" download>단계별 가이드 (PDF)</a><small>Customer_Payment_Allocator_Guide_2026_EN_KR.pdf · 354 KB</small></li></ul><p class="fine">본인과 본인 사업에 무료로 쓰세요. 재판매·재배포는 하지 마세요. 일반 정보이며 세무·법률·회계 자문이 아닙니다. 숫자는 본인 자료로 꼭 확인하세요. QuickBooks는 Intuit Inc.의 상표이며 BIZLEX는 Intuit과 관련이 없습니다.</p></section><h2 style="color:#1F3A5F;font-size:24px;margin:28px 0 10px;">출처</h2>
+<ul style="font-size:16px;line-height:1.7;margin:0 0 12px 22px;"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/invoicing/record-invoice-payments-quickbooks-online/L4ZadDW7F_US_en_US" style="color:#1F4E99;">Intuit – Record invoice payments (QuickBooks Online)</a> – 확인일 2026-11-24</li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/accounts-receivable/record-invoice-payment/L9bczboPR_US_en_US" style="color:#1F4E99;">Intuit – Record an invoice payment in QuickBooks Desktop</a> – 확인일 2026-11-24</li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/accounting-bookkeeping/resolve-common-issues-applying-payment-towards/L2UMXN8tt_US_en_US" style="color:#1F4E99;">Intuit – Resolve common issues when applying a payment towards an invoice (Desktop)</a> – 확인일 2026-11-24</li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/customer-refunds-credits/create-apply-credit-memos-delayed-credits-online/L5kne9EiI_US_en_US" style="color:#1F4E99;">Intuit – Create and apply credit memos or delayed credits in QuickBooks Online</a> – 확인일 2026-11-24</li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/bank-feeds/match-online-bank-transactions-quickbooks-online/L6qyw0PvP_US_en_US" style="color:#1F4E99;">Intuit – Match your bank and credit card transactions (QuickBooks Online)</a> – 확인일 2026-11-24</li></ul>
+
+<aside class="conv"><b>무료 은행 CSV → QBO 변환기</b><span>은행 CSV를 QuickBooks Desktop용 .qbo·.iif 파일로. 브라우저 안에서만 처리합니다.</span><a href="/csv-to-qbo">변환기 열기</a></aside>
+<p class="back"><a href="/blog/">← 블로그 글 목록</a> <a class="pv" href="/privacy.html">개인정보처리방침</a></p>
+</main>
+<!--cfwa--><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "9671384662e04a52b70330808aeedc3e"}'></script><!--/cfwa--></body></html>

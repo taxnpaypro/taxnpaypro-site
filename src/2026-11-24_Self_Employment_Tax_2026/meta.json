@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-24",
+  "category": "tax",
+  "slug": {
+    "ko": "self-employment-tax-2026-korean-guide",
+    "en": "self-employment-tax-2026-w2-side-gig"
+  },
+  "title": {
+    "ko": "2026년 자영업세(SE Tax) 직접 계산하는 법: W-2 직장과 부업이 함께 있을 때",
+    "en": "Self-Employment Tax in 2026: How to Estimate It Yourself (Even With a W-2 Job)"
+  },
+  "excerpt": {
+    "ko": "순이익에서 자영업세를 계산하는 순서와 W-2 임금이 있을 때 사회보장 한도, 분기 예정세 준비법을 정리합니다.",
+    "en": "Estimate 2026 self-employment tax step by step, including the wage-base split with a W-2 job and quarterly set-asides."
+  },
+  "downloads": {
+    "kit": "self-employment-tax-calculator-2026-2027",
+    "en": [
+      "SE_Tax_Calculator_2026_2027_EN.xlsx",
+      "SE_Tax_Guide_2026_2027_EN.pdf"
+    ],
+    "ko": [
+      "SE_Tax_Calculator_2026_2027_EN_KR.xlsx",
+      "SE_Tax_Guide_2026_2027_EN_KR.pdf"
+    ]
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23",
+  "updated": "2026-11-24",
   "notice": {
     "ko": "",
     "en": ""
@@ -64,6 +64,90 @@
   ],
   "cfAnalyticsToken": "9671384662e04a52b70330808aeedc3e",
   "posts": [
+    {
+      "date": "2026-11-24",
+      "category": "quickbooks",
+      "title": {
+        "ko": "입금 한 번에 인보이스 여러 장: QuickBooks에서 일괄 입금을 정확히 배분하는 방법",
+        "en": "One Customer Payment, Many Invoices: How to Apply It Correctly in QuickBooks"
+      },
+      "excerpt": {
+        "ko": "메모 없는 일괄 입금이 어느 인보이스 대금인지 찾아 QuickBooks Desktop·Online에 정확히 적용하는 법입니다.",
+        "en": "Find which open invoices a lump-sum customer payment covers and apply it correctly in QuickBooks Desktop and Online."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/apply-one-customer-payment-to-multiple-invoices-ko.html",
+        "en": "https://taxnpaypro.com/blog/apply-one-customer-payment-to-multiple-invoices.html"
+      },
+      "previewUrl": {
+        "ko": "blog/apply-one-customer-payment-to-multiple-invoices-ko.html",
+        "en": "blog/apply-one-customer-payment-to-multiple-invoices.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-24",
+      "category": "qbo",
+      "title": {
+        "ko": "1099를 1월 말에 한꺼번에 준비하고 있다면: QBO 연말 정리와 1099 준비, 회계사에게 넘길 리포트 (네바다·캘리포니아·텍사스 비교)",
+        "en": "Still Scrambling With 1099s at the End of January? QuickBooks Online Year-End Close, 1099 Prep and Reports for Your Accountant (Nevada, California and Texas Compared)"
+      },
+      "excerpt": {
+        "ko": "QBO 연말 정리 순서, 2026년 지급분 1099-NEC $2,000 기준, 네바다·캘리포니아·텍사스 신고 차이를 정리합니다.",
+        "en": "QBO year-end steps, the $2,000 1099-NEC threshold for 2026 payments, and NV, CA and TX filing differences."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/qbo-year-end-close-1099-nv-ca-tx-korean.html",
+        "en": "https://taxnpaypro.com/blog/qbo-year-end-close-1099-nv-ca-tx.html"
+      },
+      "previewUrl": {
+        "ko": "blog/qbo-year-end-close-1099-nv-ca-tx-korean.html",
+        "en": "blog/qbo-year-end-close-1099-nv-ca-tx.html"
+      },
+      "freeKit": false
+    },
+    {
+      "date": "2026-11-24",
+      "category": "tax",
+      "title": {
+        "ko": "2026년 자영업세(SE Tax) 직접 계산하는 법: W-2 직장과 부업이 함께 있을 때",
+        "en": "Self-Employment Tax in 2026: How to Estimate It Yourself (Even With a W-2 Job)"
+      },
+      "excerpt": {
+        "ko": "순이익에서 자영업세를 계산하는 순서와 W-2 임금이 있을 때 사회보장 한도, 분기 예정세 준비법을 정리합니다.",
+        "en": "Estimate 2026 self-employment tax step by step, including the wage-base split with a W-2 job and quarterly set-asides."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/self-employment-tax-2026-korean-guide.html",
+        "en": "https://taxnpaypro.com/blog/self-employment-tax-2026-w2-side-gig.html"
+      },
+      "previewUrl": {
+        "ko": "blog/self-employment-tax-2026-korean-guide.html",
+        "en": "blog/self-employment-tax-2026-w2-side-gig.html"
+      },
+      "freeKit": true
+    },
+    {
+      "date": "2026-11-24",
+      "category": "tax",
+      "title": {
+        "ko": "미국 LLC, 어느 주에 세울까? 7개 주 비교 — 네바다·와이오밍·델라웨어·플로리다·텍사스·캘리포니아·조지아",
+        "en": "Which State Should a Nonresident Form a US LLC In? 7 States Compared: Nevada, Wyoming, Delaware, Florida, Texas, California, Georgia"
+      },
+      "excerpt": {
+        "ko": "비거주자가 미국 LLC를 세울 때 7개 주의 설립비·연간 유지비·주 세금과 실제 사업장 주 등록 문제를 비교합니다.",
+        "en": "Formation fees, annual costs, state taxes and foreign registration compared across 7 states for nonresident LLC owners."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/which-state-to-form-us-llc-nonresident-korean.html",
+        "en": "https://taxnpaypro.com/blog/which-state-to-form-us-llc-nonresident.html"
+      },
+      "previewUrl": {
+        "ko": "blog/which-state-to-form-us-llc-nonresident-korean.html",
+        "en": "blog/which-state-to-form-us-llc-nonresident.html"
+      },
+      "freeKit": false
+    },
     {
       "date": "2026-11-23",
       "category": "tax",
