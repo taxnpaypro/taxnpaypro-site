@@ -36,7 +36,11 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .g{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .in{max-width:1140px;margin:0 auto}
 a{color:var(--gold-ink)}
-:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+:focus-visible{outline:3px solid #14202E;outline-offset:2px}
+/* on navy areas, and in dark mode, the ring is gold so it stays visible (>=3:1) */
+.top :focus-visible,.hero :focus-visible,.about :focus-visible{outline-color:#D4A845}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) :focus-visible{outline-color:#D4A845}}
+:root[data-theme="dark"] :focus-visible{outline-color:#D4A845}
 h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;margin:0}
 .lbl{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink);margin:0}
 
@@ -56,6 +60,7 @@ nav a:hover{color:var(--on-navy)}
 .lang button{font:inherit;font-size:13px;border:0;background:transparent;color:var(--on-navy-dim);padding:5px 13px;border-radius:999px;cursor:pointer;min-height:32px}
 .lang button[aria-pressed="true"]{background:var(--gold);color:#14202E;font-weight:700}
 @media (max-width:760px){nav{order:3;width:100%;gap:2px 16px}}
+nav a{min-height:36px;display:inline-flex;align-items:center}
 
 /* hero */
 .hero{background:linear-gradient(90deg,rgba(20,32,46,.97) 0%,rgba(20,32,46,.9) 48%,rgba(20,32,46,.74) 100%),url(/img/home/hero-desk.jpg) right center/cover no-repeat,var(--navy);color:var(--on-navy);padding-block:64px 72px;position:relative;overflow:hidden}
