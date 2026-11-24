@@ -55,10 +55,12 @@ PAGE = '''<!doctype html>
 html,body{{margin:0;background:var(--bg);color:var(--ink)}}
 body{{font-family:"Noto Sans KR","Manrope","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;word-break:keep-all;overflow-wrap:anywhere}}
 .top{{background:var(--navy);padding-block:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
-.top .in{{max-width:820px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}}
-.logo{{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:Manrope,sans-serif}}
-.logo b{{font-weight:800;font-size:22px;letter-spacing:3px}} .logo i{{width:4px;height:26px;background:var(--gold)}} .logo span{{font-weight:400;font-size:22px;letter-spacing:3px}}
-.nav{{display:flex;gap:16px;align-items:center}}
+.top .in{{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}}
+.logo{{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font-family:Manrope,sans-serif}}
+.logo .biz{{font-weight:800;font-size:26px;letter-spacing:3px;line-height:1}} .logo .bar{{width:4px;height:32px;background:var(--gold)}}
+.logo .lex{{display:flex;flex-direction:column;gap:3px}} .logo .lex b{{font-weight:400;font-size:26px;letter-spacing:3px;line-height:1}} .logo .lex i{{font-style:normal;font-weight:800;font-size:8px;letter-spacing:5px;color:var(--gold)}}
+.nav{{display:flex;gap:4px 18px;align-items:center;flex-wrap:wrap}}
+@media (max-width:760px){{.nav{{order:3;width:100%;gap:2px 16px}}}}
 .nav a{{color:#C9D3DE;text-decoration:none;font-size:14px;min-height:36px;display:inline-flex;align-items:center}}
 .nav a:hover{{color:#fff}}
 .nav a.lang{{border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:4px 14px;color:#fff}}
@@ -79,11 +81,12 @@ main table{{display:block;max-width:100%;overflow-x:auto}} main pre,main p{{max-
 .kit .fine{{font-size:12.5px;color:var(--muted);margin:12px 0 0}}
 .back{{margin-top:40px;padding-top:20px;border-top:1px solid #dde3ea}}
 .back a{{color:#1F3A5F;font-weight:700;text-decoration:none}} .back a.pv{{float:right;font-weight:400;font-size:14px;color:#5A6573}}
-a:focus-visible{{outline:2px solid var(--gold);outline-offset:3px}}
+:focus-visible{{outline:3px solid #14202E;outline-offset:2px}}
+.top :focus-visible{{outline-color:#D4A845}}
 </style></head><body>
 <header class="top"><div class="in">
-<a class="logo" href="/" aria-label="BIZLEX, INC."><b>BIZ</b><i aria-hidden="true"></i><span>LEX</span></a>
-<nav class="nav"><a href="/blog/">{blog}</a><a class="lang" href="{other}" lang="{olang}">{oname}</a></nav>
+<a class="logo" href="/" aria-label="BIZLEX, INC."><span class="biz">BIZ</span><span class="bar" aria-hidden="true"></span><span class="lex"><b>LEX</b><i>INC.</i></span></a>
+<nav class="nav" aria-label="Main"><a href="/blog/">{blog}</a><a href="/csv-to-qbo">{navconv}</a><a href="/nv-sales-tax">{navnv}</a><a class="lang" href="{other}" lang="{olang}">{oname}</a></nav>
 </div></header>
 <main>
 <p class="meta">{date} · {cat}</p>
@@ -199,7 +202,7 @@ def main():
                                convh='무료 은행 CSV → QBO 변환기' if lang == 'ko' else 'Free bank CSV to QBO converter',
                                convt='은행 CSV를 QuickBooks Desktop용 .qbo·.iif 파일로. 브라우저 안에서만 처리합니다.' if lang == 'ko' else 'Turn bank CSV files into QuickBooks Desktop .qbo or .iif files, right in your browser.',
                                convb='변환기 열기' if lang == 'ko' else 'Open the converter', date=m['date'], cat=CAT[m['category']][0 if lang == 'ko' else 1],
-                               blog='블로그' if lang == 'ko' else 'Blog', other='%s.html' % m['slug'][o], olang=o,
+                               blog='블로그' if lang == 'ko' else 'Blog', navconv='QBO 변환기' if lang == 'ko' else 'QBO converter', navnv='NV 판매세 계산기' if lang == 'ko' else 'NV sales tax', other='%s.html' % m['slug'][o], olang=o,
                                oname='English' if lang == 'ko' else '한국어', backtxt='← 블로그 글 목록' if lang == 'ko' else '← All articles', privtxt='개인정보처리방침' if lang == 'ko' else 'Privacy')
             open(os.path.join(B, m['slug'][lang] + '.html'), 'w', encoding='utf-8').write(page)
         imgdir = os.path.join(B, 'img', folder); os.makedirs(imgdir, exist_ok=True)
@@ -233,10 +236,14 @@ def main():
     :root{color-scheme:light}*{box-sizing:border-box}html,body{margin:0;background:#F5F6F4;color:#14202E}
     body{font-family:"Noto Sans KR",Manrope,system-ui,sans-serif;word-break:keep-all;overflow-wrap:anywhere}
     .top{background:#14202E;padding:12px max(16px,env(safe-area-inset-left,0px))}
-    .top .in,.wrap{max-width:980px;margin:0 auto}
+    .top .in{max-width:1140px;margin:0 auto}.wrap{max-width:980px;margin:0 auto}
     .top .in{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-    .logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:Manrope,sans-serif}
-    .logo b{font-weight:800;font-size:22px;letter-spacing:3px}.logo i{width:4px;height:26px;background:#D4A845}.logo span{font-size:22px;letter-spacing:3px}
+    .logo{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font-family:Manrope,sans-serif}
+    .logo .biz{font-weight:800;font-size:26px;letter-spacing:3px;line-height:1}.logo .bar{width:4px;height:32px;background:#D4A845}
+    .logo .lex{display:flex;flex-direction:column;gap:3px}.logo .lex b{font-weight:400;font-size:26px;letter-spacing:3px;line-height:1}.logo .lex i{font-style:normal;font-weight:800;font-size:8px;letter-spacing:5px;color:#D4A845}
+    .nav{display:flex;gap:4px 18px;align-items:center;flex-wrap:wrap}
+    .nav a{color:#C9D3DE;text-decoration:none;font-size:14px;min-height:36px;display:inline-flex;align-items:center}.nav a:hover{color:#fff}
+    @media (max-width:760px){.nav{order:3;width:100%%;gap:2px 16px}}
     .lang{display:inline-flex;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:3px}
     .lang button{font:inherit;font-size:13px;border:0;background:none;color:#C9D3DE;padding:5px 13px;border-radius:999px;cursor:pointer;min-height:32px}
     .lang button[aria-pressed=true]{background:#D4A845;color:#14202E;font-weight:700}
@@ -255,9 +262,10 @@ def main():
     .post .k{font-style:normal;font-weight:700;color:#14202E;background:#D4A845;border-radius:999px;padding:2px 8px;margin-right:6px}
     footer{color:#556170;font-size:13px;margin-top:40px}footer p{margin:4px 0}
     [hidden]{display:none!important}
-    :focus-visible{outline:2px solid #D4A845;outline-offset:3px}
+    :focus-visible{outline:3px solid #14202E;outline-offset:2px}.top :focus-visible{outline-color:#D4A845}
     </style></head><body>
-    <header class="top"><div class="in"><a class="logo" href="/" aria-label="BIZLEX, INC."><b>BIZ</b><i aria-hidden="true"></i><span>LEX</span></a>
+    <header class="top"><div class="in"><a class="logo" href="/" aria-label="BIZLEX, INC."><span class="biz">BIZ</span><span class="bar" aria-hidden="true"></span><span class="lex"><b>LEX</b><i>INC.</i></span></a>
+    <nav class="nav" aria-label="Main"><a href="/blog/" data-ko="블로그" data-en="Blog">블로그</a><a href="/csv-to-qbo" data-ko="QBO 변환기" data-en="QBO converter">QBO 변환기</a><a href="/nv-sales-tax" data-ko="NV 판매세 계산기" data-en="NV sales tax">NV 판매세 계산기</a></nav>
     <div class="lang" role="group" aria-label="Language"><button type="button" id="lk" aria-pressed="true">한국어</button><button type="button" id="le" aria-pressed="false">English</button></div></div></header>
     <main class="wrap">
     <section id="ko"><h1>BIZLEX 블로그</h1><p class="sub">회계·세무·급여·QuickBooks(Desktop·Online)를 쉬운 한국어로.</p><div class="tabs">%s</div><div class="list">%s</div></section>
@@ -267,7 +275,7 @@ def main():
     <script>
     (function(){
     function lang(l){document.getElementById('ko').hidden=l!=='ko';document.getElementById('en').hidden=l!=='en';document.documentElement.lang=l;
-    document.getElementById('lk').setAttribute('aria-pressed',l==='ko');document.getElementById('le').setAttribute('aria-pressed',l==='en');try{localStorage.setItem('bizlex-lang',l)}catch(e){}}
+    document.querySelectorAll('.nav a[data-en]').forEach(function(a){a.textContent=a.dataset[l]});document.getElementById('lk').setAttribute('aria-pressed',l==='ko');document.getElementById('le').setAttribute('aria-pressed',l==='en');try{localStorage.setItem('bizlex-lang',l)}catch(e){}}
     document.getElementById('lk').onclick=function(){lang('ko')};document.getElementById('le').onclick=function(){lang('en')};
     var s=null;try{s=localStorage.getItem('bizlex-lang')}catch(e){};lang(s==='en'?'en':'ko');
     document.querySelectorAll('section').forEach(function(sec){var bs=sec.querySelectorAll('.tabs button');
