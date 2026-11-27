@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-24",
+  "category": "quickbooks",
+  "slug": {
+    "ko": "apply-one-customer-payment-to-multiple-invoices-ko",
+    "en": "apply-one-customer-payment-to-multiple-invoices"
+  },
+  "title": {
+    "ko": "입금 한 번에 인보이스 여러 장: QuickBooks에서 일괄 입금을 정확히 배분하는 방법",
+    "en": "One Customer Payment, Many Invoices: How to Apply It Correctly in QuickBooks"
+  },
+  "excerpt": {
+    "ko": "메모 없는 일괄 입금이 어느 인보이스 대금인지 찾아 QuickBooks Desktop·Online에 정확히 적용하는 법입니다.",
+    "en": "Find which open invoices a lump-sum customer payment covers and apply it correctly in QuickBooks Desktop and Online."
+  },
+  "downloads": {
+    "kit": "customer-payment-allocator-2026",
+    "en": [
+      "Customer_Payment_Allocator_2026_EN.xlsx",
+      "Customer_Payment_Allocator_Guide_2026_EN.pdf"
+    ],
+    "ko": [
+      "Customer_Payment_Allocator_2026_EN_KR.xlsx",
+      "Customer_Payment_Allocator_Guide_2026_EN_KR.pdf"
+    ]
+  }
+}

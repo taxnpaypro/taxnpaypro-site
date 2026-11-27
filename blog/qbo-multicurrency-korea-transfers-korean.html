@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>한국 거래처 대금, 달러 금액만 적고 있다면: QBO 다중 통화(Multicurrency) 설정과 환율 차이 기록법 · BIZLEX</title>
+<meta name="description" content="원화 청구서와 한국 송금을 QBO 다중 통화로 기록하는 법, 환차손익과 월말 재평가, FBAR 확인 사항을 정리합니다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="BIZLEX">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="한국 거래처 대금, 달러 금액만 적고 있다면: QBO 다중 통화(Multicurrency) 설정과 환율 차이 기록법">
+<meta property="og:description" content="원화 청구서와 한국 송금을 QBO 다중 통화로 기록하는 법, 환차손익과 월말 재평가, FBAR 확인 사항을 정리합니다.">
+<meta property="og:url" content="https://taxnpaypro.com/blog/qbo-multicurrency-korea-transfers-korean.html">
+<meta property="article:published_time" content="2026-11-23">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://taxnpaypro.com/blog/img/2026-11-23_QBO_Multicurrency_Korea/Fig01_Multicurrency_Decision_KR.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "한국 거래처 대금, 달러 금액만 적고 있다면: QBO 다중 통화(Multicurrency) 설정과 환율 차이 기록법", "description": "원화 청구서와 한국 송금을 QBO 다중 통화로 기록하는 법, 환차손익과 월말 재평가, FBAR 확인 사항을 정리합니다.", "inLanguage": "ko", "datePublished": "2026-11-23", "dateModified": "2026-11-23", "author": {"@type": "Organization", "name": "BIZLEX, INC.", "url": "https://taxnpaypro.com/"}, "publisher": {"@type": "Organization", "name": "BIZLEX, INC.", "url": "https://taxnpaypro.com/"}, "mainEntityOfPage": "https://taxnpaypro.com/blog/qbo-multicurrency-korea-transfers-korean.html", "articleSection": "QuickBooks Online", "image": "https://taxnpaypro.com/blog/img/2026-11-23_QBO_Multicurrency_Korea/Fig01_Multicurrency_Decision_KR.png"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BIZLEX", "item": "https://taxnpaypro.com/"}, {"@type": "ListItem", "position": 2, "name": "블로그", "item": "https://taxnpaypro.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "한국 거래처 대금, 달러 금액만 적고 있다면: QBO 다중 통화(Multicurrency) 설정과 환율 차이 기록법", "item": "https://taxnpaypro.com/blog/qbo-multicurrency-korea-transfers-korean.html"}]}</script>
+<link rel="canonical" href="https://taxnpaypro.com/blog/qbo-multicurrency-korea-transfers-korean.html">
+<link rel="alternate" hreflang="ko" href="https://taxnpaypro.com/blog/qbo-multicurrency-korea-transfers-korean.html"><link rel="alternate" hreflang="en" href="https://taxnpaypro.com/blog/qbo-multicurrency-korea-transfers.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;800&family=Noto+Sans+KR:wght@400;700&display=swap">
+<style>
+:root{color-scheme:light;--navy:#14202E;--gold:#D4A845;--bg:#FFFFFF;--ink:#222;--muted:#5A6573}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:"Noto Sans KR","Manrope","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;word-break:keep-all;overflow-wrap:anywhere}
+.top{background:var(--navy);padding-block:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top .in{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font-family:Manrope,sans-serif}
+.logo .biz{font-weight:800;font-size:26px;letter-spacing:3px;line-height:1} .logo .bar{width:4px;height:32px;background:var(--gold)}
+.logo .lex{display:flex;flex-direction:column;gap:3px} .logo .lex b{font-weight:400;font-size:26px;letter-spacing:3px;line-height:1} .logo .lex i{font-style:normal;font-weight:800;font-size:8px;letter-spacing:5px;color:var(--gold)}
+.nav{display:flex;gap:4px 18px;align-items:center;flex-wrap:wrap}
+@media (max-width:760px){.nav{order:3;width:100%;gap:2px 16px}}
+.nav a{color:#C9D3DE;text-decoration:none;font-size:14px;min-height:36px;display:inline-flex;align-items:center}
+.nav a:hover{color:#fff}
+.nav a.lang{border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:4px 14px;color:#fff}
+main{max-width:820px;margin:0 auto;padding-block:36px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.meta{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px}
+h1.t{font-family:Manrope,"Noto Sans KR",sans-serif;font-weight:800;font-size:clamp(28px,4.4vw,40px);line-height:1.25;color:#1F3A5F;margin:0 0 18px;text-wrap:balance}
+main img{max-width:100%;height:auto}
+main table{display:block;max-width:100%;overflow-x:auto} main pre,main p{max-width:100%}
+.conv{margin-top:36px;padding:16px 18px;border:1px solid #dde3ea;border-left:5px solid var(--gold);border-radius:8px;background:#FBF8F0;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+.conv b{color:#1F3A5F} .conv span{color:var(--muted);flex:1 1 260px} .conv a{color:#fff;background:var(--navy);padding:8px 14px;border-radius:6px;text-decoration:none;font-weight:700;min-height:40px;display:inline-flex;align-items:center}
+.kittop{margin:0 0 22px} .kittop a{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border-radius:6px;background:#FBF8F0;border:1px solid var(--gold);color:#1F3A5F;font-weight:700;text-decoration:none}
+.kit{margin-top:40px;padding:20px 20px 14px;border:2px solid var(--navy);border-radius:10px;background:#F7F9FB;scroll-margin-top:16px}
+.kit h2{margin:0 0 6px;font-size:22px;color:#1F3A5F} .kit>p{margin:0 0 12px;color:var(--muted)}
+.kit ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.kit li{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;padding:10px 12px;background:#fff;border:1px solid #dde3ea;border-radius:8px}
+.kit li a{color:#fff;background:var(--navy);padding:8px 14px;border-radius:6px;text-decoration:none;font-weight:700;min-height:40px;display:inline-flex;align-items:center}
+.kit li small{color:var(--muted);font-size:13px;overflow-wrap:anywhere}
+.kit .fine{font-size:12.5px;color:var(--muted);margin:12px 0 0}
+.back{margin-top:40px;padding-top:20px;border-top:1px solid #dde3ea}
+.back a{color:#1F3A5F;font-weight:700;text-decoration:none} .back a.pv{float:right;font-weight:400;font-size:14px;color:#5A6573}
+:focus-visible{outline:3px solid #14202E;outline-offset:2px}
+.top :focus-visible{outline-color:#D4A845}
+</style></head><body>
+<header class="top"><div class="in">
+<a class="logo" href="/" aria-label="BIZLEX, INC."><span class="biz">BIZ</span><span class="bar" aria-hidden="true"></span><span class="lex"><b>LEX</b><i>INC.</i></span></a>
+<nav class="nav" aria-label="Main"><a href="/blog/">블로그</a><a href="/csv-to-qbo">QBO 변환기</a><a href="/nv-sales-tax">NV 판매세 계산기</a><a class="lang" href="qbo-multicurrency-korea-transfers.html" lang="en">English</a></nav>
+</div></header>
+<main>
+<p class="meta">2026-11-23 · QuickBooks Online</p>
+<h1 class="t">한국 거래처 대금, 달러 금액만 적고 있다면: QBO 다중 통화(Multicurrency) 설정과 환율 차이 기록법</h1>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">한국 거래처에서 포장재나 식자재, 디자인 작업을 원화로 청구받고 미국 은행에서 송금하는 경우가 많습니다. 이때 은행 출금액만 보고 달러로 한 줄 기록해 두면, 청구서 금액(원화)과 장부 금액(달러)이 따로 놀게 됩니다. 청구서를 받은 날과 송금한 날의 환율이 다르면 그 차이가 어디로 갔는지 설명하기 어렵고, 송금 수수료가 상품 원가에 섞여 들어가기도 합니다.</p>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">이 글은 QuickBooks Online(QBO)의 <b>다중 통화(Multicurrency)</b> 기능을 켜야 하는지 판단하는 기준, 켜는 순서, 원화 거래처와 원화 청구서(Bill) 입력, 환율 차이(환차손익) 처리, 월말 재평가(Revalue)까지 단계별로 정리합니다. 시리즈 첫 글 <a href="quickbooks-online-basics-korean.html" style="color:#1F4E99;">QuickBooks Online 기초 가이드</a>에서 짧게 다룬 내용을 자세히 풀어 쓴 글입니다.</p>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;"><i>이 글은 교육용 일반 정보이며 세무·법률·재무 자문이 아닙니다.</i></p>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:16px 0;background:#EAF3F5;border-left:5px solid #2A7F8F;padding:12px 16px;"><b>이런 분께 필요합니다</b> &nbsp; ☐ 한국 거래처에 원화로 대금을 보내는 사장님&nbsp; ☐ 원화 청구서를 달러로 환산해 직접 입력해 온 분&nbsp; ☐ 송금 수수료와 환율 차이를 어느 계정에 넣어야 할지 헷갈리는 분&nbsp; ☐ 한국 개인 계좌에서 미국 사업체 계좌로 돈을 옮긴 기록이 매출로 잡혀 있는지 걱정되는 분</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">1. 먼저 판단: 다중 통화를 꼭 켜야 할까요?</h2>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">다중 통화는 한번 켜면 끌 수 없습니다. Intuit 안내에 따르면 켠 뒤에는 기능을 끌 수 없고, 기준 통화(Home currency)도 바꿀 수 없습니다. 그래서 '편해 보여서' 켜기보다는 실제로 외화 금액을 장부에 남겨야 하는지부터 확인하는 것이 순서입니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;">
+<thead><tr><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">상황 (예시)</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">다중 통화 필요성</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">일반적인 기록 방식</th></tr></thead>
+<tbody>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">한국 거래처가 달러 청구서를 보내고, 미국 계좌에서 달러로 송금</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">보통 필요하지 않음</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">달러 Bill 또는 Expense로 기록</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">한국 거래처가 원화 청구서를 보내고, 나중에 송금(외상)</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">검토할 만함</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">원화 거래처 + 원화 Bill → 지급 시 환율 입력</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">원화 예금 계좌나 원화 카드 계정을 사업용으로 보유</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">필요한 경우가 많음</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">원화 은행 계정을 따로 만들어 기록</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">한국 고객에게 원화로 인보이스 발행</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">검토할 만함</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">원화 고객 + 원화 Invoice</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">한 번뿐인 소액 송금, 청구서도 달러</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">보통 필요하지 않음</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">은행 출금액 그대로 기록, 수수료는 별도</td></tr>
+</tbody>
+</table>
+<figure style="margin:20px 0;"><img src="img/2026-11-23_QBO_Multicurrency_Korea/Fig01_Multicurrency_Decision_KR.png" alt="원화 청구서 여부, 외상 여부, 원화 계좌 보유 여부에 따라 다중 통화를 켤지 판단하는 결정 트리" width="1200" height="513" style="max-width:100%;height:auto;border:1px solid #dde3ea;border-radius:8px;" /><figcaption style="font-size:13px;color:#666;margin:4px 0 18px;">그림 1. 다중 통화를 켤지 판단하는 순서</figcaption></figure>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:16px 0;background:#FFF6E0;border-left:5px solid #D4A845;padding:12px 16px;"><b>요금제 확인</b> &nbsp; Intuit 미국 도움말 기준으로 다중 통화는 QBO Essentials, Plus, Advanced에서 쓸 수 있고 Simple Start에서는 쓸 수 없습니다. 같은 안내에 QuickBooks Bill Pay와 QuickBooks Payments는 다중 통화와 호환되지 않는다고 되어 있으니, 이 서비스를 쓰고 있다면 켜기 전에 최신 안내를 확인하세요. 또한 QuickBooks Commerce를 연결한 경우 다중 통화가 작동하지 않고, 다중 통화를 켜면 현금흐름 예측(cash flow planner) 기능이 비활성화된다고 안내되어 있습니다.</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">2. 다중 통화 켜는 순서</h2>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">메뉴 이름과 위치는 자주 바뀝니다. 아래 2~5단계는 Intuit 미국 도움말에 안내된 흐름이며(1단계는 이 글의 권장 사항), 화면이 다르면 검색창에 "Multicurrency" 또는 "Currency"를 입력해 찾으세요.</p>
+<ol style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">(권장 사항, Intuit 안내 단계 아님) 켜기 전에 백업용으로 Balance Sheet와 Profit and Loss 리포트를 PDF로 저장해 둡니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">Settings ⚙ → <b>Account and settings</b> → <b>Advanced</b> 탭으로 이동합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>Currency</b> 항목의 연필(편집) 아이콘을 누르고 Home currency가 <b>United States Dollar</b>인지 확인합니다. 기준 통화는 다중 통화를 켜기 전에만 바꿀 수 있습니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>Multicurrency</b> 체크박스를 선택하고, 되돌릴 수 없다는 안내를 확인한 뒤 저장합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">Settings ⚙ → <b>Currencies</b>(다중 통화를 켠 뒤에 나타남)에서 <b>Add currency</b>를 눌러 South Korean Won을 추가합니다.</li>
+</ol>
+<figure style="margin:20px 0;"><img src="img/2026-11-23_QBO_Multicurrency_Korea/Fig02_Multicurrency_Screen_Map_KR.png" alt="Settings에서 Account and settings, Advanced, Currency, Multicurrency 체크, Currencies 목록과 Revalue Currency로 이어지는 화면 위치 안내도" width="1200" height="746" style="max-width:100%;height:auto;border:1px solid #dde3ea;border-radius:8px;" /><figcaption style="font-size:13px;color:#666;margin:4px 0 18px;">그림 2. 다중 통화 관련 메뉴 위치 (이해를 돕기 위한 그림, 실제 화면과 다를 수 있음)</figcaption></figure>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">3. 원화 거래처와 계정 만들기</h2>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">다중 통화에서는 거래처·고객과 은행·카드 계정마다 통화를 하나씩 지정합니다. Intuit 안내에 따르면 거래가 한 번이라도 기록된 계정은 통화를 바꿀 수 없고, 거래처의 통화를 바꾸려면 기존 거래처를 비활성화하고 새 통화로 새 거래처를 만들어야 합니다. 매출(Income)과 비용(Expense) 계정은 항상 기준 통화(달러)로 집계됩니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;">
+<thead><tr><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">항목</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">예시 값 / Sample values</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">포인트</th></tr></thead>
+<tbody>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">원화 거래처</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">Seoul Pack Supply (KRW) – 가상 회사</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">이름 뒤에 통화를 붙이면 구분이 쉬움</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">같은 회사의 달러 거래처</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">Seoul Pack Supply (USD)</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">통화가 다르면 별도 거래처로 관리</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">원화 은행 계정 (보유 시)</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">KR Bank – KRW Operating</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">실제 원화 계좌가 있을 때만</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">비용 계정</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">Supplies, Bank charges</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">달러로 집계됨 (원화 계정 불필요)</td></tr>
+</tbody>
+</table>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">거래처 목록을 엑셀로 한꺼번에 가져오는 방법은 <a href="qbo-import-customers-vendors-products-korean.html" style="color:#1F4E99;">고객·거래처·상품 목록 가져오기</a> 글을 참고하세요. 다만 통화가 지정된 거래처는 가져오기 전에 통화 칸을 어떻게 다루는지 화면에서 먼저 확인하는 것이 안전합니다.</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">4. 원화 청구서 입력과 지급: 환율이 두 번 등장합니다</h2>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">외상 거래에서는 환율이 두 번 쓰입니다. 청구서(Bill)를 입력하는 날의 환율로 달러 비용이 정해지고, 실제 송금하는 날의 환율로 은행에서 나간 달러가 정해집니다. 두 금액의 차이가 <b>실현 환차손익</b>입니다.</p>
+<ol style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>+ Create</b>(또는 <b>+ New</b>)에서 거래 종류로 <b>Bill</b>을 선택하고 원화 거래처를 고르고 청구서의 원화 금액을 입력합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">거래 화면의 <b>Rate</b>(환율) 칸을 확인합니다. Intuit 안내에 따르면 QBO가 제공하는 환율(IHS Markit) 또는 직접 정한 환율을 쓸 수 있고, 거래 화면에서 환율을 직접 입력할 수도 있습니다. 회사가 정한 기준을 일관되게 쓰는 편이 좋습니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">송금 후 지급을 기록할 때는 달러 은행 계정을 선택하고, 은행 확인서에 나온 실제 적용 환율과 출금 달러 금액이 장부와 맞는지 확인합니다. 지급 화면 구성은 바뀔 수 있으니 최신 화면을 기준으로 하세요.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">은행이 떼어 간 송금 수수료는 청구서 금액에 섞지 말고 <b>Bank charges</b> 같은 비용으로 따로 기록합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">지급 후 Bill이 Paid 상태인지, 은행 계정 잔액이 은행 명세서와 맞는지, 환율 차이가 Profit and Loss의 어느 줄에 표시되었는지 확인합니다.</li>
+</ol>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">계산 예시 (예시 값 / Sample values)</h3>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">라스베이거스의 가상 한식당 Maru Kitchen이 Seoul Pack Supply에서 포장 용기를 ₩1,350,000에 외상으로 샀다고 가정합니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;">
+<thead><tr><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">단계</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">원화</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">환율 (KRW/USD, 예시)</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">달러 환산</th></tr></thead>
+<tbody>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">청구서 입력일</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">₩1,350,000</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">1,350</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">$1,000.00</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">송금일</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">₩1,350,000</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">1,380</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">$978.26</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">차이 (실현 환차익)</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">–</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">–</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">$21.74</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">은행 송금 수수료 (별도 비용)</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">–</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">–</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">$25.00</td></tr>
+</tbody>
+</table>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">송금액 $978.26과 수수료 $25.00을 합친 실제 은행 출금 총액은 $1,003.26입니다. 원화가 약해진 덕분에 같은 ₩1,350,000을 갚는 데 달러가 덜 들었으므로 $21.74는 환차익입니다. 반대로 송금일 환율이 1,320처럼 원화 강세였다면 달러가 더 들어 환차손이 생깁니다. 다중 통화를 켜지 않고 출금액 $978.26만 비용으로 넣으면 청구서 $1,000과의 차이가 장부에서 설명되지 않고, 수수료 $25까지 원가에 섞이면 원가가 실제와 다르게 보입니다.</p>
+<figure style="margin:20px 0;"><img src="img/2026-11-23_QBO_Multicurrency_Korea/Fig03_Before_After_KR.png" alt="원화 청구서를 달러 출금액 한 줄로 기록한 경우와 다중 통화로 청구서, 지급, 환차손익, 수수료를 나눠 기록한 경우 비교표" width="1200" height="408" style="max-width:100%;height:auto;border:1px solid #dde3ea;border-radius:8px;" /><figcaption style="font-size:13px;color:#666;margin:4px 0 18px;">그림 3. 같은 거래, 다른 장부: 한 줄 기록과 다중 통화 기록 비교 (예시 값)</figcaption></figure>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">5. 월말 재평가(Revalue): 아직 안 갚은 원화 잔액</h2>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">월말에 원화 외상 잔액이나 원화 예금이 남아 있으면, 리포트의 달러 금액은 각 거래를 입력한 날의 환율 기준으로 남아 있습니다. Intuit 안내에 따르면 <b>홈 통화 조정(Home currency adjustment)</b>은 이 잔액을 새 환율로 다시 계산하는 기능이며, Essentials·Plus·Advanced에서 쓸 수 있습니다.</p>
+<ol style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">Settings ⚙ → <b>Currencies</b>에서 South Korean Won 줄의 작은 화살표(Action)를 열고 <b>Revalue Currency</b>를 선택합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">날짜(보통 월말)와 환율(시장 환율 또는 직접 입력)을 정합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">재평가할 계정을 고르고 <b>Revalue</b>를 누릅니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">Intuit FAQ에 따르면 외상매출금·외상매입금(A/R, A/P)의 변동은 미실현 손익으로, 은행·카드 계정의 변동은 실현 손익으로 표시됩니다. 재평가로 생긴 분개는 번호와 메모만 수정할 수 있고, 날짜·금액·환율을 바꾸려면 삭제 후 다시 실행해야 합니다.</li>
+</ol>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:16px 0;background:#FFF6E0;border-left:5px solid #D4A845;padding:12px 16px;"><b>팁</b> &nbsp; 장부를 마감(Close the books)한 기간은 재평가할 수 없습니다. 재평가는 리포트를 뽑기 직전에, 마감 전에 하는 순서가 자연스럽습니다. 재평가가 필요한지, 어떤 환율을 쓸지는 담당 회계사와 미리 정해 두세요.</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">6. 한국 계좌 ↔ 미국 계좌 이체와 세무 관련 확인 사항</h2>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">사장님 개인 한국 계좌에서 미국 사업체 계좌로 돈을 보낸 경우, 은행 연결 화면에서 입금으로 잡혔다고 해서 바로 매출로 분류하지 말고 성격부터 확인하세요. 이런 돈은 일반적으로 출자(Owner's investment)나 사장님이 빌려준 돈(대여금) 등 성격에 따라 기록하며, 어느 쪽인지는 사실관계에 따라 달라지므로 회계사와 확인해야 합니다. 사장님 돈 처리 원칙은 <a href="qbo-owner-draw-personal-expenses-korean.html" style="color:#1F4E99;">사장님 돈 처리법</a> 글에 정리해 두었습니다. 사업체가 원화 계좌를 갖고 있고 달러 계좌와 돈을 주고받는다면 <b>+ New → Transfer</b>에서 보내는 계정과 받는 계정, 금액, 환율을 입력합니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;">
+<thead><tr><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">확인 항목</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">내용 (공식 안내 기준)</th><th style="background:#1F3A5F;color:#fff;padding:8px 10px;text-align:left;font-size:15px;">근거</th></tr></thead>
+<tbody>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">세금 신고 통화</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">미국 세금 신고서 금액은 미국 달러로 표시해야 함</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">IRS</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">IRS 공식 환율</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">IRS는 공식 환율이 없으며, 일관되게 쓰는 공시 환율을 일반적으로 인정</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">IRS</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">적용 환율 원칙</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">일반적으로 받거나, 지급하거나, 발생한 시점의 환율(spot rate)</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">IRS</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">FBAR (FinCEN Form 114)</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">미국인(U.S. person: 시민권자·거주자와 법인·파트너십·LLC·신탁·유산 등)이 금융 이익을 갖거나 서명 권한이 있는 해외 금융계좌의 합계가 연중 한 번이라도 $10,000를 넘은 경우</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">IRS</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">FBAR 기한</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">다음 해 4월 15일, 별도 신청 없이 10월 15일까지 자동 연장. 세금 신고서와 별도로 BSA E-Filing으로 전자 제출</td><td style="padding:7px 10px;border-bottom:1px solid #dde3ea;">IRS</td></tr>
+</tbody>
+</table>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:16px 0;background:#EAF3F5;border-left:5px solid #2A7F8F;padding:12px 16px;"><b>한국 쪽 의무도 확인하세요</b> &nbsp; 한국 거주자이거나 한국 계좌·한국 송금이 얽혀 있다면 미국과 별개로 한국에서도 신고 의무가 생길 수 있습니다. 한국 쪽 기준과 금액은 이 글에서 다루지 않으며, 한국 세무사와 확인하시기 바랍니다.</p>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">비거주자가 미국 LLC를 운영하는 경우의 주의점은 <a href="us-llc-korean-nonresident-korean.html" style="color:#1F4E99;">한국 거주자의 미국 LLC</a> 글을 참고하세요.</p>
+<figure style="margin:20px 0;"><img src="img/2026-11-23_QBO_Multicurrency_Korea/Fig04_Korea_Transfer_Flow_KR.png" alt="원화 청구서 입력, 송금, 수수료 분리, 환차손익, 월말 재평가, 회계사 확인으로 이어지는 한국 거래 기록 흐름도" width="1200" height="512" style="max-width:100%;height:auto;border:1px solid #dde3ea;border-radius:8px;" /><figcaption style="font-size:13px;color:#666;margin:4px 0 18px;">그림 4. 한국 거래 기록 흐름 한눈에 보기</figcaption></figure>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">7. 자주 하는 실수</h2>
+<ul style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>시험 삼아 켜기</b>: 다중 통화는 끌 수 없습니다. 테스트가 필요하면 별도의 체험용 회사 파일에서 먼저 해 보세요.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>같은 거래처에 두 통화 섞기</b>: 원화 청구서와 달러 청구서를 한 거래처로 처리하려 하면 막힙니다. 통화별 거래처를 따로 만드세요.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>수수료를 원가에 포함</b>: 송금 수수료는 거래처에 갚은 돈이 아니므로 별도 비용으로 분리합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>개인 송금을 매출로 분류</b>: 한국 개인 계좌에서 들어온 돈은 성격부터 확인합니다.</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><b>마감 후 재평가 시도</b>: 마감한 기간은 재평가할 수 없습니다. 마감 순서는 <a href="qbo-fix-mistakes-void-delete-undo-korean.html" style="color:#1F4E99;">잘못 입력한 거래 고치기</a> 글의 마감 관련 부분도 함께 보세요.</li>
+</ul>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">8. 자주 묻는 질문 (FAQ)</h2>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">Q. Simple Start 요금제인데 원화 청구서를 기록할 수 있나요?</h3>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">Intuit 안내에 따르면 Simple Start에서는 다중 통화를 쓸 수 없습니다. 이 경우 일반적으로 실제 송금된 달러 금액으로 기록하고, 청구서 원화 금액은 메모나 첨부 파일로 남겨 두는 방식을 씁니다.</p>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">Q. 환율은 어디 것을 써야 하나요?</h3>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">IRS는 공식 환율이 없다고 안내하며, 일관되게 사용하는 공시 환율을 일반적으로 인정합니다. QBO의 자동 환율, 은행 확인서의 실제 적용 환율 중 무엇을 쓸지 정해 두고 계속 같은 기준을 쓰는 것이 중요합니다.</p>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">Q. 이미 다중 통화를 켰는데 잘못 켠 것 같습니다. 되돌릴 수 있나요?</h3>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">Intuit 안내상 다중 통화는 한번 켜면 끌 수 없고 기준 통화도 바꿀 수 없습니다. 현재 설정에서 거래처·계정 통화를 어떻게 정리할지 담당 회계사와 정하세요.</p>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">Q. 환차손익은 세금에 어떻게 반영되나요?</h3>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">환차손익의 세무 처리는 거래 성격과 사업체 형태에 따라 다릅니다. 장부에서는 금액을 정확히 분리해 두고, 세무 처리는 CPA·EA 등 전문가와 확인하세요.</p>
+<h3 style="font-size:20px;color:#1F3A5F;margin:22px 0 8px;">Q. 한국 계좌 잔액이 크지 않으면 FBAR와 상관없나요?</h3>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">IRS 안내 기준은 해외 금융계좌 '합계'가 연중 한 번이라도 $10,000를 넘었는지입니다. 계좌가 여러 개라면 합계로 판단하므로, 본인 상황은 전문가와 확인하세요.</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">9. 셀프 체크리스트</h2>
+<ul style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 원화 청구서·원화 계좌·원화 인보이스가 실제로 있는지 확인했다</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 요금제가 Essentials 이상인지, Bill Pay·Payments 사용 여부를 확인했다</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 켜기 전 Balance Sheet와 Profit and Loss를 저장했다</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 기준 통화가 USD인지 확인했다</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 통화별 거래처 이름에 (KRW)/(USD)를 붙였다</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 송금 수수료를 별도 비용으로 분리했다</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 월말에 원화 잔액 재평가 여부를 회계사와 정했다</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 해외 계좌 합계와 FBAR 대상 여부를 전문가와 확인했다</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;">☐ 한국 쪽 신고 의무를 한국 세무사와 확인했다</li>
+</ul>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">10. 함께 읽으면 좋은 글</h2>
+<ul style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="quickbooks-online-basics-korean.html" style="color:#1F4E99;">QuickBooks Online 기초 가이드: 처음 시작할 때 꼭 알아야 할 10가지</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="qbo-bills-accounts-payable-korean.html" style="color:#1F4E99;">Bill과 지출 관리: 외상 매입, 일괄 지급, 거래처별 관리</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="qbo-bank-feeds-match-add-rules-korean.html" style="color:#1F4E99;">QBO 은행 연결 완전 정리: Match, Add, Rule</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="qbo-owner-draw-personal-expenses-korean.html" style="color:#1F4E99;">사장님 돈 처리법: Owner's draw, 개인 카드로 낸 사업 비용</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="qbo-invoices-payments-refunds-credits-korean.html" style="color:#1F4E99;">인보이스부터 입금까지: 부분 결제·할인·환불·크레딧</a></li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="us-llc-korean-nonresident-korean.html" style="color:#1F4E99;">한국 거주자의 미국 LLC</a></li>
+</ul>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;"><i>이 글은 교육 목적의 일반 정보이며 세무·법률·재무 자문이 아닙니다. 환율, 신고 기준과 기한은 바뀔 수 있으며, 본인 사업체에 적용되는 내용은 CPA, EA 또는 변호사 등 자격 있는 전문가와, 한국 쪽 의무는 한국 세무사와 확인하세요. QBO의 화면, 메뉴 이름, 요금제 구성은 자주 바뀌므로 최신 화면과 Intuit 및 IRS의 공식 안내를 확인하시기 바랍니다.</i></p>
+<p style="font-size:17px;line-height:1.75;color:#222;margin:10px 0;">QuickBooks is a registered trademark of Intuit Inc.; not affiliated with or endorsed by Intuit.</p>
+<h2 style="font-size:26px;color:#1F3A5F;margin:34px 0 12px;border-bottom:3px solid #2A7F8F;padding-bottom:6px;">출처</h2>
+<ul style="padding-left:22px;margin:8px 0;">
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/multi-currency/turn-on-multicurrency/00/185930" style="color:#1F4E99;">Intuit QuickBooks Help: Set up and use Multicurrency in QuickBooks Online</a> — 확인일 2026-11-23</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/multicurrency/learn-multicurrency-quickbooks-online/L5krkKQi8_US_en_US" style="color:#1F4E99;">Intuit QuickBooks Help: Set up and use Multicurrency in QuickBooks Online (US article)</a> — 확인일 2026-11-23</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/currency/enter-use-exchange-rates/L5cZfINVo_US_en_US" style="color:#1F4E99;">Intuit QuickBooks Help: Enter and use own exchange rates in QuickBooks</a> — 확인일 2026-11-23</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/multicurrency/enter-home-currency-adjustments-foreign-balances/L40cB0sr4_US_en_US" style="color:#1F4E99;">Intuit QuickBooks Help: Enter home currency adjustments for your foreign balances</a> — 확인일 2026-11-23</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/list-management/frequently-asked-questions-home-currency/L9wkSS2RA_US_en_US" style="color:#1F4E99;">Intuit QuickBooks Help: Frequently asked questions about home currency adjustments</a> — 확인일 2026-11-23</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://www.irs.gov/businesses/small-businesses-self-employed/report-of-foreign-bank-and-financial-accounts-fbar" style="color:#1F4E99;">IRS: Report of Foreign Bank and Financial Accounts (FBAR)</a> — 확인일 2026-11-23</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://www.irs.gov/individuals/international-taxpayers/yearly-average-currency-exchange-rates" style="color:#1F4E99;">IRS: Yearly average currency exchange rates</a> — 확인일 2026-11-23</li>
+<li style="font-size:17px;line-height:1.7;color:#222;margin:4px 0;"><a href="https://www.irs.gov/individuals/international-taxpayers/foreign-currency-and-currency-exchange-rates" style="color:#1F4E99;">IRS: Foreign currency and currency exchange rates</a> — 확인일 2026-11-23</li>
+</ul>
+
+<aside class="conv"><b>무료 은행 CSV → QBO 변환기</b><span>은행 CSV를 QuickBooks Desktop용 .qbo·.iif 파일로. 브라우저 안에서만 처리합니다.</span><a href="/csv-to-qbo">변환기 열기</a></aside>
+<p class="back"><a href="/blog/">← 블로그 글 목록</a> <a class="pv" href="/privacy.html">개인정보처리방침</a></p>
+</main>
+<!--cfwa--><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "9671384662e04a52b70330808aeedc3e"}'></script><!--/cfwa--></body></html>

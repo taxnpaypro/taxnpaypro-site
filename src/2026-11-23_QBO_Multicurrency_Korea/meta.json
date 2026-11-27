@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-23",
+  "category": "qbo",
+  "slug": {
+    "ko": "qbo-multicurrency-korea-transfers-korean",
+    "en": "qbo-multicurrency-korea-transfers"
+  },
+  "title": {
+    "ko": "한국 거래처 대금, 달러 금액만 적고 있다면: QBO 다중 통화(Multicurrency) 설정과 환율 차이 기록법",
+    "en": "Paying Korean Vendors in Won but Booking Only Dollars? Multicurrency Setup and Exchange Differences in QuickBooks Online"
+  },
+  "excerpt": {
+    "ko": "원화 청구서와 한국 송금을 QBO 다중 통화로 기록하는 법, 환차손익과 월말 재평가, FBAR 확인 사항을 정리합니다.",
+    "en": "How to record KRW bills and Korea wires with QBO Multicurrency, exchange gains and losses, revaluation, and FBAR basics."
+  },
+  "series_no": 15
+}
