@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-27",
+  "category": "accounting",
+  "slug": {
+    "ko": "sales-tax-payable-reconciliation-korean",
+    "en": "sales-tax-payable-reconciliation-year-end"
+  },
+  "title": {
+    "ko": "판매세 미지급금이 신고서와 안 맞을 때: 2026년 연말 대사 4단계",
+    "en": "Why Your Sales Tax Payable Doesn't Match Your Returns: A 2026 Year-End Reconciliation"
+  },
+  "excerpt": {
+    "ko": "장부의 판매세 미지급금을 신고서·납부액과 맞추는 법: 분기별 차이 찾기, 원인별 분개, 매출 3중 비교.",
+    "en": "Reconcile Sales Tax Payable to your 2026 returns and payments: find the quarter, name each difference, post the entries."
+  },
+  "downloads": {
+    "kit": "sales-tax-reconciliation",
+    "en": ["Sales_Tax_Reconciliation_2026_EN.xlsx", "Sales_Tax_Reconciliation_Guide_2026_EN.pdf"],
+    "ko": ["Sales_Tax_Reconciliation_2026_EN_KR.xlsx", "Sales_Tax_Reconciliation_Guide_2026_EN_KR.pdf"]
+  }
+}

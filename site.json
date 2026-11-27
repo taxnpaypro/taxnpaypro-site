@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25",
+  "updated": "2026-11-27",
   "notice": {
     "ko": "",
     "en": ""
@@ -64,6 +64,27 @@
   ],
   "cfAnalyticsToken": "9671384662e04a52b70330808aeedc3e",
   "posts": [
+    {
+      "date": "2026-11-27",
+      "category": "accounting",
+      "title": {
+        "ko": "판매세 미지급금이 신고서와 안 맞을 때: 2026년 연말 대사 4단계",
+        "en": "Why Your Sales Tax Payable Doesn't Match Your Returns: A 2026 Year-End Reconciliation"
+      },
+      "excerpt": {
+        "ko": "장부의 판매세 미지급금을 신고서·납부액과 맞추는 법: 분기별 차이 찾기, 원인별 분개, 매출 3중 비교.",
+        "en": "Reconcile Sales Tax Payable to your 2026 returns and payments: find the quarter, name each difference, post the entries."
+      },
+      "url": {
+        "ko": "https://taxnpaypro.com/blog/sales-tax-payable-reconciliation-korean.html",
+        "en": "https://taxnpaypro.com/blog/sales-tax-payable-reconciliation-year-end.html"
+      },
+      "previewUrl": {
+        "ko": "blog/sales-tax-payable-reconciliation-korean.html",
+        "en": "blog/sales-tax-payable-reconciliation-year-end.html"
+      },
+      "freeKit": true
+    },
     {
       "date": "2026-11-25",
       "category": "tax",
