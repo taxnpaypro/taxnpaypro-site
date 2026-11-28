@@ -202,6 +202,7 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;c
       <span class="lex"><b>LEX</b><i>INC.</i></span>
     </a>
     <nav aria-label="Main">
+      <a href="#paycost" data-en="Payroll cost">인건비 계산기</a>
       <a href="#blog" data-en="Blog">블로그</a>
       <a href="#tool" data-en="QBO converter">QBO 변환기</a>
       <a href="#nvtax" data-en="NV sales tax">NV 판매세 계산기</a>
@@ -223,7 +224,8 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;c
       <h1 data-en="Business numbers and the rules behind them, <em>made clear</em>">사업의 숫자와 규칙을<br><em>쉽게 풀어 드립니다</em></h1>
       <p class="lead" data-en="Plain-language articles on accounting, tax, payroll and QuickBooks Desktop and Online, in Korean and English, plus a free tool that turns bank CSV files into QuickBooks Desktop QBO files.">회계·세무·급여·QuickBooks(Desktop·Online)를 한국어와 영어로 쉽게 설명하는 블로그와, 은행 CSV를 QuickBooks Desktop QBO 파일로 바꾸는 무료 변환기를 운영합니다.</p>
       <div class="cta">
-        <a class="btn gold" href="#blog" data-en="Read the blog">블로그 읽기</a>
+        <a class="btn gold" href="/payroll-cost" data-en="Payroll cost calculator">인건비 계산기</a>
+        <a class="btn ghost" href="#blog" data-en="Read the blog">블로그 읽기</a>
         <a class="btn ghost" href="#nvtax" data-en="NV sales tax calculator">NV 판매세 계산기</a>
         <a class="btn ghost" href="#tool" data-en="Open the QBO converter">QBO 변환기</a>
       </div>
@@ -232,6 +234,25 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;c
       <div><span class="w biz">BIZ</span><span class="m">Business</span><span class="k" data-en="the work of running a business">비즈니스, 사업</span></div>
       <div><span class="w lex">LEX</span><span class="m">Latin · Law</span><span class="k" data-en="law, the rules a business follows">법, 사업이 지켜야 할 규칙</span></div>
       <p data-en="BIZLEX = business + law. Where the numbers of a business meet its rules.">BIZLEX = 비즈니스 + 법. 사업의 숫자와 규칙이 만나는 곳.</p>
+    </div>
+  </div>
+</section>
+
+<section class="s g" id="paycost">
+  <div class="in">
+    <div>
+      <span class="tag" data-en="Free tool">무료 도구</span>
+      <h2 data-en="Employer payroll cost calculator <em>NV · CA · TX · WA · GA</em>">직원 인건비 계산기 <em>NV · CA · TX · WA · GA</em></h2>
+      <p class="lead" data-en="Enter an hourly wage and weekly hours to see what one employee really costs the business: Social Security, Medicare, FUTA, state unemployment, Nevada MBT and overtime, shown biweekly, monthly, quarterly and yearly. 2026 rates, Nevada by default.">시급과 주당 근무시간을 넣으면 직원 한 명에게 실제로 드는 비용이 나옵니다. Social Security·Medicare·FUTA·주 실업보험·네바다 MBT·오버타임까지 2주·월·분기·연간으로 보여 줍니다. 2026년 요율, 네바다 기본.</p>
+      <ul class="checks">
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l6 2.5V8c0 3.3-2.6 6.2-6 7-3.4-.8-6-3.7-6-7V3.5L8 1z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span data-en="Nothing is uploaded. Runs in your browser">입력값이 전송되지 않음. 브라우저 안에서만 처리</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="State overtime rules, including Nevada and California daily overtime">네바다·캘리포니아 하루 오버타임 등 주별 오버타임 규칙 반영</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Quarter-by-quarter employer taxes for cash planning">분기별 고용주 세금으로 현금 계획</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="English or Korean screen">영어·한글 화면 선택</span></li>
+      </ul>
+      <div class="cta">
+        <a class="btn gold" id="lnk-paycost" href="/payroll-cost" data-en="Open the calculator">계산기 열기</a>
+      </div>
     </div>
   </div>
 </section>
