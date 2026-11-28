@@ -75,6 +75,8 @@ nav a{min-height:36px;display:inline-flex;align-items:center}
 .notice{display:inline-flex;align-items:center;gap:10px;margin:0 0 18px;padding:6px 14px;border:1px solid rgba(212,168,69,.5);border-radius:999px;font-size:14px;color:var(--on-navy)}
 .notice::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none}
 .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero .cta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:520px}
+.hero .cta .btn{justify-content:center;text-align:center;padding-inline:12px}
 .btn{font:inherit;font-size:15px;font-weight:700;border-radius:6px;padding:12px 22px;min-height:46px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;border:1px solid transparent}
 .btn.gold{background:var(--gold);color:#14202E}
 .btn.ghost{border-color:rgba(255,255,255,.3);color:var(--on-navy);background:transparent}
@@ -203,8 +205,9 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;c
     </a>
     <nav aria-label="Main">
       <a href="#blog" data-en="Blog">블로그</a>
-      <a href="#tool" data-en="QBO converter">QBO 변환기</a>
+      <a href="#paycost" data-en="Payroll cost">인건비 계산기</a>
       <a href="#nvtax" data-en="NV sales tax">NV 판매세 계산기</a>
+      <a href="#tool" data-en="QBO converter">QBO 변환기</a>
       <a href="#about" data-en="About">소개</a>
       <a href="#contact" data-en="Contact">문의</a>
     </nav>
@@ -224,8 +227,9 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;c
       <p class="lead" data-en="Plain-language articles on accounting, tax, payroll and QuickBooks Desktop and Online, in Korean and English, plus a free tool that turns bank CSV files into QuickBooks Desktop QBO files.">회계·세무·급여·QuickBooks(Desktop·Online)를 한국어와 영어로 쉽게 설명하는 블로그와, 은행 CSV를 QuickBooks Desktop QBO 파일로 바꾸는 무료 변환기를 운영합니다.</p>
       <div class="cta">
         <a class="btn gold" href="#blog" data-en="Read the blog">블로그 읽기</a>
-        <a class="btn ghost" href="#nvtax" data-en="NV sales tax calculator">NV 판매세 계산기</a>
-        <a class="btn ghost" href="#tool" data-en="Open the QBO converter">QBO 변환기</a>
+        <a class="btn ghost" href="#paycost" data-en="Payroll cost">인건비 계산기</a>
+        <a class="btn ghost" href="#nvtax" data-en="NV sales tax">NV 판매세 계산기</a>
+        <a class="btn ghost" href="#tool" data-en="QBO converter">QBO 변환기</a>
       </div>
     </div>
     <div class="name" aria-label="BIZLEX = BIZ + LEX">
@@ -246,6 +250,44 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;c
     <div class="posts" id="posts"><a class="post" href="https://taxnpaypro.com/blog/llc-vs-c-corp-for-korean-residents-korean.html" target="_top"><span class="pd">2026-11-25</span><div><h3>한국 거주자에게 LLC와 C-Corp 중 어느 쪽이 유리할까? 미국 세금 구조 비교와 신고 일정</h3><p>한국 거주자가 미국 LLC와 C-Corp을 고를 때 알아야 할 연방 세금 구조, 주요 서식과 연간 신고 기한을 비교합니다.</p></div><span class="pc">세무</span></a><a class="post" href="https://taxnpaypro.com/blog/real-estate-commission-split-quickbooks-korean.html" target="_top"><span class="pd">2026-11-25</span><div><h3>커미션은 $15,000인데 입금은 $7,480: 부동산 에이전트 커미션 분할을 QuickBooks에 총액으로 기록하고 1099-NEC와 맞추는 법</h3><p>브로커리지의 순액 수표를 총 커미션·브로커 몫·수수료로 나눠 QuickBooks에 기록하고 1099-NEC Box 1과 맞추는 법.</p></div><span class="pc">회계</span></a><a class="post" href="https://taxnpaypro.com/blog/apply-one-customer-payment-to-multiple-invoices-ko.html" target="_top"><span class="pd">2026-11-24</span><div><h3>입금 한 번에 인보이스 여러 장: QuickBooks에서 일괄 입금을 정확히 배분하는 방법</h3><p>메모 없는 일괄 입금이 어느 인보이스 대금인지 찾아 QuickBooks Desktop·Online에 정확히 적용하는 법입니다.</p></div><span class="pc">QuickBooks Desktop</span></a><a class="post" href="https://taxnpaypro.com/blog/qbo-year-end-close-1099-nv-ca-tx-korean.html" target="_top"><span class="pd">2026-11-24</span><div><h3>1099를 1월 말에 한꺼번에 준비하고 있다면: QBO 연말 정리와 1099 준비, 회계사에게 넘길 리포트 (네바다·캘리포니아·텍사스 비교)</h3><p>QBO 연말 정리 순서, 2026년 지급분 1099-NEC $2,000 기준, 네바다·캘리포니아·텍사스 신고 차이를 정리합니다.</p></div><span class="pc">QuickBooks Online</span></a><a class="post" href="https://taxnpaypro.com/blog/self-employment-tax-2026-korean-guide.html" target="_top"><span class="pd">2026-11-24</span><div><h3>2026년 자영업세(SE Tax) 직접 계산하는 법: W-2 직장과 부업이 함께 있을 때</h3><p>순이익에서 자영업세를 계산하는 순서와 W-2 임금이 있을 때 사회보장 한도, 분기 예정세 준비법을 정리합니다.</p></div><span class="pc">세무</span></a><a class="post" href="https://taxnpaypro.com/blog/which-state-to-form-us-llc-nonresident-korean.html" target="_top"><span class="pd">2026-11-24</span><div><h3>미국 LLC, 어느 주에 세울까? 7개 주 비교 — 네바다·와이오밍·델라웨어·플로리다·텍사스·캘리포니아·조지아</h3><p>비거주자가 미국 LLC를 세울 때 7개 주의 설립비·연간 유지비·주 세금과 실제 사업장 주 등록 문제를 비교합니다.</p></div><span class="pc">세무</span></a><a class="post" href="https://taxnpaypro.com/blog/haeoe-chuljang-hanggongryo-gongje-gyesan.html" target="_top"><span class="pd">2026-11-23</span><div><h3>해외 출장 중 개인 일정이 있었다면? 항공료 공제 가능 금액 계산법 (7일·25% 규칙)</h3><p>해외 출장에 개인 일정이 섞였을 때 IRS 7일·25% 규칙으로 항공료 공제액을 업무일 비율로 계산하는 법을 정리합니다.</p></div><span class="pc">세무</span></a><a class="post" href="https://taxnpaypro.com/blog/form-5472-foreign-owned-llc-korean.html" target="_top"><span class="pd">2026-11-23</span><div><h3>1인 외국인 소유 LLC의 Form 5472 + 가결산 Form 1120: 소득이 없어도 내야 할 수 있는 신고와 벌금</h3><p>매출이 없어도 신고 대상일 수 있는 Form 5472와 가결산 1120의 작성 항목, 기한·연장, 제출 방법, 벌금을 정리합니다.</p></div><span class="pc">세무</span></a></div>
     <div class="empty" id="empty" hidden><b id="empty-t"></b><span id="empty-s"></span></div>
     <div class="blogall" id="blogall"><a class="btn line" id="lnk-blog" href="/blog/" target="_top" data-en="All articles">전체 글 보기</a></div>
+  </div>
+</section>
+
+<section class="s g" id="paycost">
+  <div class="in">
+    <div>
+      <span class="tag" data-en="Free tool">무료 도구</span>
+      <h2 data-en="Employer payroll cost calculator <em>NV · CA · TX · WA · GA</em>">직원 인건비 계산기 <em>NV · CA · TX · WA · GA</em></h2>
+      <p class="lead" data-en="Enter an hourly wage and weekly hours to see what one employee really costs the business: Social Security, Medicare, FUTA, state unemployment, Nevada MBT and overtime, shown biweekly, monthly, quarterly and yearly. 2026 rates, Nevada by default.">시급과 주당 근무시간을 넣으면 직원 한 명에게 실제로 드는 비용이 나옵니다. Social Security·Medicare·FUTA·주 실업보험·네바다 MBT·오버타임까지 2주·월·분기·연간으로 보여 줍니다. 2026년 요율, 네바다 기본.</p>
+      <ul class="checks">
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l6 2.5V8c0 3.3-2.6 6.2-6 7-3.4-.8-6-3.7-6-7V3.5L8 1z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span data-en="Nothing is uploaded. Runs in your browser">입력값이 전송되지 않음. 브라우저 안에서만 처리</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="State overtime rules, including Nevada and California daily overtime">네바다·캘리포니아 하루 오버타임 등 주별 오버타임 규칙 반영</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Quarter-by-quarter employer taxes for cash planning">분기별 고용주 세금으로 현금 계획</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="English or Korean screen">영어·한글 화면 선택</span></li>
+      </ul>
+      <div class="cta">
+        <a class="btn gold" id="lnk-paycost" href="/payroll-cost" data-en="Open the calculator">계산기 열기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s g" id="nvtax">
+  <div class="in">
+    <div>
+      <span class="tag" data-en="Free tool">무료 도구</span>
+      <h2 data-en="Nevada sales tax calculator <em>for POS sales</em>">네바다 Sales Tax 계산기 <em>(POS 전용)</em></h2>
+      <p class="lead" data-en="Enter or paste daily cash, credit and credit tips from your POS, paste the month's bank deposits, and get the NV Sales and Use Tax return amounts and the QuickBooks journal entries. All 17 Nevada county rates are built in.">POS의 일별 현금·카드·카드 팁을 입력하거나 붙여넣고, 그 달 은행 입금을 붙여넣으면 NV Sales and Use Tax 신고 금액과 QuickBooks 분개가 나옵니다. 네바다 17개 카운티 세율이 들어 있습니다.</p>
+      <ul class="checks">
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l6 2.5V8c0 3.3-2.6 6.2-6 7-3.4-.8-6-3.7-6-7V3.5L8 1z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span data-en="Nothing is uploaded. Runs in your browser">파일이 전송되지 않음. 브라우저 안에서만 처리</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Flags POS days that don't match the bank">은행 입금과 다른 POS 날짜를 빨간색으로 표시</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Tip and sales tax journal entries with a QuickBooks book check">팁·Sales Tax 분개와 QuickBooks 장부 대조</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="English or Korean screen">영어·한글 화면 선택</span></li>
+      </ul>
+      <div class="cta">
+        <a class="btn gold" id="lnk-nvtax" href="/nv-sales-tax" data-en="Open the calculator">계산기 열기</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -304,25 +346,6 @@ footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;c
         <details><summary data-en="Does it work for credit cards and QFX files?">신용카드와 QFX 파일도 되나요?</summary><p data-en="Yes. Choose Credit Card as the account type. QFX, OFX and QBO files that failed to import can be rebuilt with their original IDs.">네. 계좌 종류에서 Credit Card를 고르세요. 가져오기에 실패한 QFX·OFX·QBO 파일도 원래 거래 ID를 유지한 채 다시 만듭니다.</p></details>
         <details><summary data-en="Do I need this for QuickBooks Online?">QuickBooks Online에도 필요한가요?</summary><p data-en="No. QuickBooks Online accepts CSV uploads directly. This tool is for QuickBooks Desktop.">아닙니다. QuickBooks Online은 CSV를 바로 올릴 수 있습니다. 이 도구는 QuickBooks Desktop용입니다.</p></details>
         <details><summary data-en="Is it free?">무료인가요?</summary><p data-en="Yes, free to use. Always back up your company file before importing.">네, 무료입니다. 가져오기 전에는 꼭 회사 파일을 백업하세요.</p></details>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="s g" id="nvtax">
-  <div class="in">
-    <div>
-      <span class="tag" data-en="Free tool">무료 도구</span>
-      <h2 data-en="Nevada sales tax calculator <em>for POS sales</em>">네바다 Sales Tax 계산기 <em>(POS 전용)</em></h2>
-      <p class="lead" data-en="Enter or paste daily cash, credit and credit tips from your POS, paste the month's bank deposits, and get the NV Sales and Use Tax return amounts and the QuickBooks journal entries. All 17 Nevada county rates are built in.">POS의 일별 현금·카드·카드 팁을 입력하거나 붙여넣고, 그 달 은행 입금을 붙여넣으면 NV Sales and Use Tax 신고 금액과 QuickBooks 분개가 나옵니다. 네바다 17개 카운티 세율이 들어 있습니다.</p>
-      <ul class="checks">
-        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l6 2.5V8c0 3.3-2.6 6.2-6 7-3.4-.8-6-3.7-6-7V3.5L8 1z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span data-en="Nothing is uploaded. Runs in your browser">파일이 전송되지 않음. 브라우저 안에서만 처리</span></li>
-        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Flags POS days that don't match the bank">은행 입금과 다른 POS 날짜를 빨간색으로 표시</span></li>
-        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Tip and sales tax journal entries with a QuickBooks book check">팁·Sales Tax 분개와 QuickBooks 장부 대조</span></li>
-        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="English or Korean screen">영어·한글 화면 선택</span></li>
-      </ul>
-      <div class="cta">
-        <a class="btn gold" id="lnk-nvtax" href="/nv-sales-tax" data-en="Open the calculator">계산기 열기</a>
       </div>
     </div>
   </div>
