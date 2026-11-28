@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Employer Payroll Cost Calculator (NV, CA, TX, WA, GA) · 직원 인건비 계산기</title>
+<meta name="description" content="Free employer payroll cost calculator for Nevada, California, Texas, Washington and Georgia: hourly wage to true annual cost with FICA, FUTA, state unemployment, NV MBT and overtime. 2026 rates. 직원 인건비 계산기.">
+<link rel="canonical" href="https://taxnpaypro.com/payroll-cost">
+<meta property="og:type" content="website"><meta property="og:url" content="https://taxnpaypro.com/payroll-cost">
+<meta property="og:title" content="Employer Payroll Cost Calculator (2026)">
+<meta property="og:description" content="Hourly wage to true employer cost: FICA, FUTA, state unemployment, NV MBT and overtime for NV, CA, TX, WA and GA. Free, runs in your browser.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Employer Payroll Cost Calculator", "url": "https://taxnpaypro.com/payroll-cost", "applicationCategory": "FinanceApplication", "operatingSystem": "Any (web browser)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Estimate the true employer cost of an hourly employee in Nevada, California, Texas, Washington and Georgia, with 2026 payroll tax rates and overtime rules. Runs in your browser.", "publisher": {"@type": "Organization", "name": "BIZLEX, INC.", "url": "https://taxnpaypro.com/"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a bookkeeper's worksheet — quiet, exact, printed-ledger feel
+   IDEA: the taxnpaypro.com homepage system carried over: navy masthead, paper sheet, gold only as ink
+   PICTURE: the live cost figure set large on the sheet, with a ruled breakdown under it
+   COLOUR and TYPE: homepage tokens (navy #14202E, gold #D4A845, paper #F5F6F4); Manrope + Noto Sans KR, IBM Plex Mono for figures
+   LAYOUT: thin masthead with logo, title row, inputs | result sheet, then ledger tables */
+:root{color-scheme:light dark;--bg:light-dark(#F5F6F4,#0E151F);--sheet:light-dark(#FFFFFF,#152030);--ink:light-dark(#14202E,#E6EBF1);--muted:light-dark(#556170,#9DA9B7);--rule:light-dark(#D9DDDF,#26354A);--soft:light-dark(#EEF0EE,#1A2738);--gold:#D4A845;--gold-ink:light-dark(#8A6512,#E2BC63);--navy:#14202E;--sans:"Noto Sans KR","Manrope","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;--display:"Manrope","Noto Sans KR",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);overflow-x:clip}
+h1,h2,p,li{word-break:keep-all;overflow-wrap:anywhere}
+.wrap{max-width:1160px;margin:0 auto;padding-inline:max(4vw,16px)}
+.top{background:var(--navy);color:#fff}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+.logo .biz{font:800 26px/1 Manrope,sans-serif;letter-spacing:3px}
+.logo .bar{width:4px;height:32px;background:var(--gold)}
+.logo .lex{display:flex;flex-direction:column;gap:3px}
+.logo .lex b{font:400 26px/1 Manrope,sans-serif;letter-spacing:3px}
+.logo .lex i{font:normal 800 8px/1 Manrope,sans-serif;letter-spacing:5px;color:var(--gold)}
+.top nav a{color:#AEB9C6;text-decoration:none;font-size:14px}.top nav a:hover{color:#fff}
+.head{padding-top:clamp(26px,4vw,48px);padding-bottom:clamp(18px,2.5vw,28px)}
+.head .lede{padding-bottom:0}
+.headrule{border-bottom:1px solid var(--rule)}
+.lbl{font:500 12px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0}
+h1{font:800 clamp(28px,4vw,42px)/1.15 var(--display);margin:.35em 0 .3em;text-wrap:balance;letter-spacing:-.01em}
+.lede{max-width:64ch;color:var(--muted);margin:0}
+main{padding:clamp(20px,3vw,36px) 0}
+.grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(18px,3vw,36px);align-items:start}
+.card{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:clamp(16px,2.4vw,28px)}
+.states{display:flex;border-bottom:1px solid var(--rule);margin:-6px 0 18px;gap:4px}
+.states button{flex:1;min-height:46px;border:0;border-bottom:3px solid transparent;background:none;color:var(--muted);font:700 16px/1 var(--display);letter-spacing:.06em;cursor:pointer;margin-bottom:-1px}
+.states button[aria-pressed=true]{color:var(--ink);border-bottom-color:var(--ink)}
+label{display:block;font-weight:500;font-size:14px;margin:16px 0 6px}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.in{display:flex;align-items:center;border:1px solid var(--rule);border-radius:4px;background:var(--sheet);padding:0 12px;min-height:46px}
+.in:focus-within{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.in span{color:var(--muted);white-space:nowrap;font-size:14px}
+.in{position:relative}
+.in input{border:0;background:transparent;color:var(--ink);font:500 16px var(--mono);width:100%;padding:10px 6px;text-align:right;outline:0}
+.hint{font-size:13px;color:var(--muted);margin:6px 0 0;line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chips button{border:1px solid var(--rule);background:transparent;color:var(--ink);border-radius:4px;padding:6px 12px;font:13px var(--sans);cursor:pointer;min-height:36px}
+.chips button:hover{border-color:var(--ink)}
+button:focus-visible,a:focus-visible,.chk input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.in input:focus,.in input:focus-visible{outline:none}
+.done{display:none;border:0;background:var(--ink);color:var(--bg);font:600 13px var(--sans);border-radius:4px;min-height:32px;padding:0 12px;margin-left:10px;cursor:pointer;flex:none}
+.in:focus-within .done{display:inline-block}
+.res{position:sticky;top:16px}
+.per{display:flex;gap:0;border:1px solid var(--rule);border-radius:4px;margin-bottom:18px;overflow:hidden}
+.per button{flex:1;min-height:40px;border:0;border-right:1px solid var(--rule);background:transparent;color:var(--muted);font:500 14px var(--sans);cursor:pointer}
+.per button:last-child{border-right:0}
+.per button[aria-pressed=true]{background:var(--ink);color:var(--sheet)}
+.sub{color:var(--muted);margin:0;font-size:14px}
+.big .ex{color:var(--gold-ink)}
+.big{font:600 clamp(40px,6.4vw,64px)/1 var(--mono);letter-spacing:-.02em;margin:10px 0 8px;font-variant-numeric:tabular-nums}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:22px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.kpi{padding:12px 12px 12px 0}.kpi+.kpi{padding-left:12px;border-left:1px solid var(--rule)}
+.kpi b{display:block;font:600 clamp(16px,2.2vw,21px)/1.25 var(--mono);overflow-wrap:anywhere}
+.kpi small{color:var(--muted);font-size:12px}
+.bar{display:flex;height:12px;background:var(--soft);margin:6px 0 10px}
+.bar i{display:block;height:100%;transition:width .3s}
+@media(prefers-reduced-motion:reduce){.bar i,.qb i{transition:none}}
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:9px;height:9px;margin-right:6px;background:var(--c)}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;background:var(--sheet)}
+th,td{padding:10px 12px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+th{font:500 12px var(--mono);color:var(--muted);letter-spacing:.04em;background:var(--soft)}
+td.n,th.n{text-align:right;white-space:nowrap}td.n{font-family:var(--mono);font-size:15px}
+tfoot td{font-weight:700;border-bottom:0;border-top:1.5px solid var(--ink)}
+.kv{width:100%}.kv th{width:42%;background:var(--soft);font:500 13px var(--sans);color:var(--muted);letter-spacing:0;white-space:normal}.kv td{white-space:normal}.kv th,.kv td{border-left:0}.kv td+td{border-left:0}
+.wide{min-width:760px}.wide td,.wide th{white-space:nowrap}
+.wide th+th,.wide td+td{border-left:1px solid var(--rule)}
+.wide tfoot td{border-top:1.5px solid var(--ink)}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--rule);border-radius:6px;background:var(--sheet)}
+.scroll table td:first-child,.scroll table th:first-child{position:sticky;left:0;z-index:2;background:var(--sheet);box-shadow:1px 0 0 var(--rule)}
+.scroll table th:first-child{background:var(--soft)}
+.swipe{display:none;font-size:13px;color:var(--muted);margin:8px 0 0}
+@media(max-width:760px){.swipe{display:block}}
+.sec{padding:clamp(22px,3vw,40px) 0;border-top:1px solid var(--rule)}
+h2{font:800 22px/1.3 var(--display);margin:6px 0 6px}
+.qgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--rule);border-radius:6px;background:var(--sheet);margin-top:16px}
+.q{padding:14px 16px}.q+.q{border-left:1px solid var(--rule)}
+.q b{display:block;font:600 20px/1.3 var(--mono)}
+.qb{height:6px;background:var(--soft);margin-top:10px}.qb i{display:block;height:100%;background:var(--gold-ink);transition:width .3s}
+.notes{columns:2 320px;column-gap:40px;padding-left:18px;margin:16px 0 0}
+.notes li{margin-bottom:10px;break-inside:avoid}
+.foot{font-size:13px;color:var(--muted)}.foot a{color:inherit}
+.mbt{display:none}.nv .mbt{display:block}
+.chk{display:flex;gap:10px;align-items:center;font-weight:400;min-height:44px;margin-top:8px}.chk input{width:20px;height:20px;accent-color:#14202E}.chk:has(input:disabled){opacity:.5}
+.nvonly{display:none}.nv .nvonly{display:flex}.nv p.nvonly{display:block}
+.otbox{margin-top:12px;background:var(--soft);border-radius:4px;padding:10px 12px;font-size:14px}
+.otbox b{font-family:var(--mono);font-weight:600}
+.reset{border:1px solid var(--rule);background:transparent;color:var(--muted);border-radius:4px;min-height:44px;padding:0 14px;font:14px var(--sans);cursor:pointer;margin-top:20px;width:100%}.reset:hover{color:var(--ink);border-color:var(--ink)}
+@media(max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}.res{position:static;order:-1}}
+@media(max-width:600px){.wide{font-size:14px}.wide td,.wide th{padding:9px 10px}td.n{font-size:14px}.scroll table td:first-child .hint{display:block;margin:2px 0 0;font-size:11px}.top .back{display:none}.qgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.q:nth-child(3){border-left:0}.q:nth-child(n+3){border-top:1px solid var(--rule)}.kpis{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.kpi:nth-child(3){grid-column:1/-1;border-left:0;padding-left:0;border-top:1px solid var(--rule)}}
+body.en .k{display:none!important}body.ko .e{display:none!important}
+.hr{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.lang{display:inline-flex;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:3px}
+.lang button{font:inherit;font-size:13px;border:0;background:transparent;color:#AEB9C6;padding:5px 13px;border-radius:999px;cursor:pointer;min-height:32px}
+.lang button.on{background:#D4A845;color:#14202E;font-weight:700}
+.top .back{color:#AEB9C6;text-decoration:none;font-size:13px}.top .back:hover{color:#fff}
+footer{border-top:1px solid var(--rule);padding:20px 0 36px;font-size:13px;color:var(--muted)}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body class="en">
+<header class="top"><div class="wrap">
+  <a class="logo" href="/" aria-label="BIZLEX, INC. taxnpaypro.com">
+    <span class="biz">BIZ</span><span class="bar" aria-hidden="true"></span>
+    <span class="lex"><b>LEX</b><i>INC.</i></span>
+  </a>
+  <div class="hr"><div class="lang" id="lang" role="group" aria-label="Language"><button type="button" data-l="ko">한국어</button><button type="button" data-l="en">English</button></div>
+  <a class="back" href="/">← taxnpaypro.com</a></div>
+</div></header>
+<div class="headrule"><div class="wrap head">
+  <p class="lbl">Payroll · Employer cost · 2026</p>
+  <h1><span class="e">What does one employee really cost?</span><span class="k">직원 한 명, 실제로 얼마 들까요?</span></h1>
+  <p class="lede"><span class="e">Enter the hourly wage and hours to see the full employer cost, including employer payroll taxes and overtime. NV · CA · TX · WA · GA, 2026 rates. Runs in your browser; nothing is uploaded.</span><span class="k">시급과 근무시간을 넣으면 고용주가 내는 세금과 오버타임까지 더한 인건비가 나옵니다. NV · CA · TX · WA · GA, 2026년 요율 기준. 브라우저 안에서만 계산하며 서버로 전송되지 않습니다.</span></p>
+</div></div>
+
+<main><div class="wrap grid">
+  <section class="card" aria-label="Inputs">
+    <div class="states" role="group" aria-label="State" id="states"></div>
+
+    <div class="row2">
+      <div><label for="wage"><span class="e">Hourly wage</span><span class="k">시급</span></label><div class="in"><span>$</span><input id="wage" type="number" inputmode="decimal" min="0" step="0.25"></div></div>
+      <div><label for="hours"><span class="e">Hours per week</span><span class="k">주당 근무시간</span></label><div class="in"><input id="hours" type="number" inputmode="decimal" min="0" step="1"><span><span class="e">hrs</span><span class="k">시간</span></span></div></div>
+    </div>
+    <div class="chips" id="presets"></div>
+    <label for="days"><span class="e">Days worked per week</span><span class="k">주당 근무일수</span></label>
+    <div class="in"><input id="days" type="number" inputmode="numeric" min="1" max="7" step="1"><span><span class="e">days</span><span class="k">일</span></span></div>
+    <p class="hint"><span class="e">Hours per day = weekly hours ÷ days (same hours every day)</span><span class="k">하루 근무시간 = 주당 시간 ÷ 근무일수 (매일 같은 시간 근무로 가정)</span></p>
+    <label class="chk nvonly"><input type="checkbox" id="fourten"> <span><span class="e">Signed 4-day × 10-hour agreement (NV)</span><span class="k">4일×10시간 근무 합의서 있음 (NV)</span></span></label>
+    <p class="hint nvonly" id="fthint"></p>
+    <div class="otbox" id="otbox"></div>
+
+    <div class="row2">
+      <div><label for="weeks"><span class="e">Weeks per year</span><span class="k">연간 근무 주수</span></label><div class="in"><input id="weeks" type="number" inputmode="numeric" min="1" max="52"><span><span class="e">wks</span><span class="k">주</span></span></div></div>
+      <div><label for="emps"><span class="e">Employees like this</span><span class="k">같은 조건 직원 수</span></label><div class="in"><input id="emps" type="number" inputmode="numeric" min="1" step="1"><span><span class="e">people</span><span class="k">명</span></span></div></div>
+    </div>
+
+    <label for="sui"><span class="e">State unemployment (SUI) rate</span><span class="k">주 실업보험(SUI) 요율</span></label>
+    <div class="in"><input id="sui" type="number" inputmode="decimal" min="0" step="0.01"><span>%</span></div>
+    <p class="hint" id="suihint"></p>
+
+    <label for="wc"><span class="e">Workers' comp rate</span><span class="k">산재보험(Workers' Comp) 요율</span></label>
+    <div class="in"><input id="wc" type="number" inputmode="decimal" min="0" step="0.01"><span>%</span></div>
+    <p class="hint"><span class="e">Use the rate on your insurance quote; it depends on the class code.</span><span class="k">보험사 견적서의 요율을 넣으세요. 업종 코드마다 다릅니다.</span></p>
+
+    <label for="health"><span class="e">Employer-paid health insurance (per employee, per year)</span><span class="k">고용주 부담 건강보험 (직원 1명·연간)</span></label>
+    <div class="in"><span>$</span><input id="health" type="number" inputmode="decimal" min="0" step="100"></div>
+    <p class="hint mbt"><span class="e">In Nevada this amount is deducted from MBT wages.</span><span class="k">NV에서는 이 금액만큼 MBT 과세 급여가 줄어듭니다.</span></p>
+    <button type="button" class="reset" id="reset"><span class="e">Reset to defaults</span><span class="k">모든 값을 기본값으로 되돌리기</span></button>
+  </section>
+
+  <section class="card res" aria-live="polite">
+    <div class="per" role="group" aria-label="Period" id="per"></div>
+    <div class="sub" id="rlabel"></div>
+    <div class="big" id="total">$0</div>
+    <p class="sub" id="rsub"></p>
+    <div class="kpis">
+      <div class="kpi"><b id="khour">$0</b><small><span class="e">True cost per hour</span><span class="k">실제 시간당 비용</span></small></div>
+      <div class="kpi"><b id="kextra">0%</b><small><span class="e">Added on top of wages</span><span class="k">시급 대비 추가 부담</span></small></div>
+      <div class="kpi"><b id="kco">$0</b><small id="kcol"></small></div>
+    </div>
+    <div class="bar" id="bar"></div>
+    <div class="legend" id="legend"></div>
+    <p class="hint"><span class="e">Navy is wages; the gold shades are what the business pays on top.</span><span class="k">남색은 임금, 금색 계열은 회사가 추가로 내는 비용입니다.</span></p>
+  </section>
+</div></main>
+
+<section class="sec"><div class="wrap">
+  <h2><span class="e">Employer cost by item (per employee)</span><span class="k">항목별 고용주 부담 (직원 1명)</span></h2>
+  <p class="sub"><span class="e">Only what the business pays, not taxes withheld from the employee. Biweekly, monthly and quarterly are even averages of the annual amount; the actual quarterly amounts are in the next table.</span><span class="k">직원 급여에서 떼는 세금이 아니라, 회사가 따로 내는 비용만 계산합니다. 2주·월·분기는 연간 금액을 고르게 나눈 평균이고, 실제 분기별 금액은 아래 표에 있습니다.</span></p>
+  <p class="swipe"><span class="e">← Swipe the table sideways →</span><span class="k">← 표를 옆으로 밀어서 보세요 →</span></p>
+  <div class="scroll" style="margin-top:10px"><table class="wide">
+    <thead id="thead"></thead>
+    <tbody id="rows"></tbody>
+    <tfoot id="tfoot"></tfoot>
+  </table></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2><span class="e">Employer taxes by quarter (per employee)</span><span class="k">분기별 고용주 세금 (직원 1명)</span></h2>
+  <p class="sub"><span class="e">Unemployment taxes stop once wages pass the wage base, so they land early in the year. Use this for first-quarter cash planning.</span><span class="k">실업보험은 과세 상한이 낮아 연초에 몰려 나갑니다. 1분기 현금 계획에 쓰세요.</span></p>
+  <div class="qgrid" id="qgrid"></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2 id="refh"></h2>
+  <div class="scroll" style="margin-top:12px"><table class="kv">
+    <tbody id="ref"></tbody>
+  </table></div>
+  <ul class="notes">
+    <li><span class="e"><b>Federal</b>: Social Security 6.2% (up to $184,500 a year), Medicare 1.45% (no limit), FUTA 0.6% (up to $7,000 a year).</span><span class="k"><b>연방 공통</b>: Social Security 6.2% (연 $184,500까지), Medicare 1.45% (상한 없음), FUTA 0.6% (연 $7,000까지).</span></li>
+    <li data-st="NV"><span class="e"><b>NV</b>: MBT is figured on the whole company's quarterly wages less employer-paid health benefits, at 1.17% above the first $50,000, so enter the number of employees. Employees paid under $18 an hour earn daily overtime after 8 hours.</span><span class="k"><b>NV</b>: MBT는 회사 전체 분기 급여에서 건강보험을 빼고, 첫 $50,000을 넘는 부분에 1.17%. 직원 수를 정확히 넣어야 맞습니다. 시급 $18 미만 직원은 하루 8시간을 넘으면 오버타임입니다.</span></li>
+    <li data-st="CA"><span class="e"><b>CA</b>: the 2026 FUTA credit reduction of 1.5% makes the effective FUTA rate 2.1%. SDI 1.3% is withheld from the employee, so it is not an employer cost.</span><span class="k"><b>CA</b>: 2026년 FUTA 감면이 1.5% 줄어서 실제 FUTA가 2.1%입니다. SDI 1.3%는 직원 급여에서 떼는 것이라 고용주 비용이 아닙니다.</span></li>
+    <li data-st="TX"><span class="e"><b>TX</b>: new employers pay the higher of their industry average or 2.70%; for 2026 every industry is 2.70%.</span><span class="k"><b>TX</b>: 신규 요율은 업종 평균과 2.70% 중 높은 쪽이지만, 2026년은 모든 업종이 2.70%입니다.</span></li>
+    <li data-st="WA"><span class="e"><b>WA</b>: the unemployment wage base is high at $78,200 per employee. New-employer rates are set from the industry average, so the 2.70% default is only an example; use your rate notice. The employer share of PFML (28.57% of the 1.13% premium) is required only at 50+ employees, so it is added when you enter 50 or more. WA Cares is paid by employees only. L&amp;I workers' comp is an hourly rate; convert it to a percent of wages.</span><span class="k"><b>WA</b>: 실업보험 과세 상한이 직원 1명당 $78,200으로 높습니다. 신규 고용주 요율은 업종 평균으로 정해져서 기본값 2.70%는 예시일 뿐이니 고지서 요율로 바꾸세요. PFML(유급휴가 보험) 1.13% 중 회사 부담 28.57%는 직원 50명 이상일 때만 의무라, 직원 수를 50 이상으로 넣으면 계산에 들어갑니다. WA Cares는 직원만 냅니다. 산재보험(L&amp;I)은 시간당 요율이라 임금 대비 %로 바꿔 넣어야 합니다.</span></li>
+    <li data-st="GA"><span class="e"><b>GA</b>: the 2.70% new-employer rate includes the 0.06% administrative assessment.</span><span class="k"><b>GA</b>: 신규 요율 2.70%에는 행정 부과금 0.06%가 포함되어 있습니다.</span></li>
+    <li><span class="e">Each company gets its own SUI rate. If you have your state rate notice, enter that rate.</span><span class="k">회사마다 받는 SUI 요율이 다릅니다. 주정부 요율 고지서가 있으면 그 숫자로 바꾸세요.</span></li>
+    <li><span class="e">2027 rates will be updated in January (for example, the Social Security wage base rises to $192,300 and the NV SUI wage base to $45,400).</span><span class="k">2027년 요율은 내년 1월에 업데이트됩니다 (예: SS 상한 $192,300, NV SUI 상한 $45,400).</span></li>
+    <li><span class="e">These are estimates. Overtime assumes the same hours every day and follows each state's rules. Tips, bonuses and city or county taxes are not included.</span><span class="k">이 결과는 추정치입니다. 초과근무는 매일 같은 시간을 일한다고 가정해 주별 규칙대로 계산합니다. 팁, 보너스, 시·카운티 지역세는 반영하지 않았습니다.</span></li>
+  </ul>
+  <p class="foot" style="margin-top:18px" id="srcs"></p>
+</div></section>
+
+<footer><div class="wrap"><span class="e">For planning estimates only; not tax or legal advice. Verify rates with each state agency before filing.</span><span class="k">계획용 추정치이며 세무·법률 자문이 아닙니다. 신고 전에 각 주 기관의 요율을 확인하세요.</span> © BIZLEX, INC. · taxnpaypro.com</div></footer>
+<script>
+{
+let LANG='en';
+const T=(en,ko)=>LANG==='ko'?ko:en;
+const FED={ss:.062,ssBase:184500,med:.0145,futa:.006,futaBase:7000};
+const ST={
+  NV:{name:'Nevada',sui:2.95,lo:0.25,hi:5.4,base:43700,futaRed:0,extras:[{k:['CEP (Career Enhancement)','CEP (경력개발 부과금)'],r:.0005,base:43700}],mbt:true,note:['New employers 2.95%','신규 고용주 2.95%']},
+  CA:{name:'California',sui:3.4,lo:1.5,hi:6.2,base:7000,futaRed:.015,extras:[{k:['ETT (Employment Training Tax)','ETT (직업훈련세)'],r:.001,base:7000}],note:['New employers 3.4% for 2 to 3 years','신규 고용주 3.4%, 2~3년간']},
+  TX:{name:'Texas',sui:2.70,lo:0.32,hi:6.32,base:9000,futaRed:0,extras:[],note:['All new employers 2.70% in 2026','2026년 신규 고용주는 모든 업종 2.70%']},
+  WA:{name:'Washington',sui:2.70,lo:0.27,hi:6.15,base:78200,futaRed:0,extras:[],pfml:true,note:['New-employer rates follow the industry average and vary by company (2.70% is an example)','신규 고용주는 업종 평균 요율로 정해져 회사마다 다릅니다 (2.70%는 예시값)']},
+  GA:{name:'Georgia',sui:2.70,lo:0.04,hi:8.10,base:9500,futaRed:0,extras:[],note:['New employers 2.70% (includes 0.06% admin assessment)','신규 고용주 2.70% (행정 부과금 0.06% 포함)']}
+};
+const COLORS={wage:'var(--ink)',fica:'#8A6512',ui:'#D4A845',mbt:'#B8903A',other:'#E6CF96'};
+const $=id=>document.getElementById(id);
+const f0=n=>'$'+Math.round(n).toLocaleString('en-US');
+const f2=n=>'$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const pct=r=>(Math.round(r*10000)/100).toLocaleString('en-US',{maximumFractionDigits:2})+'%';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const capped=(cum,prev,base)=>Math.max(0,Math.min(cum,base)-Math.min(prev,base));
+const L=a=>Array.isArray(a)?T(a[0],a[1]):a;
+
+const PER=[['bw',['Biweekly','2주'],26],['mo',['Monthly','월'],12],['qt',['Quarterly','분기'],4],['yr',['Annual','연간'],1]];
+let per='yr',st='NV';
+const KEY='bizlex-paycost-v3';
+const defaults={wage:15,hours:40,days:5,weeks:52,emps:1,wc:0,health:0};
+let saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+if(saved.st&&ST[saved.st])st=saved.st;
+if(PER.some(p=>p[0]===saved.per))per=saved.per;
+for(const k of Object.keys(defaults))$(k).value=saved[k]??defaults[k];
+$('sui').value=saved.sui??ST[st].sui;
+$('fourten').checked=!!saved.ft;
+
+function num(id){const v=parseFloat($(id).value);return isFinite(v)&&v>=0?v:0}
+const LIM={wage:[7.25,100],hours:[1,80],days:[1,7],weeks:[1,52],emps:[1,100],sui:[0,10],wc:[0,15],health:[0,30000]};
+const lim=id=>id==='sui'?[ST[st].lo,ST[st].hi]:LIM[id];
+for(const id of Object.keys(LIM))$(id).addEventListener('change',()=>{const[lo,hi]=lim(id);let v=parseFloat($(id).value);if(!isFinite(v))v=lo;$(id).value=Math.min(hi,Math.max(lo,v));calc()});
+
+function staticUI(){
+  $('states').innerHTML=Object.keys(ST).map(k=>`<button type="button" data-s="${k}" aria-pressed="${k===st}">${k}</button>`).join('');
+  $('per').innerHTML=PER.map(([k,t])=>`<button type="button" data-p="${k}" aria-pressed="${k===per}">${L(t)}</button>`).join('');
+  $('presets').innerHTML=[[T('Part-time 20 hrs','파트타임 20시간'),20],[T('Full-time 40 hrs','풀타임 40시간'),40],[T('30 hrs/week','주 30시간'),30]].map(([t,h])=>`<button type="button" data-h="${h}">${t}</button>`).join('');
+  $('thead').innerHTML=`<tr><th>${T('Item','항목')}</th><th class="n">${T('Rate','요율')}</th><th class="n">${T('Wage base','과세 상한')}</th><th class="n">${T('Biweekly','2주')}</th><th class="n">${T('Monthly','월')}</th><th class="n">${T('Quarterly','분기')}</th><th class="n">${T('Annual','연간')}</th></tr>`;
+  for(const b of document.querySelectorAll('.done'))b.textContent=T('Done','완료');
+}
+
+function calc(){
+  const s=ST[st],wage=num('wage'),hours=num('hours'),weeks=Math.min(52,num('weeks')),n=Math.max(1,Math.round(num('emps')));
+  const sui=num('sui')/100,wc=num('wc')/100,health=num('health');
+  const days=Math.max(1,Math.min(7,Math.round(num('days')||5))),d=hours/days,ft=$('fourten').checked;
+  $('fourten').disabled=days!==4;
+  $('fthint').textContent=days!==4?T('Applies only when days per week is 4. No effect now.','근무일수가 4일일 때만 적용됩니다. 지금은 효과 없음.'):wage>=18?T('At $18 an hour or more there is no daily overtime, so the agreement does not matter.','시급 $18 이상은 하루 기준이 없어서 합의서와 관계없습니다.'):ft?T('Applied: up to 10 hours a day is regular time; only hours over 10 are paid at 1.5x.','적용 중: 하루 10시간까지 정규, 10시간 초과분만 1.5배.'):T('Check this to move the daily limit from 8 to 10 hours.','체크하면 하루 기준이 8시간 → 10시간으로 바뀝니다.');
+  let ot=0,dt=0,note='';
+  const nd=(st==='CA'&&days===7)?6:days;
+  if(st==='CA'){ot+=nd*Math.max(0,Math.min(d,12)-8);dt+=nd*Math.max(0,d-12);note=T('CA: over 8 hours a day at 1.5x, over 12 at 2x','CA: 하루 8시간 초과 1.5배, 12시간 초과 2배');
+    if(days===7){ot+=Math.min(d,8);dt+=Math.max(0,d-8);note+=T('; 7th consecutive day: first 8 hours 1.5x, beyond 8 at 2x',', 7일째 연속 근무일은 처음 8시간 1.5배·초과 2배')}}
+  else if(st==='NV'&&wage<18){const lm=ft&&days===4?10:8;ot+=days*Math.max(0,d-lm);note=T(`NV: under $18 an hour, so hours over ${lm} a day are paid at 1.5x`,`NV: 시급 $18 미만이라 하루 ${lm}시간 초과분 1.5배`)}
+  else if(st==='NV')note=T('NV: $18 an hour or more, so only the 40-hour weekly rule applies','NV: 시급 $18 이상이라 하루 기준 없이 주 40시간만 적용');
+  else note=T(`${st}: no daily rule; hours over 40 a week at 1.5x`,`${st}: 하루 기준 없이 주 40시간 초과분만 1.5배`);
+  ot+=Math.max(0,hours-ot-dt-40);const reg=hours-ot-dt;
+  const baseW=wage*hours*weeks,W=wage*(reg+1.5*ot+2*dt)*weeks,otPrem=W-baseW,qW=W/4;
+  $('otbox').innerHTML=(ot+dt>0?T(`${hours} hrs/week = regular <b>${+reg.toFixed(2)}</b> + 1.5x <b>${+ot.toFixed(2)}</b>${dt?` + 2x <b>${+dt.toFixed(2)}</b>`:''} hrs<br>Weekly pay <b>${f2(W/weeks)}</b> (overtime premium ${f2(otPrem/weeks)})`,`주 ${hours}시간 = 정규 <b>${+reg.toFixed(2)}</b>시간 + 1.5배 <b>${+ot.toFixed(2)}</b>시간${dt?` + 2배 <b>${+dt.toFixed(2)}</b>시간`:''}<br>주급 <b>${f2(W/weeks)}</b> (초과근무 추가분 ${f2(otPrem/weeks)})`):T(`No overtime · weekly pay <b>${f2(W/weeks)}</b>`,`초과근무 없음 · 주급 <b>${f2(W/weeks)}</b>`))+`<br><span class="hint">${note}</span>`;
+  const items=[
+    {k:T('Social Security (employer)','Social Security (고용주분)'),r:FED.ss,base:FED.ssBase,g:'fica'},
+    {k:T('Medicare (employer)','Medicare (고용주분)'),r:FED.med,base:Infinity,g:'fica'},
+    {k:T('FUTA (federal unemployment)','FUTA (연방 실업세)'),r:FED.futa+s.futaRed,base:FED.futaBase,g:'ui'},
+    {k:T(`SUI (${st} unemployment)`,`SUI (${st} 주 실업보험)`),r:sui,base:s.base,g:'ui'},
+    ...s.extras.map(e=>({k:L(e.k),r:e.r,base:e.base,g:'ui'})),
+    ...(s.pfml&&n>=50?[{k:T('PFML (employer share)','PFML (유급휴가 보험, 회사 부담분)'),r:.0113*.2857,base:184500,g:'other'}]:[]),
+    {k:T("Workers' comp",'산재보험'),r:wc,base:Infinity,g:'other'}
+  ];
+  const q=[0,0,0,0];
+  for(const it of items){it.amt=0;for(let i=0;i<4;i++){const a=it.r*capped(qW*(i+1),qW*i,it.base);it.amt+=a;q[i]+=a}}
+  if(s.mbt){const qTax=Math.max(0,(n*qW-n*health/4)-50000)*.0117;
+    items.push({k:T('MBT (NV payroll tax)','MBT (NV 급여세)'),r:.0117,base:T('Over $50,000/qtr','분기 $50,000 초과'),amt:qTax*4/n,g:'mbt',co:true});
+    for(let i=0;i<4;i++)q[i]+=qTax/n}
+  if(health>0)items.push({k:T('Health insurance (employer)','건강보험 (고용주 부담)'),r:null,base:'',amt:health,g:'other'});
+  const extra=items.reduce((a,b)=>a+b.amt,0),total=W+extra,hrs=hours*weeks;
+  const [,pn,div]=PER.find(p=>p[0]===per),pName=L(pn);
+  const pf=v=>(div===1||v/div>=1000)?f0(v/div):f2(v/div);
+  $('rlabel').textContent=T(`${s.name} · 1 employee · ${pName} total cost${div>1?' (average)':''}`,`${s.name} · 직원 1명 · ${pName} 총 인건비${div>1?' (평균)':''}`);
+  $('total').textContent=pf(total);
+  $('rsub').innerHTML=`${T('Wages','임금')} ${pf(W)} + <span style="color:var(--gold-ink);font-weight:600">${T('employer cost','고용주 부담')} ${pf(extra)}</span>`;
+  $('khour').textContent=hrs?f2(total/hrs):'$0';
+  $('kextra').textContent=W?'+'+pct(extra/W):'0%';
+  $('kco').textContent=pf(total*n);
+  $('kcol').textContent=T(`Company total, ${pName.toLowerCase()} (${n})`,`회사 전체 ${pName} (${n}명)`);
+  const groups={wage:W,fica:0,ui:0,mbt:0,other:0};for(const it of items)groups[it.g]+=it.amt;
+  const names={wage:T('Wages','임금'),fica:'FICA',ui:T('Unemployment','실업보험'),mbt:'MBT',other:T("Workers' comp & health",'산재·건강보험')};
+  const parts=Object.entries(groups).filter(([,v])=>v>0);
+  $('bar').innerHTML=parts.map(([g,v])=>`<i style="width:${total?v/total*100:0}%;background:${COLORS[g]}" title="${names[g]}"></i>`).join('');
+  $('legend').innerHTML=parts.map(([g,v])=>`<span style="--c:${COLORS[g]}">${names[g]} ${f0(v)}</span>`).join('');
+  const cols=v=>[26,12,4].map(x=>`<td class="n">${f2(v/x)}</td>`).join('')+`<td class="n"><b>${f0(v)}</b></td>`;
+  $('rows').innerHTML=`<tr><td>${T('Base wages','기본 임금')} <span class="hint">${f2(wage)} × ${hours}${T(' hrs',' 시간')} × ${weeks}${T(' wks',' 주')}</span></td><td class="n"></td><td class="n"></td>${cols(baseW)}</tr>`+(otPrem>0?`<tr><td>${T('Overtime premium','초과근무 추가분')} <span class="hint">${T('extra pay from 1.5x and 2x','1.5배·2배 중 더 받는 부분')}</span></td><td class="n"></td><td class="n"></td>${cols(otPrem)}</tr>`:'')+
+    items.map(it=>`<tr><td>${esc(it.k)}${it.co?` <span class="hint">${T('*company-wide, per employee','*회사 전체 계산 후 1인당')}</span>`:''}</td><td class="n">${it.r==null?'':pct(it.r)}</td><td class="n">${typeof it.base==='number'?(isFinite(it.base)?f0(it.base):T('None','없음')):esc(it.base)}</td>${cols(it.amt)}</tr>`).join('');
+  $('tfoot').innerHTML=`<tr><td>${T('Employer cost subtotal','고용주 부담 소계')}</td><td></td><td></td>${cols(extra)}</tr><tr><td>${T('Total cost','총 인건비')}</td><td></td><td></td>${cols(total)}</tr>`;
+  const qMax=Math.max(...q,1);
+  $('qgrid').innerHTML=q.map((v,i)=>`<div class="q"><small class="sub">${T('Q'+(i+1),(i+1)+'분기')}</small><b>${f0(v)}</b><div class="qb"><i style="width:${v/qMax*100}%"></i></div></div>`).join('');
+  document.body.classList.toggle('nv',st==='NV');
+  $('refh').textContent=T(`2026 rates: federal and ${s.name}`,`2026년 기준: 연방 + ${s.name}`);
+  const ex=s.extras.map(e=>`${L(e.k)} ${pct(e.r)}`).concat(s.mbt?[T('MBT 1.17% (company wages above $50,000 a quarter)','MBT 1.17% (회사 분기 급여 $50,000 초과분)')]:[]).concat(s.pfml?[T('PFML employer share about 0.32% (50+ employees only)','PFML 회사 부담 약 0.32% (직원 50명 이상만)')]:[]).join('<br>')||T('None','없음');
+  $('ref').innerHTML=[[T('Social Security (employer)','Social Security (고용주분)'),T('6.2% up to $184,500','6.2%, 연 $184,500까지')],[T('Medicare (employer)','Medicare (고용주분)'),T('1.45%, no limit','1.45%, 상한 없음')],[T('FUTA (effective)','FUTA (실제 요율)'),T(`${pct(FED.futa+s.futaRed)} up to $7,000`,`${pct(FED.futa+s.futaRed)}, 연 $7,000까지`)],[T(`${st} new-employer SUI`,`${st} 신규 SUI 요율`),`${s.sui.toFixed(2)}%`],[T(`${st} SUI wage base`,`${st} SUI 과세 상한`),f0(s.base)],[T('Other employer taxes','추가 고용주 세금'),ex]].map(([a,b])=>`<tr><th>${a}</th><td>${b}</td></tr>`).join('');
+  for(const li of document.querySelectorAll('.notes li[data-st]'))li.hidden=li.dataset.st!==st;
+  const SRC={NV:[['NV DETR','https://detr.nv.gov/Page/UI_Information_for_Employers'],['NV Taxation (MBT)','https://tax.nv.gov/tax-types/modified-business-tax'],['NV Labor Commissioner','https://labor.nv.gov/']],CA:[['CA EDD','https://edd.ca.gov/en/Payroll_Taxes/Rates_And_Withholding']],TX:[['TWC','https://www.twc.texas.gov/programs/unemployment-tax/tax-rates']],WA:[['WA ESD','https://esd.wa.gov/employer-requirements/unemployment-taxes/how-we-determine-tax-rates'],['WA Paid Leave','https://paidleave.wa.gov/estimate-your-paid-leave-payments/']],GA:[['GA DOL','https://dol.georgia.gov/']]};
+  const sl=[['SSA','https://www.ssa.gov/news/en/cola/factsheets/2026.html'],...SRC[st],['US DOL FUTA','https://oui.doleta.gov/unemploy/futa_credit.asp']];
+  $('srcs').innerHTML=T('Sources','출처')+': '+sl.map(([t,u])=>`<a href="${u}">${t}</a>`).join(' · ')+'. '+T('Checked November 2026.','2026년 11월 확인.');
+  $('suihint').textContent=T(`${L(s.note)}. 2026 ${st} range ${s.lo}–${s.hi}%, wage base ${f0(s.base)} per employee. If you have a rate notice, use that rate.`,`${L(s.note)}. 2026년 ${st} 요율 범위 ${s.lo}~${s.hi}%, 과세 상한 직원 1명당 연 ${f0(s.base)}. 고지서 요율이 있으면 그 값으로 바꾸세요.`);
+  try{localStorage.setItem(KEY,JSON.stringify({st,per,...Object.fromEntries(['wage','hours','days','weeks','emps','sui','wc','health'].map(k=>[k,$(k).value])),ft:$('fourten').checked}))}catch(e){}
+}
+
+function setLang(l){LANG=l==='ko'?'ko':'en';
+  document.body.classList.toggle('ko',LANG==='ko');document.body.classList.toggle('en',LANG!=='ko');document.documentElement.lang=LANG;
+  for(const b of document.querySelectorAll('#lang button')){b.classList.toggle('on',b.dataset.l===LANG);b.setAttribute('aria-pressed',b.dataset.l===LANG)}
+  document.title=T('Employer Payroll Cost Calculator (NV, CA, TX, WA, GA) · taxnpaypro.com','직원 인건비 계산기 (NV·CA·TX·WA·GA) · taxnpaypro.com');
+  try{localStorage.setItem('bizlex-lang',LANG)}catch(e){}
+  staticUI();calc()}
+
+$('states').addEventListener('click',e=>{const b=e.target.closest('button[data-s]');if(!b)return;st=b.dataset.s;
+  for(const x of $('states').children)x.setAttribute('aria-pressed',x.dataset.s===st);$('sui').value=ST[st].sui;calc()});
+$('per').addEventListener('click',e=>{const b=e.target.closest('button[data-p]');if(!b)return;per=b.dataset.p;
+  for(const x of $('per').children)x.setAttribute('aria-pressed',x.dataset.p===per);calc()});
+$('presets').addEventListener('click',e=>{const b=e.target.closest('button[data-h]');if(!b)return;$('hours').value=b.dataset.h;calc()});
+for(const id of ['wage','hours','days','weeks','emps','sui','wc','health'])$(id).addEventListener('input',calc);
+$('fourten').addEventListener('change',calc);
+$('reset').addEventListener('click',()=>{st='NV';for(const k of Object.keys(defaults))$(k).value=defaults[k];$('sui').value=ST[st].sui;$('fourten').checked=false;staticUI();calc()});
+$('lang').addEventListener('click',e=>{const b=e.target.closest('button[data-l]');if(b)setLang(b.dataset.l)});
+
+const sink=document.createElement('div');sink.tabIndex=-1;sink.setAttribute('aria-hidden','true');sink.style.cssText='position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;outline:none';document.body.appendChild(sink);
+function closeKb(){const a=document.activeElement;if(!a||!a.matches('.in input'))return;a.readOnly=true;a.blur();sink.focus({preventScroll:true});a.dispatchEvent(new Event('change'));setTimeout(()=>{a.readOnly=false;sink.blur()},150)}
+for(const box of document.querySelectorAll('.in')){const b=document.createElement('button');b.type='button';b.className='done';
+  b.addEventListener('touchend',e=>{e.preventDefault();closeKb()});b.addEventListener('click',closeKb);box.appendChild(b)}
+document.addEventListener('touchend',e=>{if(!e.target.closest('.in'))closeKb()},{passive:true});
+document.addEventListener('mousedown',e=>{if(!e.target.closest('.in'))closeKb()});
+for(const i of document.querySelectorAll('.in input'))i.addEventListener('keydown',e=>{if(e.key==='Enter')closeKb()});
+
+let l0='';try{l0=localStorage.getItem('bizlex-lang')||''}catch(e){}
+const q0=new URLSearchParams(location.search).get('lang');if(q0)l0=q0;
+setLang(l0||((navigator.language||'').toLowerCase().startsWith('ko')?'ko':'en'));
+}
+</script>
+<!--cfwa--><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "9671384662e04a52b70330808aeedc3e"}'></script><!--/cfwa--></body>
+</html>
