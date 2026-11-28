@@ -86,7 +86,7 @@ main table{{display:block;max-width:100%;overflow-x:auto}} main pre,main p{{max-
 </style></head><body>
 <header class="top"><div class="in">
 <a class="logo" href="/" aria-label="BIZLEX, INC."><span class="biz">BIZ</span><span class="bar" aria-hidden="true"></span><span class="lex"><b>LEX</b><i>INC.</i></span></a>
-<nav class="nav" aria-label="Main"><a href="/payroll-cost">{navpay}</a><a href="/blog/">{blog}</a><a href="/csv-to-qbo">{navconv}</a><a href="/nv-sales-tax">{navnv}</a><a class="lang" href="{other}" lang="{olang}">{oname}</a></nav>
+<nav class="nav" aria-label="Main"><a href="/blog/">{blog}</a><a href="/payroll-cost">{navpay}</a><a href="/nv-sales-tax">{navnv}</a><a href="/csv-to-qbo">{navconv}</a><a class="lang" href="{other}" lang="{olang}">{oname}</a></nav>
 </div></header>
 <main>
 <p class="meta">{date} · {cat}</p>
@@ -265,7 +265,7 @@ def main():
     :focus-visible{outline:3px solid #14202E;outline-offset:2px}.top :focus-visible{outline-color:#D4A845}
     </style></head><body>
     <header class="top"><div class="in"><a class="logo" href="/" aria-label="BIZLEX, INC."><span class="biz">BIZ</span><span class="bar" aria-hidden="true"></span><span class="lex"><b>LEX</b><i>INC.</i></span></a>
-    <nav class="nav" aria-label="Main"><a href="/payroll-cost" data-ko="인건비 계산기" data-en="Payroll cost">인건비 계산기</a><a href="/blog/" data-ko="블로그" data-en="Blog">블로그</a><a href="/csv-to-qbo" data-ko="QBO 변환기" data-en="QBO converter">QBO 변환기</a><a href="/nv-sales-tax" data-ko="NV 판매세 계산기" data-en="NV sales tax">NV 판매세 계산기</a></nav>
+    <nav class="nav" aria-label="Main"><a href="/blog/" data-ko="블로그" data-en="Blog">블로그</a><a href="/payroll-cost" data-ko="인건비 계산기" data-en="Payroll cost">인건비 계산기</a><a href="/nv-sales-tax" data-ko="NV 판매세 계산기" data-en="NV sales tax">NV 판매세 계산기</a><a href="/csv-to-qbo" data-ko="QBO 변환기" data-en="QBO converter">QBO 변환기</a></nav>
     <div class="lang" role="group" aria-label="Language"><button type="button" id="lk" aria-pressed="true">한국어</button><button type="button" id="le" aria-pressed="false">English</button></div></div></header>
     <main class="wrap">
     <section id="ko"><h1>BIZLEX 블로그</h1><p class="sub">회계·세무·급여·QuickBooks(Desktop·Online)를 쉬운 한국어로.</p><div class="tabs">%s</div><div class="list">%s</div></section>
